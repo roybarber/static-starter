@@ -27,6 +27,10 @@
  *     MIXINS.SCSS
  *     Mixins....................Helpful Mixins.
  *
+ * VENDORS/
+ *     VENDORS.SCSS
+ *     Placeholder..........Remove when needed
+ *
  * BASE/
  *     TYPE.SCSS
  *     Type Defaults.............Which font to use.
@@ -46,12 +50,8 @@
  *     PAGES.SCSS
  *     Placeholder..........Remove when needed
  *
- * VENDORS/
- *     VENDORS.SCSS
- *     Placeholder..........Remove when needed
- *
  */
-/* line 17, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -73,46 +73,46 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+/* line 116, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
 
@@ -123,13 +123,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     #Mixins
 \*------------------------------------*/
 /*------------------------------------*\
+    #Vendors
+\*------------------------------------*/
+/*------------------------------------*\
     #Type styles
 \*------------------------------------*/
 /* line 20, ../sass/base/_type.scss */
 body {
   -webkit-font-smoothing: antialiased;
   font-size: 100%;
-  color: black;
+  color: #000000;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
@@ -215,7 +218,6 @@ a {
 @viewport {
   width: device-width;
 }
-
 /* line 15, ../sass/layout/_grid.scss */
 .container {
   margin-right: auto;
@@ -253,7 +255,7 @@ section:after, .clearfix:after, .container:after, .row:after {
   clear: both;
 }
 
-/* line 49, ../sass/layout/_grid.scss */
+/* line 43, ../sass/layout/_grid.scss */
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7,
 .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2,
 .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9,
@@ -268,7 +270,7 @@ section:after, .clearfix:after, .container:after, .row:after {
   width: 100%;
 }
 
-/* line 59, ../sass/layout/_grid.scss */
+/* line 58, ../sass/layout/_grid.scss */
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8,
 .col-xs-9, .col-xs-10, .col-xs-11 {
   float: left;
@@ -335,7 +337,7 @@ section:after, .clearfix:after, .container:after, .row:after {
 }
 
 @media (min-width: 520px) {
-  /* line 80, ../sass/layout/_grid.scss */
+  /* line 79, ../sass/layout/_grid.scss */
   .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7,
   .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11 {
     float: left;
@@ -567,7 +569,7 @@ section:after, .clearfix:after, .container:after, .row:after {
   }
 }
 @media (min-width: 768px) {
-  /* line 138, ../sass/layout/_grid.scss */
+  /* line 137, ../sass/layout/_grid.scss */
   .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7,
   .col-md-8, .col-md-9, .col-md-10, .col-md-11 {
     float: left;
@@ -818,7 +820,4 @@ section:after, .clearfix:after, .container:after, .row:after {
 \*------------------------------------*/
 /*------------------------------------*\
     #Pages
-\*------------------------------------*/
-/*------------------------------------*\
-    #Vendors
 \*------------------------------------*/

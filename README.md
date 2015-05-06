@@ -27,3 +27,9 @@ You need to have the latest version of node.js & yeoman.io installed, yeoman wil
 - LiveReload
 - Watch files for changes & recompile
 - Sass/Compass compile
+
+## Useful Links
+- Sass Architecture Structure | http://git.io/6SmiOw
+- CSS Declaration order | http://git.io/vJ7cU
+- CSS Guidelines | http://cssguidelin.es/
+- Create Favicons | http://realfavicongenerator.net/
