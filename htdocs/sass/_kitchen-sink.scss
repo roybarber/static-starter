@@ -1,0 +1,28 @@
+// Animations
+.animate {transition: all 400ms linear;-moz-transition: all 400ms linear;-webkit-transition: all 400ms linear;-o-transition: all 400ms linear;}
+
+// Links
+a, a:visited {text-decoration: none; outline: 0; }
+a.button {}
+a:hover, a:focus {}
+p a, p a:visited {line-height: inherit;}
+
+
+// Lists
+ul, ol { margin-bottom: 20px; }
+ul { list-style: none outside; }
+ol { list-style: decimal; }
+ol, ul.square, ul.circle, ul.disc { margin-left: 30px; }
+ul.square { list-style: square outside; }
+ul.circle { list-style: circle outside; }
+ul.disc { list-style: disc outside; }
+ul ul, ul ol,
+ol ol, ol ul { margin: 4px 0 5px 30px; font-size: 90%;  }
+ul ul li, ul ol li,
+ol ol li, ol ul li { margin-bottom: 6px; }
+li { line-height: 18px; margin-bottom: 12px; }
+ul.large li { line-height: 21px; }
+li p { line-height: 21px; }
+
+// Images
+img.responsive {max-width: 100%;height: auto; }
