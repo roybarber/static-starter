@@ -28,6 +28,10 @@
  *     MIXINS.SCSS
  *     Mixins....................Helpful Mixins.
  *
+ * VENDORS/
+ *     VENDORS.SCSS
+ *     Placeholder..........Remove when needed
+ *
  * BASE/
  *     TYPE.SCSS
  *     Type Defaults.............Which font to use.
@@ -47,10 +51,6 @@
  *     PAGES.SCSS
  *     Placeholder..........Remove when needed
  *
- * VENDORS/
- *     VENDORS.SCSS
- *     Placeholder..........Remove when needed
- *
  */
 
 // COMPASS
@@ -60,6 +60,9 @@
 // SASS-UTILS
 @import "sass-utils/color"; // Load in the color helpers
 @import "sass-utils/mixins"; // Load in the color helpers
+
+// VENDORS
+@import "vendors/vendors"; // Placeholder
 
 // BASE
 @import "base/type"; // Type Styles
@@ -72,6 +75,3 @@
 
 // PAGES
 @import "pages/pages"; // Placeholder
-
-// VENDORS
-@import "vendors/vendors"; // Placeholder
