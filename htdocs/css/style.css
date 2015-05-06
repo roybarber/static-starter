@@ -24,12 +24,13 @@
  * SASS-UTILS/
  *     COLOR.SCSS
  *     Colors....................Colors used through-out the site.
+ *
  *     MIXINS.SCSS
  *     Mixins....................Helpful Mixins.
  *
  * VENDORS/
  *     VENDORS.SCSS
- *     Placeholder..........Remove when needed
+ *     Placeholder..........Remove when needed.
  *
  * BASE/
  *     TYPE.SCSS
@@ -41,14 +42,17 @@
  * LAYOUT/
  *     GRID.SCSS
  *     Responsive Classes........All classes needed for responsive layout.
+ *     
+ *     FORMS.SCSS
+ *     Form Settings.............Settings to style forms.
  *
  * COMPONENTS/
  *     COMPONENTS.SCSS
- *     Placeholder..........Remove when needed
+ *     Placeholder..........Remove when needed.
  *
  * PAGES/
  *     PAGES.SCSS
- *     Placeholder..........Remove when needed
+ *     Placeholder..........Remove when needed.
  *
  */
 /* line 5, ../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
@@ -815,6 +819,232 @@ section:after, .clearfix:after, .container:after, .row:after {
     margin-left: 91.66667%;
   }
 }
+/*------------------------------------*\
+    #Forms
+\*------------------------------------*/
+/* FormHack v1.0.0 (formhack.io) */
+/* Global Reset Styles ------------------ */
+/* line 63, ../sass/layout/_forms.scss */
+input,
+textarea,
+select,
+option,
+optgroup,
+button,
+legend,
+fieldset {
+  box-sizing: border-box;
+  outline: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  color: #282828;
+  vertical-align: top;
+  display: block;
+  margin: 10px 0;
+}
+
+/* line 84, ../sass/layout/_forms.scss */
+datalist {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+}
+
+/* line 89, ../sass/layout/_forms.scss */
+label {
+  display: block;
+  margin: 10px 0;
+}
+
+/* Input & Textarea ------------------ */
+/* Fields with standard width */
+/* line 99, ../sass/layout/_forms.scss */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="color"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="number"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+input[list],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  background-color: #fff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #c8c8c8;
+}
+
+/* Fields with standard height */
+/* line 128, ../sass/layout/_forms.scss */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="color"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="number"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+input[list] {
+  height: 40px;
+  -webkit-appearance: none;
+}
+
+/* Other */
+/* line 148, ../sass/layout/_forms.scss */
+textarea {
+  -webkit-appearance: none;
+  overflow: auto;
+}
+
+/* line 153, ../sass/layout/_forms.scss */
+input[type="range"] {
+  height: 40px;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* line 159, ../sass/layout/_forms.scss */
+input[type="file"] {
+  min-height: 40px;
+}
+
+/* line 163, ../sass/layout/_forms.scss */
+input[type="search"] {
+  height: 40px;
+  -webkit-appearance: none;
+}
+
+/* line 167, ../sass/layout/_forms.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/* line 172, ../sass/layout/_forms.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Select ------------------ */
+/* line 186, ../sass/layout/_forms.scss */
+select {
+  height: 40px;
+}
+
+/* line 197, ../sass/layout/_forms.scss */
+select[multiple] {
+  height: auto;
+  min-height: 40px;
+  padding: 0;
+}
+/* line 202, ../sass/layout/_forms.scss */
+select[multiple] option {
+  margin: 0;
+  padding: 8px;
+}
+
+/* Fieldset ------------------ */
+/* line 210, ../sass/layout/_forms.scss */
+fieldset {
+  padding: 10px 25px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #c8c8c8;
+}
+
+/* line 224, ../sass/layout/_forms.scss */
+legend {
+  padding: 0 5px;
+  font-weight: 700;
+}
+
+/* Buttons, Input Type Submit/Reset ------------------ */
+/* line 237, ../sass/layout/_forms.scss */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="image"] {
+  height: 40px;
+  width: 100%;
+  max-width: 200px;
+  background-color: gainsboro;
+  padding: 8px;
+  cursor: pointer;
+  color: #282828;
+  font-weight: 700;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #c8c8c8;
+}
+
+/* line 261, ../sass/layout/_forms.scss */
+input[type="image"] {
+  text-align: center;
+  padding: 8px;
+}
+
+/* States ------------------ */
+/* line 268, ../sass/layout/_forms.scss */
+input[disabled],
+textarea[disabled],
+select[disabled],
+option[disabled],
+button[disabled] {
+  cursor: not-allowed;
+}
+
+/* line 276, ../sass/layout/_forms.scss */
+input:focus,
+textarea:focus,
+select:focus,
+option:focus,
+button:focus {
+  background-color: gainsboro;
+  border-color: #c8c8c8;
+}
+
+/* line 285, ../sass/layout/_forms.scss */
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  outline: #c8c8c8 solid 2px;
+}
+
+/* line 290, ../sass/layout/_forms.scss */
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+button:focus,
+input[type="button"]:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus {
+  background-color: #c8c8c8;
+  color: #282828;
+}
+
 /*------------------------------------*\
     #Components will go in this folder
 \*------------------------------------*/

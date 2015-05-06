@@ -25,12 +25,13 @@
  * SASS-UTILS/
  *     COLOR.SCSS
  *     Colors....................Colors used through-out the site.
+ *
  *     MIXINS.SCSS
  *     Mixins....................Helpful Mixins.
  *
  * VENDORS/
  *     VENDORS.SCSS
- *     Placeholder..........Remove when needed
+ *     Placeholder..........Remove when needed.
  *
  * BASE/
  *     TYPE.SCSS
@@ -42,14 +43,17 @@
  * LAYOUT/
  *     GRID.SCSS
  *     Responsive Classes........All classes needed for responsive layout.
+ *     
+ *     FORMS.SCSS
+ *     Form Settings.............Settings to style forms.
  *
  * COMPONENTS/
  *     COMPONENTS.SCSS
- *     Placeholder..........Remove when needed
+ *     Placeholder..........Remove when needed.
  *
  * PAGES/
  *     PAGES.SCSS
- *     Placeholder..........Remove when needed
+ *     Placeholder..........Remove when needed.
  *
  */
 
@@ -58,8 +62,8 @@
 @import "compass/css3";  // CSS3 Mixins
 
 // SASS-UTILS
-@import "sass-utils/color"; // Load in the color helpers
-@import "sass-utils/mixins"; // Load in the color helpers
+@import "sass-utils/color";  // Load in the color helpers
+@import "sass-utils/mixins"; // Load in the mixins helpers
 
 // VENDORS
 @import "vendors/vendors"; // Placeholder
@@ -68,7 +72,8 @@
 @import "base/type"; // Type Styles
 
 // LAYOUT
-@import "layout/grid"; // Grid & Layout - Responsive
+@import "layout/grid";  // Grid & Layout - Responsive
+@import "layout/forms"; // Forms
 
 // COMPONENTS
 @import "components/components"; // Placeholder
