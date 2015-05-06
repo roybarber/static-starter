@@ -1,35 +1,77 @@
-// Load in the Varibles
-@import "config";
+/*------------------------------------------------------------------
 
-// HTML5 Reset
-@import "compass/reset";
+    [Roy&Co Static Website Builder]
 
-// CSS3 Mixins
-@import "compass/css3";
+    Lets keep our CSS neat & tidy
+        - four (4) space indents, no tabs
+        - 80 character wide columns
 
-// Kitchen Sink
-@import "kitchen-sink";
+    Meaningful Whitespace
+        - One (1) empty line between closely related rulesets.
+        - Two (2) empty lines between loosely related rulesets.
+        - Five (5) empty lines between entirely new sections.
 
-// Grid & Layout - Responsive
-@import "grid-responsive";
+    Sass Architecture Structure Rules:
+    https://gist.github.com/AdamMarsden/7b85e8d5bdb5bef969a0
 
-// Grid & Layout - Fixed
-//@import "grid-fixed";
+    CSS Declaration order:
+    https://gist.github.com/AdamMarsden/fd9ec5f21016328cb6fe
 
-// Defualt Typography
-@import "type";
+-------------------------------------------------------------------*/
 
-// Default Form & Input Styles
-@import "forms";
+/**
+ * CONTENTS
+ *
+ * SASS-UTILS/
+ *     COLOR.SCSS
+ *     Colors....................Colors used through-out the site.
+ *     MIXINS.SCSS
+ *     Mixins....................Helpful Mixins.
+ *
+ * BASE/
+ *     TYPE.SCSS
+ *     Type Defaults.............Which font to use.
+ *     Font Sizes................Font size settings.
+ *     Links.....................Link settings.
+ *     Text align................Which way to align text.
+ *
+ * LAYOUT/
+ *     GRID.SCSS
+ *     Responsive Classes........All classes needed for responsive layout.
+ *
+ * COMPONENTS/
+ *     COMPONENTS.SCSS
+ *     Placeholder..........Remove when needed
+ *
+ * PAGES/
+ *     PAGES.SCSS
+ *     Placeholder..........Remove when needed
+ *
+ * VENDORS/
+ *     VENDORS.SCSS
+ *     Placeholder..........Remove when needed
+ *
+ */
 
-// Sprites
-//@import "sprites";
+// COMPASS
+@import "compass/reset"; // HTML5 Reset
+@import "compass/css3";  // CSS3 Mixins
 
-// Header Styles
-@import "header";
+// SASS-UTILS
+@import "sass-utils/color"; // Load in the color helpers
+@import "sass-utils/mixins"; // Load in the color helpers
 
-// Foter Styles
-@import "footer";
+// BASE
+@import "base/type"; // Type Styles
 
-// Content Styles
-@import "content";
+// LAYOUT
+@import "layout/grid"; // Grid & Layout - Responsive
+
+// COMPONENTS
+@import "components/components"; // Placeholder
+
+// PAGES
+@import "pages/pages"; // Placeholder
+
+// VENDORS
+@import "vendors/vendors"; // Placeholder

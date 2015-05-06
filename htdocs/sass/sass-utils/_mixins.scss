@@ -1,0 +1,50 @@
+/*------------------------------------*\
+    #Mixins
+\*------------------------------------*/
+
+
+// Clearfix - Usage: @include clearfix();
+@mixin clearfix() {
+    & {
+        *zoom: 1;
+    }
+
+    &:before, &:after {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+// Opacity - Usage: @include opacity(0.8);
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie);
+}
+
+// Vertical Align Anything
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+
+//Transitions - Usage: @include transition(color .3s ease);
+@mixin transition($args...) {
+    -webkit-transition: $args;
+       -moz-transition: $args;
+        -ms-transition: $args;
+         -o-transition: $args;
+            transition: $args;
+}
+
+// Example Function - Usage: .my-module {padding: my-calculation-function(10px, 5px);}
+@function my-calculation-function($some-number, $another-number) {
+    @return $some-number + $another-number
+}
