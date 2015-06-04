@@ -4,12 +4,21 @@
 
 
 // Config
+$grid-columns: 20;
+$grid-gutter-width: 30px;
 $maxwidth    : 1120px;
 $lgdesktopmq : 930px ;
 $desktopmq   : 768px ;
 $tabletmq    : 520px ;
 
 // Containers & Rows
+// Box sizing
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
 @viewport { width: device-width; }
 
 .container {
@@ -25,167 +34,29 @@ $tabletmq    : 520px ;
     margin-right: -15px;
 }
 
-
-// Box sizing with IE7 Hack
-*, *:before, *:after {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box; 
-    *behavior: url(http://wiltshire.website.dev/css/hacks/boxsizing.htc);
-}
-
-
 // Clearfix
 section, .clearfix, .container, .row { @include clearfix(); }
 
+// Common styles for small and large grid columns
+@include make-grid-columns;
 
-// Grid Defaults
-.col-xs-1,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,
-.col-xs-8,.col-xs-9,.col-xs-10,.col-xs-11,.col-xs-12,.col-sm-1,.col-sm-2,
-.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,
-.col-sm-10,.col-sm-11,.col-sm-12,.col-md-1,.col-md-2,.col-md-3,.col-md-4,
-.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-10,.col-md-11,
-.col-md-12,.col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,
-.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-10,.col-lg-11,.col-lg-12 {
-    position: relative;
-    min-height: 1px;
-    padding-left:  15px;
-    padding-right: 15px;
-    width: 100%;
+// Extra small grid
+@include make-grid(xs);
+
+// Small grid
+@media (min-width: $tabletmq ) {
+  @include make-grid(sm);
 }
 
-// Mobile Grid
-.col-xs-1,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,
-.col-xs-9,.col-xs-10,.col-xs-11 { float: left; }
-
-.col-xs-1  { width: 8.333333333333332% ; }
-.col-xs-2  { width: 16.666666666666664%; }
-.col-xs-3  { width: 25%                ; }
-.col-xs-4  { width: 33.33333333333333% ; }
-.col-xs-5  { width: 41.66666666666667% ; }
-.col-xs-6  { width: 50%                ; }
-.col-xs-7  { width: 58.333333333333336%; }
-.col-xs-8  { width: 66.66666666666666% ; }
-.col-xs-9  { width: 75%                ; }
-.col-xs-10 { width: 83.33333333333334% ; }
-.col-xs-11 { width: 91.66666666666666% ; }
-.col-xs-12 { width: 100%               ; }
-
-
-// Tablet
-@media (min-width: $tabletmq) {
-    // Tablet Grid
-    //.container {max-width: 750px;}
-    .col-sm-1,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,
-    .col-sm-8,.col-sm-9,.col-sm-10,.col-sm-11 { float: left; }
-
-    .col-sm-1  { width: 8.333333333333332% ; }
-    .col-sm-2  { width: 16.666666666666664%; }
-    .col-sm-3  { width: 25%                ; }
-    .col-sm-4  { width: 33.33333333333333% ; }
-    .col-sm-5  { width: 41.66666666666667% ; }
-    .col-sm-6  { width: 50%                ; }
-    .col-sm-7  { width: 58.333333333333336%; }
-    .col-sm-8  { width: 66.66666666666666% ; }
-    .col-sm-9  { width: 75%                ; }
-    .col-sm-10 { width: 83.33333333333334% ; }
-    .col-sm-11 { width: 91.66666666666666% ; }
-    .col-sm-12 { width: 100%               ; }
-    // Tablet push
-    .col-sm-push-1  { left: 8.333333333333332% ; }
-    .col-sm-push-2  { left: 16.666666666666664%; }
-    .col-sm-push-3  { left: 25%                ; }
-    .col-sm-push-4  { left: 33.33333333333333% ; }
-    .col-sm-push-5  { left: 41.66666666666667% ; }
-    .col-sm-push-6  { left: 50%                ; }
-    .col-sm-push-7  { left: 58.333333333333336%; }
-    .col-sm-push-8  { left: 66.66666666666666% ; }
-    .col-sm-push-9  { left: 75%                ; }
-    .col-sm-push-10 { left: 83.33333333333334% ; }
-    .col-sm-push-11 { left: 91.66666666666666% ; }
-    // Tablet Pull
-    .col-sm-pull-1  { right: 8.333333333333332% ; }
-    .col-sm-pull-2  { right: 16.666666666666664%; }
-    .col-sm-pull-3  { right: 25%                ; }
-    .col-sm-pull-4  { right: 33.33333333333333% ; }
-    .col-sm-pull-5  { right: 41.66666666666667% ; }
-    .col-sm-pull-6  { right: 50%                ; }
-    .col-sm-pull-7  { right: 58.333333333333336%; }
-    .col-sm-pull-8  { right: 66.66666666666666% ; }
-    .col-sm-pull-9  { right: 75%                ; }
-    .col-sm-pull-10 { right: 83.33333333333334% ; }
-    .col-sm-pull-11 { right: 91.66666666666666% ; }
-    // Tablet Offset
-    .col-sm-offset-1  { margin-left: 8.333333333333332% ; }
-    .col-sm-offset-2  { margin-left: 16.666666666666664%; }
-    .col-sm-offset-3  { margin-left: 25%                ; }
-    .col-sm-offset-4  { margin-left: 33.33333333333333% ; }
-    .col-sm-offset-5  { margin-left: 41.66666666666667% ; }
-    .col-sm-offset-6  { margin-left: 50%                ; }
-    .col-sm-offset-7  { margin-left: 58.333333333333336%; }
-    .col-sm-offset-8  { margin-left: 66.66666666666666% ; }
-    .col-sm-offset-9  { margin-left: 75%                ; }
-    .col-sm-offset-10 { margin-left: 83.33333333333334% ; }
-    .col-sm-offset-11 { margin-left: 91.66666666666666% ; }
-}
-
-
-// Desktop
+// Medium grid
 @media (min-width: $desktopmq) {
-    // Desktop Grid
-    //.container {max-width: 970px;}
-    .col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,
-    .col-md-8,.col-md-9,.col-md-10,.col-md-11 { float: left; }
-
-    .col-md-1  { width: 8.333333333333332% ; }
-    .col-md-2  { width: 16.666666666666664%; }
-    .col-md-3  { width: 25%                ; }
-    .col-md-4  { width: 33.33333333333333% ; }
-    .col-md-5  { width: 41.66666666666667% ; }
-    .col-md-6  { width: 50%                ; }
-    .col-md-7  { width: 58.333333333333336%; }
-    .col-md-8  { width: 66.66666666666666% ; }
-    .col-md-9  { width: 75%                ; }
-    .col-md-10 { width: 83.33333333333334% ; }
-    .col-md-11 { width: 91.66666666666666% ; }
-    .col-md-12 { width: 100%; }
-    // Desktop Push
-    .col-md-push-0  { left: auto               ; }
-    .col-md-push-1  { left: 8.333333333333332% ; }
-    .col-md-push-2  { left: 16.666666666666664%; }
-    .col-md-push-3  { left: 25%                ; }
-    .col-md-push-4  { left: 33.33333333333333% ; }
-    .col-md-push-5  { left: 41.66666666666667% ; }
-    .col-md-push-6  { left: 50%                ; }
-    .col-md-push-7  { left: 58.333333333333336%; }
-    .col-md-push-8  { left: 66.66666666666666% ; }
-    .col-md-push-9  { left: 75%                ; }
-    .col-md-push-10 { left: 83.33333333333334% ; }
-    .col-md-push-11 { left: 91.66666666666666% ; }
-    // Desktop Pull
-    .col-md-pull-0  { right: auto               ; }
-    .col-md-pull-1  { right: 8.333333333333332% ; }
-    .col-md-pull-2  { right: 16.666666666666664%; }
-    .col-md-pull-3  { right: 25%                ; }
-    .col-md-pull-4  { right: 33.33333333333333% ; }
-    .col-md-pull-5  { right: 41.66666666666667% ; }
-    .col-md-pull-6  { right: 50%                ; }
-    .col-md-pull-7  { right: 58.333333333333336%; }
-    .col-md-pull-8  { right: 66.66666666666666% ; }
-    .col-md-pull-9  { right: 75%                ; }
-    .col-md-pull-10 { right: 83.33333333333334% ; }
-    .col-md-pull-11 { right: 91.66666666666666% ; }
-    // Desktop Offset
-    .col-md-offset-0  { margin-left: 0                  ; }
-    .col-md-offset-1  { margin-left: 8.333333333333332% ; }
-    .col-md-offset-2  { margin-left: 16.666666666666664%; }
-    .col-md-offset-3  { margin-left: 25%                ; }
-    .col-md-offset-4  { margin-left: 33.33333333333333% ; }
-    .col-md-offset-5  { margin-left: 41.66666666666667% ; }
-    .col-md-offset-6  { margin-left: 50%                ; }
-    .col-md-offset-7  { margin-left: 58.333333333333336%; }
-    .col-md-offset-8  { margin-left: 66.66666666666666% ; }
-    .col-md-offset-9  { margin-left: 75%                ; }
-    .col-md-offset-10 { margin-left: 83.33333333333334% ; }
-    .col-md-offset-11 { margin-left: 91.66666666666666% ; }
+  @include make-grid(md);
 }
+
+// Large grid
+@media (min-width: $lgdesktopmq) {
+  @include make-grid(lg);
+}
+
+// no padding col
+.col-no-pad {padding-left:0;padding-right: 0;}
