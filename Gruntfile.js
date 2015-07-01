@@ -97,5 +97,4 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-concurrent');
     
     grunt.registerTask('default', ['jshint','connect:livereload','open','watch']);
-	
 };
