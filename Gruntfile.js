@@ -54,14 +54,21 @@ module.exports = function (grunt) {
             }
         },
         
-		concurrent: {
-			server: [
-		    	'compass'
-		    ]
+        jshint: {
+			files: ['<%= compass.options.javascriptsDir %>/*.js'],
+			options: {
+				globals: {
+					jQuery: true,
+					console: true,
+			        module: true, 
+			        document: true
+				},
+				reporter: require('jshint-stylish')
+			}
 		},
 		
 		watch: {
-            compass: {
+			compass: {
                 files: ['<%= compass.options.sassDir %>/{,*/}*.{scss,sass}'],
                 tasks: ['compass:dev']
             },
@@ -74,7 +81,8 @@ module.exports = function (grunt) {
                     '<%= compass.options.cssDir %>/{,*/}*.css',
                     '<%= compass.options.javascriptsDir %>/{,*/}*.js',
                     '<%= compass.options.imagesDir %>/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-                ]
+                ],
+                tasks: ['jshint']
             }
         }
 
@@ -82,11 +90,12 @@ module.exports = function (grunt) {
     
 	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks("grunt-reload");
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-open');
 	grunt.loadNpmTasks('grunt-concurrent');
     
-    grunt.registerTask('default', ['connect:livereload','open','watch']);
+    grunt.registerTask('default', ['jshint','connect:livereload','open','watch']);
 	
 };
