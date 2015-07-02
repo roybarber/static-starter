@@ -43,16 +43,20 @@
  * LAYOUT/
  *     GRID.SCSS
  *     Responsive Classes........All classes needed for responsive layout.
- *     
+ *
  *     FORMS.SCSS
  *     Form Settings.............Settings to style forms.
  *
  * COMPONENTS/
  *     COMPONENTS.SCSS
- *     Placeholder..........Remove when needed.
+ *     BUTTONS.SCSS..............Button Genration.
  *
  * PAGES/
  *     PAGES.SCSS
+ *     Placeholder..........Remove when needed.
+ *
+ * ANIMATIONS/
+ *     ANIMATION.SCSS
  *     Placeholder..........Remove when needed.
  *
  */
@@ -77,6 +81,10 @@
 
 // COMPONENTS
 @import "components/components"; // Placeholder
+@import "components/buttons"; // Button generation
 
 // PAGES
 @import "pages/pages"; // Placeholder
+
+// ANIMATIONS
+@import "animation/animation"; // Placeholder
