@@ -19,6 +19,7 @@ $sizeh6   : 1.2em;
 html, body {}
 body { 
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-size: $sizebody;
     color: $bodycolor;
     font-family: $bfont;
