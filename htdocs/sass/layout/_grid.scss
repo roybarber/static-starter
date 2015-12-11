@@ -4,7 +4,7 @@
 
 
 // Config
-$grid-columns: 20;
+$grid-columns: 24;
 $grid-gutter-width: 30px;
 $maxwidth    : 1120px;
 $lgdesktopmq : 930px ;
@@ -30,8 +30,8 @@ $tabletmq    : 520px ;
 }
 
 .row {
-    margin-left:  -15px;
-    margin-right: -15px;
+    margin-left:  -$grid-gutter-width/2;
+    margin-right: -$grid-gutter-width/2;
 }
 
 // Clearfix
