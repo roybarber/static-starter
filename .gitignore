@@ -1,9 +1,16 @@
-*~
-node_modules
-*/.sass_cache
-readme.html
-license.txt
-.log
+# general
+.idea
 .DS_Store
-code-drops/*
-.*/
+*~
+.sass-cache
+
+# package control
+node_modules
+client/vendor
+
+# logs
+npm-debug.log
+
+# build
+build/tmp
+build/dist

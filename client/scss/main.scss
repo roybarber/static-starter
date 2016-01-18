@@ -1,0 +1,90 @@
+/*------------------------------------------------------------------
+
+    [Roy&Co Static Website Builder]
+
+    Lets keep our CSS neat & tidy
+        - four (4) space indents, no tabs
+        - 80 character wide columns
+
+    Meaningful Whitespace
+        - One (1) empty line between closely related rulesets.
+        - Two (2) empty lines between loosely related rulesets.
+        - Five (5) empty lines between entirely new sections.
+
+    Sass Architecture Structure Rules:
+    https://gist.github.com/AdamMarsden/7b85e8d5bdb5bef969a0
+
+    CSS Declaration order:
+    https://gist.github.com/AdamMarsden/fd9ec5f21016328cb6fe
+
+-------------------------------------------------------------------*/
+
+/**
+ * CONTENTS
+ *
+ * SASS-UTILS/
+ *     COLOR.SCSS
+ *     Colors....................Colors used through-out the site.
+ *
+ *     MIXINS.SCSS
+ *     Mixins....................Helpful Mixins.
+ *
+ * VENDORS/
+ *     VENDORS.SCSS
+ *     Placeholder..........Remove when needed.
+ *
+ * BASE/
+ *     TYPE.SCSS
+ *     Type Defaults.............Which font to use.
+ *     Font Sizes................Font size settings.
+ *     Links.....................Link settings.
+ *     Text align................Which way to align text.
+ *
+ * LAYOUT/
+ *     GRID.SCSS
+ *     Responsive Classes........All classes needed for responsive layout.
+ *
+ *     FORMS.SCSS
+ *     Form Settings.............Settings to style forms.
+ *
+ * COMPONENTS/
+ *     COMPONENTS.SCSS
+ *     BUTTONS.SCSS..............Button Genration.
+ *
+ * PAGES/
+ *     PAGES.SCSS
+ *     Placeholder..........Remove when needed.
+ *
+ * ANIMATIONS/
+ *     ANIMATION.SCSS
+ *     Placeholder..........Remove when needed.
+ *
+ */
+
+// SASS-UTILS
+@import "sass-utils/color";  // Load in the color helpers
+@import "sass-utils/mixins"; // Load in the mixins helpers
+
+// VENDORS
+@import "vendors/vendors"; // Placeholder
+
+// BASE
+@import "base/type"; // Type Styles
+
+// LAYOUT
+@import "layout/grid";  // Grid & Layout - Responsive
+@import "layout/forms"; // Forms
+
+// COMPONENTS
+@import "components/components"; // Placeholder
+@import "components/buttons"; // Button generation
+@import "components/tables"; // Table
+
+// PAGES
+@import "pages/pages"; // Placeholder
+
+// ANIMATIONS
+//@import "animation/animation"; // Placeholder
+
+// Test
+body {background:blue;}
