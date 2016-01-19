@@ -10,7 +10,6 @@ var reload = browserSync.reload;
 var pkg = require('./package');
 var del = require('del');
 var gulpif = require('gulp-if');
-var compass = require('gulp-compass');
 var _ = require('lodash');
 
 // optimize images and put them in the dist folder
