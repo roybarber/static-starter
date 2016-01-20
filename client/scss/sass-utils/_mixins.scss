@@ -22,6 +22,7 @@
     @return ($px / $base) * 1em;
 }
 
+
 // Background Cover - Usage: @include background-cover;
 @mixin background-cover {
     -webkit-background-size: cover;
@@ -74,6 +75,7 @@
     }
 }
 
+
 // Border Radius - Usage: @include border-radius(25px);
 @mixin border-radius($radius: $default-border-radius, $vertical-radius: false) {
     @include with-each-prefix(border-radius, $border-radius-threshold) {
@@ -88,6 +90,23 @@
         @else {
             // Official syntax for everyone else
             @include prefix-prop(border-radius, if($vertical-radius, #{$radius} / #{$vertical-radius}, $radius));
+        }
+    }
+}
+
+// Gradient - Usage: Go to http://colorzilla.com/gradient-editor/
+@mixin filter-gradient($start-color, $end-color, $orientation: vertical) {
+    @include for-legacy-browsers((ie: "8"), $gradient-support-threshold) {
+        @include has-layout;
+        $gradient-type: if($orientation == vertical, 0, 1);
+        filter: progid:DXImageTransform.Microsoft.gradient(gradientType=#{$gradient-type}, startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}');
+    }
+}
+
+@mixin background-image($images...) {
+    @include image-property(background-image, $images...) {
+        @if $current-prefix == -svg {
+            background-size: 100%;
         }
     }
 }
