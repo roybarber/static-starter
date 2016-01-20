@@ -16,11 +16,13 @@ $sizeh4   : 1.6em;
 $sizeh5   : 1.4em;
 $sizeh6   : 1.2em;
 
-
-html, body {}
-body { 
+* {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {}
+body {
     font-size: $sizebody;
     color: $bodycolor;
     font-family: $bfont;
@@ -51,9 +53,9 @@ p {
 // Links
 a {
     text-decoration: none;
-	outline: 0;
+    outline: 0;
     &:hover {}
-    
+
     &:visited {}
 }
 
@@ -65,24 +67,24 @@ a {
 
 // Blockquote
 blockquote {
-	border-left: 3px solid $primary;
-	margin-left: 0;
-	margin-right: 0;
-	padding: 10px 15px;
-	& *:last-child {
-		margin: 0;
-	}
+    border-left: 3px solid $primary;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 10px 15px;
+    & *:last-child {
+        margin: 0;
+    }
 }
 
 // Lists
 dl, ol, ul {
-	margin-top: 0;
-	padding-left: 0;
+    margin-top: 0;
+    padding-left: 0;
 
-	dl, ul,	ol {
-		font-size: 90%;
-		margin: 1.5rem 0 1.5rem 3.0rem;
-	}
+    dl, ul,	ol {
+        font-size: 90%;
+        margin: 1.5rem 0 1.5rem 3.0rem;
+    }
 }
 dl {list-style: none;}
 ul {list-style: circle inside;}
@@ -91,21 +93,21 @@ dt, dd, li {margin-bottom: 1.0rem;}
 
 // Code
 code {
-	background: #f8f8f8;
-	font-size: $sizebody;
-	padding: 10px;
-	margin: 0 10px;
-	white-space: nowrap;
+    background: #f8f8f8;
+    font-size: $sizebody;
+    padding: 10px;
+    margin: 0 10px;
+    white-space: nowrap;
 }
 pre {
-	background: #f8f8f8;
-	border-left: 3px solid $primary;
-	font-family: 'Menlo', 'Consolas', 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', 'Monaco', monospace;
-	& > code {
-		background: transparent;
-		border-radius: 0;
-		display: block;
-		padding: 1rem 1.5rem;
-		white-space: pre;
-	}
+    background: #f8f8f8;
+    border-left: 3px solid $primary;
+    font-family: 'Menlo', 'Consolas', 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', 'Monaco', monospace;
+    & > code {
+        background: transparent;
+        border-radius: 0;
+        display: block;
+        padding: 1rem 1.5rem;
+        white-space: pre;
+    }
 }
