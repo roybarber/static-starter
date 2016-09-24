@@ -5,7 +5,7 @@
 
     Roy Barber -- Director / Designer / Senior Front End Developer
     Dominic Talbot -- Senior Back End Developer
-    Adam Marsden -- Front End Developer
+    Hollie Pearson -- Junior Front End Developer
     John Houlder -- Junior Back End Developer
     Matt Cooper -- Designer
 
