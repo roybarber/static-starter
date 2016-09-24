@@ -1,0 +1,23 @@
+// Main Setup
+
+// Grid
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+$maxwidth: 1120px;
+$lgdesktopmq: 930px;
+$desktopmq: 768px;
+$tabletmq: 520px;
+
+// Color
+$black: #000000;
+$lightgrey: #A4A4A4;
+$darkgrey: #848484;
+$greybg: #f2f2f2;
+$line: #D2D2D2;
+$orange: #F07B22;
+$white: #ffffff;
+// Defaults
+$bodycolor: $lightgrey;
+$headingcolor: $darkgrey;
+$primary: $orange;
+$secondary: $darkgrey;

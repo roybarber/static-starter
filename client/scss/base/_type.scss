@@ -1,113 +1,85 @@
-/*------------------------------------*\
-    #Type styles
-\*------------------------------------*/
+// Typography
 
 // Type Defaults
-$hfont : Arial, 'Helvetica Neue', Helvetica, sans-serif; //Header Fonts
-$bfont : Arial, 'Helvetica Neue', Helvetica, sans-serif; //Body Fonts
-
-// Font Sizes
-$base-size: 16px;
-$sizebody : 100% ;
-$sizeh1   : 2.2em;
-$sizeh2   : 2em  ;
-$sizeh3   : 1.8em;
-$sizeh4   : 1.6em;
-$sizeh5   : 1.4em;
-$sizeh6   : 1.2em;
-
-* {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+$hfont : "Helvetics",Arial,sans-serif;
+$bfont : $hfont; //Body Fonts
 
 html, body {}
-body {
-    font-size: $sizebody;
+body { 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
     color: $bodycolor;
     font-family: $bfont;
 }
 
 
 // Headings
-h1, h2, h3, h4, h5, h6 { font-family: $hfont; }
-h1 { font-size: $sizeh1; }
-h2 { font-size: $sizeh2; }
-h3 { font-size: $sizeh3; }
-h4 { font-size: $sizeh4; }
-h5 { font-size: $sizeh5; }
-h6 { font-size: $sizeh6; }
+h1, h2, h3, h4, h5, h6 { font-family: $hfont; font-weight: 400; color: $headingcolor;}
+h1, .text-alpha { font-size: 24px; line-height: 28px; margin:0 0 20px 0;}
+h2, .text-bravo { font-size: 24px; line-height: 28px; margin:0 0 20px 0;}
+h3, .text-charlie { font-size: 18px; line-height: 30px; margin:0 0 15px 0;}
+h4, .text-delta { font-size: 24px; line-height: 28px; margin:0 0 15px 0;}
+h5, .text-echo { font-size: 18px; line-height: 24px; margin:0 0 15px 0;}
+h6, .text-foxtrot { font-size: 16px; line-height: 24px; margin:0;}
 
+@media (min-width: $desktopmq) {
+	h1, h2, h3, h4, h5, h6 {margin:0 0 20px 0;}
+	h1, .text-alpha { font-size: 40px; line-height: 46px;}
+	h2, .text-bravo { font-size: 40px; line-height: 46px;}
+	h3, .text-charlie { font-size: 20px; line-height: 30px;}
+	h4, .text-delta { font-size: 40px; line-height: 46px;}
+	h5, .text-echo { font-size: 20px; line-height: 28px;}
+	h6, .text-foxtrot { font-size: 20px; line-height: 22px;}
+}
 
 // Paragraphs
-p {
-    font-size: $sizebody;
-    line-height: 1.5em;
+p {font-size: 16px;line-height: 24px;margin:0 0 15px 0;
+    &.p-intro {font-size: 18px;line-height: 28px;}
+    &.p-small {font-size: 14px;line-height: 20px;}
 }
-
-.text-light  { font-weight: 300; }
-.text-normal { font-family: 400; }
-.text-strong { font-weight: 600; }
-
-
-// Links
-a {
-    text-decoration: none;
-    outline: 0;
-    &:hover {}
-
-    &:visited {}
+.text-small {font-size: 14px;line-height: 20px;}
+@media (min-width: $desktopmq) {
+	p {font-size: 16px;line-height: 24px;margin:0 0 20px 0;
+	    &.p-intro {font-size: 20px;line-height: 32px;}
+	    &.p-small {font-size: 14px;line-height: 20px;}
+	}
 }
+	
+.text-weight-300  { font-weight: 300; }
+.text-weight-400 { font-family: 400; }
+.text-weight-600, strong, b { font-weight: 600; }
+.text-weight-800 { font-weight: 800; }
+.text-uppercase {text-transform: uppercase;}
+.text-italic {font-style: italic;}
+.text-underline {text-decoration: underline;}
 
 
 // Text Align
-.text-center { text-align: center; }
-.text-left   { text-align: left  ; }
-.text-right  { text-align: right ; }
+.text-center {text-align: center;}
+.text-left   {text-align: left;}
+.text-right  {text-align: right;}
+//mobile only
+.text-center-mobile {text-align: center;}
+.text-left-mobile {text-align: left;}
+.text-right-mobile {text-align: right;}
 
-// Blockquote
-blockquote {
-    border-left: 3px solid $primary;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 10px 15px;
-    & *:last-child {
-        margin: 0;
-    }
+// Media query specific
+@media (min-width: $desktopmq) {
+	.text-center-mobile {text-align: left;}
+	.text-left-mobile {text-align: left;}
+	.text-right-mobile {text-align: left;}
+	.text-right-desktop {text-align: right;}
+	.text-left-desktop {text-align: left;}
+	.text-center-desktop {text-align: center;}
+	
 }
+
+// Images
+img.responsive {width:100%;height:auto;max-width: 100%;}
 
 // Lists
-dl, ol, ul {
-    margin-top: 0;
-    padding-left: 0;
+ul {list-style: none;margin:0;padding:0;}
 
-    dl, ul,	ol {
-        font-size: 90%;
-        margin: 1.5rem 0 1.5rem 3.0rem;
-    }
-}
-dl {list-style: none;}
-ul {list-style: circle inside;}
-ol {list-style: decimal inside;}
-dt, dd, li {margin-bottom: 1.0rem;}
-
-// Code
-code {
-    background: #f8f8f8;
-    font-size: $sizebody;
-    padding: 10px;
-    margin: 0 10px;
-    white-space: nowrap;
-}
-pre {
-    background: #f8f8f8;
-    border-left: 3px solid $primary;
-    font-family: 'Menlo', 'Consolas', 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', 'Monaco', monospace;
-    & > code {
-        background: transparent;
-        border-radius: 0;
-        display: block;
-        padding: 1rem 1.5rem;
-        white-space: pre;
-    }
-}
+// Other helpers
+.hide-text {text-indent: -9999px;display: block;}

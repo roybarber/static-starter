@@ -1,0 +1,106 @@
+//Buttons
+
+// Button Defaults
+$btn-bgcolor: $primary !default;
+$btn-font-color: white !default;
+$btn-font-weight: 700 !default;
+$btn-font-size: 16px !default;
+$btn-height: 40px !default;
+$btn-font-family: $hfont !default;
+$btn-border-radius: 4px !default;
+
+.btn,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+	color: $btn-font-color;
+	background-color: $btn-bgcolor;
+	font-weight: $btn-font-weight;
+	font-size: $btn-font-size;
+	font-family: $btn-font-family;
+	text-decoration: none;
+	text-align: center;
+	text-transform: capitalize;
+	line-height: 40px;
+	height: $btn-height;
+	padding: 0 35px;
+	margin: 0 auto 15px auto;
+	display: inline-block;
+	width: auto;
+	appearance: none;
+	cursor: pointer;
+	border: none;
+	box-sizing: border-box;
+	@include transition(all .3s linear);
+	@include border-radius(4px);
+	-webkit-appearance: none;
+	&.btn-secondary {
+		background-color: $secondary;
+		color: white;
+	}
+	&.btn-clear {
+		background-color: transparent;
+		color: $primary;
+	}
+	
+	&.btn-wide {display:block;width: 100%;}
+	&.btn-block {display:block;}
+	
+}
+
+
+@media screen and (min-width: $desktopmq) {
+	.btn,
+	input[type="button"],
+	input[type="submit"],
+	input[type="reset"] {
+		
+		&:visited {
+			color: $btn-font-color;
+		}
+		
+		&:hover,
+		&:focus,
+		&:active,
+		&.active,
+		&.is-active {
+			background-color: $orange;
+			color: $white;
+			text-decoration: none;
+			outline: none;
+		}
+		
+		&.btn-secondary {
+			background-color: $secondary;
+			color: white;
+			&:visited {
+		    	color: white;
+		    }
+		
+		    &:hover,
+		    &:focus,
+		    &:active,
+		    &.active,
+		    &.is-active {
+				background-color: white;
+				color: $primary;
+		    }
+		}
+		&.btn-clear {
+			background-color: transparent;
+			&:visited {
+		    	color: $primary;
+		    }
+		
+		    &:hover,
+		    &:focus,
+		    &:active,
+		    &.active,
+		    &.is-active {
+				color: $primary;
+		    }
+		}
+		&.btn-margin-right {margin-right:10px;}
+		&.btn-margin-left {margin-left:10px;}
+	}
+}
