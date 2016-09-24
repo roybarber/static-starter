@@ -10,15 +10,12 @@ var reload = browserSync.reload;
 var pkg = require('./package');
 var del = require('del');
 var gulpif = require('gulp-if');
+var cleanCSS = require('gulp-clean-css');
 var _ = require('lodash');
 
 // optimize images and put them in the dist folder
 gulp.task('images', function() {
   return gulp.src(config.images)
-    .pipe($.imagemin({
-      progressive: true,
-      interlaced: true
-    }))
     .pipe(gulp.dest(config.dist + '/img'))
     .pipe($.size({
       title: 'img'
@@ -36,11 +33,6 @@ gulp.task('sass', function() {
 		sound: true
     }))
     .pipe(gulp.dest(config.tmp))
-    //.pipe(notify({
-    //    title: 'SUCCESS!',
-	//	message: 'Generated: <%= file.relative %>',
-	//	sound: true
-    //}))
     .pipe($.size({
       title: 'sass'
     }));
@@ -48,7 +40,7 @@ gulp.task('sass', function() {
 
 //build files for creating a dist release
 gulp.task('build:dist', ['clean'], function(cb) {
-  runSequence(['build', 'copy', 'copy:assets', 'images'], 'html', cb);
+  runSequence(['build', 'copy', 'copy:assets', 'images'], 'html', 'clean:dist', cb);
 });
 
 //build files for development
@@ -64,10 +56,10 @@ gulp.task('html', function() {
 
   return gulp.src(config.index)
     .pipe(assets)
-    .pipe($.if('*.js', $.uglify({
-      mangle: false,
-    })))
-    .pipe($.if('*.css', $.csso()))
+    //.pipe($.if('*.js', $.uglify({
+    //  mangle: false,
+    //})))
+    .pipe($.if('*.css', cleanCSS()))
     .pipe($.if(['**/*main.js', '**/*main.css'], $.header(config.banner, {
       pkg: pkg
     })))
@@ -75,7 +67,6 @@ gulp.task('html', function() {
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
-    .pipe($.if('*.html', $.minifyHtml({empty: true})))
     .pipe(gulp.dest(config.dist))
     .pipe($.size({
       title: 'html'
@@ -86,7 +77,7 @@ gulp.task('html', function() {
 gulp.task('copy:assets', function() {
   return gulp.src(config.assets, {
       dot: true
-    }).pipe(gulp.dest(config.dist + '/assets'))
+    }).pipe(gulp.dest(config.dist))
     .pipe($.size({
       title: 'copy:assets'
     }));
@@ -107,6 +98,8 @@ gulp.task('copy', function() {
 
 //clean temporary directories
 gulp.task('clean', del.bind(null, [config.dist, config.tmp]));
+// Clean build transfered folders
+gulp.task('clean:dist', del.bind(null, ['build/dist/scss', 'build/dist/vendor']));
 
 //default task
 gulp.task('default', ['serve']);
