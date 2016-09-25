@@ -1,5 +1,4 @@
 'use strict';
-
 //basic configuration object used by gulp tasks
 module.exports = {
   port: 3000,
@@ -16,8 +15,6 @@ module.exports = {
   index: 'client/index.html',
   assets: 'client/assets/**',
   images: 'client/img/**/*',
-  banner: ['/**',
-    ' * <%= pkg.name %> - <%= pkg.description %> - By: <%= pkg.homepage %>',
-    ' */'
-  ].join('\n')
+  video: 'client/video/**/*',
+  banner: ['/** <%= pkg.name %> - <%= pkg.description %> - By: <%= pkg.homepage %> */'].join('\n')
 };

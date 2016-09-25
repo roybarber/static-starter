@@ -37,6 +37,14 @@ gulp.task('sass', function() {
       title: 'sass'
     }));
 });
+gulp.task('sass:dist', function() {
+  return gulp.src(config.mainScss)
+    .pipe($.sass({outputStyle: 'compressed'}))
+    .pipe(gulp.dest(config.tmp))
+    .pipe($.size({
+      title: 'sass'
+    }));
+});
 
 //build files for creating a dist release
 gulp.task('build:dist', ['clean'], function(cb) {
@@ -45,7 +53,7 @@ gulp.task('build:dist', ['clean'], function(cb) {
 
 //build files for development
 gulp.task('build', ['clean'], function(cb) {
-  runSequence(['sass'], cb);
+  runSequence(['sass:dist'], cb);
 });
 
 //generate a minified css files, 2 js file, change theirs name to be unique, and generate sourcemaps
@@ -59,7 +67,7 @@ gulp.task('html', function() {
     //.pipe($.if('*.js', $.uglify({
     //  mangle: false,
     //})))
-    .pipe($.if('*.css', cleanCSS()))
+    //.pipe($.if('*.css', cleanCSS()))
     .pipe($.if(['**/*main.js', '**/*main.css'], $.header(config.banner, {
       pkg: pkg
     })))

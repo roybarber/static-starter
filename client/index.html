@@ -22,18 +22,43 @@
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	
 	<!-- build:css assets/css/main.css -->
-	<link rel="stylesheet" type="text/css" href="vendor/normalize-css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="tmp/main.css" />
 	<!-- endbuild -->
 
 </head>
 <body>
 
-	<header><h1><a href="http://royand.co">Roy&amp;Co</a></header>
+	<header class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h1><a href="https://wearedamage.com">We Are Damage</a></h1>
+			</div>
+		</div>	
+	</header>
 
-	<h1>Wooorks!!!!</h1>
+	<section class="container">
+		<div class="row">
+			<article class="col-md-8">
+				<h2>Wooorks!!!!</h2>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+				<p><a href="#">Link</a></p>
+			</article>
+			<aside class="col-md-3 col-md-push-1">
+				<p>Sidebar</p>
+			</aside>
+		</div>
+	</section>
 
-	<footer></footer>
+	<footer class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p>&copy; 2016 Client Name</p>
+			</div>
+			<div class="col-md-6">
+				<p>Built by: <a href="https://wearedamage.com" target="_blank">Damage</a></p>
+			</div>
+		</div>
+	</footer>
 
 	<!-- build:js assets/js/vendor.js -->
 	<script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>

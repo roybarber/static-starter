@@ -6,6 +6,7 @@
 @import "vendors/vendors";
 
 // BASE
+@import "base/reset";
 @import "base/type";
 @import "base/color";
 @import "base/icons";
@@ -20,7 +21,4 @@
 @import "pages/pages";
 
 // ANIMATIONS
-//@import "animation/animation"; // Placeholder
-
-// Test
-body {background:blue;}
+//@import "animation/animation";
