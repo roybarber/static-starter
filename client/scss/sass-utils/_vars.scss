@@ -1,5 +1,11 @@
 // Main Setup
 
+
+// Type Defaults
+$hfont : "Helvetics",Arial,sans-serif;
+$bfont : $hfont; //Body Fonts
+
+
 // Grid
 $grid-columns: 12;
 $grid-gutter-width: 30px;
@@ -8,16 +14,100 @@ $lgdesktopmq: 930px;
 $desktopmq: 768px;
 $tabletmq: 520px;
 
+
 // Color
-$black: #000000;
-$lightgrey: #A4A4A4;
-$darkgrey: #848484;
-$greybg: #f2f2f2;
-$line: #D2D2D2;
-$orange: #F07B22;
-$white: #ffffff;
+$primary: #4A90E2;
+$secondary: #9B9B9B;
+$black: #0E1C2D;
+$lightgrey: #EEE;
+$darkgrey: #9B9B9B;
+$line: #D8D8D8;
+$white: #fff;
+// States
+$error: #D0021B;
+$warning: #F5A623;
+$sucess: #7ED321;
+$disabled: $lightgrey;
 // Defaults
-$bodycolor: $lightgrey;
-$headingcolor: $darkgrey;
-$primary: $orange;
-$secondary: $darkgrey;
+$bodycolor: $darkgrey;
+$headingcolor: $black;
+
+
+// Forms
+// Font
+$form-font-family: $bfont;
+$form-font-size: 16px;
+$form-font-color: $headingcolor;
+// transitions
+$form-transition: all 0.3s linear;
+// Borders
+$form-border-radius: 4px;
+$form-border-width: 1px;
+$form-border-style: solid;
+$form-border-color: $line;
+// Inputs, Textareas, Select, Option
+$form-input-height: 50px;
+$form-input-width: 100%;
+$form-input-max-width: 400px;
+$form-input-bg-color: #fff;
+$form-input-padding: 0 14px;
+$form-input-margin: 0 0 20px 0;
+$form-focus-bg-color: white;
+$form-focus-border-color: $primary;
+$form-focus-font-color: $form-font-color;
+$form-input-required-icon: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTBweCIgaGVpZ2h0PSIxMnB4IiB2aWV3Qm94PSI1NTQgNDkgMTAgMTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgIDxwYXRoIGQ9Ik01NjMuODc4MTIzLDU3LjQ0ODcxODMgQzU2My43MDk3MDMsNTcuNzQxODU4NCA1NjMuNDAzODE4LDU3LjkwMzkwNDkgNTYzLjA4ODgyOSw1Ny45MDM5MDQ5IEM1NjIuOTM0NTIxLDU3LjkwMzkwNDkgNTYyLjc3NzkzNyw1Ny44NjQ3NTg4IDU2Mi42MzQ1NTMsNTcuNzgxOTE0OSBMNTU5LjkxMTYyNyw1Ni4yMDkyNDUyIEw1NTkuOTExNjI3LDU5LjM1NDU4NDUgQzU1OS45MTE2MjcsNTkuODU3MTEwNSA1NTkuNTAzNzc5LDYwLjI2NDk1NzcgNTU5LjAwMTI1Myw2MC4yNjQ5NTc3IEM1NTguNDk4NzI3LDYwLjI2NDk1NzcgNTU4LjA5MDg4LDU5Ljg1NzExMDUgNTU4LjA5MDg4LDU5LjM1NDU4NDUgTDU1OC4wOTA4OCw1Ni4yMDg3OSBMNTU1LjM2NjU4OCw1Ny43ODE5MTQ5IEM1NTUuMjIzMjA1LDU3Ljg2NDc1ODggNTU1LjA2NjYyMSw1Ny45MDM5MDQ5IDU1NC45MTIzMTIsNTcuOTAzOTA0OSBDNTU0LjU5Nzc3OCw1Ny45MDM5MDQ5IDU1NC4yOTE0MzgsNTcuNzQxODU4NCA1NTQuMTIzMDE5LDU3LjQ0ODcxODMgQzU1My44NzE3NTYsNTcuMDEzMTA0NyA1NTQuMDIwNjAyLDU2LjQ1NjQxMTUgNTU0LjQ1NjIxNSw1Ni4yMDYwNTg5IEw1NTcuMTc5NTk3LDU0LjYzMjkzNCBMNTU0LjQ1NTMwNSw1My4wNTk4MDkyIEM1NTQuMDE5NjkxLDUyLjgwODA5MSA1NTMuODcwODQ1LDUyLjI1MjMwODIgNTU0LjEyMjEwOCw1MS44MTY2OTQ2IEM1NTQuMzczMzcxLDUxLjM4MTA4MSA1NTQuOTMwNTIsNTEuMjMxNzc5OCA1NTUuMzY1Njc4LDUxLjQ4MzQ5OCBMNTU4LjA4OTUxNSw1My4wNTYxNjc3IEw1NTguMDg5NTE1LDQ5LjkxMDM3MzIgQzU1OC4wODk1MTUsNDkuNDA3ODQ3MiA1NTguNDk3MzYyLDQ5IDU1OC45OTk4ODgsNDkgQzU1OS41MDI0MTQsNDkgNTU5LjkxMDI2MSw0OS40MDc4NDcyIDU1OS45MTAyNjEsNDkuOTEwMzczMiBMNTU5LjkxMDI2MSw1My4wNTU3MTI1IEw1NjIuNjMzMTg3LDUxLjQ4MzA0MjggQzU2My4wNjgzNDYsNTEuMjMxMzI0NyA1NjMuNjI2ODYsNTEuMzgwNjI1OSA1NjMuODc2NzU3LDUxLjgxNjIzOTQgQzU2NC4xMjgwMiw1Mi4yNTE4NTMgNTYzLjk3OTE3NCw1Mi44MDg1NDYyIDU2My41NDM1Niw1My4wNTkzNTQgTDU2MC44MjEwODksNTQuNjMyNDc4OSBMNTYzLjU0NDAxNiw1Ni4yMDUxNDg1IEM1NjMuOTc5NjI5LDU2LjQ1NjQxMTUgNTY0LjEyOTM4Niw1Ny4wMTMxMDQ3IDU2My44NzgxMjMsNTcuNDQ4NzE4MyBMNTYzLjg3ODEyMyw1Ny40NDg3MTgzIFoiIGlkPSJTaGFwZSIgc3Ryb2tlPSJub25lIiBmaWxsPSIjRDAwMTFCIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjwvcGF0aD48L3N2Zz4=';
+$form-input-error-icon: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNXB4IiB2aWV3Qm94PSI1NDggNDggMTYgMTUiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgIDxwYXRoIGQ9Ik01NjMuODU4MzE2LDYwLjU2NDYyNTggTDU1Ni45MDczNTksNDguNTIzMjg3MiBDNTU2LjUwNDQ1Miw0Ny44MjU1NzA5IDU1NS40OTU1NDgsNDcuODI1NTcwOSA1NTUuMDkyNjQxLDQ4LjUyMzI4NzIgTDU0OC4xNDE2ODQsNjAuNTY0NjI1OCBDNTQ3LjczODc3Nyw2MS4yNjIzNDIxIDU0OC4yNDMyMjksNjIuMTM2OTQ0MiA1NDkuMDQ5MDQyLDYyLjEzNjk0NDIgTDU2Mi45NTA5NTgsNjIuMTM2OTQ0MiBDNTYzLjc1Njc3MSw2Mi4xMzY5NDQyIDU2NC4yNjEyMjMsNjEuMjYyMzQyMSA1NjMuODU4MzE2LDYwLjU2NDYyNTggTDU2My44NTgzMTYsNjAuNTY0NjI1OCBaIE01NTYuMDA5ODI3LDUyLjIzMTMzODIgQzU1Ni40NTUzMTcsNTIuMjMxMzM4MiA1NTYuODE1NjQsNTIuNjAxNDg4MSA1NTYuODAyNTM4LDUzLjA0Njk3ODMgTDU1Ni42NzE1MTEsNTcuNjE5ODA0NCBDNTU2LjY2MTY4NCw1Ny45ODAxMjc0IDU1Ni4zNjY4NzQsNTguMjY1MTEwMSA1NTYuMDA2NTUxLDU4LjI2NTExMDEgQzU1NS42NDYyMjgsNTguMjY1MTEwMSA1NTUuMzUxNDE5LDU3Ljk3Njg1MTcgNTU1LjM0MTU5Miw1Ny42MTk4MDQ0IEw1NTUuMjEzODQxLDUzLjA0Njk3ODMgQzU1NS4yMDQwMTQsNTIuNjAxNDg4MSA1NTUuNTYxMDYxLDUyLjIzMTMzODIgNTU2LjAwOTgyNyw1Mi4yMzEzMzgyIEw1NTYuMDA5ODI3LDUyLjIzMTMzODIgWiBNNTU2LDYwLjUwMjM4ODIgQzU1NS41NDQ2ODMsNjAuNTAyMzg4MiA1NTUuMTc0NTMzLDYwLjEzMjIzODIgNTU1LjE3NDUzMyw1OS42NzY5MjEgQzU1NS4xNzQ1MzMsNTkuMjIxNjAzOCA1NTUuNTQ0NjgzLDU4Ljg1MTQ1MzggNTU2LDU4Ljg1MTQ1MzggQzU1Ni40NTUzMTcsNTguODUxNDUzOCA1NTYuODI1NDY3LDU5LjIyMTYwMzggNTU2LjgyNTQ2Nyw1OS42NzY5MjEgQzU1Ni44MjU0NjcsNjAuMTMyMjM4MiA1NTYuNDU1MzE3LDYwLjUwMjM4ODIgNTU2LDYwLjUwMjM4ODIgTDU1Niw2MC41MDIzODgyIFoiIGlkPSJTaGFwZSIgc3Ryb2tlPSJub25lIiBmaWxsPSIjRDAwMTFCIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjwvcGF0aD48L3N2Zz4=';
+// Fieldset & Legend Styling
+$form-fieldset-bare: false;
+// Labels
+$form-label-margin:0 0 10px 0;
+$form-label-font-size: 16px;
+// textarea
+$form-textarea-padding: 14px;
+// Select
+$form-select-bg-color: $form-input-bg-color;
+$form-select-dropdown-icon: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTBweCIgaGVpZ2h0PSI2cHgiIHZpZXdCb3g9IjU1NCA1MyAxMCA2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPiAgICA8cG9seWdvbiBpZD0iVHJpYW5nbGUiIHN0cm9rZT0ibm9uZSIgZmlsbD0iIzg0ODQ4NCIgZmlsbC1ydWxlPSJldmVub2RkIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1NTkuMDAwMDAwLCA1Ni4wMDAwMDApIHJvdGF0ZSgxODAuMDAwMDAwKSB0cmFuc2xhdGUoLTU1OS4wMDAwMDAsIC01Ni4wMDAwMDApICIgcG9pbnRzPSI1NTkgNTMgNTY0IDU5IDU1NCA1OSI+PC9wb2x5Z29uPjwvc3ZnPg==';
+// Buttons & Input Submits
+$form-button-height: 40px;
+$form-button-width: 100%;
+$form-button-max-width: 200px;
+$form-button-font-color: $form-font-color;
+$form-button-bg-color: $form-focus-bg-color;
+$form-button-hover-bg-color: $form-border-color;
+$form-button-hover-font-color: $form-font-color;
+// Layout
+$form-display: block;
+// Radio
+$form-radio-fully-round: true;
+$form-radio-background-color: white;
+$form-radio-container-margin: 0 0 15px 0;
+$form-radio-border-color: $line;
+$form-radio-selected-color: $primary;
+$form-radio-size: 18px;
+$form-radio-border-width:$form-border-width;
+// Checkbox
+$form-checkbox-background-color: white;
+$form-checkbox-container-margin: 0 0 15px 0;
+$form-checkbox-border-color: $line;
+$form-checkbox-selected-color: $primary;
+$form-checkbox-size: 18px;
+$form-checkbox-border-width:$form-border-width;
+$form-checkbox-icon:'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOHB4IiBoZWlnaHQ9IjdweCIgdmlld0JveD0iNSA4IDggNyIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTEyLjQ3MDQ1NzIsOC4yOTY1Njk0NSBDMTIuMDgzNTIyLDcuOTAxMTQzNTIgMTEuNDU2NDIwMSw3LjkwMTE0MzUyIDExLjA2OTQ4NDksOC4yOTY1Njk0NSBMNy41NjY2OTAzNSwxMS44Njc1MzI1IEw2LjY5MTE3MzY2LDEwLjk3NDc5MTggQzYuMzA0MjM4NDYsMTAuNTgxNzkxNyA1LjY3Njg5NCwxMC41ODE3OTE3IDUuMjkwMjAxNCwxMC45NzQ3OTE4IEM0LjkwMzI2NjIsMTEuMzcwMjE3NyA0LjkwMzI2NjIsMTIuMDEwNjYyMiA1LjI5MDIwMTQsMTIuNDAzNjYyMiBMNi44NjYzMjU1MiwxNC4wMTIwNTExIEM3LjI1MzI2MDcxLDE0LjQwNzQ3NyA3Ljg4MDM2MjU4LDE0LjQwNzQ3NyA4LjI2NzI5Nzc4LDE0LjAxMjA1MTEgTDEyLjQ3MDQ1NzIsOS43MjU0Mzk4NyBDMTIuODU3MzkyNCw5LjMzMDAxMzkzIDEyLjg1NzM5MjQsOC42ODk1Njk0NiAxMi40NzA0NTcyLDguMjk2NTY5NDUiIGlkPSJjaGVja21hcmsiIHN0cm9rZT0ibm9uZSIgZmlsbD0iI0ZGRkZGRiIgZmlsbC1ydWxlPSJldmVub2RkIj48L3BhdGg+PC9zdmc+';
+// Button Defaults
+$btn-bgcolor: $primary;
+$btn-font-color: white;
+$btn-font-weight: 400;
+$btn-text-transform: capitalize;
+$btn-font-size: 16px;
+$btn-height: 40px;
+$btn-border-width: 1px;
+$btn-padding:0 35px; 
+$btn-margin:0 auto 15px auto;
+$btn-font-family: $hfont;
+$btn-border-radius: 4px;
+$btn-transition: all 0.3s linear;
+// Errors
+$form-state-error: $error;
+$form-state-warning: $warning;
+$form-state-valid: $sucess;
+$form-state-message-font-size: 13px;
