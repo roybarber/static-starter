@@ -15,7 +15,7 @@ a {
     &.link-secondary {color: $secondary;}
 	a:link a:visited {color: inherit;}
 }
-@media (min-width: $desktopmq) {
+@include media-breakpoint-up(md) {
 	a {
 		-webkit-transition: all .2s ease;
 		-moz-transition: all .2s ease;

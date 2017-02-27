@@ -63,7 +63,7 @@ button[disabled], .btn-disabled {
 }
 
 
-@media screen and (min-width: $desktopmq) {
+@include media-breakpoint-up(md) {
 	.btn,
 	input[type="button"],
 	input[type="submit"],

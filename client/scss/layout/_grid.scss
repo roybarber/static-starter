@@ -1,51 +1,98 @@
-// Containers & Rows
-// Box sizing
+// Grid - Based on Bootstrap Flexbox grid
+
+// Max width Media Query Example: (xs,sm,md,lg,xl)
+// @include media-breakpoint-up(xs) { ... }
+
+// Min width Media Query Example: (xs,sm,md,lg)
+// @include media-breakpoint-down(xs) { ... }
+
+// Targeting a single segment of screen sizes using the minimum and maximum breakpoint widths. e.g @media (min-width: 576px) and (max-width: 767px) { ... } (xs,sm,md,lg,xl)
+//@include media-breakpoint-only(xs) { ... }
+
+// Span multiple Breakpoints: (xs,sm,md,lg,xl)
+// @include media-breakpoint-between(md, xl) { ... }
+
+// more docs: https://v4-alpha.getbootstrap.com/layout/grid/
+
+@at-root {
+	@-ms-viewport { width: device-width; }
+}
 body {margin: 0;}
-*, *:before, *:after {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+html {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-ms-overflow-style: scrollbar;
+}
+*, *::before, *::after {
+	box-sizing: inherit;
 }
 
-@viewport { width: device-width; }
-
+// Container
 .container {
-    margin-right: auto;
-    margin-left:  auto;
-    padding-left:  15px;
-    padding-right: 15px;
-    max-width: $maxwidth;
-    overflow: hidden;
+	@include make-container();
 }
 
+// Row
 .row {
-    margin-left:  -15px;
-    margin-right: -15px;
+	@include make-row();
+}
+// Remove the negative margin from default .row, then the horizontal padding from all immediate children columns (to prevent runaway style inheritance).
+.no-gutters {
+	margin-right: 0;
+	margin-left: 0;
+	> .col, > [class*="col-"] {
+		padding-right: 0;
+		padding-left: 0;
+	}
 }
 
-// Clearfix
-section, .clearfix, .container, .row { @include clearfix(); }
+// Columns
+@include make-grid-columns();
 
-// Common styles for small and large grid columns
-@include make-grid-columns;
-
-// Extra small grid
-@include make-grid(xs);
-
-// Small grid
-@media (min-width: $tabletmq ) {
-  @include make-grid(sm);
+// Flex variation for Flex Box Grid
+// Custom styles for additional flex alignment options.
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		
+		.order#{$infix}-first { order: -1; }
+		.order#{$infix}-last  { order: 1; }
+		.order#{$infix}-0     { order: 0; }
+		
+		.flex#{$infix}-row            { flex-direction: row !important; }
+		.flex#{$infix}-column         { flex-direction: column !important; }
+		.flex#{$infix}-row-reverse    { flex-direction: row-reverse !important; }
+		.flex#{$infix}-column-reverse { flex-direction: column-reverse !important; }
+		
+		.flex#{$infix}-wrap         { flex-wrap: wrap !important; }
+		.flex#{$infix}-nowrap       { flex-wrap: nowrap !important; }
+		.flex#{$infix}-wrap-reverse { flex-wrap: wrap-reverse !important; }
+		
+		.justify-content#{$infix}-start   { justify-content: flex-start !important; }
+		.justify-content#{$infix}-end     { justify-content: flex-end !important; }
+		.justify-content#{$infix}-center  { justify-content: center !important; }
+		.justify-content#{$infix}-between { justify-content: space-between !important; }
+		.justify-content#{$infix}-around  { justify-content: space-around !important; }
+		
+		.align-items#{$infix}-start    { align-items: flex-start !important; }
+		.align-items#{$infix}-end      { align-items: flex-end !important; }
+		.align-items#{$infix}-center   { align-items: center !important; }
+		.align-items#{$infix}-baseline { align-items: baseline !important; }
+		.align-items#{$infix}-stretch  { align-items: stretch !important; }
+		
+		.align-content#{$infix}-start   { align-content: flex-start !important; }
+		.align-content#{$infix}-end     { align-content: flex-end !important; }
+		.align-content#{$infix}-center  { align-content: center !important; }
+		.align-content#{$infix}-between { align-content: space-between !important; }
+		.align-content#{$infix}-around  { align-content: space-around !important; }
+		.align-content#{$infix}-stretch { align-content: stretch !important; }
+		
+		.align-self#{$infix}-auto     { align-self: auto !important; }
+		.align-self#{$infix}-start    { align-self: flex-start !important; }
+		.align-self#{$infix}-end      { align-self: flex-end !important; }
+		.align-self#{$infix}-center   { align-self: center !important; }
+		.align-self#{$infix}-baseline { align-self: baseline !important; }
+		.align-self#{$infix}-stretch  { align-self: stretch !important; }
+	}
 }
-
-// Medium grid
-@media (min-width: $desktopmq) {
-  @include make-grid(md);
-}
-
-// Large grid
-@media (min-width: $lgdesktopmq) {
-  @include make-grid(lg);
-}
-
-// no padding col
-.col-no-pad {padding-left:0;padding-right: 0;}

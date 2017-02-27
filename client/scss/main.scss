@@ -1,6 +1,6 @@
 // SASS-UTILS
-@import "sass-utils/vars";
 @import "sass-utils/mixins";
+@import "sass-utils/vars";
 
 // VENDORS
 @import "vendors/vendors";
@@ -20,11 +20,9 @@
 // PAGES
 @import "pages/pages";
 
-// ANIMATIONS
-//@import "animation/animation";
-
 // Demo
 .grid-demo {
+	text-align: center;
 	> div {background:rgba(red,0.1);
 		> div {background:rgba(red,0.1);}
 	}

@@ -2,6 +2,6 @@
 span.icon {display: block;}
 span.icon-inline {display: inline-block;}
 .btn .icon {display: inline-block;}
-@media (min-width: $desktopmq) {
+@include media-breakpoint-up(md) {
 	
 }

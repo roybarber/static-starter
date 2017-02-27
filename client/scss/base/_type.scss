@@ -63,7 +63,7 @@ label {
 	margin:0 0 10px 0;
 }
 
-@media (min-width: $desktopmq) {
+@include media-breakpoint-up(md) {
 
 }
 
@@ -87,7 +87,7 @@ label {
 .text-right-mobile {text-align: right;}
 
 // Media query specific
-@media (min-width: $desktopmq) {
+@include media-breakpoint-up(md) {
 	.text-center-mobile {text-align: left;}
 	.text-left-mobile {text-align: left;}
 	.text-right-mobile {text-align: left;}

@@ -1,18 +1,38 @@
 // Main Setup
 
-
 // Type Defaults
 $hfont : "Helvetics",Arial,sans-serif;
 $bfont : $hfont; //Body Fonts
 
 
 // Grid
-$grid-columns: 12;
-$grid-gutter-width: 30px;
-$maxwidth: 1120px;
-$lgdesktopmq: 930px;
+// Grid breakpoints
+$tabletmq: 576px;
 $desktopmq: 768px;
-$tabletmq: 520px;
+$lgdesktopmq: 992px;
+$xldesktopmq: 1200px;
+// Generate the Break Points
+$grid-breakpoints: (
+	xs: 0,
+	sm: $tabletmq,
+	md: $desktopmq,
+	lg: $lgdesktopmq,
+	xl: $xldesktopmq
+) !default;
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints);
+
+// Grid columns
+$grid-columns: 12;
+$grid-max-width: 1120px;
+$grid-gutter-width-base: 30px;
+$grid-gutter-widths: (
+	xs: $grid-gutter-width-base,
+	sm: $grid-gutter-width-base,
+	md: $grid-gutter-width-base,
+	lg: $grid-gutter-width-base,
+	xl: $grid-gutter-width-base
+);
 
 
 // Color
