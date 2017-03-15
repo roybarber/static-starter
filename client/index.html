@@ -120,20 +120,21 @@
 		</div>
 	</section>
 	
+	<!-- Gris demo -->
 	<section class="container">
 		<div class="row grid-demo">
-			<div class="col-md-1"><div>Col-1</div></div>
-			<div class="col-md-1"><div>Col-1</div></div>
-			<div class="col-md-1"><div>Col-1</div></div>
-			<div class="col-md-1"><div>Col-1</div></div>
-			<div class="col-md-1"><div>Col-1</div></div>
-			<div class="col-md-1"><div>Col-1</div></div>
-			<div class="col-md-1"><div>Col-1</div></div>
-			<div class="col-md-1"><div>Col-1</div></div>
-			<div class="col-md-1"><div>Col-1</div></div>
-			<div class="col-md-1"><div>Col-1</div></div>
-			<div class="col-md-1"><div>Col-1</div></div>
-			<div class="col-md-1"><div>Col-1</div></div>
+			<div class="col"><div>Col-1</div></div>
+			<div class="col"><div>Col-1</div></div>
+			<div class="col"><div>Col-1</div></div>
+			<div class="col"><div>Col-1</div></div>
+			<div class="col"><div>Col-1</div></div>
+			<div class="col"><div>Col-1</div></div>
+			<div class="col"><div>Col-1</div></div>
+			<div class="col"><div>Col-1</div></div>
+			<div class="col"><div>Col-1</div></div>
+			<div class="col"><div>Col-1</div></div>
+			<div class="col"><div>Col-1</div></div>
+			<div class="col"><div>Col-1</div></div>
 		</div>	
 	</section>
 	
@@ -174,6 +175,75 @@
 			<div class="col align-self-center" style="background-color: rgba(255,0,0,.1);">One of three columns</div>
 			<div class="col align-self-end" style="background-color: rgba(255,0,0,.1);">One of three columns</div>
 		</div>
+	</div>
+
+	<!-- Visibility hacks example -->
+	<div class="container">
+		<style>.responsive-utilities-test{margin-top:.25rem}.responsive-utilities-test .col-6{margin-top:.5rem;margin-bottom:.5rem}.responsive-utilities-test span{display:block;padding:1rem .5rem;font-size:1rem;font-weight:700;line-height:1.1;text-align:center;border-radius:.25rem}.hidden-on .col-6>.not-visible,.visible-on .col-6>.not-visible{color:#999;border:1px solid #ddd}.hidden-on .col-6 .visible,.visible-on .col-6 .visible{color:#468847;background-color:#dff0d8;border:1px solid #d6e9c6}</style>
+		<div class="row responsive-utilities-test visible-on">
+			<div class="col-6 col-sm-3">
+				<span class="hidden-sm-up visible">✔ Visible on extra small</span>
+				<span class="hidden-xs-down not-visible">Extra small</span>
+			</div>
+			<div class="col-6 col-sm-3">
+				<span class="hidden-md-up visible">✔ Visible on small or narrower</span>
+				<span class="hidden-sm-down not-visible">Small or narrower</span>
+			</div>
+			<div class="col-6 col-sm-3">
+				<span class="hidden-lg-up visible">✔ Visible on medium or narrower</span>
+				<span class="hidden-md-down not-visible">Medium or narrower</span>
+			</div>
+			<div class="col-6 col-sm-3">
+				<span class="hidden-xl-up visible">✔ Visible on large or narrower</span>
+				<span class="hidden-lg-down not-visible">Large or narrower</span>
+			</div>
+		</div>
+		
+		<div class="row responsive-utilities-test visible-on">
+			<div class="col-6 col-sm-3">
+				<span class="hidden-xs-down visible">✔ Visible on small or wider</span>
+				<span class="hidden-sm-up not-visible">Small or wider</span>
+			</div>
+			<div class="col-6 col-sm-3">
+				<span class="hidden-sm-down visible">✔ Visible on medium or wider</span>
+				<span class="hidden-md-up not-visible">Medium or wider</span>
+			</div>
+			<div class="col-6 col-sm-3">
+				<span class="hidden-md-down visible">✔ Visible on large or wider</span>
+				<span class="hidden-lg-up not-visible">Large or wider</span>
+			</div>
+			<div class="col-6 col-sm-3">
+				<span class="hidden-lg-down visible">✔ Visible on extra large</span>
+				<span class="hidden-xl-up not-visible">Extra large</span>
+			</div>
+		</div>
+		
+		<div class="row responsive-utilities-test visible-on">
+			<div class="col-6 col-sm-4">
+				<span class="hidden-sm-up visible">✔ Your viewport is exactly extra small</span>
+				<span class="hidden-xs-down not-visible">Your viewport is NOT exactly extra small</span>
+			</div>
+			<div class="col-6 col-sm-4">
+				<span class="hidden-xs-down hidden-md-up visible">✔ Your viewport is exactly small</span>
+				<span class="hidden-sm-only not-visible">Your viewport is NOT exactly small</span>
+			</div>
+			<div class="col-6 col-sm-4">
+				<span class="hidden-sm-down hidden-lg-up visible">✔ Your viewport is exactly medium</span>
+				<span class="hidden-md-only not-visible">Your viewport is NOT exactly medium</span>
+			</div>
+		</div>
+		
+		<div class="row responsive-utilities-test visible-on">
+			<div class="col-6 col-sm-4">
+				<span class="hidden-md-down hidden-xl-up visible">✔ Your viewport is exactly large</span>
+				<span class="hidden-lg-only not-visible">Your viewport is NOT exactly large</span>
+			</div>
+			<div class="col-6 col-sm-4">
+				<span class="hidden-lg-down visible">✔ Your viewport is exactly extra large</span>
+				<span class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</span>
+			</div>
+		</div>
+		
 	</div>
 
 	<footer class="container">

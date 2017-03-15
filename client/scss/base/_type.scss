@@ -11,7 +11,7 @@ body {
 
 
 // Headings
-.heading, .text-heading {
+.heading {
 	font-family: $hfont;
 	font-weight: 400;
 	color: $headingcolor;
@@ -21,37 +21,37 @@ body {
 	font-weight: 400;
 	color: $bodycolor;
 }
-h1, .text-size-xxl {
+h1, .h1 {
 	@extend .heading;
 	font-size: 36px;
 	line-height: 54px;
 	margin:0 0 20px 0;
 }
-h2, .text-size-xl {
+h2, .h2 {
 	@extend .heading;
 	font-size: 24px;
 	line-height: 36px;
 	margin:0 0 20px 0;
 }
-h3, .text-size-l {
+h3, .h3 {
 	@extend .heading;
 	font-size: 18px;
 	line-height: 24px;
 	margin:0 0 20px 0;
 }
-h4, .text-size-m {
+h4, .h4 {
 	@extend .heading;
 	font-size: 16px;
 	line-height: 24px;
 	margin:0 0 20px 0;
 }
-h5, p, .text-size-s  {
+h5, p, .h5  {
 	@extend .body;
 	font-size: 16px;
 	line-height: 20px;
 	margin:0 0 20px 0;
 }
-h6, .text-size-xs {
+h6, .h6 {
 	@extend .heading;
 	font-size: 13px;
 	line-height: 18px;
@@ -73,29 +73,27 @@ label {
 .text-weight-400 {font-family: 400;}
 .text-weight-600, strong, b {font-weight: 600;}
 .text-weight-800 {font-weight: 800;}
-.text-uppercase {text-transform: uppercase;}
+.text-lowercase {text-transform: lowercase !important;}
+.text-uppercase {text-transform: uppercase !important;}
+.text-capitalize {text-transform: capitalize !important;}
 .text-italic {font-style: italic;}
 .text-underline {text-decoration: underline;}
 
 // Text Align
-.text-center {text-align: center;}
-.text-left   {text-align: left;}
-.text-right  {text-align: right;}
-//mobile only
-.text-center-mobile {text-align: center;}
-.text-left-mobile {text-align: left;}
-.text-right-mobile {text-align: right;}
-
-// Media query specific
-@include media-breakpoint-up(md) {
-	.text-center-mobile {text-align: left;}
-	.text-left-mobile {text-align: left;}
-	.text-right-mobile {text-align: left;}
-	.text-right-desktop {text-align: right;}
-	.text-left-desktop {text-align: left;}
-	.text-center-desktop {text-align: center;}
-	
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		.text#{$infix}-left   { text-align: left !important; }
+		.text#{$infix}-right  { text-align: right !important; }
+		.text#{$infix}-center { text-align: center !important; }
+	}
 }
+
+// Alignment
+.text-justify  { text-align: justify !important; }
+.text-nowrap   { white-space: nowrap !important; }
+.text-truncate { @include text-truncate; }
+
 
 // Images
 img.responsive {width:100%;height:auto;max-width: 100%;}
@@ -104,4 +102,6 @@ img.responsive {width:100%;height:auto;max-width: 100%;}
 ul {list-style: none;margin:0;padding:0;}
 
 // Other helpers
-.hide-text {text-indent: -9999px;display: block;}
+.text-hide {
+	@include text-hide();
+}
