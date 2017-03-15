@@ -47,6 +47,11 @@ html {
 	}
 }
 
+// Ability to cleafix
+.clearfix {
+    @include clearfix();
+}
+
 // Columns
 @include make-grid-columns();
 
