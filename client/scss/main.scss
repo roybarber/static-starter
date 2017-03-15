@@ -1,15 +1,15 @@
 // SASS-UTILS
-@import "sass-utils/mixins";
-@import "sass-utils/vars";
+@import "sass-utils/mixins",
+	"sass-utils/vars";
 
 // VENDORS
 @import "vendors/vendors";
 
 // BASE
-@import "base/reset";
-@import "base/type";
-@import "base/color";
-@import "base/icons";
+@import "base/reset",
+	"base/type",
+	"base/color",
+	"base/icons";
 
 // LAYOUT
 @import "layout/grid";
@@ -19,11 +19,3 @@
 
 // PAGES
 @import "pages/pages";
-
-// Demo
-.grid-demo {
-	text-align: center;
-	> div {background:rgba(red,0.1);
-		> div {background:rgba(red,0.1);}
-	}
-}
