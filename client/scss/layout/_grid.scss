@@ -55,6 +55,15 @@ html {
 // Columns
 @include make-grid-columns();
 
+// Alignment types
+.align-baseline    { vertical-align: baseline !important; }
+.align-top         { vertical-align: top !important; }
+.align-middle      { vertical-align: middle !important; }
+.align-bottom      { vertical-align: bottom !important; }
+.align-text-bottom { vertical-align: text-bottom !important; }
+.align-text-top    { vertical-align: text-top !important; }
+
+
 // Flex variation for Flex Box Grid
 // Custom styles for additional flex alignment options.
 @each $breakpoint in map-keys($grid-breakpoints) {
