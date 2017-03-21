@@ -27,7 +27,7 @@ You are now ready to go, your code is available at **http://localhost:3000**.
 
 When you are ready to build a production release there is a task for that:
 
-    $ gulp serve:dist
+    $ gulp build:dist
 
 This task will lint your code, optimize css js and images files. After the task has successfully finished, you can find an optimized version of your project inside the  `/build/dist` folder.
 
