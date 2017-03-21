@@ -105,3 +105,12 @@ ul {list-style: none;margin:0;padding:0;}
 .text-hide {
 	@include text-hide();
 }
+
+// Breaks
+hr {
+	border:0;
+	border-bottom:1px solid $line;
+	height:1px;
+	background:none;
+	margin:40px 0;
+}
