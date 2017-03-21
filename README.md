@@ -1,6 +1,7 @@
-# We Are Damage Static Starter
+# Damage - Static Starter
 
 **Speed up your development with a complete and scalable gulpjs based build system that scaffolds the project for you. Just focus on your code.**
+[View Demo](http://static-starter.netlify.com/)
 ***
 
 ### Getting started
@@ -9,7 +10,7 @@ Install **node.js**. Then **gulp** and **bower** if you haven't yet.
 
     $ npm -g install gulp bower
 
-After that, install the [We Are Damage](https://wearedamage.com) static-starter by downloading the [master release](https://github.com/royandco/static-starter/archive/master.zip) (or clone the master branch).
+After that, install the [We Are Damage](https://wearedamage.com) static-starter by downloading the [master release](https://github.com/wearedamage/static-starter/archive/master.zip) (or clone the master branch).
 
     $ git clone git@github.com:wearedamage/static-starter.git
     $ cd static-starter
