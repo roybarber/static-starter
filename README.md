@@ -57,3 +57,4 @@ A description of every available task:
 * **gulp serve** - When this task runs, the build will take care of watching files. Every time you change a file in the `client/` folder, the build recompiles every file, and your browser will reload automagically showing you the changes.
 You just need to add new JavaScript and css files in the `client/index.html` file.
 * **gulp serve:dist** - This task will create a fully-optimized version of your code under the `build/dist/` folder. The optimization consists of concatenate, minify and compress js and css files and finally optimize all images.
+
