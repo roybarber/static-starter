@@ -4,6 +4,8 @@
 [View Demo](http://static-starter.netlify.com/)
 ***
 
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/wearedamage/static-starter)
+
 ### Getting started
 
 Install **node.js**. Then **gulp** and **bower** if you haven't yet.
