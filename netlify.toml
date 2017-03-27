@@ -1,5 +1,3 @@
 [build]
   publish = "build/dist/"
-  command = "npm install"
-  command = "bower install"
-  command = "gulp build:dist"
+  command = "npm install && bower install && gulp build:dist"
