@@ -1,0 +1,4 @@
+[build]
+  base    = "client"
+  publish = "build/dist/"
+  command = "gulp build:dist"
