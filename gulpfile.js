@@ -53,7 +53,7 @@ gulp.task('sass:dist', function() {
 
 //build files for creating a dist release
 gulp.task('build:dist', ['clean'], function(cb) {
-  runSequence(['build', 'copy', 'copy:assets', 'images'], 'html', 'inject:prod', 'clean:dist', cb);
+  runSequence(['build', 'copy', 'copy:assets', 'images'], 'html', 'clean:dist', 'inject:prod', cb);
 });
 
 //build files for development
@@ -159,7 +159,7 @@ gulp.task('inject:dev', function() {
 gulp.task('inject:prod', function() {
   var keys = _.keys(liveConfig);
 
-  var stream = gulp.src(config.html);
+  var stream = gulp.src(config.dist + '/**/*.html');
  
   for(var i = 0; i < keys.length; i++) {
     stream = stream.pipe(inject.replace('<% ' + keys[i] + ' %>', liveConfig[keys[i]]));
