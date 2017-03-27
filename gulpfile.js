@@ -62,7 +62,7 @@ gulp.task('html', function() {
     searchPath: '{build,client}'
   });
 
-  return gulp.src(config.index)
+  return gulp.src(config.html)
     .pipe(assets)
     //.pipe($.if('*.js', $.uglify({
     //  mangle: false,
