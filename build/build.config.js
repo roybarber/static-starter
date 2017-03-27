@@ -4,6 +4,7 @@ module.exports = {
   port: 3000,
   tmp: 'build/tmp',
   dist: 'build/dist',
+  dev: 'build/dev',
   base: 'client',
   mainScss: 'client/scss/main.scss',
   scss: 'client/scss/**/*.scss',
@@ -16,5 +17,6 @@ module.exports = {
   assets: 'client/assets/**',
   images: 'client/img/**/*',
   video: 'client/video/**/*',
-  banner: ['/** <%= pkg.name %> - <%= pkg.description %> - By: <%= pkg.homepage %> */'].join('\n')
+  banner: ['/** <%= pkg.name %> - <%= pkg.description %> - By: <%= pkg.homepage %> */'].join('\n'),
+  config_url: 'https://gist.githubusercontent.com/johnhoulder/8519e7a24dc2dd8327f3d28cfb02259c/raw'
 };

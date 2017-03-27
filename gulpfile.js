@@ -1,17 +1,22 @@
 'use strict';
 
+var fs = require('fs');
+var request = require('sync-request');
 var config = require('./build/build.config.js');
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
-var notify = require("gulp-notify");
+var notify = require('gulp-notify');
 var reload = browserSync.reload;
 var pkg = require('./package');
 var del = require('del');
 var gulpif = require('gulp-if');
 var cleanCSS = require('gulp-clean-css');
 var _ = require('lodash');
+var inject = require('gulp-inject-string');
+var devConfig = JSON.parse(fs.readFileSync('./variables.json'));
+var liveConfig = JSON.parse(request('GET', config.config_url).getBody());
 
 // optimize images and put them in the dist folder
 gulp.task('images', function() {
@@ -48,12 +53,12 @@ gulp.task('sass:dist', function() {
 
 //build files for creating a dist release
 gulp.task('build:dist', ['clean'], function(cb) {
-  runSequence(['build', 'copy', 'copy:assets', 'images'], 'html', 'clean:dist', cb);
+  runSequence(['build', 'copy', 'copy:assets', 'images'], 'html', 'inject:prod', 'clean:dist', cb);
 });
 
 //build files for development
 gulp.task('build', ['clean'], function(cb) {
-  runSequence(['sass:dist'], cb);
+  runSequence(['sass:dist', 'copy:dev'], cb);
 });
 
 //generate a minified css files, 2 js file, change theirs name to be unique, and generate sourcemaps
@@ -103,6 +108,17 @@ gulp.task('copy', function() {
     }));
 });
 
+//copy assets in dev folder
+gulp.task('copy:dev', function() {
+  return gulp.src([
+      config.base + '/*',
+      '!' + config.base + '/src'
+    ]).pipe(gulp.dest(config.dev))
+    .pipe($.size({
+      title: 'copy'
+    }));
+});
+
 
 //clean temporary directories
 gulp.task('clean', del.bind(null, [config.dist, config.tmp]));
@@ -113,16 +129,43 @@ gulp.task('clean:dist', del.bind(null, ['build/dist/scss', 'build/dist/vendor'])
 gulp.task('default', ['serve']);
 
 //run the server after having built generated files, and watch for changes
-gulp.task('serve', ['build'], function() {
+gulp.task('serve', function() {
+  runSequence('build', 'inject:dev');
+
   browserSync({
     notify: false,
     logPrefix: pkg.name,
-    server: ['build', 'client']
+    server: ['build', config.dev]
   });
-  gulp.watch(config.html, reload);
+
+  gulp.watch(config.html, ['inject:dev', reload]);
   gulp.watch(config.scss, ['sass', reload]);
   gulp.watch(config.js, reload);
   gulp.watch(config.assets, reload);
+});
+
+gulp.task('inject:dev', function() {
+  var keys = _.keys(devConfig);
+
+  var stream = gulp.src(config.html);
+ 
+  for(var i = 0; i < keys.length; i++) {
+    stream = stream.pipe(inject.replace('<% ' + keys[i] + ' %>', devConfig[keys[i]]));
+  }
+  
+  stream = stream.pipe(gulp.dest(config.dev));
+});
+
+gulp.task('inject:prod', function() {
+  var keys = _.keys(liveConfig);
+
+  var stream = gulp.src(config.html);
+ 
+  for(var i = 0; i < keys.length; i++) {
+    stream = stream.pipe(inject.replace('<% ' + keys[i] + ' %>', liveConfig[keys[i]]));
+  }
+  
+  stream = stream.pipe(gulp.dest(config.dist));
 });
 
 //run the app packed in the dist folder
