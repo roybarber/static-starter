@@ -151,8 +151,7 @@ gulp.task('serve', function() {
 
   gulp.watch(config.html, ['inject:dev', reload]);
   gulp.watch(config.scss, ['sass', reload]);
-  gulp.watch(config.js, ['copy:dev:assets', reload]);
-  gulp.watch(config.assets, ['copy:dev:assets', reload]);
+  gulp.watch([config.base + '/**/*', '!' + config.html, '!' + config.scss], ['copy:dev:assets', reload]);
 });
 
 gulp.task('inject:dev', function() {
