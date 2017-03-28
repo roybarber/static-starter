@@ -111,8 +111,19 @@ gulp.task('copy', function() {
 //copy assets in dev folder
 gulp.task('copy:dev', function() {
   return gulp.src([
-      config.base + '/*',
+      config.base + '/**/*',
       '!' + config.base + '/src'
+    ]).pipe(gulp.dest(config.dev))
+    .pipe($.size({
+      title: 'copy'
+    }));
+});
+
+gulp.task('copy:dev:assets', function() {
+  return gulp.src([
+      config.base + '/**/*',
+      '!' + config.base + '/src',
+      '!' + config.base + '/**/*.html'
     ]).pipe(gulp.dest(config.dev))
     .pipe($.size({
       title: 'copy'
@@ -140,8 +151,8 @@ gulp.task('serve', function() {
 
   gulp.watch(config.html, ['inject:dev', reload]);
   gulp.watch(config.scss, ['sass', reload]);
-  gulp.watch(config.js, reload);
-  gulp.watch(config.assets, reload);
+  gulp.watch(config.js, ['copy:dev:assets', reload]);
+  gulp.watch(config.assets, ['copy:dev:assets', reload]);
 });
 
 gulp.task('inject:dev', function() {
