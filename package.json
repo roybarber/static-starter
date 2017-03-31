@@ -26,6 +26,7 @@
     "gulp-sass": "^2.0.4",
     "gulp-size": "^1.2.3",
     "gulp-sourcemaps": "^1.5.2",
+    "gulp-to-ico": "^1.0.0",
     "gulp-useref": "^1.1.2",
     "lodash": "^3.8.0",
     "request": "^2.81.0",

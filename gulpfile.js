@@ -17,6 +17,7 @@ var _ = require('lodash');
 var inject = require('gulp-inject-string');
 var devConfig = JSON.parse(fs.readFileSync('./variables.json'));
 var liveConfig = JSON.parse(request('GET', config.config_url).getBody());
+var ico = require('gulp-to-ico');
 
 // optimize images and put them in the dist folder
 gulp.task('images', function() {
@@ -53,7 +54,7 @@ gulp.task('sass:dist', function() {
 
 //build files for creating a dist release
 gulp.task('build:dist', ['clean'], function(cb) {
-  runSequence(['build', 'copy', 'copy:assets', 'images'], 'html', 'clean:dist', 'inject:prod', cb);
+  runSequence(['build', 'copy', 'copy:assets', 'images'], 'html', 'favicon', 'clean:dist', 'inject:prod', cb);
 });
 
 //build files for development
@@ -119,6 +120,7 @@ gulp.task('copy:dev', function() {
     }));
 });
 
+// Copy dev assets
 gulp.task('copy:dev:assets', function() {
   return gulp.src([
       config.base + '/**/*',
@@ -130,51 +132,65 @@ gulp.task('copy:dev:assets', function() {
     }));
 });
 
+// Create the favicon from the png
+gulp.task('favicon', ['copy:fav'], function() {
+  return gulp.src(config.dist + '/favicon.png')
+    .pipe(ico('favicon.ico'))
+    .pipe(gulp.dest(config.dist));
+});
+//copy over the social assets and place them in the root of the dist
+gulp.task('copy:fav', function() {
+  return gulp.src([
+      config.base + '/img/fav/*',
+      config.base + '/site-config/*'
+    ]).pipe(gulp.dest(config.dist))
+    .pipe($.size({
+      title: 'copy:fav'
+    }));
+});
 
 //clean temporary directories
 gulp.task('clean', del.bind(null, [config.dist, config.tmp]));
 // Clean build transfered folders
-gulp.task('clean:dist', del.bind(null, ['build/dist/scss', 'build/dist/vendor']));
-
-//default task
-gulp.task('default', ['serve']);
+gulp.task('clean:dist', del.bind(null, [
+  'build/dist/scss',
+  'build/dist/js',
+  'build/dist/vendor',
+  'build/dev', 'build/tmp',
+  'build/dist/img/fav',
+  'build/dist/site-config'
+]));
 
 //run the server after having built generated files, and watch for changes
 gulp.task('serve', function() {
   runSequence('build', 'inject:dev');
-
   browserSync({
     notify: false,
     logPrefix: pkg.name,
     server: ['build', config.dev]
   });
-
   gulp.watch(config.html, ['inject:dev', reload]);
   gulp.watch(config.scss, ['sass', reload]);
   gulp.watch([config.base + '/**/*', '!' + config.html, '!' + config.scss], ['copy:dev:assets', reload]);
 });
 
+// Inject JSON Varibles
 gulp.task('inject:dev', function() {
   var keys = _.keys(devConfig);
-
   var stream = gulp.src(config.html);
- 
   for(var i = 0; i < keys.length; i++) {
     stream = stream.pipe(inject.replace('<% ' + keys[i] + ' %>', devConfig[keys[i]]));
   }
-  
   stream = stream.pipe(gulp.dest(config.dev));
 });
 
+// Inject JSON Varibles for Production
 gulp.task('inject:prod', function() {
   var keys = _.keys(liveConfig);
-
   var stream = gulp.src(config.dist + '/**/*.html');
- 
   for(var i = 0; i < keys.length; i++) {
     stream = stream.pipe(inject.replace('<% ' + keys[i] + ' %>', liveConfig[keys[i]]));
   }
-  
   stream = stream.pipe(gulp.dest(config.dist));
 });
 
@@ -185,3 +201,6 @@ gulp.task('serve:dist', ['build:dist'], function() {
     server: [config.dist]
   });
 });
+
+//default task
+gulp.task('default', ['serve']);
