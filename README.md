@@ -35,16 +35,24 @@ This task will lint your code, optimize css js and images files. After the task 
 
 ### Features
 
-* Very fast
-* 2 simple task for development & build: `gulp serve`,`gulp serve:dist`
+* Lightning fast
+* 2 simple task for development & build: `gulp serve`,`gulp build:dist`
 * SASS continuous compiling.
 * Livereload provided by [browsersync](http://www.browsersync.io/).
+* Automated Favicon generation from source
+* Sketch exporting of assets via gulp (Requires: [SketchTool](https://www.sketchapp.com/tool/)
 * Static resources minification and optimization for production.
+* Minification of CSS & JS, Including combining files to reduce requests
+* SourceMap generation
+* Automatic cache busting namespacing on CSS/JS
+* Ability to serve and test the build
+* Varible injection from JSON
 
 ### Directory Structure
 
 * `build/` - Build files and configuration, the most important file to note is `build.config.js`
 * `client/` the source code, take a look at the modules in this folder, you should structure your application following those conventions, but you can choose another convention as well.
+* `sketch/` the sketch src file for the design
 * `.bowerrc` - the bower configuration file. This tells Bower to install components in the `client/vendor` directory.
 * `gulpfile` - see [The Build System](#thebuildsystem) below.
 * `bower.json` - Contains the list of bower front end dependencies.
@@ -59,4 +67,4 @@ A description of every available task:
 * **gulp serve** - When this task runs, the build will take care of watching files. Every time you change a file in the `client/` folder, the build recompiles every file, and your browser will reload automagically showing you the changes.
 You just need to add new JavaScript and css files in the `client/index.html` file.
 * **gulp serve:dist** - This task will create a fully-optimized version of your code under the `build/dist/` folder. The optimization consists of concatenate, minify and compress js and css files and finally optimize all images.
-
+* **gulp sketch** - This task will export everything from the sketch template into the client img folder. 
