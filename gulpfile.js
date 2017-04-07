@@ -18,6 +18,8 @@ var inject = require('gulp-inject-string');
 var devConfig = JSON.parse(fs.readFileSync('./variables.json'));
 var liveConfig = JSON.parse(request('GET', config.config_url).getBody());
 var ico = require('gulp-to-ico');
+var sketch = require('gulp-sketch');
+var run = require('gulp-run-command').default;
 
 // optimize images and put them in the dist folder
 gulp.task('images', function() {
@@ -204,3 +206,6 @@ gulp.task('serve:dist', ['build:dist'], function() {
 
 //default task
 gulp.task('default', ['serve']);
+
+// Export contents of sketch file
+gulp.task('sketch', run('sketchtool export slices sketch/static-starter.sketch --output=client/img'))

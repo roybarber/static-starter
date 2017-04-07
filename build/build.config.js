@@ -6,6 +6,7 @@ module.exports = {
   dist: 'build/dist',
   dev: 'build/dev',
   base: 'client',
+  sketch: 'sketch',
   mainScss: 'client/scss/main.scss',
   scss: 'client/scss/**/*.scss',
   html: 'client/**/*.html',
