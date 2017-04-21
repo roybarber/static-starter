@@ -27,6 +27,9 @@ label {
 	&.warning {color: $form-state-warning;}
 	&.valid {color: $form-state-valid;}
 }
+input:invalid, textarea:invalid{
+    box-shadow: none;
+}
 
 
 // Input & Textarea
@@ -123,6 +126,9 @@ select {
     -o-appearance: none;
     background: $form-select-bg-color url($form-select-dropdown-icon) no-repeat right 14px center;
     background-size:10px;
+    @include media-breakpoint-up(md) {
+	    &:hover {cursor: pointer;}
+	}
 }
 
 // States
