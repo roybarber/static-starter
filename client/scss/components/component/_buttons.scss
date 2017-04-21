@@ -4,26 +4,25 @@ button,
 input[type="button"],
 input[type="submit"],
 input[type="reset"] {
-	color: $btn-font-color;
+	@include transition($btn-transition);
+	@include border-radius($btn-border-radius);
+	display: $btn-display;
+	margin: $btn-margin;
+	padding: $btn-padding;	
+	font-family: $btn-font-family;
+	font-size: $btn-font-size;
+	line-height: $btn-line-height;
+	font-weight: $btn-font-weight;
+	text-transform: $btn-text-transform;
+	color: $btn-font-color;	
 	background-color: $btn-bgcolor;
 	border:$btn-border-width solid $btn-bgcolor;
-	font-weight: $btn-font-weight;
-	font-size: $btn-font-size;
-	font-family: $btn-font-family;
 	text-decoration: none;
-	text-align: center;
-	text-transform: $btn-text-transform;
-	line-height: $btn-height;
-	height: $btn-height;
-	padding: $btn-padding;
-	margin: $btn-margin;
-	display: inline-block;
+	text-align: center;	
 	width: auto;
 	appearance: none;
 	cursor: pointer;
 	box-sizing: border-box;
-	@include transition($btn-transition);
-	@include border-radius($btn-border-radius);
 	-webkit-appearance: none;
 	
 	&.btn-primary {

@@ -2,7 +2,7 @@
 
 // Type Defaults
 $hfont : "Helvetics",Arial,sans-serif;
-$bfont : $hfont; //Body Fonts
+$bfont : $hfont;
 $line-height-base: 1.5;
 
 // Grid
@@ -33,7 +33,6 @@ $grid-gutter-widths: (
 	lg: $grid-gutter-width-base,
 	xl: $grid-gutter-width-base
 );
-
 
 // Color
 $primary: #4A90E2;
@@ -113,19 +112,26 @@ $form-checkbox-selected-color: $primary;
 $form-checkbox-size: 18px;
 $form-checkbox-border-width:$form-border-width;
 $form-checkbox-icon:'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOHB4IiBoZWlnaHQ9IjdweCIgdmlld0JveD0iNSA4IDggNyIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTEyLjQ3MDQ1NzIsOC4yOTY1Njk0NSBDMTIuMDgzNTIyLDcuOTAxMTQzNTIgMTEuNDU2NDIwMSw3LjkwMTE0MzUyIDExLjA2OTQ4NDksOC4yOTY1Njk0NSBMNy41NjY2OTAzNSwxMS44Njc1MzI1IEw2LjY5MTE3MzY2LDEwLjk3NDc5MTggQzYuMzA0MjM4NDYsMTAuNTgxNzkxNyA1LjY3Njg5NCwxMC41ODE3OTE3IDUuMjkwMjAxNCwxMC45NzQ3OTE4IEM0LjkwMzI2NjIsMTEuMzcwMjE3NyA0LjkwMzI2NjIsMTIuMDEwNjYyMiA1LjI5MDIwMTQsMTIuNDAzNjYyMiBMNi44NjYzMjU1MiwxNC4wMTIwNTExIEM3LjI1MzI2MDcxLDE0LjQwNzQ3NyA3Ljg4MDM2MjU4LDE0LjQwNzQ3NyA4LjI2NzI5Nzc4LDE0LjAxMjA1MTEgTDEyLjQ3MDQ1NzIsOS43MjU0Mzk4NyBDMTIuODU3MzkyNCw5LjMzMDAxMzkzIDEyLjg1NzM5MjQsOC42ODk1Njk0NiAxMi40NzA0NTcyLDguMjk2NTY5NDUiIGlkPSJjaGVja21hcmsiIHN0cm9rZT0ibm9uZSIgZmlsbD0iI0ZGRkZGRiIgZmlsbC1ydWxlPSJldmVub2RkIj48L3BhdGg+PC9zdmc+';
+
+
 // Button Defaults
-$btn-bgcolor: $primary;
-$btn-font-color: white;
+$btn-transition: all 0.3s linear;
+$btn-border-radius: 4px;
+$btn-display: inline-block;
+$btn-margin:0 auto 15px auto;
+$btn-font-size: 16px;
+$btn-line-height: $btn-font-size + 5;
+$btn-padding:($btn-line-height / 2) ($btn-line-height * 1.2);
+
+$btn-font-family: $hfont;
 $btn-font-weight: 400;
 $btn-text-transform: capitalize;
-$btn-font-size: 16px;
-$btn-height: 40px;
+$btn-font-color: white;
+
+$btn-bgcolor: $primary;
 $btn-border-width: 1px;
-$btn-padding:0 35px; 
-$btn-margin:0 auto 15px auto;
-$btn-font-family: $hfont;
-$btn-border-radius: 4px;
-$btn-transition: all 0.3s linear;
+
+
 // Errors
 $form-state-error: $error;
 $form-state-warning: $warning;
