@@ -68,3 +68,20 @@ A description of every available task:
 You just need to add new JavaScript and css files in the `client/index.html` file.
 * **gulp serve:dist** - This task will create a fully-optimized version of your code under the `build/dist/` folder. The optimization consists of concatenate, minify and compress js and css files and finally optimize all images.
 * **gulp sketch** - This task will export everything from the sketch template into the client img folder. 
+
+### Git Issue Labels
+We have a predefined set of labels we use for github issues on our projects, below are the setup tasks to quickly generate these in github.
+
+Install [git-labelmaker](https://github.com/himynameisdave/git-labelmaker) globally:
+
+    npm i -g git-labelmaker
+
+then run labelmaker:
+
+    git-labelmaker
+
+Choose install from package and enter the file path for the labels: `git_labels.json`
+
+**Git Access Token**
+
+For LabelMaker to interact with the GitHub API, you will need your own access token, which you can [generate over here](https://github.com/settings/tokens). Make sure your token has repo permissions.
