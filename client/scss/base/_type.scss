@@ -1,4 +1,28 @@
 // Typography
+// Type Defaults
+$hfont : 'Roboto', sans-serif;
+$bfont : $hfont;
+$line-height-base: 1.5;
+
+$fs-1-mobile: 32 / 1.5;
+$fs-2-mobile: 28 / 1.5;
+$fs-3-mobile: 24 / 1.5;
+$fs-4-mobile: 20 / 1.5;
+$fs-5-mobile: 18 / 1.5;
+$fs-6-mobile: 16 / 1.5;
+$fs-7-mobile: 16 / 30;
+$fs-8-mobile: 14 / 1.5;
+
+$fs-1-desktop: 50 / 64;
+$fs-2-desktop: 36 / 1.5;
+$fs-3-desktop: 28 / 1.5;
+$fs-4-desktop: 24 / 1.5;
+$fs-5-desktop: 20 / 1.5;
+$fs-6-desktop: 18 / 30;
+$fs-7-desktop: 16 / 30;
+$fs-8-desktop: 14 / 1.5;
+
+
 
 html, body {}
 body { 

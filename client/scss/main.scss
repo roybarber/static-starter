@@ -1,24 +1,35 @@
-// SASS-UTILS
-@import "sass-utils/mixins",
-	"sass-utils/vars";
+/////////////////////////////////////////////////////////
+// Damage - Static Starter Base CSS                    //
+/////////////////////////////////////////////////////////
 
-// VENDORS
-@import "vendors/vendors";
+// SASS-UTILS
+@import "sass-utils/mixins";
+
+// RESET
+@import "reset/reset";
 
 // BASE
-@import "base/reset",
-	"base/type",
-	"base/color",
-	"base/icons";
-
-// LAYOUT
-@import "layout/grid";
+//// Grid System
+@import "base/grid";
+//// Color utiities
+@import "base/color";
+//// Typography
+@import "base/type";
+//// Iconography
+@import "base/icons";
+//// Brand / Logos
+@import "base/brand";
 
 // COMPONENTS
+//// Reusable components
 @import "components/components";
 
 // PAGES
+//// Page specific overides
 @import "pages/pages";
 
 // Visability hacks
-@import "base/responsive-utilities";
+//// Responsive embeds for video/iframes, i.e youtube/vimeo
+@import "helpers/responsive-embed";
+//// Helpers for screen size based tasks, like show/hide
+@import "helpers/responsive-utilities";

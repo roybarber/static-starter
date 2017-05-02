@@ -1,0 +1,27 @@
+/////////////////////////////////////////////////////////
+// Brand                                               //
+/////////////////////////////////////////////////////////
+$logowidth: 184px;
+$logoheight: 50px;
+$emblem: 50px;
+
+.logo {
+	display: block;
+	@include text-hide();
+	background: url(/img/brand/logo/primary.svg) no-repeat center center;
+	background-size: $logowidth $logoheight;
+	width: $logowidth;
+	height: $logoheight;
+	margin:0 auto;
+	
+	&.emblem {
+		background: url(/img/brand/logo/emblem.svg) no-repeat center center;
+		background-size: $emblem;
+		height: $emblem;
+		width: $emblem;
+	}
+}
+
+
+//../../img/brand/logo/emblem.svg
+//../../img/brand/logo/primary.svg

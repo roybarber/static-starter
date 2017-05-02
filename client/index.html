@@ -13,25 +13,51 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
 	
-	<title>{{Page Title}}</title>
-	<meta name="description" content="{{Page Description}}"/>
-	<meta name="author" content="{{Site Name}}"/>
-	<meta name="copyright" content="Copyright {{Site Name}} 2017. All Rights Reserved."/>
-	<meta name="application-name" content="{{Site Name}}"/>
+	<title><% page_title %></title>
+	<meta name="description" content="<% page_description %>"/>
+	<meta name="author" content="<% site_name %>"/>
+	<meta name="copyright" content="Copyright <% site_name %> <% year %>. All Rights Reserved."/>
+	<meta name="application-name" content="<% site_name %>"/>
 	
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 	
-	<!-- build:css assets/css/main.css -->
-	<link rel="stylesheet" type="text/css" href="tmp/main.css" />
+	<!-- build:css /assets/css/main.css -->
+	<link rel="stylesheet" type="text/css" href="/tmp/main.css" />
 	<!-- endbuild -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon.png">
+
+	<!-- Schema.org markup for Google+ -->
+	<meta itemprop="name" content="<% site_name %>">
+	<meta itemprop="description" content="<% page_description %>">
+	<meta itemprop="image" content="/share.png">
+
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@<% twitter %>">
+	<meta name="twitter:title" content="<% site_name %>">
+	<meta name="twitter:description" content="<% page_description %>">
+	<meta name="twitter:image:src" content="/share.png">
+
+	<!-- Open Graph data -->
+	<meta property="og:title" content="<% site_name %>"/>
+	<meta property="og:url" content=""/>
+	<meta property="og:image" content="/share.png"/>
+	<meta property="og:image:url" content="/share.png"/>
+	<meta property="og:description" content="<% page_description %>"/>
+	<meta property="og:site_name" content="<% site_name %>"/>
 
 </head>
 <body>
 
-	<header class="container">
+	<header class="container margin-top-40 margin-bottom-40">
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<h1><a href="https://wearedamage.com">We Are Damage</a></h1>
+				<h1><a class="logo" href="/"><% company_name %></a></h1>
 			</div>
 		</div>	
 	</header>
@@ -40,16 +66,136 @@
 
 	<section class="container">
 		<div class="row">
-			<article class="col-md-8">
-				<h1>Heading One</h1>
-				<h2>Heading Two</h2>
-				<h3>Heading Three</h3>
-				<h4>Heading Four</h4>
-				<h5>Heading Five</h5>
-				<h6>Heading Six</h6>
+			<article class="col-md-12">
+				
+				<h1>.fs-1 Heading One</h1>
+				<h2>.fs-2 Heading Two</h2>
+				<h3>.fs-3 Heading Three</h3>
+				<h4>.fs-4 Heading Four</h4>
+				<h5>.fs-5 Heading Five</h5>
+				<h6>.fs-6 Heading Six</h6>
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
 				<p>The following will be replaced outside of the source file: <% company_name %></p>
 				<p><a href="#">Link</a></p>
+				
+				<hr/>
+				
+				<div class="row margin-bottom-20">
+					<div class="col-md-1"><div style="height:60px;" class="bg-primary"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-secondary"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-black"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-darkgrey"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-lightgrey"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-white"></div></div>
+				</div>
+				<div class="row margin-bottom-20">
+					<div class="col-md-1"><div style="height:60px;" class="bg-error"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-warning"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-success"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-disabled"></div></div>
+				</div>
+				<div class="row margin-bottom-20">
+					<div class="col-md-1"><div style="height:60px;" class="bg-facebook"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-twitter"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-googleplus"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-linkedin"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-instagram"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-slack"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-youtube"></div></div>
+					<div class="col-md-1"><div style="height:60px;" class="bg-dribbble"></div></div>
+				</div>
+				
+				<hr/>
+				
+				<div class="row margin-bottom-20">
+					<ul class="col-md-12">
+						<li><p class="fc-primary">Text Color</p></li>
+						<li><p class="fc-secondary">Text Color</p></li>
+						<li><p class="fc-black">Text Color</p></li>
+						<li><p class="fc-darkgrey">Text Color</p></li>
+						<li><p class="fc-lightgrey">Text Color</p></li>
+						<li><p class="fc-white">Text Color</p></li>
+					</ul>
+				</div>
+				<div class="row margin-bottom-20">
+					<ul class="col-md-12">
+						<li><p class="fc-error">Text Color</p></li>
+						<li><p class="fc-warning">Text Color</p></li>
+						<li><p class="fc-success">Text Color</p></li>
+						<li><p class="fc-disabled">Text Color</p></li>
+					</ul>
+				</div>
+				<div class="row margin-bottom-20">
+					<ul class="col-md-12">
+						<li><p class="fc-facebook">Text Color</p></li>
+						<li><p class="fc-twitter">Text Color</p></li>
+						<li><p class="fc-googleplus">Text Color</p></li>
+						<li><p class="fc-linkedin">Text Color</p></li>
+						<li><p class="fc-instagram">Text Color</p></li>
+						<li><p class="fc-slack">Text Color</p></li>
+						<li><p class="fc-youtube">Text Color</p></li>
+						<li><p class="fc-dribbble">Text Color</p></li>
+					</ul>
+				</div>
+				
+				<hr/>
+				
+				<div>
+					<span class="icon icon-40 icon-sort bg-secondary"></span>
+					<span class="icon icon-40 icon-close"></span>
+					<span class="icon icon-40 icon-loading"></span>
+					<span class="icon icon-40 icon-date"></span>
+					<span class="icon icon-40 icon-star-active"></span>
+					<span class="icon icon-40 icon-divider"></span>
+					<span class="icon icon-40 icon-select-active"></span>
+					<span class="icon icon-40 icon-menu"></span>
+					<span class="icon icon-40 icon-heart"></span>
+					<span class="icon icon-40 icon-share"></span>
+					<span class="icon icon-40 icon-tag"></span>
+					<span class="icon icon-40 icon-warning"></span>
+					<span class="icon icon-40 icon-search"></span>
+					<span class="icon icon-40 icon-trash"></span>
+					<span class="icon icon-40 icon-checkmark"></span>
+					<span class="icon icon-40 icon-more-detail"></span>
+					<span class="icon icon-40 icon-info"></span>
+					<span class="icon icon-40 icon-copy"></span>
+					<span class="icon icon-40 icon-location"></span>
+					<span class="icon icon-40 icon-date"></span>
+					<span class="icon icon-40 icon-required"></span>
+					<span class="icon icon-40 icon-heart-solid"></span>
+					<span class="icon icon-40 icon-error"></span>
+					<span class="icon icon-40 icon-select"></span>
+					<span class="icon icon-40 icon-star-action"></span>
+					<span class="icon icon-40 icon-star-inactive"></span>
+				</div>
+				
+				<div>
+					<span class="icon icon-40 icon-instagram bg-red"></span>
+					<span class="icon icon-40 icon-slack"></span>
+					<span class="icon icon-40 icon-googleplus"></span>
+					<span class="icon icon-40 icon-youtube"></span>
+					<span class="icon icon-40 icon-facebook"></span>
+					<span class="icon icon-40 icon-twitter"></span>
+					<span class="icon icon-40 icon-linkedin"></span>
+					<span class="icon icon-40 icon-dribbble"></span>
+				</div>
+				
+				<div>
+					<span class="icon icon-16 icon-dribbble"></span>
+					<span class="icon icon-24 icon-dribbble"></span>
+					<span class="icon icon-32 icon-dribbble"></span>
+					<span class="icon icon-40 icon-dribbble"></span>
+					<span class="icon icon-44 icon-dribbble"></span>
+					<span class="icon icon-50 icon-dribbble"></span>
+					<span class="icon icon-60 icon-dribbble"></span>
+					<span class="icon icon-70 icon-dribbble"></span>
+					<span class="icon icon-80 icon-dribbble"></span>
+					<span class="icon icon-100 icon-dribbble"></span>
+					<span class="icon icon-126 icon-dribbble"></span>
+					<span class="icon icon-150 icon-dribbble"></span>
+				</div>
+				
+				<hr/>
 				
 				<ul class="">
 					<li><a href="#" class="btn btn-primary">Button</a></li>
@@ -61,6 +207,8 @@
 					<li><a href="#" class="btn btn-primary btn-disabled">Button</a></li>
 					<li><button type="button" disabled>Button</button></li>
 				</ul>
+				
+				<hr/>
 				
 				<form>
 					<div class="input-group">
@@ -117,23 +265,6 @@
 				</form>
 				
 			</article>
-			<aside class="col-md-3 col-md-push-1">
-				<p>Sidebar</p>
-			</aside>
-		</div>
-	</section>
-	
-	<hr/>
-	
-	<section class="container">
-		<div class="row grid-demo">
-			<div class="col">1 of 2</div>
-			<div class="col">1 of 2</div>
-		</div>
-		<div class="row grid-demo">
-			<div class="col">1 of 3</div>
-			<div class="col">1 of 3</div>
-			<div class="col">1 of 3</div>
 		</div>
 	</section>
 	
@@ -167,77 +298,6 @@
 			<div class="col align-self-end" style="background-color: rgba(255,0,0,.1);">One of three columns</div>
 		</div>
 	</div>
-
-	<hr/>
-	
-	<!-- Visibility hacks example -->
-	<div class="container">
-		<style>.responsive-utilities-test{margin-top:.25rem}.responsive-utilities-test .col-6{margin-top:.5rem;margin-bottom:.5rem}.responsive-utilities-test span{display:block;padding:1rem .5rem;font-size:1rem;font-weight:700;line-height:1.1;text-align:center;border-radius:.25rem}.hidden-on .col-6>.not-visible,.visible-on .col-6>.not-visible{color:#999;border:1px solid #ddd}.hidden-on .col-6 .visible,.visible-on .col-6 .visible{color:#468847;background-color:#dff0d8;border:1px solid #d6e9c6}</style>
-		<div class="row responsive-utilities-test visible-on">
-			<div class="col-6 col-sm-3">
-				<span class="hidden-sm-up visible">✔ Visible on extra small</span>
-				<span class="hidden-xs-down not-visible">Extra small</span>
-			</div>
-			<div class="col-6 col-sm-3">
-				<span class="hidden-md-up visible">✔ Visible on small or narrower</span>
-				<span class="hidden-sm-down not-visible">Small or narrower</span>
-			</div>
-			<div class="col-6 col-sm-3">
-				<span class="hidden-lg-up visible">✔ Visible on medium or narrower</span>
-				<span class="hidden-md-down not-visible">Medium or narrower</span>
-			</div>
-			<div class="col-6 col-sm-3">
-				<span class="hidden-xl-up visible">✔ Visible on large or narrower</span>
-				<span class="hidden-lg-down not-visible">Large or narrower</span>
-			</div>
-		</div>
-		
-		<div class="row responsive-utilities-test visible-on">
-			<div class="col-6 col-sm-3">
-				<span class="hidden-xs-down visible">✔ Visible on small or wider</span>
-				<span class="hidden-sm-up not-visible">Small or wider</span>
-			</div>
-			<div class="col-6 col-sm-3">
-				<span class="hidden-sm-down visible">✔ Visible on medium or wider</span>
-				<span class="hidden-md-up not-visible">Medium or wider</span>
-			</div>
-			<div class="col-6 col-sm-3">
-				<span class="hidden-md-down visible">✔ Visible on large or wider</span>
-				<span class="hidden-lg-up not-visible">Large or wider</span>
-			</div>
-			<div class="col-6 col-sm-3">
-				<span class="hidden-lg-down visible">✔ Visible on extra large</span>
-				<span class="hidden-xl-up not-visible">Extra large</span>
-			</div>
-		</div>
-		
-		<div class="row responsive-utilities-test visible-on">
-			<div class="col-6 col-sm-4">
-				<span class="hidden-sm-up visible">✔ Your viewport is exactly extra small</span>
-				<span class="hidden-xs-down not-visible">Your viewport is NOT exactly extra small</span>
-			</div>
-			<div class="col-6 col-sm-4">
-				<span class="hidden-xs-down hidden-md-up visible">✔ Your viewport is exactly small</span>
-				<span class="hidden-sm-only not-visible">Your viewport is NOT exactly small</span>
-			</div>
-			<div class="col-6 col-sm-4">
-				<span class="hidden-sm-down hidden-lg-up visible">✔ Your viewport is exactly medium</span>
-				<span class="hidden-md-only not-visible">Your viewport is NOT exactly medium</span>
-			</div>
-		</div>
-		
-		<div class="row responsive-utilities-test visible-on">
-			<div class="col-6 col-sm-4">
-				<span class="hidden-md-down hidden-xl-up visible">✔ Your viewport is exactly large</span>
-				<span class="hidden-lg-only not-visible">Your viewport is NOT exactly large</span>
-			</div>
-			<div class="col-6 col-sm-4">
-				<span class="hidden-lg-down visible">✔ Your viewport is exactly extra large</span>
-				<span class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</span>
-			</div>
-		</div>
-		
-	</div>
 	
 	<hr/>
 	
@@ -264,24 +324,27 @@
 	
 	<hr/>
 	
-	<footer class="container">
-		<div class="row">
-			<div class="col-md-6 text-center text-md-left">
-				<p>&copy; 2017 Client Name</p>
+	<footer class="container margin-bottom-40">
+		<div class="row align-items-center">
+			<div class="col-md-5 text-center text-md-left">
+				<p class="margin-bottom-0">&copy; <% year %> <% company_name %></p>
 			</div>
-			<div class="col-md-6 text-center text-md-right">
-				<p>Built by: <a href="https://wearedamage.com" target="_blank">Damage</a></p>
+			<div class="col-md-2 justify-content-center">
+				<a class="logo emblem" href="/"><% company_name %></a>
+			</div>
+			<div class="col-md-5 text-center text-md-right">
+				<p class="margin-bottom-0">Built by: <a href="https://wearedamage.com" target="_blank">Damage</a></p>
 			</div>
 		</div>
 	</footer>
 
-	<!-- build:js assets/js/vendor.js -->
-	<script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="vendor/feature/index.js"></script>
+	<!-- build:js /assets/js/vendor.js -->
+	<script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="/vendor/feature/index.js"></script>
 	<!-- endbuild -->
 	
-	<!-- build:js assets/js/main.js -->
-	<script type="text/javascript" src="js/main.js"></script>
+	<!-- build:js /assets/js/main.js -->
+	<script type="text/javascript" src="/js/main.js"></script>
 	<!-- endbuild -->
 	
 	<script>

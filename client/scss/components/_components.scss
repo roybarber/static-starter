@@ -1,5 +1,10 @@
-// Components will go in this folder
-@import "components/component/buttons",
-	"components/component/tables",
-	"components/component/responsive-embed",
-	"components/component/forms";
+/////////////////////////////////////////////////////////
+// Resuable Components                                 //
+/////////////////////////////////////////////////////////
+
+//// Buttons
+@import "components/component/buttons";
+//// Tables
+@import "components/component/tables";
+//// Forms
+@import "components/component/forms";

@@ -1,3 +1,21 @@
+// Button Defaults
+$btn-transition: all 0.3s linear;
+$btn-border-radius: 4px;
+$btn-display: inline-block;
+$btn-margin:0 auto 15px auto;
+$btn-font-size: 16px;
+$btn-line-height: $btn-font-size + 5;
+$btn-padding:($btn-line-height / 2) ($btn-line-height * 1.2);
+
+$btn-font-family: $hfont;
+$btn-font-weight: 400;
+$btn-text-transform: capitalize;
+$btn-font-color: white;
+
+$btn-bgcolor: $primary;
+$btn-border-width: 1px;
+
+
 //Buttons
 .btn,
 button,

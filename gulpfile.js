@@ -157,7 +157,8 @@ gulp.task('clean:dist', del.bind(null, [
   'build/dist/scss',
   'build/dist/js',
   'build/dist/vendor',
-  'build/dev', 'build/tmp',
+  'build/dev',
+  'build/tmp',
   'build/dist/img/fav',
   'build/dist/site-config'
 ]));
@@ -176,23 +177,31 @@ gulp.task('serve', function() {
 });
 
 // Inject JSON Varibles
-gulp.task('inject:dev', function() {
+gulp.task('inject:dev', function(cb) {
   var keys = _.keys(devConfig);
   var stream = gulp.src(config.html);
+
   for(var i = 0; i < keys.length; i++) {
     stream = stream.pipe(inject.replace('<% ' + keys[i] + ' %>', devConfig[keys[i]]));
   }
+
   stream = stream.pipe(gulp.dest(config.dev));
+
+  setTimeout(cb, 15);
 });
 
 // Inject JSON Varibles for Production
-gulp.task('inject:prod', function() {
+gulp.task('inject:prod', function(cb) {
   var keys = _.keys(liveConfig);
   var stream = gulp.src(config.dist + '/**/*.html');
+
   for(var i = 0; i < keys.length; i++) {
     stream = stream.pipe(inject.replace('<% ' + keys[i] + ' %>', liveConfig[keys[i]]));
   }
+
   stream = stream.pipe(gulp.dest(config.dist));
+
+  setTimeout(cb, 15);
 });
 
 //run the app packed in the dist folder
