@@ -156,10 +156,10 @@ html {
 //// Set and forget padding & margins
 $spacing: 0,5,10,15,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220;
 @each $space in $spacing {
-	.pad-top-#{$space} {
+	.padding-top-#{$space} {
 		padding-top: #{$space}px;
 	} 
-	.pad-bottom-#{$space} {
+	.padding-bottom-#{$space} {
 		padding-bottom: #{$space}px;
 	}
 	.margin-top-#{$space} {

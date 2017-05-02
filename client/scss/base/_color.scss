@@ -7,7 +7,7 @@
 //// Base
 $primary: #4A90E2;
 $secondary: #0E1C2D;
-$black: #0E1C2D;
+$black: $secondary;
 $darkgrey: #9B9B9B;
 $lightgrey: #EEEEEE;
 $white: #FFFFFF;
@@ -26,8 +26,8 @@ $slack: #E9A820;
 $youtube: #CD201F;
 $dribbble: #EA4C89;
 //// Defaults
-$bodycolor: $darkgrey;
-$headingcolor: #0E1C2D;
+$bodycolor: $secondary;
+$headingcolor: $secondary;
 $line: $lightgrey;
 //// Into an array
 $colors: (
