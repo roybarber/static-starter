@@ -187,7 +187,7 @@ gulp.task('inject:dev', function(cb) {
 
   stream = stream.pipe(gulp.dest(config.dev));
 
-  setTimeout(cb, 15);
+  setTimeout(cb, 100);
 });
 
 // Inject JSON Varibles for Production
@@ -201,7 +201,7 @@ gulp.task('inject:prod', function(cb) {
 
   stream = stream.pipe(gulp.dest(config.dist));
 
-  setTimeout(cb, 15);
+  setTimeout(cb, 100);
 });
 
 //run the app packed in the dist folder
