@@ -1,7 +1,12 @@
 // Forms
+//// Label Group
+$form-input-group-margin: 0 0 20px 0;
 $form-font-family: $bfont;
 $form-font-size: 16px;
 $form-font-color: $headingcolor;
+// Labels
+$form-label-margin:0 0 4px 0;
+$form-label-font-weight: 400;
 // transitions
 $form-transition: all 0.3s linear;
 // Borders
@@ -15,7 +20,7 @@ $form-input-width: 100%;
 $form-input-max-width: 400px;
 $form-input-bg-color: #fff;
 $form-input-padding: 0 14px;
-$form-input-margin: 0 0 20px 0;
+$form-input-margin: 0;
 $form-focus-bg-color: white;
 $form-focus-border-color: $primary;
 $form-focus-font-color: $form-font-color;
@@ -23,9 +28,6 @@ $form-input-required-icon: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTBweCIgaG
 $form-input-error-icon: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNXB4IiB2aWV3Qm94PSI1NDggNDggMTYgMTUiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgIDxwYXRoIGQ9Ik01NjMuODU4MzE2LDYwLjU2NDYyNTggTDU1Ni45MDczNTksNDguNTIzMjg3MiBDNTU2LjUwNDQ1Miw0Ny44MjU1NzA5IDU1NS40OTU1NDgsNDcuODI1NTcwOSA1NTUuMDkyNjQxLDQ4LjUyMzI4NzIgTDU0OC4xNDE2ODQsNjAuNTY0NjI1OCBDNTQ3LjczODc3Nyw2MS4yNjIzNDIxIDU0OC4yNDMyMjksNjIuMTM2OTQ0MiA1NDkuMDQ5MDQyLDYyLjEzNjk0NDIgTDU2Mi45NTA5NTgsNjIuMTM2OTQ0MiBDNTYzLjc1Njc3MSw2Mi4xMzY5NDQyIDU2NC4yNjEyMjMsNjEuMjYyMzQyMSA1NjMuODU4MzE2LDYwLjU2NDYyNTggTDU2My44NTgzMTYsNjAuNTY0NjI1OCBaIE01NTYuMDA5ODI3LDUyLjIzMTMzODIgQzU1Ni40NTUzMTcsNTIuMjMxMzM4MiA1NTYuODE1NjQsNTIuNjAxNDg4MSA1NTYuODAyNTM4LDUzLjA0Njk3ODMgTDU1Ni42NzE1MTEsNTcuNjE5ODA0NCBDNTU2LjY2MTY4NCw1Ny45ODAxMjc0IDU1Ni4zNjY4NzQsNTguMjY1MTEwMSA1NTYuMDA2NTUxLDU4LjI2NTExMDEgQzU1NS42NDYyMjgsNTguMjY1MTEwMSA1NTUuMzUxNDE5LDU3Ljk3Njg1MTcgNTU1LjM0MTU5Miw1Ny42MTk4MDQ0IEw1NTUuMjEzODQxLDUzLjA0Njk3ODMgQzU1NS4yMDQwMTQsNTIuNjAxNDg4MSA1NTUuNTYxMDYxLDUyLjIzMTMzODIgNTU2LjAwOTgyNyw1Mi4yMzEzMzgyIEw1NTYuMDA5ODI3LDUyLjIzMTMzODIgWiBNNTU2LDYwLjUwMjM4ODIgQzU1NS41NDQ2ODMsNjAuNTAyMzg4MiA1NTUuMTc0NTMzLDYwLjEzMjIzODIgNTU1LjE3NDUzMyw1OS42NzY5MjEgQzU1NS4xNzQ1MzMsNTkuMjIxNjAzOCA1NTUuNTQ0NjgzLDU4Ljg1MTQ1MzggNTU2LDU4Ljg1MTQ1MzggQzU1Ni40NTUzMTcsNTguODUxNDUzOCA1NTYuODI1NDY3LDU5LjIyMTYwMzggNTU2LjgyNTQ2Nyw1OS42NzY5MjEgQzU1Ni44MjU0NjcsNjAuMTMyMjM4MiA1NTYuNDU1MzE3LDYwLjUwMjM4ODIgNTU2LDYwLjUwMjM4ODIgTDU1Niw2MC41MDIzODgyIFoiIGlkPSJTaGFwZSIgc3Ryb2tlPSJub25lIiBmaWxsPSIjRDAwMTFCIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjwvcGF0aD48L3N2Zz4=';
 // Fieldset & Legend Styling
 $form-fieldset-bare: false;
-// Labels
-$form-label-margin:0 0 10px 0;
-$form-label-font-size: 16px;
 // textarea
 $form-textarea-padding: 14px;
 // Select
@@ -41,7 +43,7 @@ $form-button-hover-bg-color: $form-border-color;
 $form-button-hover-font-color: $form-font-color;
 // Layout
 $form-display: block;
-// Radio
+//// Radio
 $form-radio-fully-round: true;
 $form-radio-background-color: white;
 $form-radio-container-margin: 0 0 15px 0;
@@ -49,7 +51,7 @@ $form-radio-border-color: $line;
 $form-radio-selected-color: $primary;
 $form-radio-size: 18px;
 $form-radio-border-width:$form-border-width;
-// Checkbox
+//// Checkbox
 $form-checkbox-background-color: white;
 $form-checkbox-container-margin: 0 0 15px 0;
 $form-checkbox-border-color: $line;
@@ -57,17 +59,50 @@ $form-checkbox-selected-color: $primary;
 $form-checkbox-size: 18px;
 $form-checkbox-border-width:$form-border-width;
 $form-checkbox-icon:'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOHB4IiBoZWlnaHQ9IjdweCIgdmlld0JveD0iNSA4IDggNyIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTEyLjQ3MDQ1NzIsOC4yOTY1Njk0NSBDMTIuMDgzNTIyLDcuOTAxMTQzNTIgMTEuNDU2NDIwMSw3LjkwMTE0MzUyIDExLjA2OTQ4NDksOC4yOTY1Njk0NSBMNy41NjY2OTAzNSwxMS44Njc1MzI1IEw2LjY5MTE3MzY2LDEwLjk3NDc5MTggQzYuMzA0MjM4NDYsMTAuNTgxNzkxNyA1LjY3Njg5NCwxMC41ODE3OTE3IDUuMjkwMjAxNCwxMC45NzQ3OTE4IEM0LjkwMzI2NjIsMTEuMzcwMjE3NyA0LjkwMzI2NjIsMTIuMDEwNjYyMiA1LjI5MDIwMTQsMTIuNDAzNjYyMiBMNi44NjYzMjU1MiwxNC4wMTIwNTExIEM3LjI1MzI2MDcxLDE0LjQwNzQ3NyA3Ljg4MDM2MjU4LDE0LjQwNzQ3NyA4LjI2NzI5Nzc4LDE0LjAxMjA1MTEgTDEyLjQ3MDQ1NzIsOS43MjU0Mzk4NyBDMTIuODU3MzkyNCw5LjMzMDAxMzkzIDEyLjg1NzM5MjQsOC42ODk1Njk0NiAxMi40NzA0NTcyLDguMjk2NTY5NDUiIGlkPSJjaGVja21hcmsiIHN0cm9rZT0ibm9uZSIgZmlsbD0iI0ZGRkZGRiIgZmlsbC1ydWxlPSJldmVub2RkIj48L3BhdGg+PC9zdmc+';
-
-
-// Errors
+//// Errors
 $form-state-error: $error;
 $form-state-warning: $warning;
 $form-state-valid: $success;
-$form-state-message-font-size: 13px;
-
-
+$form-state-message-font-size: 14px;
+$form-state-message-font-line-height:24px;
+$form-state-message-margin: 5px 0 0 0;
+//// Helper text
+$form-helper-text-color:$darkgrey;
+//// Range Slider
+$form-input-range-track-color: $lightgrey;
+$form-input-range-thumb-color: $primary;
+$form-input-range-thumb-radius: 20px;
+$form-input-range-thumb-height: 20px;
+$form-input-range-thumb-width: 20px;
+$form-input-range-thumb-border-width: 0px;
+$form-input-range-thumb-border-color: $primary;
+$form-input-range-track-width: 100%;
+$form-input-range-track-height: 4px;
+$form-input-range-track-border-width: 0px;
+$form-input-range-track-border-color: $lightgrey;
+$form-input-range-track-radius: 0px;
+$form-input-range-contrast: 0%;
+//// Reusable code
+@mixin track {
+	cursor: pointer;
+	height: $form-input-range-track-height;
+	transition: all .2s ease;
+	width: $form-input-range-track-width;
+}
+@mixin thumb {
+	background: $form-input-range-thumb-color;
+	border: $form-input-range-thumb-border-width solid $form-input-range-thumb-border-color;
+	border-radius: $form-input-range-thumb-radius;
+	cursor: pointer;
+	height: $form-input-range-thumb-height;
+	width: $form-input-range-thumb-width;
+}
 
 // Global Reset Styles
+//// Input wrapper
+.input-group {
+	margin: $form-input-group-margin;
+}
 input,
 textarea,
 select,
@@ -84,15 +119,19 @@ option {
 label {
     display: $form-display;
     margin: $form-label-margin;
-    font-size: $form-label-font-size;
+    font-weight: $form-label-font-weight;
 }
-.state-message {
+.state-message, .helper-message {
 	font-size: $form-state-message-font-size;
-	margin:$form-label-margin;
+	line-height: $form-state-message-font-line-height;
+	margin:$form-state-message-margin;
 	display: block;
 	&.error {color: $form-state-error;}
 	&.warning {color: $form-state-warning;}
 	&.valid {color: $form-state-valid;}
+}
+.helper-message {
+	color: $form-helper-text-color;
 }
 input:invalid, textarea:invalid{
     box-shadow: none;
@@ -165,11 +204,6 @@ textarea {
     -webkit-appearance: none;
     overflow: auto;
     padding:$form-textarea-padding;
-}
-input[type="range"] {
-    height: $form-input-height;
-    width: $form-input-width;
-    max-width: $form-input-max-width;
 }
 input[type="file"] {
     min-height: $form-input-height;
@@ -347,5 +381,69 @@ option:focus,  {
 	}
 	.checkbox input:disabled ~ .checkbox-indicator:after {
 		background: $disabled;
+	}
+}
+
+// Range Slider
+input[type='range'] {
+	-webkit-appearance: none;
+	margin: $form-input-range-thumb-height / 2 0;
+	width: $form-input-range-track-width;
+	&:focus {
+		outline: 0;
+		&::-webkit-slider-runnable-track {
+			background: lighten($form-input-range-track-color, $form-input-range-contrast);
+		}
+		&::-ms-fill-lower {
+			background: $form-input-range-track-color;
+		}
+		&::-ms-fill-upper {
+			background: lighten($form-input-range-track-color, $form-input-range-contrast);
+		}
+	}
+	// Chrome/Safari
+	&::-webkit-slider-runnable-track {
+		@include track;
+		background: $form-input-range-track-color;
+		border: $form-input-range-track-border-width solid $form-input-range-track-border-color;
+		border-radius: $form-input-range-track-radius;
+	}
+	
+	&::-webkit-slider-thumb {
+		@include thumb;
+		-webkit-appearance: none;
+		margin-top: ((-$form-input-range-track-border-width * 2 + $form-input-range-track-height) / 2) - ($form-input-range-thumb-height / 2);
+	}
+	//// Firefox
+	&::-moz-range-track {
+		@include track;
+		background: $form-input-range-track-color;
+		border: $form-input-range-track-border-width solid $form-input-range-track-border-color;
+		border-radius: $form-input-range-track-radius;
+	}
+	&::-moz-range-thumb {
+		@include thumb;
+	}
+	//// IE/EDGE
+	&::-ms-track {
+		@include track;
+		background: transparent;
+		border-color: transparent;
+		border-width: ($form-input-range-thumb-height / 2) 0;
+		color: transparent;
+	}
+	&::-ms-fill-lower {
+		background: darken($form-input-range-track-color, $form-input-range-contrast);
+		border: $form-input-range-track-border-width solid $form-input-range-track-border-color;
+		border-radius: $form-input-range-track-radius * 2;
+	}
+	&::-ms-fill-upper {
+		background: $form-input-range-track-color;
+		border: $form-input-range-track-border-width solid $form-input-range-track-border-color;
+		border-radius: $form-input-range-track-radius * 2;
+	}
+	&::-ms-thumb {
+		@include thumb;
+		margin-top: 0;
 	}
 }

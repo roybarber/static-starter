@@ -7,7 +7,7 @@
 //// Base
 $primary: #4A90E2;
 $secondary: #0E1C2D;
-$black: $secondary;
+$black: #000000;
 $darkgrey: #9B9B9B;
 $lightgrey: #EEEEEE;
 $white: #FFFFFF;
@@ -28,7 +28,7 @@ $dribbble: #EA4C89;
 //// Defaults
 $bodycolor: $secondary;
 $headingcolor: $secondary;
-$line: $lightgrey;
+$line: #D8D8D8;
 //// Into an array
 $colors: (
 	primary: $primary,
@@ -78,7 +78,7 @@ a:not([href]):not([tabindex]) {
 //// E.g Font Color: fc-primary or background .bg-black
 @each $name, $color in $colors {
 	.fc-#{$name} {
-		color: #{$color};
+		color: #{$color}!important;
 	} 
 	.bg-#{$name} {
 		background-color: #{$color}!important;

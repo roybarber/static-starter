@@ -1,0 +1,45 @@
+/////////////////////////////////////////////////////////
+// Pagination                                          //
+/////////////////////////////////////////////////////////
+
+// Defaults
+$pagination-size:36px;
+$pagination-spacing:10px;
+
+$pagination-font-size: 14px;
+$pagination-text-color: $secondary;
+$pagination-bg-color: $lightgrey;
+
+$pagination-hover-bg-color: $line;
+$pagination-hover-text-color: $secondary;
+
+$pagination-active-bg-color: $primary;
+$pagination-active-text-color: $white;
+
+
+.pagination {
+	li {
+		width:$pagination-size;
+		height:$pagination-size;
+		margin:0 ($pagination-spacing / 2)
+	}
+	.icon {position:relative;top:3px;}
+	a, span {
+		display: block;
+		text-align: center;
+		background:$pagination-bg-color;
+		color: $pagination-text-color;
+		font-size: $pagination-font-size;
+		line-height: $pagination-size;
+		&.active {
+			background:$pagination-active-bg-color!important;
+			color: $pagination-active-text-color!important;
+		}
+		@include media-breakpoint-up(md) {
+			&:hover {
+				background:$pagination-hover-bg-color;
+				color: $pagination-hover-text-color;
+			}
+		}
+	}
+}

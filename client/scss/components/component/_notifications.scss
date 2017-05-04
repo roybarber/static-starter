@@ -1,0 +1,98 @@
+/////////////////////////////////////////////////////////
+// Notifications                                       //
+/////////////////////////////////////////////////////////
+
+
+// SETUP
+//// Notification Bar
+$notification-default-color: $primary;
+$notification-border-width: 1px;
+$notification-border-radius: 0;
+$notification-padding: 10px 50px;
+$notification-icon-size: 32px;
+$notification-icon-position-from-edge: 10px;
+//// Tiny marker
+$notification-tiny-size:8px;
+$notification-tiny-border-radius: 100%;
+//// Number marker
+$notification-number-text-color: $white;
+$notification-number-size:28px;
+$notification-number-border-radius:100%;
+$notification-number-font-size: 14px;
+$notification-number-font-weight: 400;
+
+.notification {
+	background: rgba($notification-default-color, .35);
+	border:$notification-border-width solid $notification-default-color;
+	position: relative;
+	@include border-radius($notification-border-radius);
+	padding:$notification-padding;
+	display: block;
+	
+	.icon {
+		//// Force height to ignore icon size classes
+		width:$notification-icon-size;
+		height:$notification-icon-size;
+		background-size:$notification-icon-size;
+		position: absolute;
+		top:50%;
+		margin-top:-($notification-icon-size / 2);
+		left:$notification-icon-position-from-edge;
+		background:$notification-default-color;
+	}
+	.icon-close {
+		left:auto;
+		right:$notification-icon-position-from-edge;
+	}
+	p {
+		color: darken($notification-default-color, 20%);
+	}
+	
+	&.tiny {
+		width:$notification-tiny-size;
+		height:$notification-tiny-size;
+		padding:0;
+		border:0!important;
+		@include border-radius($notification-tiny-border-radius);
+	}
+	
+	&.number {
+		width:$notification-number-size;
+		height:$notification-number-size;
+		line-height: ($notification-number-size - 2);
+		font-size: $notification-number-font-size;
+		font-weight: $notification-number-font-weight;
+		padding:0;
+		color: $notification-number-text-color!important;
+		@include border-radius($notification-number-border-radius);
+		text-align: center;
+	}
+	
+	// Add more: Name: #Color or $color 
+	$states: (
+		grey: $darkgrey,
+		error: $error,
+		warning: $warning,
+		success: $success
+	);
+	
+	@each $name, $color in $states {
+		&.#{$name} {
+			background: rgba($color, .35);
+			border-color:$color;
+			.icon {
+				background:$color;
+			}
+			p {
+				color: darken($color, 20%);
+			}
+			&.tiny, &.number {background:$color;}
+		} 
+	}
+}
+
+
+
+.pagination p {
+  vertical-align: middle;
+}

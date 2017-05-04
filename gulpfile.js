@@ -151,7 +151,7 @@ gulp.task('copy:fav', function() {
 });
 
 //clean temporary directories
-gulp.task('clean', del.bind(null, [config.dist, config.tmp]));
+gulp.task('clean', del.bind(null, [config.dev, config.tmp]));
 // Clean build transfered folders
 gulp.task('clean:dist', del.bind(null, [
   'build/dist/scss',
@@ -165,15 +165,16 @@ gulp.task('clean:dist', del.bind(null, [
 
 //run the server after having built generated files, and watch for changes
 gulp.task('serve', function() {
-  runSequence('build', 'inject:dev');
-  browserSync({
-    notify: false,
-    logPrefix: pkg.name,
-    server: ['build', config.dev]
-  });
-  gulp.watch(config.html, ['inject:dev', reload]);
-  gulp.watch(config.scss, ['sass', reload]);
-  gulp.watch([config.base + '/**/*', '!' + config.html, '!' + config.scss], ['copy:dev:assets', reload]);
+	runSequence('build', 'inject:dev', function() {
+		browserSync({
+			notify: false,
+			logPrefix: pkg.name,
+			server: ['build', config.dev]
+		});
+	});
+	gulp.watch(config.html, ['inject:dev', reload]);
+	gulp.watch(config.scss, ['sass', reload]);
+	gulp.watch([config.base + '/**/*', '!' + config.html, '!' + config.scss], ['copy:dev:assets', reload]);
 });
 
 // Inject JSON Varibles

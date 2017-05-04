@@ -1,0 +1,30 @@
+/////////////////////////////////////////////////////////
+// Flexbox Grid                                        //
+/////////////////////////////////////////////////////////
+
+
+// Setup
+$img-border-radius: 6px;
+$img-thumb-pad: 5px;
+$img-thumb-border: 1px solid $line;
+
+
+// Image types
+img {
+	vertical-align: middle;
+	&.responsive {
+		width:100%;
+		height:auto;
+	}
+	&.rounded {
+		@include border-radius($img-border-radius);
+	}
+	&.circle {
+		@include border-radius(100%);
+	}
+	
+	&.thumbnail {
+		padding:$img-thumb-pad;
+		border:$img-thumb-border;
+	}
+}
