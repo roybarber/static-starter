@@ -2,24 +2,30 @@
 // Notifications                                       //
 /////////////////////////////////////////////////////////
 
-
 // SETUP
 //// Notification Bar
-$notification-default-color: $primary;
-$notification-border-width: 1px;
-$notification-border-radius: 0;
-$notification-padding: 10px 50px;
-$notification-icon-size: 32px;
-$notification-icon-position-from-edge: 10px;
+$notification-default-color: $primary!default;
+$notification-border-width: 1px!default;
+$notification-border-radius: 0!default;
+$notification-padding: 10px 50px!default;
+$notification-icon-size: 32px!default;
+$notification-icon-position-from-edge: 10px!default;
 //// Tiny marker
-$notification-tiny-size:8px;
-$notification-tiny-border-radius: 100%;
+$notification-tiny-size:8px!default;
+$notification-tiny-border-radius: 100%!default;
 //// Number marker
-$notification-number-text-color: $white;
-$notification-number-size:28px;
-$notification-number-border-radius:100%;
-$notification-number-font-size: 14px;
-$notification-number-font-weight: 400;
+$notification-number-text-color: $white!default;
+$notification-number-size:28px!default;
+$notification-number-border-radius:100%!default;
+$notification-number-font-size: 14px!default;
+$notification-number-font-weight: 400!default;
+//// States
+$states: (
+	grey: $darkgrey,
+	error: $error,
+	warning: $warning,
+	success: $success
+)!default;
 
 .notification {
 	background: rgba($notification-default-color, .35);
@@ -28,7 +34,6 @@ $notification-number-font-weight: 400;
 	@include border-radius($notification-border-radius);
 	padding:$notification-padding;
 	display: block;
-	
 	.icon {
 		//// Force height to ignore icon size classes
 		width:$notification-icon-size;
@@ -47,7 +52,6 @@ $notification-number-font-weight: 400;
 	p {
 		color: darken($notification-default-color, 20%);
 	}
-	
 	&.tiny {
 		width:$notification-tiny-size;
 		height:$notification-tiny-size;
@@ -55,7 +59,6 @@ $notification-number-font-weight: 400;
 		border:0!important;
 		@include border-radius($notification-tiny-border-radius);
 	}
-	
 	&.number {
 		width:$notification-number-size;
 		height:$notification-number-size;
@@ -67,15 +70,6 @@ $notification-number-font-weight: 400;
 		@include border-radius($notification-number-border-radius);
 		text-align: center;
 	}
-	
-	// Add more: Name: #Color or $color 
-	$states: (
-		grey: $darkgrey,
-		error: $error,
-		warning: $warning,
-		success: $success
-	);
-	
 	@each $name, $color in $states {
 		&.#{$name} {
 			background: rgba($color, .35);
@@ -89,10 +83,4 @@ $notification-number-font-weight: 400;
 			&.tiny, &.number {background:$color;}
 		} 
 	}
-}
-
-
-
-.pagination p {
-  vertical-align: middle;
 }

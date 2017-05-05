@@ -3,14 +3,15 @@
 /////////////////////////////////////////////////////////
 
 // Tab Defaults
-$tab-padding: 10px;
-$tab-border-thickness: 2px;
-$tab-border-style: solid;
+$tab-padding: 10px!default;
+$tab-border-thickness: 2px!default;
+$tab-border-style: solid!default;
 $tab-border-color: $line;
-$tab-border-hover-color: darken($line, 10%);
-$tab-border-active-color: $primary;
-$tab-hover-bg-color: $lightgrey;
-$tab-hover-text-color: $primary;
+$tab-border-hover-color: darken($line, 10%)!default;
+$tab-border-active-color: $primary!default;
+$tab-hover-bg-color: $lightgrey!default;
+$tab-hover-text-color: $primary!default;
+
 
 .tabs {
 	//// Fix the inline spacing bug

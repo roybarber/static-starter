@@ -2,33 +2,32 @@
 // Color                                               //
 /////////////////////////////////////////////////////////
 
-
 // SETUP
 //// Base
-$primary: #4A90E2;
-$secondary: #0E1C2D;
-$black: #000000;
-$darkgrey: #9B9B9B;
-$lightgrey: #EEEEEE;
-$white: #FFFFFF;
+$primary: #4A90E2!default;
+$secondary: #0E1C2D!default;
+$black: #000000!default;
+$darkgrey: #9B9B9B!default;
+$lightgrey: #EEEEEE!default;
+$white: #FFFFFF!default;
 //// States
-$error: #D0021B;
-$warning: #F5A623;
-$success: #7ED321;
-$disabled: $lightgrey;
+$error: #D0021B!default;
+$warning: #F5A623!default;
+$success: #7ED321!default;
+$disabled: $lightgrey!default;
 //// Social
-$facebook: #3B5998;
-$twitter: #1DA1F2;
-$googleplus: #DD4B39;
-$linkedin: #0077B5;
-$instagram: #E1306C;
-$slack: #E9A820;
-$youtube: #CD201F;
-$dribbble: #EA4C89;
+$facebook: #3B5998!default;
+$twitter: #1DA1F2!default;
+$googleplus: #DD4B39!default;
+$linkedin: #0077B5!default;
+$instagram: #E1306C!default;
+$slack: #E9A820!default;
+$youtube: #CD201F!default;
+$dribbble: #EA4C89!default;
 //// Defaults
-$bodycolor: $secondary;
-$headingcolor: $secondary;
-$line: #D8D8D8;
+$bodycolor: $secondary!default;
+$headingcolor: $secondary!default;
+$line: #D8D8D8!default;
 //// Into an array
 $colors: (
 	primary: $primary,
@@ -51,7 +50,7 @@ $colors: (
 	dribbble: $dribbble,
 	bodycolor: $bodycolor,
 	headingcolor: $headingcolor
-);
+) !default;
 
 
 // Color Helpers

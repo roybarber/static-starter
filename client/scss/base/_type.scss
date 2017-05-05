@@ -4,31 +4,29 @@
 
 // Type Defaults
 //// Base
-$hfont : 'Roboto', sans-serif;
-$bfont : $hfont;
-$line-height-base: 1.5;
+$hfont : 'Roboto', sans-serif !default;
+$bfont : $hfont !default;
+$line-height-base: 1.5!default;
 //// Mobile Sizes
-$fs-1-mobile: 32px;
-$fs-2-mobile: 28px;
-$fs-3-mobile: 24px;
-$fs-4-mobile: 20px;
-$fs-5-mobile: 18px;
-$fs-6-mobile: 16px;
-$fs-7-mobile: 16px;
-$fs-8-mobile: 14px;
+$fs-1-mobile: 32px!default;
+$fs-2-mobile: 28px!default;
+$fs-3-mobile: 24px!default;
+$fs-4-mobile: 20px!default;
+$fs-5-mobile: 18px!default;
+$fs-6-mobile: 16px!default;
+$fs-7-mobile: 16px!default;
+$fs-8-mobile: 14px!default;
 //// Desktop Sizes
-$fs-1-desktop: 50px;
-$fs-2-desktop: 36px;
-$fs-3-desktop: 28px;
-$fs-4-desktop: 24px;
-$fs-5-desktop: 20px;
-$fs-6-desktop: 18px;
-$fs-7-desktop: 16px;
-$fs-8-desktop: 14px;
+$fs-1-desktop: 50px!default;
+$fs-2-desktop: 36px!default;
+$fs-3-desktop: 28px!default;
+$fs-4-desktop: 24px!default;
+$fs-5-desktop: 20px!default;
+$fs-6-desktop: 18px!default;
+$fs-7-desktop: 16px!default;
+$fs-8-desktop: 14px!default;
 
 
-
-html, body {}
 body { 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -51,8 +49,7 @@ body {
 	font-weight: 300;
 	color: $bodycolor;
 }
-
-
+//// Mobile
 h1, .fs-1 {
 	@extend .heading;
 	font-size: $fs-1-mobile;
@@ -93,6 +90,7 @@ small, .fs-8 {
 	font-size: $fs-8-mobile;
 	line-height: $fs-8-mobile * $line-height-base;
 }
+//// Desktop
 @include media-breakpoint-up(md) {
 	h1, .fs-1 {
 		font-size: $fs-1-desktop;
@@ -129,18 +127,22 @@ small, .fs-8 {
 }
 
 
-//// Font weights
+// Font weights
 .fw-300 {font-weight: 300;}
 .fw-400 {font-weight: 400;}
 .fw-600, strong, b {font-weight: 600;}
 .fw-800 {font-weight: 800;}
-//// Text modifiers
+
+
+// Text modifiers
 .text-lowercase {text-transform: lowercase !important;}
 .text-uppercase {text-transform: uppercase !important;}
 .text-capitalize {text-transform: capitalize !important;}
 .text-italic {font-style: italic;}
 .text-underline {text-decoration: underline;}
-//// Text Align
+
+
+// Text Align
 @each $breakpoint in map-keys($grid-breakpoints) {
 	@include media-breakpoint-up($breakpoint) {
 		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
@@ -149,21 +151,20 @@ small, .fs-8 {
 		.text#{$infix}-center { text-align: center !important; }
 	}
 }
-// Alignment
 .text-justify  { text-align: justify !important; }
 .text-nowrap   { white-space: nowrap !important; }
 .text-truncate { @include text-truncate; }
 
-// Images
-img.responsive {width:100%;height:auto;max-width: 100%;}
 
 // Lists
-ul {list-style: none;margin:0;padding:0;}
+ul, ol {list-style: none;padding:0;}
+
 
 // Other helpers
 .text-hide {
 	@include text-hide();
 }
+
 
 // Breaks
 hr {

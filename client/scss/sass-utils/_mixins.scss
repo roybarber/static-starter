@@ -1,7 +1,6 @@
-/*------------------------------------*\
-    #Mixins
-\*------------------------------------*/
-
+/////////////////////////////////////////////////////////
+// Mixins                                              //
+/////////////////////////////////////////////////////////
 
 // Clearfix - Usage: @include clearfix();
 @mixin clearfix() {
@@ -15,11 +14,6 @@
     &:after {
         clear: both;
     }
-}
-
-// PX to EM - Usage: font-size: em(37px);
-@function em($px, $base: $base-size) {
-    @return ($px / $base) * 1em;
 }
 
 
@@ -75,8 +69,7 @@
     }
 }
 
-// Text truncate
-// Requires inline-block or block for proper styling
+// Text truncate - Requires inline-block or block for proper styling
 @mixin text-truncate() {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -93,15 +86,16 @@
 }
 
 
-// Border Radius - Usage: @include border-radius(5px);
-//                        @include border-top-radius(10px);
-//                        @include border-right-radius(8px);
-//                        @include border-bottom-radius(10px);
-//                        @include border-left-radius (6px);
+// Border Radius - Usage:
+//// @include border-radius(5px);
+//// @include border-top-radius(10px);
+//// @include border-right-radius(8px);
+//// @include border-bottom-radius(10px);
+//// @include border-left-radius (6px);
 @mixin border-radius($radius) {
     -webkit-border-radius: $radius;
     border-radius: $radius;
-    background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+    background-clip: padding-box;
 }
 @mixin border-top-radius($radius) {
     -webkit-border-top-right-radius: $radius;
@@ -132,7 +126,7 @@
     background-clip: padding-box;
 }
 
-
+// Mapping assists
 @mixin _assert-ascending($map, $map-name) {
   $prev-key: null;
   $prev-num: null;
@@ -148,7 +142,6 @@
     $prev-num: $num;
   }
 }
-
 @mixin _assert-starts-at-zero($map) {
   $values: map-values($map);
   $first-value: nth($values, 1);
@@ -158,61 +151,52 @@
 }
 
 // Grid system
-//
-// Generate semantic grid columns with these mixins.
-// Breakpoint viewport sizes and media queries.
-//
-// Breakpoints are defined as a map of (name: minimum width), order from small to large:
-//
-//    (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
-//
-// The map defined in the `$grid-breakpoints` global variable is used as the `$breakpoints` argument by default.
-
-// Name of the next breakpoint, or null for the last breakpoint.
-//
-//    >> breakpoint-next(sm)
-//    md
-//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    md
-//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
-//    md
+//// Generate semantic grid columns with these mixins. Breakpoint viewport sizes and media queries.
+//// Breakpoints are defined as a map of (name: minimum width), order from small to large:
+//// (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
+//// The map defined in the `$grid-breakpoints` global variable is used as the `$breakpoints` argument by default.
+//// Name of the next breakpoint, or null for the last breakpoint.
+//// >> breakpoint-next(sm)
+//// >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//// >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
 @function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
   $n: index($breakpoint-names, $name);
   @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
 }
 
+
 // Minimum breakpoint width. Null for the smallest (first) breakpoint.
-//
-//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    576px
+//// >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//// 576px
 @function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
   $min: map-get($breakpoints, $name);
   @return if($min != 0, $min, null);
 }
 
+
 // Maximum breakpoint width. Null for the largest (last) breakpoint.
-// The maximum value is calculated as the minimum of the next one less 0.1.
-//
-//    >> breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    767px
+//// The maximum value is calculated as the minimum of the next one less 0.1.
+//// >> breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//// 767px
 @function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
   $next: breakpoint-next($name, $breakpoints);
   @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
 }
 
+
 // Returns a blank string if smallest breakpoint, otherwise returns the name with a dash infront.
-// Useful for making responsive utilities.
-//
-//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    ""  (Returns a blank string)
-//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    "-sm"
+//// Useful for making responsive utilities.
+//// >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//// ""  (Returns a blank string)
+//// >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//// "-sm"
 @function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
   @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
 }
 
+
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
-// Makes the @content apply to the given breakpoint and wider.
+//// Makes the @content apply to the given breakpoint and wider.
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
   $min: breakpoint-min($name, $breakpoints);
   @if $min {
@@ -224,8 +208,9 @@
   }
 }
 
+
 // Media of at most the maximum breakpoint width. No query for the largest breakpoint.
-// Makes the @content apply to the given breakpoint and narrower.
+//// Makes the @content apply to the given breakpoint and narrower.
 @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
   $max: breakpoint-max($name, $breakpoints);
   @if $max {
@@ -237,8 +222,9 @@
   }
 }
 
+
 // Media that spans multiple breakpoint widths.
-// Makes the @content apply between the min and max breakpoints
+//// Makes the @content apply between the min and max breakpoints
 @mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
   @include media-breakpoint-up($lower, $breakpoints) {
     @include media-breakpoint-down($upper, $breakpoints) {
@@ -247,9 +233,10 @@
   }
 }
 
+
 // Media between the breakpoint's minimum and maximum widths.
-// No minimum for the smallest breakpoint, and no maximum for the largest one.
-// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+//// No minimum for the smallest breakpoint, and no maximum for the largest one.
+//// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
 @mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
   @include media-breakpoint-between($name, $name, $breakpoints) {
     @content;
@@ -257,16 +244,10 @@
 }
 
 
-
-
-
 // Framework grid generation
-//
-// Used only by Bootstrap to generate the correct number of grid classes given
-// any value of `$grid-columns`.
-
+//// Used only by Bootstrap to generate the correct number of grid classes given any value of `$grid-columns`.
 @mixin make-grid-columns($columns: $grid-columns, $gutters: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
-  // Common properties for all breakpoints
+  //// Common properties for all breakpoints
   %grid-column {
     position: relative;
     width: 100%;
@@ -278,7 +259,7 @@
   @each $breakpoint in map-keys($breakpoints) {
     $infix: breakpoint-infix($breakpoint, $breakpoints);
 
-    // Allow columns to stretch full width below their breakpoints
+    //// Allow columns to stretch full width below their breakpoints
     @for $i from 1 through $columns {
       .col#{$infix}-#{$i} {
         @extend %grid-column;
@@ -289,7 +270,7 @@
     }
 
     @include media-breakpoint-up($breakpoint, $breakpoints) {
-      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+      //// Provide basic `.col-{bp}` classes for equal-width flexbox columns
       .col#{$infix} {
         flex-basis: 0;
         flex-grow: 1;
@@ -314,7 +295,7 @@
         }
       }
 
-      // `$columns - 1` because offsetting by the width of an entire row isn't possible
+      //// `$columns - 1` because offsetting by the width of an entire row isn't possible
       @for $i from 0 through ($columns - 1) {
         @if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-xs-0
           .offset#{$infix}-#{$i} {
@@ -330,9 +311,7 @@
 
 
 /// Grid system
-//
-// Generate semantic grid columns with these mixins.
-
+//// Generate semantic grid columns with these mixins.
 @mixin make-container($gutters: $grid-gutter-widths) {
   position: relative;
   margin-left: auto;
@@ -347,9 +326,7 @@
     }
   }
 }
-
-
-// For each breakpoint, define the maximum width of the container in a media query
+//// For each breakpoint, define the maximum width of the container in a media query
 @mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
   @each $breakpoint, $container-max-width in $max-widths {
     @include media-breakpoint-up($breakpoint, $breakpoints) {
@@ -358,7 +335,6 @@
     }
   }
 }
-
 @mixin make-gutters($gutters: $grid-gutter-widths) {
   @each $breakpoint in map-keys($gutters) {
     @include media-breakpoint-up($breakpoint) {
@@ -368,7 +344,6 @@
     }
   }
 }
-
 @mixin make-row($gutters: $grid-gutter-widths) {
   display: flex;
   flex-wrap: wrap;
@@ -381,12 +356,11 @@
     }
   }
 }
-
 @mixin make-col-ready($gutters: $grid-gutter-widths) {
   position: relative;
-  // Prevent columns from becoming too narrow when at smaller grid tiers by
-  // always setting `width: 100%;`. This works because we use `flex` values
-  // later on to override this initial width.
+  //// Prevent columns from becoming too narrow when at smaller grid tiers by
+  //// always setting `width: 100%;`. This works because we use `flex` values
+  //// later on to override this initial width.
   width: 100%;
   min-height: 1px; // Prevent collapsing
 
@@ -401,10 +375,10 @@
 
 @mixin make-col($size, $columns: $grid-columns) {
   flex: 0 0 percentage($size / $columns);
-  // width: percentage($size / $columns);
-  // Add a `max-width` to ensure content within each column does not blow out
-  // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
-  // do not appear to require this.
+  //// width: percentage($size / $columns);
+  //// Add a `max-width` to ensure content within each column does not blow out
+  //// the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+  //// do not appear to require this.
   max-width: percentage($size / $columns);
 }
 
@@ -421,7 +395,7 @@
 }
 
 @mixin make-col-modifier($type, $size, $columns) {
-  // Work around the lack of dynamic mixin @include support (https://github.com/sass/sass/issues/626)
+  //// Work around the lack of dynamic mixin @include support (https://github.com/sass/sass/issues/626)
   @if $type == push {
     @include make-col-push($size, $columns);
   } @else if $type == pull {
@@ -431,7 +405,7 @@
   }
 }
 
-// Visability hacks
+//// Visability hacks
 @mixin invisible($visibility) {
 	visibility: $visibility !important;
 }

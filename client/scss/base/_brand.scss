@@ -1,9 +1,12 @@
 /////////////////////////////////////////////////////////
 // Brand                                               //
 /////////////////////////////////////////////////////////
-$logowidth: 184px;
-$logoheight: 50px;
-$emblem: 50px;
+
+// Setup
+$logowidth: 184px!default;
+$logoheight: 50px!default;
+$emblem: 50px!default;
+
 
 .logo {
 	display: block;

@@ -2,24 +2,23 @@
 // Flexbox Grid                                        //
 /////////////////////////////////////////////////////////
 
-
 // Setup
 //// Grid columns
-$grid-columns: 12;
-$grid-max-width: 1120px;
-$grid-gutter-width-base: 30px;
+$grid-columns: 12!default;
+$grid-max-width: 1120px!default;
+$grid-gutter-width-base: 30px!default;
 $grid-gutter-widths: (
 	xs: $grid-gutter-width-base,
 	sm: $grid-gutter-width-base,
 	md: $grid-gutter-width-base,
 	lg: $grid-gutter-width-base,
 	xl: $grid-gutter-width-base
-);
+) !default;
 //// Grid breakpoints
-$tabletmq: 576px;
-$desktopmq: 768px;
-$lgdesktopmq: 992px;
-$xldesktopmq: 1200px;
+$tabletmq: 576px!default;
+$desktopmq: 768px!default;
+$lgdesktopmq: 992px!default;
+$xldesktopmq: 1200px!default;
 //// Generate the Break Points
 $grid-breakpoints: (
 	xs: 0,
@@ -88,6 +87,7 @@ html {
 .align-text-bottom { vertical-align: text-bottom !important; }
 .align-text-top    { vertical-align: text-top !important; }
 
+
 // Displays
 //// e.g .d-sm-inline .d-md-block
 @each $breakpoint in map-keys($grid-breakpoints) {
@@ -104,6 +104,7 @@ html {
     .d#{$infix}-inline-flex  { display: inline-flex !important; }
   }
 }
+
 
 // Flex variation for Flex Box Grid
 //// Custom styles for additional flex alignment options.
@@ -152,21 +153,26 @@ html {
 	}
 }
 
+
 // Spacing Helpers 
 //// Set and forget padding & margins
 $spacing: 0,5,10,15,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220;
-@each $space in $spacing {
-	.padding-top-#{$space} {
-		padding-top: #{$space}px;
-	} 
-	.padding-bottom-#{$space} {
-		padding-bottom: #{$space}px;
-	}
-	.margin-top-#{$space} {
-		margin-top: #{$space}px;
-	}
-	.margin-bottom-#{$space} {
-		margin-bottom: #{$space}px;
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		@each $space in $spacing {
+			.padding-top#{$infix}-#{$space} {
+				padding-top: #{$space}px;
+			} 
+			.padding-bottom#{$infix}-#{$space} {
+				padding-bottom: #{$space}px;
+			}
+			.margin-top#{$infix}-#{$space} {
+				margin-top: #{$space}px;
+			}
+			.margin-bottom#{$infix}-#{$space} {
+				margin-bottom: #{$space}px;
+			}
+		}
 	}
 }
-//// Needs improving to be breakpoint based
