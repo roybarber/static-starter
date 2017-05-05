@@ -13,59 +13,257 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
 	
-	<title>{{Page Title}}</title>
-	<meta name="description" content="{{Page Description}}"/>
-	<meta name="author" content="{{Site Name}}"/>
-	<meta name="copyright" content="Copyright {{Site Name}} 2017. All Rights Reserved."/>
-	<meta name="application-name" content="{{Site Name}}"/>
+	<title><% page_title %></title>
+	<meta name="description" content="<% page_description %>"/>
+	<meta name="author" content="<% site_name %>"/>
+	<meta name="copyright" content="Copyright <% site_name %> <% year %>. All Rights Reserved."/>
+	<meta name="application-name" content="<% site_name %>"/>
 	
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 	
-	<!-- build:css assets/css/main.css -->
-	<link rel="stylesheet" type="text/css" href="tmp/main.css" />
+	<!-- build:css /assets/css/main.css -->
+	<link rel="stylesheet" type="text/css" href="/tmp/main.css" />
 	<!-- endbuild -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon.png">
+
+	<!-- Schema.org markup for Google+ -->
+	<meta itemprop="name" content="<% site_name %>">
+	<meta itemprop="description" content="<% page_description %>">
+	<meta itemprop="image" content="/share.png">
+
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@<% twitter %>">
+	<meta name="twitter:title" content="<% site_name %>">
+	<meta name="twitter:description" content="<% page_description %>">
+	<meta name="twitter:image:src" content="/share.png">
+
+	<!-- Open Graph data -->
+	<meta property="og:title" content="<% site_name %>"/>
+	<meta property="og:url" content=""/>
+	<meta property="og:image" content="/share.png"/>
+	<meta property="og:image:url" content="/share.png"/>
+	<meta property="og:description" content="<% page_description %>"/>
+	<meta property="og:site_name" content="<% site_name %>"/>
 
 </head>
 <body>
 
-	<header class="container">
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<h1><a href="https://wearedamage.com">We Are Damage</a></h1>
-			</div>
-		</div>	
+	<header class="padding-top-10 padding-bottom-10 padding-top-md-40 padding-bottom-md-40 bg-secondary">
+		<h1><a class="logo" href="/"><% company_name %></a></h1>
 	</header>
-	
-	<hr/>
 
-	<section class="container">
+	<section class="container margin-top-40">
 		<div class="row">
-			<article class="col-md-8">
-				<h1>Heading One</h1>
-				<h2>Heading Two</h2>
-				<h3>Heading Three</h3>
-				<h4>Heading Four</h4>
-				<h5>Heading Five</h5>
-				<h6>Heading Six</h6>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-				<p>The following will be replaced outside of the source file: <% company_name %></p>
+			<article class="col-md-12">
+				
+				<h1 class="margin-bottom-10">Heading One</h1>
+				<h2 class="margin-bottom-10">Heading Two</h2>
+				<h3 class="margin-bottom-10">Heading Three</h3>
+				<h4 class="margin-bottom-10">Heading Four</h4>
+				<h5 class="margin-bottom-10">Heading Five</h5>
+				<h6 class="margin-bottom-10">Heading Six</h6>
+				<p class="margin-bottom-10">Paragraph - Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. <% company_name %> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the <a href="#" class="fc-primary">inline link</a> industry's standard dummy text ever since the 1500s.</p>
 				<p><a href="#">Link</a></p>
 				
+				<hr class="margin-top-40 margin-bottom-40"/>
+				
+				
+				<div>
+					<ul>
+						<li class="fs-1 margin-bottom-30"><strong>.fs-1</strong> - Lorem Ipsum is <strong>simply dummy text</strong> of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</li>
+						<li class="fs-2 margin-bottom-30"><strong>.fs-2</strong> - Lorem Ipsum is <strong>simply dummy text</strong> of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</li>
+						<li class="fs-3 margin-bottom-30"><strong>.fs-3</strong> - Lorem Ipsum is <strong>simply dummy text</strong> of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</li>
+						<li class="fs-4 margin-bottom-30"><strong>.fs-4</strong> - Lorem Ipsum is <strong>simply dummy text</strong> of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</li>
+						<li class="fs-5 margin-bottom-30"><strong>.fs-5</strong> - Lorem Ipsum is <strong>simply dummy text</strong> of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</li>
+						<li class="fs-6 margin-bottom-30"><strong>.fs-6</strong> - Lorem Ipsum is <strong>simply dummy text</strong> of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</li>
+						<li class="fs-7 margin-bottom-30"><strong>.fs-7</strong> - Lorem Ipsum is <strong>simply dummy text</strong> of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</li>
+						<li class="fs-8 margin-bottom-30"><strong>.fs-8</strong> - Lorem Ipsum is <strong>simply dummy text</strong> of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</li>
+					</ul>
+				</div>
+				
+				<hr class="margin-top-40 margin-bottom-40"/>
+				
+				
+				
+				<div class="row margin-bottom-20">
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-primary"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-secondary"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-black"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-darkgrey"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-lightgrey"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-white"></div></div>
+				</div>
+				<div class="row margin-bottom-20">
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-error"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-warning"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-success"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-disabled"></div></div>
+				</div>
+				<div class="row margin-bottom-20">
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-facebook"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-twitter"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-googleplus"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-linkedin"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-instagram"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-slack"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-youtube"></div></div>
+					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-dribbble"></div></div>
+				</div>
+				
+				<hr class="margin-top-40 margin-bottom-40"/>
+				
+				<div class="row margin-bottom-20">
+					<ul class="col-md-12">
+						<li><p class="fc-primary">Text Color</p></li>
+						<li><p class="fc-secondary">Text Color</p></li>
+						<li><p class="fc-black">Text Color</p></li>
+						<li><p class="fc-darkgrey">Text Color</p></li>
+						<li><p class="fc-lightgrey">Text Color</p></li>
+						<li><p class="fc-white">Text Color</p></li>
+					</ul>
+				</div>
+				<div class="row margin-bottom-20">
+					<ul class="col-md-12">
+						<li><p class="fc-error">Text Color</p></li>
+						<li><p class="fc-warning">Text Color</p></li>
+						<li><p class="fc-success">Text Color</p></li>
+						<li><p class="fc-disabled">Text Color</p></li>
+					</ul>
+				</div>
+				<div class="row margin-bottom-20">
+					<ul class="col-md-12">
+						<li><p class="fc-facebook">Text Color</p></li>
+						<li><p class="fc-twitter">Text Color</p></li>
+						<li><p class="fc-googleplus">Text Color</p></li>
+						<li><p class="fc-linkedin">Text Color</p></li>
+						<li><p class="fc-instagram">Text Color</p></li>
+						<li><p class="fc-slack">Text Color</p></li>
+						<li><p class="fc-youtube">Text Color</p></li>
+						<li><p class="fc-dribbble">Text Color</p></li>
+					</ul>
+				</div>
+				
+				<hr class="margin-top-40 margin-bottom-40"/>
+				
+				<div>
+					<span class="icon icon-40 icon-sort bg-secondary"></span>
+					<span class="icon icon-40 icon-close"></span>
+					<span class="icon icon-40 icon-loading"></span>
+					<span class="icon icon-40 icon-date"></span>
+					<span class="icon icon-40 icon-star-active"></span>
+					<span class="icon icon-40 icon-divider"></span>
+					<span class="icon icon-40 icon-select-active"></span>
+					<span class="icon icon-40 icon-menu"></span>
+					<span class="icon icon-40 icon-heart"></span>
+					<span class="icon icon-40 icon-share"></span>
+					<span class="icon icon-40 icon-tag"></span>
+					<span class="icon icon-40 icon-warning"></span>
+					<span class="icon icon-40 icon-search"></span>
+					<span class="icon icon-40 icon-trash"></span>
+					<span class="icon icon-40 icon-checkmark"></span>
+					<span class="icon icon-40 icon-more-detail"></span>
+					<span class="icon icon-40 icon-info"></span>
+					<span class="icon icon-40 icon-copy"></span>
+					<span class="icon icon-40 icon-location"></span>
+					<span class="icon icon-40 icon-date"></span>
+					<span class="icon icon-40 icon-required"></span>
+					<span class="icon icon-40 icon-heart-solid"></span>
+					<span class="icon icon-40 icon-error"></span>
+					<span class="icon icon-40 icon-select"></span>
+					<span class="icon icon-40 icon-star-action"></span>
+					<span class="icon icon-40 icon-star-inactive"></span>
+				</div>
+				
+				<div>
+					<span class="icon icon-40 icon-instagram bg-red"></span>
+					<span class="icon icon-40 icon-slack"></span>
+					<span class="icon icon-40 icon-googleplus"></span>
+					<span class="icon icon-40 icon-youtube"></span>
+					<span class="icon icon-40 icon-facebook"></span>
+					<span class="icon icon-40 icon-twitter"></span>
+					<span class="icon icon-40 icon-linkedin"></span>
+					<span class="icon icon-40 icon-dribbble"></span>
+				</div>
+				
+				<div>
+					<span class="icon icon-16 icon-dribbble"></span>
+					<span class="icon icon-24 icon-dribbble"></span>
+					<span class="icon icon-32 icon-dribbble"></span>
+					<span class="icon icon-40 icon-dribbble"></span>
+					<span class="icon icon-44 icon-dribbble"></span>
+					<span class="icon icon-50 icon-dribbble"></span>
+					<span class="icon icon-60 icon-dribbble"></span>
+					<span class="icon icon-70 icon-dribbble"></span>
+					<span class="icon icon-80 icon-dribbble"></span>
+					<span class="icon icon-100 icon-dribbble"></span>
+					<span class="icon icon-126 icon-dribbble"></span>
+					<span class="icon icon-150 icon-dribbble"></span>
+				</div>
+				
+				<hr class="margin-top-40 margin-bottom-40"/>
+				
 				<ul class="">
-					<li><a href="#" class="btn btn-primary">Button</a></li>
-					<li><a href="#" class="btn btn-black">Button</a></li>
-					<li><a href="#" class="btn btn-secondary">Button</a></li>
-					<li><a href="#" class="btn btn-white">Button</a></li>
-					<li><a href="#" class="btn btn-primary btn-outline">Button</a></li>
-					<li><a href="#" class="btn btn-secondary btn-outline">Button</a></li>
-					<li><a href="#" class="btn btn-primary btn-disabled">Button</a></li>
-					<li><button type="button" disabled>Button</button></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-primary">Button</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-secondary">Button</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-black">Button</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-darkgrey">Button</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-lightgrey">Button</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-white">Button</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-danger">Button</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-warning">Button</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-success">Button</a></li>
+					
+					<li><a href="#" class="btn margin-bottom-15 btn-primary btn-outline">Button Outline</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-secondary btn-outline">Button Outline</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-black btn-outline">Button Outline</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-darkgrey btn-outline">Button Outline</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-lightgrey btn-outline">Button Outline</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-white btn-outline">Button Outline</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-danger btn-outline">Button Outline</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-warning btn-outline">Button Outline</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-success btn-outline">Button Outline</a></li>
+					
+					<li><a href="#" class="btn margin-bottom-15 btn-primary btn-disabled">Button</a></li>
+					<li><button type="button" class="margin-bottom-15" disabled>Button</button></li>
+					
+					<li><a href="#" class="btn margin-bottom-15 btn-secondary"><span class="icon icon-star-action"></span>
+Button with icon</a></li>
+					<li><a href="#" class="btn margin-bottom-15 btn-danger btn-outline"><span class="icon icon-warning bg-error"></span>Button with icon</a></li>
+
+					<li><a href="#" class="btn btn-primary btn-wide">Button wide</a></li>
 				</ul>
+				
+				<hr class="margin-top-40 margin-bottom-40"/>
+				
+				<div class="row">
+					<div class="col-12 col-sm-6 col-md-3 margin-bottom-10">
+						<img src="http://lorempixel.com/640/480/city" alt="Image" class="responsive"/>
+					</div>
+					<div class="col-12 col-sm-6 col-md-3 margin-bottom-10">
+						<img src="http://lorempixel.com/640/480/city" alt="Image" class="responsive rounded"/>
+					</div>
+					<div class="col-12 col-sm-6 col-md-3 margin-bottom-10">
+						<img src="http://lorempixel.com/640/480/city" alt="Image" class="responsive circle"/>
+					</div>
+					<div class="col-12 col-sm-6 col-md-3 margin-bottom-10">
+						<img src="http://lorempixel.com/640/480/city" alt="Image" class="responsive rounded thumbnail"/>
+					</div>
+				</div>
+				
+				
+				<hr class="margin-top-30 margin-bottom-40"/>
 				
 				<form>
 					<div class="input-group">
 						<label>Label for Input</label>
 						<input type="text" placeholder="Placeholder Text">
+						<span class="helper-message">This is some helper text to assist you</span>
 					</div>
 					<div class="input-group">
 						<label>Label for Input</label>
@@ -77,8 +275,8 @@
 					</div>
 					<div class="input-group">
 						<label>Label for Input</label>
-						<span class="state-message error">Please enter a valid email address</span>
 						<input type="text" placeholder="Placeholder Text" class="error" required>
+						<span class="state-message error">Please enter a valid email address</span>
 					</div>
 					<div class="input-group">
 						<label>Label for Input</label>
@@ -96,150 +294,123 @@
 						<label>Label for Input</label>
 						<textarea placeholder="Placeholder Text"></textarea>
 					</div>
-					<div class="field-wrapper radio-wrapper">
-						<label class="radio">Label for Input
-							<input type="radio" name="contract_type" value="year" checked="">
-							<div class="radio-indicator"></div>
-						</label>
+					<div class="input-group">
+						<label>Label for Input</label>
+						<input type="range" class="rangeslider" max="100" min="0" onchange="document.getElementById('rangevalue').innerHTML = this.value;" step="1" name="rangeslider" value="50">
+    					<label class="result">Value: <span id="rangevalue">50</span></label>
 					</div>
-					<div class="field-wrapper radio-wrapper">
-						<label class="radio">Label for Input
-							<input type="radio" name="contract_type" value="month">
-							<div class="radio-indicator"></div>
-						</label>
+					<div class="input-group">
+						<div class="radio-wrapper">
+							<label class="radio">Label for Input
+								<input type="radio" name="contract_type" value="year" checked="">
+								<div class="radio-indicator"></div>
+							</label>
+						</div>
+						<div class="radio-wrapper">
+							<label class="radio">Label for Input
+								<input type="radio" name="contract_type" value="month">
+								<div class="radio-indicator"></div>
+							</label>
+						</div>
+						<div class="checkbox-wrapper">
+							<label class="checkbox">Label for Input
+								<input type="checkbox" name="checkbox" value="month" checked>
+								<div class="checkbox-indicator"></div>
+							</label>
+						</div>
 					</div>
-					<div class="field-wrapper checkbox-wrapper">
-						<label class="checkbox">Label for Input
-							<input type="checkbox" name="checkbox" value="month" checked>
-							<div class="checkbox-indicator"></div>
-						</label>
-					</div>
+					
 				</form>
 				
+				<hr class="margin-top-40 margin-bottom-40"/>
+				
+				<div>
+					<div class="notification margin-bottom-20">
+						<span class="icon icon-40 icon-info left"></span>
+						<p class="fs-7">Message</p>
+						<a href="#" class="icon icon-40 icon-close text-hide right">Close</a>
+					</div>
+					<div class="notification error margin-bottom-20">
+						<span class="icon icon-40 icon-warning left"></span>
+						<p class="fs-7">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+						<a href="#" class="icon icon-40 icon-close text-hide right">Close</a>
+					</div>
+					<div class="notification warning margin-bottom-20">
+						<span class="icon icon-40 icon-warning left"></span>
+						<p class="fs-7">Message</p>
+						<a href="#" class="icon icon-40 icon-close text-hide right">Close</a>
+					</div>
+					<div class="notification success margin-bottom-20">
+						<span class="icon icon-40 icon-info left"></span>
+						<p class="fs-7">Message</p>
+						<a href="#" class="icon icon-40 icon-close text-hide right">Close</a>
+					</div>
+					<div class="margin-bottom-20">
+						<span class="notification tiny error"></span>
+					</div>
+					<div class="">
+						<span class="notification number warning">99</span>
+						
+					</div>
+				</div>
+				
+				<hr class="margin-top-40 margin-bottom-40"/>
+				
+				<div>
+					<div class="breadcrumbs">
+						<p class="fs-7 d-flex align-items-center"><a href="#" class="">Home</a>&nbsp;&nbsp;<span class="icon icon-16 icon-divider"></span>&nbsp;&nbsp;<a href="#" class="">Category</a>&nbsp;&nbsp;<span class="icon icon-16 icon-divider"></span>&nbsp;&nbsp;Page Title</p>
+					</div>
+				</div>
+				
+				<hr class="margin-top-40 margin-bottom-40"/>
+				
+				<div class="row">
+					
+					<ul class="col-md-12 tabs tabs-primary tabs-top margin-bottom-40">
+						<li class="fs-7 fw-400"><a href="#" class="fc-black active">Tab 1</a></li>
+						<li class="fs-7 fw-400"><a href="#" class="fc-black">Tab 2</a></li>
+						<li class="fs-7 fw-400"><a href="#" class="fc-black">Tab 3</a></li>
+					</ul>
+					
+					<ul class="col-md-12 tabs tabs-primary tabs-bottom margin-bottom-40">
+						<li class="fs-7 fw-400"><a href="#" class="fc-black active">Tab 1</a></li>
+						<li class="fs-7 fw-400"><a href="#" class="fc-black">Tab 2</a></li>
+						<li class="fs-7 fw-400"><a href="#" class="fc-black">Tab 3</a></li>
+					</ul>
+					
+					<ul class="col-md-3 tabs tabs-vertical tabs-right tabs-primary margin-bottom-40">
+						<li class="fs-7 fw-400"><a href="#" class="fc-black active">Tab 1</a></li>
+						<li class="fs-7 fw-400"><a href="#" class="fc-black">Tab 2</a></li>
+						<li class="fs-7 fw-400"><a href="#" class="fc-black">Tab 3</a></li>
+					</ul>
+				</div>
+				<div class="row">
+					<ul class="col-md-3 tabs tabs-vertical tabs-left tabs-primary margin-bottom-40">
+						<li class="fs-7 fw-400"><a href="#" class="fc-black active">Tab 1</a></li>
+						<li class="fs-7 fw-400"><a href="#" class="fc-black">Tab 2</a></li>
+						<li class="fs-7 fw-400"><a href="#" class="fc-black">Tab 3</a></li>
+					</ul>
+				</div>
+				
+				<hr class="margin-top-40 margin-bottom-40"/>
+				
+				<div>
+					<ul class="pagination d-flex justify-content-center">
+						<li><span><em class="icon icon-16 icon-divider icon-rotate-180"></em></span></li>
+						<li><span class="active">1</span></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">...</a></li>
+						<li><a href="#">98</a></li>
+						<li><a href="#">99</a></li>
+						<li><a href="#"><em class="icon icon-16 icon-divider"></em></a></li>
+					</ul>
+				</div>
+				
 			</article>
-			<aside class="col-md-3 col-md-push-1">
-				<p>Sidebar</p>
-			</aside>
 		</div>
 	</section>
-	
-	<hr/>
-	
-	<section class="container">
-		<div class="row grid-demo">
-			<div class="col">1 of 2</div>
-			<div class="col">1 of 2</div>
-		</div>
-		<div class="row grid-demo">
-			<div class="col">1 of 3</div>
-			<div class="col">1 of 3</div>
-			<div class="col">1 of 3</div>
-		</div>
-	</section>
-	
-	<hr/>
-	
-	<!-- We can vertically and baseline align with Flexbox -->
-	<section class="container">
-		<div class="row align-items-start" style="min-height:200px;background-color: rgba(255,0,0,.2);">
-			<div class="col">One of three columns</div>
-			<div class="col">One of three columns</div>
-			<div class="col">One of three columns</div>
-		</div>
-		<div class="row align-items-center" style="min-height:200px;background-color: rgba(255,0,0,.3);">
-			<div class="col">One of three columns</div>
-			<div class="col">One of three columns</div>
-			<div class="col">One of three columns</div>
-		</div>
-		<div class="row align-items-end" style="min-height:200px;background-color: rgba(255,0,0,.2);">
-			<div class="col">One of three columns</div>
-			<div class="col">One of three columns</div>
-			<div class="col">One of three columns</div>
-		</div>
-	</section>
-	
-	<hr/>
-	
-	<div class="container">
-		<div class="row" style="min-height:300px;background-color: rgba(255,0,0,.1);">
-			<div class="col align-self-start" style="background-color: rgba(255,0,0,.1);">One of three columns</div>
-			<div class="col align-self-center" style="background-color: rgba(255,0,0,.1);">One of three columns</div>
-			<div class="col align-self-end" style="background-color: rgba(255,0,0,.1);">One of three columns</div>
-		</div>
-	</div>
 
-	<hr/>
-	
-	<!-- Visibility hacks example -->
-	<div class="container">
-		<style>.responsive-utilities-test{margin-top:.25rem}.responsive-utilities-test .col-6{margin-top:.5rem;margin-bottom:.5rem}.responsive-utilities-test span{display:block;padding:1rem .5rem;font-size:1rem;font-weight:700;line-height:1.1;text-align:center;border-radius:.25rem}.hidden-on .col-6>.not-visible,.visible-on .col-6>.not-visible{color:#999;border:1px solid #ddd}.hidden-on .col-6 .visible,.visible-on .col-6 .visible{color:#468847;background-color:#dff0d8;border:1px solid #d6e9c6}</style>
-		<div class="row responsive-utilities-test visible-on">
-			<div class="col-6 col-sm-3">
-				<span class="hidden-sm-up visible">✔ Visible on extra small</span>
-				<span class="hidden-xs-down not-visible">Extra small</span>
-			</div>
-			<div class="col-6 col-sm-3">
-				<span class="hidden-md-up visible">✔ Visible on small or narrower</span>
-				<span class="hidden-sm-down not-visible">Small or narrower</span>
-			</div>
-			<div class="col-6 col-sm-3">
-				<span class="hidden-lg-up visible">✔ Visible on medium or narrower</span>
-				<span class="hidden-md-down not-visible">Medium or narrower</span>
-			</div>
-			<div class="col-6 col-sm-3">
-				<span class="hidden-xl-up visible">✔ Visible on large or narrower</span>
-				<span class="hidden-lg-down not-visible">Large or narrower</span>
-			</div>
-		</div>
-		
-		<div class="row responsive-utilities-test visible-on">
-			<div class="col-6 col-sm-3">
-				<span class="hidden-xs-down visible">✔ Visible on small or wider</span>
-				<span class="hidden-sm-up not-visible">Small or wider</span>
-			</div>
-			<div class="col-6 col-sm-3">
-				<span class="hidden-sm-down visible">✔ Visible on medium or wider</span>
-				<span class="hidden-md-up not-visible">Medium or wider</span>
-			</div>
-			<div class="col-6 col-sm-3">
-				<span class="hidden-md-down visible">✔ Visible on large or wider</span>
-				<span class="hidden-lg-up not-visible">Large or wider</span>
-			</div>
-			<div class="col-6 col-sm-3">
-				<span class="hidden-lg-down visible">✔ Visible on extra large</span>
-				<span class="hidden-xl-up not-visible">Extra large</span>
-			</div>
-		</div>
-		
-		<div class="row responsive-utilities-test visible-on">
-			<div class="col-6 col-sm-4">
-				<span class="hidden-sm-up visible">✔ Your viewport is exactly extra small</span>
-				<span class="hidden-xs-down not-visible">Your viewport is NOT exactly extra small</span>
-			</div>
-			<div class="col-6 col-sm-4">
-				<span class="hidden-xs-down hidden-md-up visible">✔ Your viewport is exactly small</span>
-				<span class="hidden-sm-only not-visible">Your viewport is NOT exactly small</span>
-			</div>
-			<div class="col-6 col-sm-4">
-				<span class="hidden-sm-down hidden-lg-up visible">✔ Your viewport is exactly medium</span>
-				<span class="hidden-md-only not-visible">Your viewport is NOT exactly medium</span>
-			</div>
-		</div>
-		
-		<div class="row responsive-utilities-test visible-on">
-			<div class="col-6 col-sm-4">
-				<span class="hidden-md-down hidden-xl-up visible">✔ Your viewport is exactly large</span>
-				<span class="hidden-lg-only not-visible">Your viewport is NOT exactly large</span>
-			</div>
-			<div class="col-6 col-sm-4">
-				<span class="hidden-lg-down visible">✔ Your viewport is exactly extra large</span>
-				<span class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</span>
-			</div>
-		</div>
-		
-	</div>
-	
-	<hr/>
+	<hr class="margin-top-40 margin-bottom-40"/>
 	
 	<section class="container">
 		<div class="row">
@@ -262,26 +433,28 @@
 		</div>
 	</section>
 	
-	<hr/>
+	<hr class="margin-top-40 margin-bottom-40"/>
 	
-	<footer class="container">
-		<div class="row">
-			<div class="col-md-6 text-center text-md-left">
-				<p>&copy; 2017 Client Name</p>
+	<footer class="container margin-top-40 margin-bottom-40">
+		<div class="row align-items-center">
+			<div class="col-md-5 text-center text-md-left">
+				<p class="margin-bottom-0">&copy; <% year %> <% company_name %></p>
 			</div>
-			<div class="col-md-6 text-center text-md-right">
-				<p>Built by: <a href="https://wearedamage.com" target="_blank">Damage</a></p>
+			<div class="col-md-2 justify-content-center">
+				<a class="logo emblem" href="/"><% company_name %></a>
+			</div>
+			<div class="col-md-5 text-center text-md-right">
+				<p class="margin-bottom-0">Built by: <a href="https://wearedamage.com" target="_blank">Damage</a></p>
 			</div>
 		</div>
 	</footer>
 
-	<!-- build:js assets/js/vendor.js -->
-	<script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="vendor/feature/index.js"></script>
+	<!-- build:js /assets/js/vendor.js -->
+	<script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
 	<!-- endbuild -->
 	
-	<!-- build:js assets/js/main.js -->
-	<script type="text/javascript" src="js/main.js"></script>
+	<!-- build:js /assets/js/main.js -->
+	<script type="text/javascript" src="/js/main.js"></script>
 	<!-- endbuild -->
 	
 	<script>

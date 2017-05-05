@@ -1,7 +1,6 @@
 {
   "name": "static-starter",
   "dependencies": {
-    "jquery": "jquery#1.11.3",
-    "feature": "https://raw.githubusercontent.com/viljamis/feature.js/master/feature.min.js"
+    "jquery": "jquery#1.11.3"
   }
 }

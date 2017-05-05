@@ -1,0 +1,42 @@
+/////////////////////////////////////////////////////////
+// Tabs                                                //
+/////////////////////////////////////////////////////////
+
+// Tab Defaults
+$tab-padding: 10px!default;
+$tab-border-thickness: 2px!default;
+$tab-border-style: solid!default;
+$tab-border-color: $line;
+$tab-border-hover-color: darken($line, 10%)!default;
+$tab-border-active-color: $primary!default;
+$tab-hover-bg-color: $lightgrey!default;
+$tab-hover-text-color: $primary!default;
+
+
+.tabs {
+	//// Fix the inline spacing bug
+	font-size: 0;
+	li {display: inline-block;}
+	a {
+		display: block;
+		padding:$tab-padding ($tab-padding * 2);
+	}
+	//// Borders
+	&.tabs-top a {border-width:0;border-style: $tab-border-style; border-width: $tab-border-thickness 0 0 0;}
+	&.tabs-bottom a {border-width:0;border-style: $tab-border-style; border-width: 0 0 $tab-border-thickness 0;}
+	&.tabs-left a {border-width:0;border-style: $tab-border-style; border-width: 0 0 0 $tab-border-thickness;}
+	&.tabs-right a {border-width:0;border-style: $tab-border-style; border-width: 0 $tab-border-thickness 0 0;padding-left:$tab-padding;}
+	//// Border colors
+	a {
+		border-color:$tab-border-color!important;
+		@include media-breakpoint-up(md) {
+			&:hover {border-color: $tab-border-hover-color!important;background-color: $tab-hover-bg-color;color: $tab-hover-text-color!important;}
+			&.active:hover {cursor: default;}
+		}
+		&.active {border-color: $tab-border-active-color!important;background-color: inherit;color: inherit!important;}
+	}
+	//// Vertical tabs
+	&.tabs-vertical {
+		li {display: block;}
+	}	
+}

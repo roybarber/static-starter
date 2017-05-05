@@ -1,6 +1,32 @@
-// Typography
+/////////////////////////////////////////////////////////
+// Typography                                          //
+/////////////////////////////////////////////////////////
 
-html, body {}
+// Type Defaults
+//// Base
+$hfont : 'Roboto', sans-serif !default;
+$bfont : $hfont !default;
+$line-height-base: 1.5!default;
+//// Mobile Sizes
+$fs-1-mobile: 32px!default;
+$fs-2-mobile: 28px!default;
+$fs-3-mobile: 24px!default;
+$fs-4-mobile: 20px!default;
+$fs-5-mobile: 18px!default;
+$fs-6-mobile: 16px!default;
+$fs-7-mobile: 16px!default;
+$fs-8-mobile: 14px!default;
+//// Desktop Sizes
+$fs-1-desktop: 50px!default;
+$fs-2-desktop: 36px!default;
+$fs-3-desktop: 28px!default;
+$fs-4-desktop: 24px!default;
+$fs-5-desktop: 20px!default;
+$fs-6-desktop: 18px!default;
+$fs-7-desktop: 16px!default;
+$fs-8-desktop: 14px!default;
+
+
 body { 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -11,73 +37,110 @@ body {
 
 
 // Headings
+//// Defaults
 .heading {
 	font-family: $hfont;
-	font-weight: 400;
+	font-weight: 300;
 	color: $headingcolor;
+	strong {font-weight: 400;}
 }
-.body, .text-paragraph {
+.body {
 	font-family: $bfont;
-	font-weight: 400;
+	font-weight: 300;
 	color: $bodycolor;
 }
-h1, .h1 {
+//// Mobile
+h1, .fs-1 {
 	@extend .heading;
-	font-size: 36px;
-	line-height: 54px;
-	margin:0 0 20px 0;
+	font-size: $fs-1-mobile;
+	line-height: $fs-1-mobile * $line-height-base;
 }
-h2, .h2 {
+h2, .fs-2 {
 	@extend .heading;
-	font-size: 24px;
-	line-height: 36px;
-	margin:0 0 20px 0;
+	font-size: $fs-2-mobile;
+	line-height: $fs-2-mobile * $line-height-base;
 }
-h3, .h3 {
+h3, .fs-3 {
 	@extend .heading;
-	font-size: 18px;
-	line-height: 24px;
-	margin:0 0 20px 0;
+	font-size: $fs-3-mobile;
+	line-height: $fs-3-mobile * $line-height-base;
 }
-h4, .h4 {
+h4, .fs-4 {
 	@extend .heading;
-	font-size: 16px;
-	line-height: 24px;
-	margin:0 0 20px 0;
+	font-size: $fs-4-mobile;
+	line-height: $fs-4-mobile * $line-height-base;
 }
-h5, p, .h5  {
+h5, .fs-5  {
+	@extend .heading;
+	font-size: $fs-5-mobile;
+	line-height: $fs-5-mobile * $line-height-base;
+}
+h6, p, .fs-6 {
 	@extend .body;
-	font-size: 16px;
-	line-height: 20px;
-	margin:0 0 20px 0;
+	font-size: $fs-6-mobile;
+	line-height: $fs-6-mobile * $line-height-base;
 }
-h6, .h6 {
+label, input, .fs-7 {
 	@extend .heading;
-	font-size: 13px;
-	line-height: 18px;
-	margin:0;
+	font-size: $fs-7-mobile;
+	line-height: 30px;
 }
-label {
-	@extend .heading;
-	font-size: 15px;
-	margin:0 0 10px 0;
+small, .fs-8 {
+	@extend .body;
+	font-size: $fs-8-mobile;
+	line-height: $fs-8-mobile * $line-height-base;
 }
-
+//// Desktop
 @include media-breakpoint-up(md) {
-
+	h1, .fs-1 {
+		font-size: $fs-1-desktop;
+		line-height: $fs-1-desktop * $line-height-base;
+	}
+	h2, .fs-2 {
+		font-size: $fs-2-desktop;
+		line-height: $fs-2-desktop * $line-height-base;
+	}
+	h3, .fs-3 {
+		font-size: $fs-3-desktop;
+		line-height: $fs-3-desktop * $line-height-base;
+	}
+	h4, .fs-4 {
+		font-size: $fs-4-desktop;
+		line-height: $fs-4-desktop * $line-height-base;
+	}
+	h5, .fs-5  {
+		font-size: $fs-5-desktop;
+		line-height: $fs-5-desktop * $line-height-base;
+	}
+	h6, p, .fs-6 {
+		font-size: $fs-6-desktop;
+		line-height: 30px;
+	}
+	label, input, .fs-7 {
+		font-size: $fs-7-desktop;
+		line-height: 30px;
+	}
+	small, .fs-8 {
+		font-size: $fs-8-desktop;
+		line-height: $fs-8-desktop * $line-height-base;
+	}
 }
 
 
-// Font Styles
-.text-weight-300 {font-weight: 300;}
-.text-weight-400 {font-family: 400;}
-.text-weight-600, strong, b {font-weight: 600;}
-.text-weight-800 {font-weight: 800;}
+// Font weights
+.fw-300 {font-weight: 300;}
+.fw-400 {font-weight: 400;}
+.fw-600, strong, b {font-weight: 600;}
+.fw-800 {font-weight: 800;}
+
+
+// Text modifiers
 .text-lowercase {text-transform: lowercase !important;}
 .text-uppercase {text-transform: uppercase !important;}
 .text-capitalize {text-transform: capitalize !important;}
 .text-italic {font-style: italic;}
 .text-underline {text-decoration: underline;}
+
 
 // Text Align
 @each $breakpoint in map-keys($grid-breakpoints) {
@@ -88,23 +151,20 @@ label {
 		.text#{$infix}-center { text-align: center !important; }
 	}
 }
-
-// Alignment
 .text-justify  { text-align: justify !important; }
 .text-nowrap   { white-space: nowrap !important; }
 .text-truncate { @include text-truncate; }
 
 
-// Images
-img.responsive {width:100%;height:auto;max-width: 100%;}
-
 // Lists
-ul {list-style: none;margin:0;padding:0;}
+ul, ol {list-style: none;padding:0;}
+
 
 // Other helpers
 .text-hide {
 	@include text-hide();
 }
+
 
 // Breaks
 hr {
@@ -112,5 +172,4 @@ hr {
 	border-bottom:1px solid $line;
 	height:1px;
 	background:none;
-	margin:40px 0;
 }

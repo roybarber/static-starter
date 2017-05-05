@@ -1,7 +1,88 @@
-// Icons
-span.icon {display: block;}
-span.icon-inline {display: inline-block;}
-.btn .icon {display: inline-block;}
-@include media-breakpoint-up(md) {
-	
+/////////////////////////////////////////////////////////
+// Iconography                                         //
+/////////////////////////////////////////////////////////
+
+// Setup
+$iconsizes: 16,20,24,32,40,44,50,60,70,80,100,126,150!default;
+$icons:
+	sort,
+	close,
+	loading,
+	date,
+	star-active,
+	divider,
+	select-active,
+	menu,
+	heart,
+	share,
+	tag,
+	warning,
+	search,
+	trash,
+	checkmark,
+	more-detail,
+	info,
+	copy,
+	location,
+	required,
+	heart-solid,
+	error,
+	select,
+	star-action,
+	star-inactive
+;
+$socials:
+	instagram,
+	slack,
+	googleplus,
+	youtube,
+	facebook,
+	twitter,
+	linkedin,
+	dribbble
+;
+
+// Icon Defaults
+//// Icons can be overidden with background colors: e.g .bg-primary
+.icon {display: inline-block;background:$primary;}
+.icon-block {display: block;}
+.icon-rotate-90 {
+	-ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.icon-rotate-180 {
+	-ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.icon-rotate-270 {
+	-ms-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+
+// Generate Icon sizes
+@each $iconsize in $iconsizes {
+	.icon-#{$iconsize} {
+		width: #{$iconsize}px;
+		height: #{$iconsize}px;
+	} 
+}
+
+
+// Generate icons
+//// Uses CSS3 Masks, needs a fallback for IE+Edge
+@each $icon in $icons {
+	.icon-#{$icon} {
+		-webkit-mask:  url(/img/icon/solid/#{$icon}.svg) 100% 100%/100% 100% no-repeat;
+		mask: url(/img/icon/solid/#{$icon}.svg) 100% 100%/100% 100% no-repeat;
+	}
+}
+@each $social in $socials {
+	.icon-#{$social} {
+		-webkit-mask: url(/img/icon/social/#{$social}.svg) 100% 100%/100% 100% no-repeat;
+		mask: url(/img/icon/social/#{$social}.svg) 100% 100%/100% 100% no-repeat;
+	}
 }

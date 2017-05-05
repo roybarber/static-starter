@@ -1,0 +1,29 @@
+/////////////////////////////////////////////////////////
+// Brand                                               //
+/////////////////////////////////////////////////////////
+
+// Setup
+$logowidth: 184px!default;
+$logoheight: 50px!default;
+$emblem: 50px!default;
+
+
+.logo {
+	display: block;
+	@include text-hide();
+	background: url(/img/brand/logo/primary.svg) no-repeat center center;
+	background-size: $logowidth $logoheight;
+	width: $logowidth;
+	height: $logoheight;
+	margin:0 auto;
+	&.secondary {
+		background: url(/img/brand/logo/secondary.svg) no-repeat center center;
+		background-size: $logowidth $logoheight;
+	}
+	&.emblem {
+		background: url(/img/brand/logo/emblem.svg) no-repeat center center;
+		background-size: $emblem;
+		height: $emblem;
+		width: $emblem;
+	}
+}

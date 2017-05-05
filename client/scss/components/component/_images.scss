@@ -1,0 +1,34 @@
+/////////////////////////////////////////////////////////
+// Images                                              //
+/////////////////////////////////////////////////////////
+
+// Setup
+$img-border-radius: 6px!default;
+$img-thumb-pad: 5px!default;
+$img-thumb-border: 1px solid $line!default;
+
+
+// Image types
+img {
+	&.responsive {
+		width:100%;
+		height:auto;
+		max-width: 100%;
+	}
+	&.rounded {
+		@include border-radius($img-border-radius);
+	}
+	&.circle {
+		@include border-radius(100%);
+	}
+	
+	&.thumbnail {
+		padding:$img-thumb-pad;
+		border:$img-thumb-border;
+	}
+}
+
+// Backgrounds
+.bg-cover {
+	@include background-cover();
+}

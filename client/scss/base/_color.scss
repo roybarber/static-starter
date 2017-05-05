@@ -1,21 +1,67 @@
+/////////////////////////////////////////////////////////
+// Color                                               //
+/////////////////////////////////////////////////////////
+
+// SETUP
+//// Base
+$primary: #4A90E2!default;
+$secondary: #0E1C2D!default;
+$black: #000000!default;
+$darkgrey: #9B9B9B!default;
+$lightgrey: #EEEEEE!default;
+$white: #FFFFFF!default;
+//// States
+$error: #D0021B!default;
+$warning: #F5A623!default;
+$success: #7ED321!default;
+$disabled: $lightgrey!default;
+//// Social
+$facebook: #3B5998!default;
+$twitter: #1DA1F2!default;
+$googleplus: #DD4B39!default;
+$linkedin: #0077B5!default;
+$instagram: #E1306C!default;
+$slack: #E9A820!default;
+$youtube: #CD201F!default;
+$dribbble: #EA4C89!default;
+//// Defaults
+$bodycolor: $secondary!default;
+$headingcolor: $secondary!default;
+$line: #D8D8D8!default;
+//// Into an array
+$colors: (
+	primary: $primary,
+	secondary: $secondary,
+	black: $black,
+	darkgrey: $darkgrey,
+	lightgrey: $lightgrey,
+	white: $white,
+	error: $error,
+	warning: $warning,
+	success: $success,
+	disabled: $disabled,
+	facebook: $facebook,
+	twitter: $twitter,
+	googleplus: $googleplus,
+	linkedin: $linkedin,
+	instagram: $instagram,
+	slack: $slack,
+	youtube: $youtube,
+	dribbble: $dribbble,
+	bodycolor: $bodycolor,
+	headingcolor: $headingcolor
+) !default;
+
+
 // Color Helpers
-
-// Text
-.text-primary {color: $primary;}
-.text-secondary {color: $secondary;}
-
-// Backgrounds
-.background-primary {background-color: $primary!important;}
-.background-secondary {background-color: $secondary!important;}
-
-// Links
+//// Links
 a {
 	color: $primary;
     text-decoration: none;    
     &.link-secondary {color: $secondary;}
 	a:link a:visited {color: inherit;}
 }
-// undo link styles for placeholder links/named anchors (without href)
+//// Undo link styles for placeholder links/named anchors (without href)
 a:not([href]):not([tabindex]) {
 	color: inherit;
 	text-decoration: none;
@@ -27,6 +73,22 @@ a:not([href]):not([tabindex]) {
 		outline: 0;
 	}
 }
+//// Text & BG Overides
+//// E.g Font Color: fc-primary or background .bg-black
+@each $name, $color in $colors {
+	.fc-#{$name} {
+		color: #{$color}!important;
+	} 
+	.bg-#{$name} {
+		background-color: #{$color}!important;
+	}
+	.border-#{$name} {
+		border: 1px solid #{$color};
+	}
+}
+
+
+// Hover States
 @include media-breakpoint-up(md) {
 	a {
 		-webkit-transition: all .2s ease;

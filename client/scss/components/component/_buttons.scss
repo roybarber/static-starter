@@ -1,4 +1,45 @@
-//Buttons
+/////////////////////////////////////////////////////////
+// Button                                              //
+/////////////////////////////////////////////////////////
+
+// Button Defaults
+$btn-height: 50px!default;
+$btn-min-width: 10px!default;
+$btn-border-width: 1px!default;
+$btn-border-radius: 0px!default;
+$btn-font-family: $hfont!default;
+$btn-font-size: 16px!default;
+$btn-font-weight: 400!default;
+$btn-text-transform: capitalize!default;
+$btn-transition: all 300ms linear!default;
+$btn-display: inline-block!default;
+
+//// Button height is not set, but calculated by the line-height + padding top & bottom. 
+//// The top/bottom padding is calculated based on the desired btn height
+$btn-max-height: $btn-height - ($btn-border-width * 2)!default;
+$btn-font-size: 16px!default;
+$btn-line-height: $btn-font-size + 4!default;
+$btn-padding:(($btn-max-height / 2) - ($btn-line-height / 2)) ($btn-line-height * 1.2)!default;
+
+//// Base Button color
+$btn-font-color: white!default;
+$btn-bgcolor: $primary!default;
+//// Button color variations
+//// Name: (Background,Font,Border)
+$buttons: (
+	primary: ($primary, $white, $primary),
+	secondary: ($secondary, $white, $secondary),
+	black: ($black,$white,$black),
+	darkgrey: ($darkgrey,$white,$darkgrey),
+	lightgrey: ($lightgrey,$black,$lightgrey),
+	white: ($white,$primary,$white),
+	danger: ($error,$white,$error),
+	warning: ($warning,$white,$warning),
+	success: ($success,$white,$success)
+)!default;
+	
+
+// Buttons
 .btn,
 button,
 input[type="button"],
@@ -7,7 +48,6 @@ input[type="reset"] {
 	@include transition($btn-transition);
 	@include border-radius($btn-border-radius);
 	display: $btn-display;
-	margin: $btn-margin;
 	padding: $btn-padding;	
 	font-family: $btn-font-family;
 	font-size: $btn-font-size;
@@ -16,7 +56,9 @@ input[type="reset"] {
 	text-transform: $btn-text-transform;
 	color: $btn-font-color;	
 	background-color: $btn-bgcolor;
+	background-clip: border-box;
 	border:$btn-border-width solid $btn-bgcolor;
+	min-width: $btn-min-width;
 	text-decoration: none;
 	text-align: center;	
 	width: auto;
@@ -24,98 +66,67 @@ input[type="reset"] {
 	cursor: pointer;
 	box-sizing: border-box;
 	-webkit-appearance: none;
-	
-	&.btn-primary {
-		&.btn-outline {
-			color: $primary;
-			background:transparent;
-		}
-	}
-	&.btn-secondary {
-		border-color: $secondary;
-		background-color: $secondary;
-		color: white;
-		&.btn-outline {
-			color: $secondary;
-			background:transparent;
-		}
-	}
-	&.btn-black {
-		border-color: $black;
-		background-color: $black;
-		color: white;
-	}
-	&.btn-white {
-		border-color:$white;
-		background-color: $white;
-		color: $primary;
-	}			
-					
-	&.btn-wide {display:block;width: 100%;}
-	&.btn-block {display:block;}
 }
+.btn,
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {   
+	@each $name, $colors in $buttons {
+		$bgcolor: nth($colors, 1);
+		$fontcolor: nth($colors, 2);
+		$bordercolor: nth($colors, 3);
+		&.btn-#{$name} {
+			background-color: $bgcolor;
+			color: $fontcolor;
+			border-color: $bordercolor;
+			&.btn-outline {
+				background-color: transparent;
+				color: $bordercolor;
+			}
+		}
+		@include media-breakpoint-up(md) {
+			&.btn-#{$name} {
+				&:hover,&:focus,&:active,&.active,&.is-active {
+					border: $btn-border-width solid lighten($bgcolor, 10%);
+					background: lighten($bgcolor, 10%);
+					&.btn-outline {
+						border:$btn-border-width solid $bordercolor;
+						background:$bordercolor;
+						color: $fontcolor;
+					}
+					.icon {background-color: $fontcolor!important;}
+				}
+			}
+		}
+	}
+}
+
+
+// Btn Width & Display modifiers	
+.btn,
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {				
+	&.btn-wide {display:block;}
+	//// Icons - force a width and height inside a button
+	.icon {
+		position: relative;
+		top:10px;
+		margin-top:-16px;
+		width:32px;
+		height:32px;
+		@include transition($btn-transition);
+	}
+}
+
+
+// Disabled
 button[disabled], .btn-disabled {
-    background:$disabled;
-    color: white;
-    cursor: not-allowed;
-    border-color: $disabled;
-}
-
-
-@include media-breakpoint-up(md) {
-	.btn,
-	input[type="button"],
-	input[type="submit"],
-	input[type="reset"] {
-		
-		&:hover,&:focus,&:active,&.active,&.is-active {
-			text-decoration: none;
-			outline: none;
-		}
-		&.btn-primary {
-			&:hover,&:focus,&:active,&.active,&.is-active {
-				border-color:$btn-border-width solid darken($primary, 20%);
-				background: darken($primary, 20%);
-			}
-			&.btn-outline {
-				&:hover,&:focus,&:active,&.active,&.is-active {
-					border-color:darken($primary, 20%);
-					color: darken($primary, 20%);
-					background:transparent;
-				}
-			}
-		}
-		&.btn-secondary {
-			&:hover,&:focus,&:active,&.active,&.is-active {
-				background-color: darken($secondary, 20%);
-				border-color: darken($secondary, 20%);
-				color: white;
-			}
-			&.btn-outline {
-				&:hover,&:focus,&:active,&.active,&.is-active {
-					border-color:darken($secondary, 20%);
-					color: darken($secondary, 20%);
-					background:transparent;
-				}
-			}
-		}
-		&.btn-black {
-			&:hover,&:focus,&:active,&.active,&.is-active {
-				background-color: lighten($black, 10%);
-				border-color: lighten($black, 10%);
-			}
-		}
-		&.btn-white {
-			&:hover,&:focus,&:active,&.active,&.is-active {
-				color: darken($primary, 10%);
-			}
-		}	
-	}
-	button[disabled], .btn-disabled {
-		&:hover,&:focus,&:active,&.active,&.is-active {
-			background-color: $disabled!important;
-			color: $white!important;
-			border-color:$disabled!important;
-		}
-	}
+    background:$disabled!important;
+    border: $btn-border-width solid $disabled!important;
+    color: white!important;
+    cursor: not-allowed!important;
+    border-color: $disabled!important;
 }

@@ -151,48 +151,58 @@ gulp.task('copy:fav', function() {
 });
 
 //clean temporary directories
-gulp.task('clean', del.bind(null, [config.dist, config.tmp]));
+gulp.task('clean', del.bind(null, [config.dev, config.tmp]));
 // Clean build transfered folders
 gulp.task('clean:dist', del.bind(null, [
   'build/dist/scss',
   'build/dist/js',
   'build/dist/vendor',
-  'build/dev', 'build/tmp',
+  'build/dev',
+  'build/tmp',
   'build/dist/img/fav',
   'build/dist/site-config'
 ]));
 
 //run the server after having built generated files, and watch for changes
 gulp.task('serve', function() {
-  runSequence('build', 'inject:dev');
-  browserSync({
-    notify: false,
-    logPrefix: pkg.name,
-    server: ['build', config.dev]
-  });
-  gulp.watch(config.html, ['inject:dev', reload]);
-  gulp.watch(config.scss, ['sass', reload]);
-  gulp.watch([config.base + '/**/*', '!' + config.html, '!' + config.scss], ['copy:dev:assets', reload]);
+	runSequence('build', 'inject:dev', function() {
+		browserSync({
+			notify: false,
+			logPrefix: pkg.name,
+			server: ['build', config.dev]
+		});
+	});
+	gulp.watch(config.html, ['inject:dev', reload]);
+	gulp.watch(config.scss, ['sass', reload]);
+	gulp.watch([config.base + '/**/*', '!' + config.html, '!' + config.scss], ['copy:dev:assets', reload]);
 });
 
 // Inject JSON Varibles
-gulp.task('inject:dev', function() {
+gulp.task('inject:dev', function(cb) {
   var keys = _.keys(devConfig);
   var stream = gulp.src(config.html);
+
   for(var i = 0; i < keys.length; i++) {
     stream = stream.pipe(inject.replace('<% ' + keys[i] + ' %>', devConfig[keys[i]]));
   }
+
   stream = stream.pipe(gulp.dest(config.dev));
+
+  setTimeout(cb, 100);
 });
 
 // Inject JSON Varibles for Production
-gulp.task('inject:prod', function() {
+gulp.task('inject:prod', function(cb) {
   var keys = _.keys(liveConfig);
   var stream = gulp.src(config.dist + '/**/*.html');
+
   for(var i = 0; i < keys.length; i++) {
     stream = stream.pipe(inject.replace('<% ' + keys[i] + ' %>', liveConfig[keys[i]]));
   }
+
   stream = stream.pipe(gulp.dest(config.dist));
+
+  setTimeout(cb, 100);
 });
 
 //run the app packed in the dist folder
