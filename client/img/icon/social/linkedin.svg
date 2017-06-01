@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M10.735,8.875 C10.735,9.91075 9.9025,10.75 8.875,10.75 C7.8475,10.75 7.015,9.91075 7.015,8.875 C7.015,7.84 7.8475,7 8.875,7 C9.9025,7 10.735,7.84 10.735,8.875 Z M10.75,12.25 L7,12.25 L7,24.25 L10.75,24.25 L10.75,12.25 Z M16.7365,12.25 L13.0105,12.25 L13.0105,24.25 L16.73725,24.25 L16.73725,17.95075 C16.73725,14.44825 21.259,14.16175 21.259,17.95075 L21.259,24.25 L25,24.25 L25,16.65175 C25,10.74175 18.3085,10.957 16.7365,13.86625 L16.7365,12.25 Z" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/social/linkedin">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="linkedin" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <g id="color/solid/primary" mask="url(#mask-2)" fill="#4990E2">
+                <g transform="translate(-24.000000, -24.000000)" id="color">
+                    <rect x="0" y="0" width="80" height="80"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M16,11 C14.8954305,11 14,10.1045695 14,9 C14,7.8954305 14.8954305,7 16,7 C17.1045695,7 18,7.8954305 18,9 C18,10.1045695 17.1045695,11 16,11 Z M16,18 C14.8954305,18 14,17.1045695 14,16 C14,14.8954305 14.8954305,14 16,14 C17.1045695,14 18,14.8954305 18,16 C18,17.1045695 17.1045695,18 16,18 Z M16,25 C14.8954305,25 14,24.1045695 14,23 C14,21.8954305 14.8954305,21 16,21 C17.1045695,21 18,21.8954305 18,23 C18,24.1045695 17.1045695,25 16,25 Z" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/solid/more-detail">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="expand" fill="#000000" xlink:href="#path-1"></use>
+            <g id="color/solid/primary" mask="url(#mask-2)" fill="#4990E2">
+                <g transform="translate(-22.000000, -25.000000)" id="color">
+                    <rect x="0" y="0" width="80" height="80"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -217,4 +217,4 @@ gulp.task('serve:dist', ['build:dist'], function() {
 gulp.task('default', ['serve']);
 
 // Export contents of sketch file
-gulp.task('sketch', run('sketchtool export slices --compact=YES --save-for-web=YES sketch/static-starter.sketch --output=client/img'))
+gulp.task('sketch', run('sketchtool export slices --compact=YES --save-for-web=YES sketch/static-starter-v2.sketch --output=client/img'))

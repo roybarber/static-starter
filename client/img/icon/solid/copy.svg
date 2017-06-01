@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M23.0015,21 L13.0005,21 L13.0005,7 L19.0005,7 L19.0005,11 L23.0005,11 L23.0015,21 Z M20.4145,5 L25.0005,9.586 L25.0005,21 C25.0005,22.102 24.1035,23 23.0005,23 L13.0005,23 C11.8975,23 11.0005,22.102 11.0005,21 L11.0005,7 C11.0005,5.898 11.8975,5 13.0005,5 L20.4145,5 Z M9,9 L9,25 L21,25 L21,27 L9,27 C7.897,27 7,26.102 7,25 L7,9 L9,9 Z" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/solid/copy">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="copy" fill="#000000" xlink:href="#path-1"></use>
+            <g id="color/solid/primary" mask="url(#mask-2)" fill="#4990E2">
+                <g transform="translate(-22.000000, -25.000000)" id="color">
+                    <rect x="0" y="0" width="80" height="80"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

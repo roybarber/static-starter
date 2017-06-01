@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M23.4016974,9.65814266 C22.6039606,8.78061911 21.3110767,8.78061911 20.5133399,9.65814266 L13.291696,17.5827725 L11.4866601,15.6016151 C10.6889233,14.7294751 9.3955393,14.7294751 8.59830262,15.6016151 C7.80056579,16.4791386 7.80056579,17.9004038 8.59830262,18.7725437 L11.8477673,22.3418573 C12.6455041,23.2193809 13.938388,23.2193809 14.7361248,22.3418573 L23.4016974,12.8290713 C24.1994342,11.9515478 24.1994342,10.5302826 23.4016974,9.65814266" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/solid/checkmark">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="checkmark" fill="#000000" xlink:href="#path-1"></use>
+            <g id="color/solid/primary" mask="url(#mask-2)" fill="#4990E2">
+                <g transform="translate(-22.000000, -25.000000)" id="color">
+                    <rect x="0" y="0" width="80" height="80"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
