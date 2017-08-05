@@ -15,7 +15,9 @@ $emblem: 50px!default;
 	background-size: $logowidth $logoheight;
 	width: $logowidth;
 	height: $logoheight;
-	margin:0 auto;
+	&.center {
+		margin:0 auto;
+	}
 	&.secondary {
 		background: url(/img/brand/logo/secondary.svg) no-repeat center center;
 		background-size: $logowidth $logoheight;
