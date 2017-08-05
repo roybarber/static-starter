@@ -26,6 +26,7 @@ $tab-hover-text-color: $primary!default;
 	&.tabs-bottom a {border-width:0;border-style: $tab-border-style; border-width: 0 0 $tab-border-thickness 0;}
 	&.tabs-left a {border-width:0;border-style: $tab-border-style; border-width: 0 0 0 $tab-border-thickness;}
 	&.tabs-right a {border-width:0;border-style: $tab-border-style; border-width: 0 $tab-border-thickness 0 0;padding-left:$tab-padding;}
+	&.tabs-none a {border-width:0;}
 	//// Border colors
 	a {
 		border-color:$tab-border-color!important;
