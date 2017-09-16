@@ -225,6 +225,19 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 
+//File Input
+.file-input {
+    input[type="file"] {
+        left: -9999px;
+	    position: absolute;
+    }
+    label {margin-right:15px;}
+    .filename{
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
 // Select
 select {
     height: $form-input-height;

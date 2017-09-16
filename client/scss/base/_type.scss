@@ -26,11 +26,20 @@ $fs-6-desktop: 18px!default;
 $fs-7-desktop: 16px!default;
 $fs-8-desktop: 14px!default;
 
-
-body { 
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 16px;
+body {
+	// Awesome web fonts
+	-moz-font-feature-settings: 'liga', 'kern';
+	-moz-font-feature-settings: 'liga=1, kern=1';
+	-ms-font-feature-settings: 'liga', 'kern';
+	-o-font-feature-settings: 'liga', 'kern';
+	-webkit-font-feature-settings: 'liga', 'kern';
+	font-feature-settings: 'liga', 'kern';
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	font-stretch: normal;
+	// Defaults
+	font-size: 16px;
     color: $bodycolor;
     font-family: $bfont;
 }
