@@ -6,11 +6,13 @@
   "homepage": "https://wearedamage.com",
   "description": "Bespoke Starting Point",
   "devDependencies": {
+    "babel-preset-env": "^1.6.0",
     "browser-sync": "^2.7.13",
     "bs-html-injector": "^3.0.3",
     "del": "^1.1.1",
     "grunt-cli": "^1.2.0",
     "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
     "gulp-changed": "^1.2.1",
     "gulp-clean-css": "^2.0.12",
     "gulp-concat": "^2.5.2",
