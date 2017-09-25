@@ -9,7 +9,10 @@ module.exports = {
   sketch: 'sketch',
   mainScss: 'client/scss/main.scss',
   scss: 'client/scss/**/*.scss',
-  html: 'client/**/*.html',
+  html: [
+    'client/**/*.html',
+    'client/**/*.handlebars'
+  ],
   js: [
     'client/js/**/*.js',
     '!client/vendor/**/*.js'

@@ -3,6 +3,7 @@
 var fs = require('fs');
 var request = require('sync-request');
 var config = require('./build/build.config.js');
+var helpers = require('./build/helpers.js');
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
@@ -16,9 +17,28 @@ var cleanCSS = require('gulp-clean-css');
 var _ = require('lodash');
 var inject = require('gulp-inject-string');
 var devConfig = JSON.parse(fs.readFileSync('./variables.json'));
+var stagingConfig = JSON.parse(request('GET', config.config_url).getBody());
 var liveConfig = JSON.parse(request('GET', config.config_url).getBody());
 var ico = require('gulp-to-ico');
 var run = require('gulp-run-command').default;
+var handlebars = require('gulp-compile-handlebars');
+var rename = require('gulp-rename');
+
+var hbOptions = {
+  ignorePartials: true,
+  batch : ['./client/partials'],
+  helpers : {
+      
+  }
+};
+
+var hbOptionsDist = {
+  ignorePartials: true,
+  batch : [config.dist + '/partials'],
+  helpers : {
+      
+  }
+};
 
 // optimize images and put them in the dist folder
 gulp.task('images', function() {
@@ -55,7 +75,7 @@ gulp.task('sass:dist', function() {
 
 //build files for creating a dist release
 gulp.task('build:dist', ['clean'], function(cb) {
-  runSequence(['build', 'copy', 'copy:assets', 'images'], 'html', 'favicon', 'clean:dist', 'inject:prod', cb);
+  runSequence(['build', 'copy', 'copy:assets', 'images'], ['html'], 'favicon', 'clean:dist', 'inject:prod', cb);
 });
 
 //build files for development
@@ -179,30 +199,16 @@ gulp.task('serve', function() {
 
 // Inject JSON Varibles
 gulp.task('inject:dev', function(cb) {
-  var keys = _.keys(devConfig);
-  var stream = gulp.src(config.html);
-
-  for(var i = 0; i < keys.length; i++) {
-    stream = stream.pipe(inject.replace('<% ' + keys[i] + ' %>', devConfig[keys[i]]));
-  }
-
-  stream = stream.pipe(gulp.dest(config.dev));
-
-  setTimeout(cb, 100);
+  return gulp.src(config.html)
+    .pipe(handlebars(_.cloneDeep(stagingConfig), hbOptions))
+    .pipe(gulp.dest(config.dev));
 });
 
 // Inject JSON Varibles for Production
 gulp.task('inject:prod', function(cb) {
-  var keys = _.keys(liveConfig);
-  var stream = gulp.src(config.dist + '/**/*.html');
-
-  for(var i = 0; i < keys.length; i++) {
-    stream = stream.pipe(inject.replace('<% ' + keys[i] + ' %>', liveConfig[keys[i]]));
-  }
-
-  stream = stream.pipe(gulp.dest(config.dist));
-
-  setTimeout(cb, 100);
+  return gulp.src(config.dist + '/**/*.html')
+    .pipe(handlebars(_.cloneDeep(liveConfig), hbOptionsDist))
+    .pipe(gulp.dest(config.dist));
 });
 
 //run the app packed in the dist folder
