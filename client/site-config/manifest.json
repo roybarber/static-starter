@@ -1,0 +1,7 @@
+{
+  "name": "StaticStart",
+  "short_name": "StaticStart",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff"
+}
