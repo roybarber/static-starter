@@ -84,7 +84,7 @@ gulp.task('critical', function () {
         src: 'index.html',
         dest: 'index.html',
         width: 1300,
-        height: 900,
+        height: 1000,
         minify: true
     });
 
@@ -180,7 +180,8 @@ gulp.task('favicon', ['copy:fav'], function() {
 gulp.task('copy:fav', function() {
   return gulp.src([
       config.base + '/img/fav/*',
-      config.base + '/site-config/*'
+      config.base + '/site-config/*',
+      './variables.json',
     ]).pipe(gulp.dest(config.dist))
     .pipe($.size({
       title: 'copy:fav'
@@ -221,7 +222,7 @@ gulp.task('serve', function() {
 // Inject JSON Varibles
 gulp.task('inject:dev', function(cb) {
   return gulp.src(config.html)
-    .pipe(handlebars(_.cloneDeep(stagingConfig), hbOptions))
+    .pipe(handlebars(_.cloneDeep(devConfig), hbOptions))
     .pipe(gulp.dest(config.dev));
 });
 
