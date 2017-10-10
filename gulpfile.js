@@ -17,12 +17,15 @@ var cleanCSS = require('gulp-clean-css');
 var _ = require('lodash');
 var inject = require('gulp-inject-string');
 var devConfig = JSON.parse(fs.readFileSync('./variables.json'));
-var stagingConfig = JSON.parse(request('GET', config.config_url).getBody());
-var liveConfig = JSON.parse(request('GET', config.config_url).getBody());
+var stagingConfig = JSON.parse(fs.readFileSync('./variables.json'));
+var liveConfig = JSON.parse(fs.readFileSync('./variables.json'));
+// We can grab a JSON URL this way:
+//var liveConfig = JSON.parse(request('GET', config.config_url).getBody());
 var ico = require('gulp-to-ico');
 var run = require('gulp-run-command').default;
 var handlebars = require('gulp-compile-handlebars');
 var rename = require('gulp-rename');
+var critical = require('critical');
 
 var hbOptions = {
   ignorePartials: true,
@@ -73,9 +76,23 @@ gulp.task('sass:dist', function() {
     }));
 });
 
+// Critical CSS
+gulp.task('critical', function () {
+    return critical.generate({
+        inline: true,
+        base: './build/dist/',
+        src: 'index.html',
+        dest: 'index.html',
+        width: 1300,
+        height: 900,
+        minify: true
+    });
+
+});
+
 //build files for creating a dist release
 gulp.task('build:dist', ['clean'], function(cb) {
-  runSequence(['build', 'copy', 'copy:assets', 'images'], ['html'], 'favicon', 'clean:dist', 'inject:prod', cb);
+  runSequence(['build', 'copy', 'copy:assets', 'images'], ['html'], 'favicon', 'clean:dist', 'inject:prod', 'critical', 'clean:partials', cb);
 });
 
 //build files for development
@@ -181,6 +198,10 @@ gulp.task('clean:dist', del.bind(null, [
   'build/tmp',
   'build/dist/img/fav',
   'build/dist/site-config'
+]));
+// remove partials from live
+gulp.task('clean:partials', del.bind(null, [
+  'build/dist/partials'
 ]));
 
 //run the server after having built generated files, and watch for changes
