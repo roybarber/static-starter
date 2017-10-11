@@ -104,10 +104,6 @@ gulp.task('html', function() {
 
   return gulp.src(config.html)
     .pipe(assets)
-    //.pipe($.if('*.js', $.uglify({
-    //  mangle: false,
-    //})))
-    //.pipe($.if('*.css', cleanCSS()))
     .pipe($.if(['**/*main.js', '**/*main.css'], $.header(config.banner, {
       pkg: pkg
     })))
