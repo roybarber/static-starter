@@ -161,15 +161,12 @@ gulp.task('html:dev', function() {
 	.pipe(gulp.dest(config.dev))
 });
 gulp.task('html', function() {
-	var assets = useref.assets({
-		searchPath: '{build,client}'
-	});
 	return gulp.src(config.html)
-	.pipe(assets)
-	.pipe(rev())
-	.pipe(assets.restore())
-	.pipe(useref())
-	.pipe(revReplace())
+	// .pipe(rev())
+	.pipe(useref({
+    searchPath: '{build,client}'
+  }))
+	// .pipe(revReplace())
 	.pipe(preprocess({context: { NODE_ENV: 'prod'}}))
 	.pipe(gulp.dest(config.dist))
 	.pipe(size({
