@@ -1,6 +1,7 @@
 'use strict';
 
 var fs = require('fs');
+var _ = require('lodash');
 var request = require('sync-request');
 var config = require('./build/build.config.js');
 var helpers = require('./build/helpers.js');
@@ -14,33 +15,25 @@ var pkg = require('./package');
 var del = require('del');
 var gulpif = require('gulp-if');
 var cleanCSS = require('gulp-clean-css');
-var _ = require('lodash');
-var inject = require('gulp-inject-string');
-var devConfig = JSON.parse(fs.readFileSync('./variables.json'));
-var stagingConfig = JSON.parse(fs.readFileSync('./variables.json'));
-var liveConfig = JSON.parse(fs.readFileSync('./variables.json'));
-// We can grab a JSON URL this way:
-//var liveConfig = JSON.parse(request('GET', config.config_url).getBody());
+var critical = require('critical');
 var ico = require('gulp-to-ico');
 var run = require('gulp-run-command').default;
-var handlebars = require('gulp-compile-handlebars');
 var rename = require('gulp-rename');
-var critical = require('critical');
+var sourcemaps = require('gulp-sourcemaps');
+var preprocess = require('gulp-preprocess');
 
+// Handlebars
+var handlebars = require('gulp-compile-handlebars');
+var templateData = JSON.parse(fs.readFileSync('./variables.js'));
 var hbOptions = {
   ignorePartials: true,
-  batch : ['./client/partials'],
-  helpers : {
-      
-  }
+  batch : [config.base + config.partials],
+  helpers : {}
 };
-
 var hbOptionsDist = {
   ignorePartials: true,
-  batch : [config.dist + '/partials'],
-  helpers : {
-      
-  }
+  batch : [config.dist + config.partials],
+  helpers : {}
 };
 
 // optimize images and put them in the dist folder
@@ -52,9 +45,11 @@ gulp.task('images', function() {
     }));
 });
 
+
 //generate css files from scss sources
 gulp.task('sass', function() {
   return gulp.src(config.mainScss)
+    .pipe(sourcemaps.init())
     .pipe($.sass())
     .on('error', $.sass.logError)
     .on("error", notify.onError({
@@ -62,6 +57,7 @@ gulp.task('sass', function() {
 		message: '<%= error.message %>',
 		sound: true
     }))
+    .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(config.tmp))
     .pipe($.size({
       title: 'sass'
@@ -119,10 +115,17 @@ gulp.task('html', function() {
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
+    .pipe(preprocess({context: { NODE_ENV: 'prod'}}))
     .pipe(gulp.dest(config.dist))
     .pipe($.size({
       title: 'html'
     }));
+});
+
+gulp.task('html:dev', function() {
+  return gulp.src(config.devhtml)
+    .pipe(preprocess({context: { NODE_ENV: 'dev'}}))
+    .pipe(gulp.dest(config.dev))
 });
 
 //copy assets in dist folder
@@ -180,8 +183,7 @@ gulp.task('favicon', ['copy:fav'], function() {
 gulp.task('copy:fav', function() {
   return gulp.src([
       config.base + '/img/fav/*',
-      config.base + '/site-config/*',
-      './variables.json',
+      config.base + '/site-config/*'
     ]).pipe(gulp.dest(config.dist))
     .pipe($.size({
       title: 'copy:fav'
@@ -207,14 +209,14 @@ gulp.task('clean:partials', del.bind(null, [
 
 //run the server after having built generated files, and watch for changes
 gulp.task('serve', function() {
-	runSequence('build', 'inject:dev', function() {
+	runSequence('build', 'inject:dev', 'html:dev', function() {
 		browserSync({
 			notify: false,
 			logPrefix: pkg.name,
 			server: ['build', config.dev]
 		});
 	});
-	gulp.watch(config.html, ['inject:dev', reload]);
+	gulp.watch(config.html, ['inject:dev'], ['html:dev', reload]);
 	gulp.watch(config.scss, ['sass', reload]);
 	gulp.watch([config.base + '/**/*', '!' + config.html, '!' + config.scss], ['copy:dev:assets', reload]);
 });
@@ -222,14 +224,14 @@ gulp.task('serve', function() {
 // Inject JSON Varibles
 gulp.task('inject:dev', function(cb) {
   return gulp.src(config.html)
-    .pipe(handlebars(_.cloneDeep(devConfig), hbOptions))
+    .pipe(handlebars(templateData, hbOptions))
     .pipe(gulp.dest(config.dev));
 });
 
 // Inject JSON Varibles for Production
 gulp.task('inject:prod', function(cb) {
   return gulp.src(config.dist + '/**/*.html')
-    .pipe(handlebars(_.cloneDeep(liveConfig), hbOptionsDist))
+    .pipe(handlebars(templateData, hbOptionsDist))
     .pipe(gulp.dest(config.dist));
 });
 

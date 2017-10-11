@@ -20,10 +20,11 @@
   <meta name="copyright" content="Copyright {{ site_name }} 2017. All Rights Reserved."/>
   <meta name="application-name" content="Static"/>
 
-  <noscript id="deferred-styles">
+  <!-- @if NODE_ENV='prod' --><noscript id="deferred-styles"><!-- @endif -->
     <!-- build:css /assets/css/main.css -->
     <link rel="stylesheet" type="text/css" href="/tmp/main.css"/>
     <!-- endbuild -->
+  <!-- @if NODE_ENV='prod' -->
   </noscript>
   <script>
     var loadDeferredStyles = function() {
@@ -38,6 +39,7 @@
     if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
     else window.addEventListener('load', loadDeferredStyles);
   </script>
+  <!-- @endif -->
   
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon.png">
@@ -47,24 +49,24 @@
   <link rel="manifest" href="/manifest.json">
 	
   <!-- Schema.org markup for Google+ -->
-  <meta itemprop="name" content="<% site_name %>">
-  <meta itemprop="description" content="<% page_description %>">
+  <meta itemprop="name" content="{{site_name}}">
+  <meta itemprop="description" content="{{page_description}}">
   <meta itemprop="image" content="/share.png">
 
   <!-- Twitter Card data -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@<% twitter %>">
-  <meta name="twitter:title" content="<% site_name %>">
-  <meta name="twitter:description" content="<% page_description %>">
+  <meta name="twitter:site" content="@{{twitter}}">
+  <meta name="twitter:title" content="{{site_name}}">
+  <meta name="twitter:description" content="{{page_description}}">
   <meta name="twitter:image:src" content="/share.png">
 
   <!-- Open Graph data -->
-  <meta property="og:title" content="<% site_name %>"/>
+  <meta property="og:title" content="{{site_name}}"/>
   <meta property="og:url" content=""/>
   <meta property="og:image" content="/share.png"/>
   <meta property="og:image:url" content="/share.png"/>
-  <meta property="og:description" content="<% page_description %>"/>
-  <meta property="og:site_name" content="<% site_name %>"/>
+  <meta property="og:description" content="{{page_description}}"/>
+  <meta property="og:site_name" content="{{site_name}}"/>
 
 </head>
 <body>

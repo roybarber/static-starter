@@ -3,10 +3,10 @@
 	<footer class="container margin-top-40 margin-bottom-40">
 		<div class="row align-items-center">
 			<div class="col-md-5 text-center text-md-left">
-				<p class="margin-bottom-0">&copy; <% year %> <% company_name %></p>
+				<p class="margin-bottom-0">&copy; {{year}} {{company_name}} Env:<!-- @if NODE_ENV='prod' -->Prod<!-- @endif --><!-- @if NODE_ENV='dev' -->Dev<!-- @endif --></p>
 			</div>
 			<div class="col-md-2 justify-content-center">
-				<a class="logo emblem" href="/"><% company_name %></a>
+				<a class="logo emblem" href="/">{{company_name}}</a>
 			</div>
 			<div class="col-md-5 text-center text-md-right">
 				<p class="margin-bottom-0">Built by: <a href="https://wearedamage.com" target="_blank" rel="noopener">Damage</a></p>
