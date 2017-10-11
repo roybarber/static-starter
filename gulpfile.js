@@ -1,78 +1,143 @@
 'use strict';
 
-var fs = require('fs');
-var _ = require('lodash');
-var request = require('sync-request');
-var config = require('./build/build.config.js');
-var helpers = require('./build/helpers.js');
+//////////////////////////////////////////////////////////////////////
+// Plugins                                                          //
+//////////////////////////////////////////////////////////////////////
+
 var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
+var fs = require('fs');
+var request = require('sync-request');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
-var notify = require('gulp-notify');
 var reload = browserSync.reload;
-var pkg = require('./package');
+var notify = require('gulp-notify');
 var del = require('del');
+var useref = require('gulp-useref');
+var rev = require('gulp-rev');
+var revReplace = require('gulp-rev-replace');
 var gulpif = require('gulp-if');
-var cleanCSS = require('gulp-clean-css');
+var size = require('gulp-size');
 var critical = require('critical');
 var ico = require('gulp-to-ico');
 var run = require('gulp-run-command').default;
 var rename = require('gulp-rename');
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var preprocess = require('gulp-preprocess');
-
-// Handlebars
 var handlebars = require('gulp-compile-handlebars');
+
+
+//////////////////////////////////////////////////////////////////////
+// Setup                                                            //
+//////////////////////////////////////////////////////////////////////
+var config = require('./build/build.config.js');
 var templateData = JSON.parse(fs.readFileSync('./variables.js'));
+
+
+//////////////////////////////////////////////////////////////////////
+// Sketch                                                           //
+//////////////////////////////////////////////////////////////////////
+
+//// Export assets from sketch file
+gulp.task('sketch', run('sketchtool export slices --compact=YES --save-for-web=YES sketch/static-starter-v2.sketch --output=client/img'))
+
+
+//////////////////////////////////////////////////////////////////////
+// Handlebars                                                       //
+//////////////////////////////////////////////////////////////////////
+
 var hbOptions = {
-  ignorePartials: true,
-  batch : [config.base + config.partials],
-  helpers : {}
+	ignorePartials: true,
+	batch : [config.base + config.partials],
+	helpers : {}
 };
 var hbOptionsDist = {
-  ignorePartials: true,
-  batch : [config.dist + config.partials],
-  helpers : {}
+	ignorePartials: true,
+	batch : [config.dist + config.partials],
+	helpers : {}
 };
 
-// optimize images and put them in the dist folder
-gulp.task('images', function() {
-  return gulp.src(config.images)
-    .pipe(gulp.dest(config.dist + '/img'))
-    .pipe($.size({
-      title: 'img'
-    }));
+//// Inject Handlebar varibles for development
+gulp.task('inject:dev', function(cb) {
+  return gulp.src(config.html)
+    .pipe(handlebars(templateData, hbOptions))
+    .pipe(gulp.dest(config.dev));
+});
+
+//// Inject Handlebar varibles for production
+gulp.task('inject:dist', function(cb) {
+  return gulp.src(config.dist + '/**/*.html')
+    .pipe(handlebars(templateData, hbOptionsDist))
+    .pipe(gulp.dest(config.dist));
 });
 
 
-//generate css files from scss sources
+//////////////////////////////////////////////////////////////////////
+// Images                                                           //
+//////////////////////////////////////////////////////////////////////
+
+//// optimize images and put them in the dist folder
+gulp.task('images', function() {
+  return gulp.src(config.images)
+    .pipe(gulp.dest(config.dist + '/img'))
+    .pipe(size({
+    	title: 'img'
+    }));
+});
+
+//// Create the favicon from the png
+gulp.task('favicon', ['copy:fav'], function() {
+  return gulp.src(config.dist + '/favicon.png')
+    .pipe(ico('favicon.ico'))
+    .pipe(gulp.dest(config.dist));
+});
+
+
+//////////////////////////////////////////////////////////////////////
+// SASS to CSS                                                      //
+//////////////////////////////////////////////////////////////////////
+
+//// Sass compilation, sourcemaps, autoprefixing and minification
 gulp.task('sass', function() {
   return gulp.src(config.mainScss)
     .pipe(sourcemaps.init())
-    .pipe($.sass())
-    .on('error', $.sass.logError)
+    .pipe(sass())
+    .on('error', sass.logError)
     .on("error", notify.onError({
         title: 'SASS ERROR',
 		message: '<%= error.message %>',
 		sound: true
     }))
+    .pipe(autoprefixer({
+        browsers: ['last 3 versions'],
+        cascade: false
+    }))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(config.tmp))
-    .pipe($.size({
-      title: 'sass'
+    .pipe(size({
+    	title: 'sass'
     }));
 });
 gulp.task('sass:dist', function() {
   return gulp.src(config.mainScss)
-    .pipe($.sass({outputStyle: 'compressed'}))
+    .pipe(sass({outputStyle: 'compressed'}))
+    .pipe(autoprefixer({
+        browsers: ['last 3 versions'],
+        cascade: false
+    }))
     .pipe(gulp.dest(config.tmp))
-    .pipe($.size({
-      title: 'sass'
+    .pipe(size({
+    	title: 'sass'
     }));
 });
 
-// Critical CSS
+
+//////////////////////////////////////////////////////////////////////
+// Critical CSS                                                     //
+//////////////////////////////////////////////////////////////////////
+
+//// Grabs the critical CSS for a page load and inserts it above the page
 gulp.task('critical', function () {
     return critical.generate({
         inline: true,
@@ -83,132 +148,152 @@ gulp.task('critical', function () {
         height: 1000,
         minify: true
     });
-
 });
 
-//build files for creating a dist release
-gulp.task('build:dist', ['clean'], function(cb) {
-  runSequence(['build', 'copy', 'copy:assets', 'images'], ['html'], 'favicon', 'clean:dist', 'inject:prod', 'critical', 'clean:partials', cb);
-});
 
-//build files for development
-gulp.task('build', ['clean'], function(cb) {
-  runSequence(['sass:dist', 'copy:dev'], cb);
-});
+//////////////////////////////////////////////////////////////////////
+// HTML Build                                                       //
+//////////////////////////////////////////////////////////////////////
 
-//generate a minified css files, 2 js file, change theirs name to be unique, and generate sourcemaps
-gulp.task('html', function() {
-  var assets = $.useref.assets({
-    searchPath: '{build,client}'
-  });
-
-  return gulp.src(config.html)
-    .pipe(assets)
-    .pipe($.if(['**/*main.js', '**/*main.css'], $.header(config.banner, {
-      pkg: pkg
-    })))
-    .pipe($.rev())
-    .pipe(assets.restore())
-    .pipe($.useref())
-    .pipe($.revReplace())
-    .pipe(preprocess({context: { NODE_ENV: 'prod'}}))
-    .pipe(gulp.dest(config.dist))
-    .pipe($.size({
-      title: 'html'
-    }));
-});
-
+//// Concat CSS & JS files into single files, adds unique cache busting strings
+//// Allows dev/prod if statements to show and hide content based on environment
 gulp.task('html:dev', function() {
-  return gulp.src(config.devhtml)
-    .pipe(preprocess({context: { NODE_ENV: 'dev'}}))
-    .pipe(gulp.dest(config.dev))
+	return gulp.src(config.devhtml)
+	.pipe(preprocess({context: { NODE_ENV: 'dev'}}))
+	.pipe(gulp.dest(config.dev))
+});
+gulp.task('html', function() {
+	var assets = useref.assets({
+		searchPath: '{build,client}'
+	});
+	return gulp.src(config.html)
+	.pipe(assets)
+	.pipe(rev())
+	.pipe(assets.restore())
+	.pipe(useref())
+	.pipe(revReplace())
+	.pipe(preprocess({context: { NODE_ENV: 'prod'}}))
+	.pipe(gulp.dest(config.dist))
+	.pipe(size({
+		title: 'html'
+	}));
 });
 
-//copy assets in dist folder
-gulp.task('copy:assets', function() {
-  return gulp.src(config.assets, {
-      dot: true
-    }).pipe(gulp.dest(config.dist))
-    .pipe($.size({
-      title: 'copy:assets'
-    }));
-});
 
-//copy assets in dist folder
-gulp.task('copy', function() {
-  return gulp.src([
-      config.base + '/*',
-      '!' + config.base + '/*.html',
-      '!' + config.base + '/src'
-    ]).pipe(gulp.dest(config.dist))
-    .pipe($.size({
-      title: 'copy'
-    }));
-});
+//////////////////////////////////////////////////////////////////////
+// Copy                                                             //
+//////////////////////////////////////////////////////////////////////
 
-//copy assets in dev folder
+//// Copy assets in dev folder
 gulp.task('copy:dev', function() {
-  return gulp.src([
-      config.base + '/**/*',
-      '!' + config.base + '/src'
-    ]).pipe(gulp.dest(config.dev))
-    .pipe($.size({
-      title: 'copy'
-    }));
+	return gulp.src([
+		config.base + '/**/*',
+		'!' + config.base + '/src'
+	])
+	.pipe(gulp.dest(config.dev))
+	.pipe(size({
+		title: 'copy'
+	}));
 });
 
 // Copy dev assets
 gulp.task('copy:dev:assets', function() {
-  return gulp.src([
-      config.base + '/**/*',
-      '!' + config.base + '/src',
-      '!' + config.base + '/**/*.html'
-    ]).pipe(gulp.dest(config.dev))
-    .pipe($.size({
-      title: 'copy'
-    }));
+	return gulp.src([
+		config.base + '/**/*',
+		'!' + config.base + '/src',
+		'!' + config.base + '/**/*.html'
+	])
+	.pipe(gulp.dest(config.dev))
+	.pipe(size({
+		title: 'copy'
+	}));
 });
 
-// Create the favicon from the png
-gulp.task('favicon', ['copy:fav'], function() {
-  return gulp.src(config.dist + '/favicon.png')
-    .pipe(ico('favicon.ico'))
-    .pipe(gulp.dest(config.dist));
+//// Copy assets in dist folder
+gulp.task('copy', function() {
+	return gulp.src([
+		config.base + '/*',
+		'!' + config.base + '/*.html',
+		'!' + config.base + '/src'
+	])
+	.pipe(gulp.dest(config.dist))
+	.pipe(size({
+		title: 'copy'
+	}));
 });
-//copy over the social assets and place them in the root of the dist
+
+//// Copy assets in dist folder
+gulp.task('copy:assets', function() {
+	return gulp.src(config.assets, {
+		dot: true
+	})
+	.pipe(gulp.dest(config.dist))
+	.pipe(size({
+		title: 'copy:assets'
+	}));
+});
+
+//// Copy over the social and site config assets and place them in the root of the dist
 gulp.task('copy:fav', function() {
-  return gulp.src([
-      config.base + '/img/fav/*',
-      config.base + '/site-config/*'
-    ]).pipe(gulp.dest(config.dist))
-    .pipe($.size({
-      title: 'copy:fav'
-    }));
+	return gulp.src([
+		config.base + '/img/fav/*',
+		config.base + '/site-config/*'
+	])
+	.pipe(gulp.dest(config.dist))
+	.pipe(size({
+		title: 'copy:fav'
+	}));
 });
 
-//clean temporary directories
+
+//////////////////////////////////////////////////////////////////////
+// Clean                                                            //
+//////////////////////////////////////////////////////////////////////
+
+//// Clean temporary directories
 gulp.task('clean', del.bind(null, [config.dev, config.tmp]));
-// Clean build transfered folders
+
+//// Clean build transfered folders
 gulp.task('clean:dist', del.bind(null, [
-  'build/dist/scss',
-  'build/dist/js',
-  'build/dist/vendor',
-  'build/dev',
-  'build/tmp',
-  'build/dist/img/fav',
-  'build/dist/site-config'
-]));
-// remove partials from live
-gulp.task('clean:partials', del.bind(null, [
-  'build/dist/partials'
+	'build/dist/scss',
+	'build/dist/js',
+	'build/dist/vendor',
+	'build/dev',
+	'build/tmp',
+	'build/dist/img/fav',
+	'build/dist/site-config'
 ]));
 
-//run the server after having built generated files, and watch for changes
+//// Remove partials from live
+gulp.task('clean:partials', del.bind(null, [
+	'build/dist/partials'
+]));
+
+
+//////////////////////////////////////////////////////////////////////
+// Builds                                                           //
+//////////////////////////////////////////////////////////////////////
+
+//// Build files for creating a dist release for production
+gulp.task('build:dist', ['clean'], function(cb) {
+	runSequence(['build', 'copy', 'copy:assets', 'images'], ['html'], 'favicon', 'clean:dist', 'inject:dist', 'critical', 'clean:partials', cb);
+});
+
+//// Build files for local development
+gulp.task('build', ['clean'], function(cb) {
+	runSequence(['sass:dist', 'copy:dev'], cb);
+});
+
+
+//////////////////////////////////////////////////////////////////////
+// Local server                                                     //
+//////////////////////////////////////////////////////////////////////
+
+//// Run the development server after having built generated files, and watch for changes
 gulp.task('serve', function() {
 	runSequence('build', 'inject:dev', 'html:dev', function() {
 		browserSync({
 			notify: false,
-			logPrefix: pkg.name,
 			server: ['build', config.dev]
 		});
 	});
@@ -217,30 +302,18 @@ gulp.task('serve', function() {
 	gulp.watch([config.base + '/**/*', '!' + config.html, '!' + config.scss], ['copy:dev:assets', reload]);
 });
 
-// Inject JSON Varibles
-gulp.task('inject:dev', function(cb) {
-  return gulp.src(config.html)
-    .pipe(handlebars(templateData, hbOptions))
-    .pipe(gulp.dest(config.dev));
-});
-
-// Inject JSON Varibles for Production
-gulp.task('inject:prod', function(cb) {
-  return gulp.src(config.dist + '/**/*.html')
-    .pipe(handlebars(templateData, hbOptionsDist))
-    .pipe(gulp.dest(config.dist));
-});
-
-//run the app packed in the dist folder
+//// Run the prod site packed in the dist folder
 gulp.task('serve:dist', ['build:dist'], function() {
-  browserSync({
-    notify: false,
-    server: [config.dist]
-  });
+	browserSync({
+		notify: false,
+		server: [config.dist]
+	});
 });
 
-//default task
-gulp.task('default', ['serve']);
 
-// Export contents of sketch file
-gulp.task('sketch', run('sketchtool export slices --compact=YES --save-for-web=YES sketch/static-starter-v2.sketch --output=client/img'))
+//////////////////////////////////////////////////////////////////////
+// Tasks                                                            //
+//////////////////////////////////////////////////////////////////////
+
+//// Default task
+gulp.task('default', ['serve']);

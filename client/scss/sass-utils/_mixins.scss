@@ -19,9 +19,6 @@
 
 // Background Cover - Usage: @include background-cover;
 @mixin background-cover {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
 }
 
@@ -29,8 +26,6 @@
 // Opacity - Usage: @include opacity(0.8);
 @mixin opacity($opacity) {
     opacity: $opacity;
-    $opacity-ie: $opacity * 100;
-    filter: alpha(opacity=$opacity-ie);
 }
 
 
@@ -38,19 +33,13 @@
 @mixin vertical-align {
     position: relative;
     top: 50%;
-    -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 
 // Transitions - Usage: @include transition(all .2s ease);
 @mixin transition($args...) {
-    -webkit-transition: $args;
-       -moz-transition: $args;
-        -ms-transition: $args;
-         -o-transition: $args;
-            transition: $args;
+	transition: $args;
 }
 
 
@@ -93,35 +82,26 @@
 //// @include border-bottom-radius(10px);
 //// @include border-left-radius (6px);
 @mixin border-radius($radius) {
-    -webkit-border-radius: $radius;
     border-radius: $radius;
     background-clip: padding-box;
 }
 @mixin border-top-radius($radius) {
-    -webkit-border-top-right-radius: $radius;
     border-top-right-radius: $radius;
-    -webkit-border-top-left-radius: $radius;
     border-top-left-radius: $radius;
     background-clip: padding-box;
 }
 @mixin border-right-radius($radius) {
-    -webkit-border-bottom-right-radius: $radius;
     border-bottom-right-radius: $radius;
-    -webkit-border-top-right-radius: $radius;
     border-top-right-radius: $radius;
     background-clip: padding-box;
 }
 @mixin border-bottom-radius($radius) {
-    -webkit-border-bottom-right-radius: $radius;
     border-bottom-right-radius: $radius;
-    -webkit-border-bottom-left-radius: $radius;
     border-bottom-left-radius: $radius;
     background-clip: padding-box;
 }
 @mixin border-left-radius($radius) {
-    -webkit-border-bottom-left-radius: $radius;
     border-bottom-left-radius: $radius;
-    -webkit-border-top-left-radius: $radius;
     border-top-left-radius: $radius;
     background-clip: padding-box;
 }
