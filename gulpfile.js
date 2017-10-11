@@ -46,14 +46,14 @@ gulp.task('sketch', run('sketchtool export slices --compact=YES --save-for-web=Y
 //////////////////////////////////////////////////////////////////////
 
 var hbOptions = {
-	ignorePartials: true,
-	batch : [config.base + config.partials],
-	helpers : {}
+  ignorePartials: true,
+  batch : [config.base + config.partials],
+  helpers : {}
 };
 var hbOptionsDist = {
-	ignorePartials: true,
-	batch : [config.dist + config.partials],
-	helpers : {}
+  ignorePartials: true,
+  batch : [config.dist + config.partials],
+  helpers : {}
 };
 
 //// Inject Handlebar varibles for development
@@ -80,7 +80,7 @@ gulp.task('images', function() {
   return gulp.src(config.images)
     .pipe(gulp.dest(config.dist + '/img'))
     .pipe(size({
-    	title: 'img'
+      title: 'img'
     }));
 });
 
@@ -104,8 +104,8 @@ gulp.task('sass', function() {
     .on('error', sass.logError)
     .on("error", notify.onError({
         title: 'SASS ERROR',
-		message: '<%= error.message %>',
-		sound: true
+    message: '<%= error.message %>',
+    sound: true
     }))
     .pipe(autoprefixer({
         browsers: ['last 3 versions'],
@@ -114,7 +114,7 @@ gulp.task('sass', function() {
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(config.tmp))
     .pipe(size({
-    	title: 'sass'
+      title: 'sass'
     }));
 });
 gulp.task('sass:dist', function() {
@@ -126,7 +126,7 @@ gulp.task('sass:dist', function() {
     }))
     .pipe(gulp.dest(config.tmp))
     .pipe(size({
-    	title: 'sass'
+      title: 'sass'
     }));
 });
 
@@ -148,6 +148,13 @@ gulp.task('critical', function () {
     });
 });
 
+gulp.task('revision', function(){
+  return gulp.src(['build/dist/assets/**/*'])
+    .pipe(rev())
+    .pipe(gulp.dest('build/dist/assets/'))
+    .pipe(rev.manifest())
+    .pipe(gulp.dest('build/dist/assets/'))
+})
 
 //////////////////////////////////////////////////////////////////////
 // HTML Build                                                       //
@@ -156,22 +163,23 @@ gulp.task('critical', function () {
 //// Concat CSS & JS files into single files, adds unique cache busting strings
 //// Allows dev/prod if statements to show and hide content based on environment
 gulp.task('html:dev', function() {
-	return gulp.src(config.devhtml)
-	.pipe(preprocess({context: { NODE_ENV: 'dev'}}))
-	.pipe(gulp.dest(config.dev))
+  return gulp.src(config.devhtml)
+  .pipe(preprocess({context: { NODE_ENV: 'dev'}}))
+  .pipe(gulp.dest(config.dev))
 });
-gulp.task('html', function() {
-	return gulp.src(config.html)
-	// .pipe(rev())
-	.pipe(useref({
+gulp.task('html', ['revision'], function() {
+  var manifest = gulp.src("build/dist/assets/rev-manifest.json");
+
+  return gulp.src(config.html)
+  .pipe(useref({
     searchPath: '{build,client}'
   }))
-	// .pipe(revReplace())
-	.pipe(preprocess({context: { NODE_ENV: 'prod'}}))
-	.pipe(gulp.dest(config.dist))
-	.pipe(size({
-		title: 'html'
-	}));
+  .pipe(revReplace({manifest: manifest}))
+  .pipe(preprocess({context: { NODE_ENV: 'prod'}}))
+  .pipe(gulp.dest(config.dist))
+  .pipe(size({
+    title: 'html'
+  }));
 });
 
 
@@ -181,63 +189,63 @@ gulp.task('html', function() {
 
 //// Copy assets in dev folder
 gulp.task('copy:dev', function() {
-	return gulp.src([
-		config.base + '/**/*',
-		'!' + config.base + '/src'
-	])
-	.pipe(gulp.dest(config.dev))
-	.pipe(size({
-		title: 'copy'
-	}));
+  return gulp.src([
+    config.base + '/**/*',
+    '!' + config.base + '/src'
+  ])
+  .pipe(gulp.dest(config.dev))
+  .pipe(size({
+    title: 'copy'
+  }));
 });
 
 // Copy dev assets
 gulp.task('copy:dev:assets', function() {
-	return gulp.src([
-		config.base + '/**/*',
-		'!' + config.base + '/src',
-		'!' + config.base + '/**/*.html'
-	])
-	.pipe(gulp.dest(config.dev))
-	.pipe(size({
-		title: 'copy'
-	}));
+  return gulp.src([
+    config.base + '/**/*',
+    '!' + config.base + '/src',
+    '!' + config.base + '/**/*.html'
+  ])
+  .pipe(gulp.dest(config.dev))
+  .pipe(size({
+    title: 'copy'
+  }));
 });
 
 //// Copy assets in dist folder
 gulp.task('copy', function() {
-	return gulp.src([
-		config.base + '/*',
-		'!' + config.base + '/*.html',
-		'!' + config.base + '/src'
-	])
-	.pipe(gulp.dest(config.dist))
-	.pipe(size({
-		title: 'copy'
-	}));
+  return gulp.src([
+    config.base + '/*',
+    '!' + config.base + '/*.html',
+    '!' + config.base + '/src'
+  ])
+  .pipe(gulp.dest(config.dist))
+  .pipe(size({
+    title: 'copy'
+  }));
 });
 
 //// Copy assets in dist folder
 gulp.task('copy:assets', function() {
-	return gulp.src(config.assets, {
-		dot: true
-	})
-	.pipe(gulp.dest(config.dist))
-	.pipe(size({
-		title: 'copy:assets'
-	}));
+  return gulp.src(config.assets, {
+    dot: true
+  })
+  .pipe(gulp.dest(config.dist))
+  .pipe(size({
+    title: 'copy:assets'
+  }));
 });
 
 //// Copy over the social and site config assets and place them in the root of the dist
 gulp.task('copy:fav', function() {
-	return gulp.src([
-		config.base + '/img/fav/*',
-		config.base + '/site-config/*'
-	])
-	.pipe(gulp.dest(config.dist))
-	.pipe(size({
-		title: 'copy:fav'
-	}));
+  return gulp.src([
+    config.base + '/img/fav/*',
+    config.base + '/site-config/*'
+  ])
+  .pipe(gulp.dest(config.dist))
+  .pipe(size({
+    title: 'copy:fav'
+  }));
 });
 
 
@@ -250,18 +258,18 @@ gulp.task('clean', del.bind(null, [config.dev, config.tmp]));
 
 //// Clean build transfered folders
 gulp.task('clean:dist', del.bind(null, [
-	'build/dist/scss',
-	'build/dist/js',
-	'build/dist/vendor',
-	'build/dev',
-	'build/tmp',
-	'build/dist/img/fav',
-	'build/dist/site-config'
+  'build/dist/scss',
+  'build/dist/js',
+  'build/dist/vendor',
+  'build/dev',
+  'build/tmp',
+  'build/dist/img/fav',
+  'build/dist/site-config'
 ]));
 
 //// Remove partials from live
 gulp.task('clean:partials', del.bind(null, [
-	'build/dist/partials'
+  'build/dist/partials'
 ]));
 
 
@@ -271,12 +279,12 @@ gulp.task('clean:partials', del.bind(null, [
 
 //// Build files for creating a dist release for production
 gulp.task('build:dist', ['clean'], function(cb) {
-	runSequence(['build', 'copy', 'copy:assets', 'images'], ['html'], 'favicon', 'clean:dist', 'inject:dist', 'critical', 'clean:partials', cb);
+  runSequence(['build', 'copy', 'copy:assets', 'images'], ['html'], 'favicon', 'clean:dist', 'inject:dist', 'critical', 'clean:partials', cb);
 });
 
 //// Build files for local development
 gulp.task('build', ['clean'], function(cb) {
-	runSequence(['sass:dist', 'copy:dev'], cb);
+  runSequence(['sass:dist', 'copy:dev'], cb);
 });
 
 
@@ -286,23 +294,23 @@ gulp.task('build', ['clean'], function(cb) {
 
 //// Run the development server after having built generated files, and watch for changes
 gulp.task('serve', function() {
-	runSequence('build', 'inject:dev', 'html:dev', function() {
-		browserSync({
-			notify: false,
-			server: ['build', config.dev]
-		});
-	});
-	gulp.watch(config.html, ['inject:dev'], ['html:dev', reload]);
-	gulp.watch(config.scss, ['sass', reload]);
-	gulp.watch([config.base + '/**/*', '!' + config.html, '!' + config.scss], ['copy:dev:assets', reload]);
+  runSequence('build', 'inject:dev', 'html:dev', function() {
+    browserSync({
+      notify: false,
+      server: ['build', config.dev]
+    });
+  });
+  gulp.watch(config.html, ['inject:dev'], ['html:dev', reload]);
+  gulp.watch(config.scss, ['sass', reload]);
+  gulp.watch([config.base + '/**/*', '!' + config.html, '!' + config.scss], ['copy:dev:assets', reload]);
 });
 
 //// Run the prod site packed in the dist folder
 gulp.task('serve:dist', ['build:dist'], function() {
-	browserSync({
-		notify: false,
-		server: [config.dist]
-	});
+  browserSync({
+    notify: false,
+    server: [config.dist]
+  });
 });
 
 
