@@ -15,6 +15,7 @@ var del = require('del');
 var useref = require('gulp-useref');
 var rev = require('gulp-rev');
 var revReplace = require('gulp-rev-replace');
+var revDel = require('gulp-rev-delete-original');
 var size = require('gulp-size');
 var critical = require('critical');
 var ico = require('gulp-to-ico');
@@ -148,13 +149,27 @@ gulp.task('critical', function () {
     });
 });
 
+//////////////////////////////////////////////////////////////////////
+// Run the REV                                                      //
+//////////////////////////////////////////////////////////////////////
+
 gulp.task('revision', function(){
   return gulp.src(['build/dist/assets/**/*'])
     .pipe(rev())
+    .pipe(revDel())
     .pipe(gulp.dest('build/dist/assets/'))
     .pipe(rev.manifest())
-    .pipe(gulp.dest('build/dist/assets/'))
-})
+    .pipe(gulp.dest('build/dist/assets/'));
+});
+
+gulp.task('revisionReplace', function(){
+  console.log('replace');
+  var manifest = gulp.src("build/dist/assets/rev-manifest.json");
+
+  return gulp.src('build/dist/**/*.html')
+  .pipe(revReplace({manifest: manifest}))
+  .pipe(gulp.dest(config.dist));
+});
 
 //////////////////////////////////////////////////////////////////////
 // HTML Build                                                       //
@@ -167,14 +182,13 @@ gulp.task('html:dev', function() {
   .pipe(preprocess({context: { NODE_ENV: 'dev'}}))
   .pipe(gulp.dest(config.dev))
 });
-gulp.task('html', ['revision'], function() {
+gulp.task('html', function() {
   var manifest = gulp.src("build/dist/assets/rev-manifest.json");
 
   return gulp.src(config.html)
   .pipe(useref({
     searchPath: '{build,client}'
   }))
-  .pipe(revReplace({manifest: manifest}))
   .pipe(preprocess({context: { NODE_ENV: 'prod'}}))
   .pipe(gulp.dest(config.dist))
   .pipe(size({
@@ -279,7 +293,7 @@ gulp.task('clean:partials', del.bind(null, [
 
 //// Build files for creating a dist release for production
 gulp.task('build:dist', ['clean'], function(cb) {
-  runSequence(['build', 'copy', 'copy:assets', 'images'], ['html'], 'favicon', 'clean:dist', 'inject:dist', 'critical', 'clean:partials', cb);
+  runSequence(['build', 'copy', 'copy:assets', 'images'], ['html'], ['revision'], ['revisionReplace'], 'favicon', 'clean:dist', 'inject:dist', 'critical', 'clean:partials', cb);
 });
 
 //// Build files for local development
