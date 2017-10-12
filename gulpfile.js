@@ -154,19 +154,18 @@ gulp.task('critical', function () {
 //////////////////////////////////////////////////////////////////////
 
 gulp.task('revision', function(){
-  return gulp.src(['build/dist/assets/**/*'])
+  return gulp.src([config.dist + '/assets/**/*'])
     .pipe(rev())
     .pipe(revDel())
-    .pipe(gulp.dest('build/dist/assets/'))
+    .pipe(gulp.dest(config.dist + '/assets/'))
     .pipe(rev.manifest())
-    .pipe(gulp.dest('build/dist/assets/'));
+    .pipe(gulp.dest(config.dist + '/assets/'));
 });
 
 gulp.task('revisionReplace', function(){
-  console.log('replace');
-  var manifest = gulp.src("build/dist/assets/rev-manifest.json");
+  var manifest = gulp.src(config.dist + "/assets/rev-manifest.json");
 
-  return gulp.src('build/dist/**/*.html')
+  return gulp.src(config.dist + '/**/*.html')
   .pipe(revReplace({manifest: manifest}))
   .pipe(gulp.dest(config.dist));
 });
@@ -286,6 +285,11 @@ gulp.task('clean:partials', del.bind(null, [
   'build/dist/partials'
 ]));
 
+//// Remove manifest from live
+gulp.task('clean:manifest', del.bind(null, [
+  'build/dist/assets/rev-manifest.json'
+]));
+
 
 //////////////////////////////////////////////////////////////////////
 // Builds                                                           //
@@ -293,7 +297,7 @@ gulp.task('clean:partials', del.bind(null, [
 
 //// Build files for creating a dist release for production
 gulp.task('build:dist', ['clean'], function(cb) {
-  runSequence(['build', 'copy', 'copy:assets', 'images'], ['html'], ['revision'], ['revisionReplace'], 'favicon', 'clean:dist', 'inject:dist', 'critical', 'clean:partials', cb);
+  runSequence(['build', 'copy', 'copy:assets', 'images'], ['html'], ['revision'], ['revisionReplace'], 'favicon', 'clean:dist', 'inject:dist', 'critical', 'clean:partials', 'clean:manifest', cb);
 });
 
 //// Build files for local development
