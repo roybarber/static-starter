@@ -143,7 +143,7 @@ html {
 		// Padding & Margin helpers
 		//// Can individually pad and margin an item based on MQ value
 		@each $space in $spacing {
-			.padding-#{$infix}-#{$space} {padding: #{$space}px;} 
+			.padding#{$infix}-#{$space} {padding: #{$space}px;} 
 			.padding-top#{$infix}-#{$space} {padding-top: #{$space}px;} 
 			.padding-bottom#{$infix}-#{$space} {padding-bottom: #{$space}px;}
 			.padding-left#{$infix}-#{$space} {padding-left: #{$space}px;} 
