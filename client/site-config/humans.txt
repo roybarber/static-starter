@@ -5,8 +5,8 @@
 
     Roy Barber -- Director / Designer / Senior Front End Developer
     Dominic Talbot -- Senior Back End Developer
-    Hollie Pearson -- Junior Front End Developer
-    John Houlder -- Junior Back End Developer
+    Richard Hardesty -- Back End Developer
+    Rashad Praves -- Front End Developer
     Matt Cooper -- Designer
 
 # TECHNOLOGY COLOPHON
