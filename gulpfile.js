@@ -318,7 +318,7 @@ gulp.task('serve', function() {
       server: ['build', config.dev]
     });
   });
-  gulp.watch(config.html, ['inject:dev'], ['html:dev', reload]);
+  gulp.watch(config.html, ['inject:dev', reload], ['html:dev', reload]);
   gulp.watch(config.scss, ['sass', reload]);
   gulp.watch([config.base + '/**/*', '!' + config.html, '!' + config.scss], ['copy:dev:assets', reload]);
 });
