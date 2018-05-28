@@ -92,7 +92,7 @@ html {
 @each $breakpoint in map-keys($grid-breakpoints) {
 	@include media-breakpoint-up($breakpoint) {
 		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-		$spacing: 0,5,10,15,20,30,40,50,60,70,80,90,100;
+		$spacing: auto,0px,5px,10px,15px,20px,30px,40px,50px,60px,70px,80px,90px,100px;
 		
 		// Displays
 		//// e.g .d-sm-inline .d-md-block
@@ -143,15 +143,20 @@ html {
 		// Padding & Margin helpers
 		//// Can individually pad and margin an item based on MQ value
 		@each $space in $spacing {
-			.padding#{$infix}-#{$space} {padding: #{$space}px;} 
-			.padding-top#{$infix}-#{$space} {padding-top: #{$space}px;} 
-			.padding-bottom#{$infix}-#{$space} {padding-bottom: #{$space}px;}
-			.padding-left#{$infix}-#{$space} {padding-left: #{$space}px;} 
-			.padding-right#{$infix}-#{$space} {padding-right: #{$space}px;}
-			.margin-top#{$infix}-#{$space} {margin-top: #{$space}px;}
-			.margin-bottom#{$infix}-#{$space} {margin-bottom: #{$space}px;}
-			.margin-left#{$infix}-#{$space} {margin-left: #{$space}px;}
-			.margin-right#{$infix}-#{$space} {margin-right: #{$space}px;}
+			.p#{$infix}-#{$space} {padding: #{$space};} 
+			.py#{$infix}-#{$space} {padding-left: #{$space};padding-right: #{$space};}
+			.px#{$infix}-#{$space} {padding-top: #{$space};padding-bottom: #{$space};}
+			.pt#{$infix}-#{$space} {padding-top: #{$space};} 
+			.pb#{$infix}-#{$space} {padding-bottom: #{$space};}
+			.pl#{$infix}-#{$space} {padding-left: #{$space};} 
+			.pr#{$infix}-#{$space} {padding-right: #{$space};}
+			.m#{$infix}-#{$space} {margin: #{$space};} 
+			.my#{$infix}-#{$space} {margin-left: #{$space};margin-right: #{$space};}
+			.mx#{$infix}-#{$space} {margin-top: #{$space};margin-bottom: #{$space};}
+			.mt#{$infix}-#{$space} {margin-top: #{$space};} 
+			.mb#{$infix}-#{$space} {margin-bottom: #{$space};}
+			.ml#{$infix}-#{$space} {margin-left: #{$space};} 
+			.mr#{$infix}-#{$space} {margin-right: #{$space};}
 		}
 	}
 }
