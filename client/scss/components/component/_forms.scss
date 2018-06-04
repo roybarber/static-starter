@@ -4,6 +4,7 @@
 
 // Setup
 //// Label Group
+$remove-ms-clear: true!default;
 $form-input-group-margin: 0 0 20px 0!default;
 $form-font-family: $bfont!default;
 $form-font-size: 16px!default;
@@ -204,7 +205,11 @@ input[list] {
 	    border: $form-border-width $form-border-style $form-state-valid;
     }
 }
-
+@if $remove-ms-clear == true {
+	input::-ms-clear {
+		display: none;
+	}
+}
 
 // Other
 textarea {
