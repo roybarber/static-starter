@@ -6,6 +6,7 @@ module.exports = {
 	dist: 'build/dist',
 	dev: 'build/dev',
 	base: 'client',
+	email: 'email',
 	partials: '/partials',
 	sketch: 'sketch',
 	mainScss: 'client/scss/main.scss',
@@ -13,6 +14,10 @@ module.exports = {
 	html: [
 		'client/**/*.html'
 	],
+	emailHtml: [
+		'email/**/*.html'
+	],
+	json: './variables.js',
 	devhtml: [
 		'build/dev/**/*.html'
 	],

@@ -92,8 +92,9 @@ html {
 @each $breakpoint in map-keys($grid-breakpoints) {
 	@include media-breakpoint-up($breakpoint) {
 		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-		$spacing: auto,0px,5px,10px,15px,20px,30px,40px,50px,60px,70px,80px,90px,100px;
-		
+		$spacing: 0,5,10,15,20,30,40,50,60,70,80,90,100;
+		$spacetype: px;
+
 		// Displays
 		//// e.g .d-sm-inline .d-md-block
 		.d#{$infix}-none         { display: none !important; }
@@ -104,7 +105,7 @@ html {
 		.d#{$infix}-table-cell   { display: table-cell !important; }
 		.d#{$infix}-flex         { display: flex !important; }
 		.d#{$infix}-inline-flex  { display: inline-flex !important; }
-		
+
 		// Flex variation for Flex Box Grid
 		//// Custom styles for additional flex alignment options.
 		.order#{$infix}-first {order: -1;}
@@ -139,24 +140,31 @@ html {
 		.align-self#{$infix}-center   { align-self: center !important; }
 		.align-self#{$infix}-baseline { align-self: baseline !important; }
 		.align-self#{$infix}-stretch  { align-self: stretch !important; }
-		
+
 		// Padding & Margin helpers
 		//// Can individually pad and margin an item based on MQ value
 		@each $space in $spacing {
-			.p#{$infix}-#{$space} {padding: #{$space};} 
-			.py#{$infix}-#{$space} {padding-left: #{$space};padding-right: #{$space};}
-			.px#{$infix}-#{$space} {padding-top: #{$space};padding-bottom: #{$space};}
-			.pt#{$infix}-#{$space} {padding-top: #{$space};} 
-			.pb#{$infix}-#{$space} {padding-bottom: #{$space};}
-			.pl#{$infix}-#{$space} {padding-left: #{$space};} 
-			.pr#{$infix}-#{$space} {padding-right: #{$space};}
-			.m#{$infix}-#{$space} {margin: #{$space};} 
-			.my#{$infix}-#{$space} {margin-left: #{$space};margin-right: #{$space};}
-			.mx#{$infix}-#{$space} {margin-top: #{$space};margin-bottom: #{$space};}
-			.mt#{$infix}-#{$space} {margin-top: #{$space};} 
-			.mb#{$infix}-#{$space} {margin-bottom: #{$space};}
-			.ml#{$infix}-#{$space} {margin-left: #{$space};} 
-			.mr#{$infix}-#{$space} {margin-right: #{$space};}
+			.p#{$infix}-#{$space} {padding: #{$space}$spacetype;}
+			.py#{$infix}-#{$space} {padding-left: #{$space}$spacetype;padding-right: #{$space}$spacetype;}
+			.px#{$infix}-#{$space} {padding-top: #{$space}$spacetype;padding-bottom: #{$space}$spacetype;}
+			.pt#{$infix}-#{$space} {padding-top: #{$space}$spacetype;}
+			.pb#{$infix}-#{$space} {padding-bottom: #{$space}$spacetype;}
+			.pl#{$infix}-#{$space} {padding-left: #{$space}$spacetype;}
+			.pr#{$infix}-#{$space} {padding-right: #{$space}$spacetype;}
+			.m#{$infix}-auto {margin:auto;}
+			.my#{$infix}-auto {margin-top:auto;margin-bottom:auto;}
+			.mx#{$infix}-auto {margin-left:auto;margin-right:auto;}
+			.mt#{$infix}-auto {margin-top:auto;}
+			.mb#{$infix}-auto {margin-bottom:auto;}
+			.ml#{$infix}-auto {margin-left:auto;}
+			.mr#{$infix}-auto {margin-right:auto;}
+			.m#{$infix}-#{$space} {margin: #{$space}$spacetype;}
+			.my#{$infix}-#{$space} {margin-left: #{$space}$spacetype;margin-right: #{$space}$spacetype;}
+			.mx#{$infix}-#{$space} {margin-top: #{$space}$spacetype;margin-bottom: #{$space}$spacetype;}
+			.mt#{$infix}-#{$space} {margin-top: #{$space}$spacetype;}
+			.mb#{$infix}-#{$space} {margin-bottom: #{$space}$spacetype;}
+			.ml#{$infix}-#{$space} {margin-left: #{$space}$spacetype;}
+			.mr#{$infix}-#{$space} {margin-right: #{$space}$spacetype;}
 		}
 	}
 }
