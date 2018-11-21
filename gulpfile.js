@@ -24,6 +24,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var preprocess = require('gulp-preprocess');
 var handlebars = require('gulp-compile-handlebars');
 var jsonminify = require('gulp-jsonminify');
+var uglify = require('gulp-uglify');
 
 //////////////////////////////////////////////////////////////////////
 // Setup                                                            //
@@ -111,6 +112,14 @@ gulp.task('favicon', ['copy:fav'], function() {
 		.src(config.dist + '/favicon.png')
 		.pipe(ico('favicon.ico'))
 		.pipe(gulp.dest(config.dist));
+});
+
+//// Create the favicon from the png
+gulp.task('favicon:dev', ['copy:fav'], function() {
+	return gulp
+		.src(config.dist + '/favicon.png')
+		.pipe(ico('favicon.ico'))
+		.pipe(gulp.dest(config.dev));
 });
 
 //////////////////////////////////////////////////////////////////////
@@ -219,6 +228,16 @@ gulp.task('html', function() {
 });
 
 //////////////////////////////////////////////////////////////////////
+// JS Minification                                                  //
+//////////////////////////////////////////////////////////////////////
+gulp.task('scripts', function() {
+    return gulp.src(config.js)
+      .pipe(uglify())
+      .pipe(gulp.dest(config.dist + '/assets/js/'))
+  });
+
+
+//////////////////////////////////////////////////////////////////////
 // Copy                                                             //
 //////////////////////////////////////////////////////////////////////
 
@@ -299,7 +318,19 @@ gulp.task('copy:video', function() {
 		.pipe(gulp.dest(config.dist + '/video'))
 		.pipe(
 			size({
-				title: 'copy:fav'
+				title: 'copy:video'
+			})
+		);
+});
+
+//// Copy over the videos
+gulp.task('copy:fonts', function () {
+	return gulp
+		.src([config.fonts])
+		.pipe(gulp.dest(config.dist + '/fonts'))
+		.pipe(
+			size({
+				title: 'copy:fonts'
 			})
 		);
 });
@@ -341,8 +372,9 @@ gulp.task(
 //// Build files for creating a dist release for production
 gulp.task('build:dist', ['clean'], function(cb) {
 	runSequence(
-		['build', 'copy', 'copy:assets', 'copy:video', 'images'],
-		['html'],
+		['build', 'copy', 'copy:assets', 'copy:video', 'copy:fonts', 'images'],
+        ['html'],
+        ['scripts'],
 		['revision'],
 		['revisionReplace'],
 		'favicon',
@@ -365,7 +397,7 @@ gulp.task('build', ['clean'], function(cb) {
 
 //// Run the development server after having built generated files, and watch for changes
 gulp.task('serve', function() {
-	runSequence('build', 'minifyjson', 'inject:dev', 'html:dev', function() {
+	runSequence('build', 'minifyjson', 'inject:dev', 'html:dev', 'favicon:dev', function() {
 		browserSync({
 			notify: false,
 			server: ['build', config.dev]

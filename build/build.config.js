@@ -28,5 +28,6 @@ module.exports = {
 	index: 'client/index.html',
 	assets: 'client/assets/**',
 	images: 'client/img/**/*',
+	fonts: 'client/fonts/**/*',
 	video: 'client/video/**/*'
 };
