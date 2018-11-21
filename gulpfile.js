@@ -25,6 +25,8 @@ var preprocess = require('gulp-preprocess');
 var handlebars = require('gulp-compile-handlebars');
 var jsonminify = require('gulp-jsonminify');
 var uglify = require('gulp-uglify');
+var sassInlineSvg = require('gulp-sass-inline-svg');
+var svgmin = require('gulp-svgmin');
 
 //////////////////////////////////////////////////////////////////////
 // Setup                                                            //
@@ -120,6 +122,15 @@ gulp.task('favicon:dev', ['copy:fav'], function() {
 		.src(config.dist + '/favicon.png')
 		.pipe(ico('favicon.ico'))
 		.pipe(gulp.dest(config.dev));
+});
+
+//// Compile to SVG icons to usable inlined options
+gulp.task('svg', function(){
+    return gulp.src(config.images + '.svg')
+    .pipe(svgmin())
+	.pipe(sassInlineSvg({
+		destDir: config.base + '/scss/sass-utils/icons'
+	}));
 });
 
 //////////////////////////////////////////////////////////////////////
@@ -232,9 +243,9 @@ gulp.task('html', function() {
 //////////////////////////////////////////////////////////////////////
 gulp.task('scripts', function() {
     return gulp.src(config.js)
-      .pipe(uglify())
-      .pipe(gulp.dest(config.dist + '/assets/js/'))
-  });
+    .pipe(uglify())
+    .pipe(gulp.dest(config.dist + '/assets/js/'))
+});
 
 
 //////////////////////////////////////////////////////////////////////
@@ -388,7 +399,7 @@ gulp.task('build:dist', ['clean'], function(cb) {
 
 //// Build files for local development
 gulp.task('build', ['clean'], function(cb) {
-	runSequence(['sass:dist', 'copy:dev'], cb);
+	runSequence(['svg'], ['sass:dist', 'copy:dev'], cb);
 });
 
 //////////////////////////////////////////////////////////////////////
@@ -407,9 +418,10 @@ gulp.task('serve', function() {
 	gulp.watch(config.json, ['inject:dev', reload]);
 	gulp.watch(config.scss, ['sass', reload]);
 	gulp.watch(
-		[config.base + '/**/*', '!' + config.html, '!' + config.scss],
+        [config.base + '/**/*', '!' + config.html, '!' + config.scss, '!' + config.icons],
 		['copy:dev:assets', reload]
-	);
+    );
+    gulp.watch(config.icons, ['svg'], ['sass', reload]);
 });
 
 //// Run the prod site packed in the dist folder

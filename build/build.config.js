@@ -27,7 +27,8 @@ module.exports = {
 	],
 	index: 'client/index.html',
 	assets: 'client/assets/**',
-	images: 'client/img/**/*',
+    images: 'client/img/**/*',
+    icons: 'client/img/icon/**/*',
 	fonts: 'client/fonts/**/*',
 	video: 'client/video/**/*'
 };

@@ -1,22 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: sketchtool 47 (45396) - http://www.bohemiancoding.com/sketch -->
-    <title>icon/solid/heart-solid</title>
-    <desc>Created with sketchtool.</desc>
-    <defs>
-        <path d="M20.0239465,7.01144793 C21.6218907,7.01144793 23.1237874,7.63263242 24.2531989,8.76204392 C25.3834786,9.89232355 26.0045557,11.399278 25.999979,12.9951124 C25.999979,14.5920567 25.3756834,16.0980644 24.2442483,17.2294971 L17.0639004,24.3831355 C16.777138,24.669898 16.3897534,24.8248518 15.994276,24.8248518 C15.5964827,24.8248518 15.2093924,24.6640604 14.9246515,24.3793196 L7.75824884,17.2129169 C6.62641337,16.0810815 6.0000209,14.5782204 6.000025,12.9865298 C5.99544905,11.3895215 6.61913634,9.88207654 7.75061689,8.75059599 C8.87709309,7.62411979 10.3831737,7 11.9760534,7 C13.4765907,7 14.9012392,7.55462663 16.0061086,8.56082807 C17.1087422,7.56047759 18.5263578,7.01144793 20.0239465,7.01144793 Z" id="path-1"></path>
-    </defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="icon/solid/heart-solid">
-            <mask id="mask-2" fill="white">
-                <use xlink:href="#path-1"></use>
-            </mask>
-            <use id="heart" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
-            <g id="color/solid/primary" mask="url(#mask-2)" fill="#4A90E2">
-                <g transform="translate(-22.000000, -25.000000)" id="color">
-                    <rect x="0" y="0" width="80" height="80"></rect>
-                </g>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<path d="M20,7c1.6,0,3.1,0.6,4.2,1.8C25.4,9.9,26,11.4,26,13c0,1.6-0.6,3.1-1.8,4.2l-7.2,7.2c-0.3,0.3-0.7,0.4-1.1,0.4
+	c-0.4,0-0.8-0.2-1.1-0.4l-7.2-7.2C6.6,16.1,6,14.6,6,13c0-1.6,0.6-3.1,1.8-4.2C8.9,7.6,10.4,7,12,7c1.5,0,2.9,0.6,4,1.6
+	C17.1,7.6,18.5,7,20,7z"/>
 </svg>

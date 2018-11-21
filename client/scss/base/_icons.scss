@@ -3,49 +3,25 @@
 /////////////////////////////////////////////////////////
 
 // Setup
-$iconsizes: 16,20,24,32,40,44,50,60,70,80,100,126,150!default;
-$icons:
-	sort,
-	close,
-	loading,
-	date,
-	star-active,
-	divider,
-	select-active,
-	menu,
-	heart,
-	share,
-	tag,
-	warning,
-	search,
-	trash,
-	checkmark,
-	more-detail,
-	info,
-	copy,
-	location,
-	required,
-	heart-solid,
-	error,
-	select,
-	star-action,
-	star-inactive
-;
-$socials:
-	instagram,
-	slack,
-	googleplus,
-	youtube,
-	facebook,
-	twitter,
-	linkedin,
-	dribbble
-;
+$iconsizes: 16,24,32,40,44,50,60,70,80,100,128,150!default;
+$iconcolors: (
+    black: $black,
+	white: #ffffff
+) !default;
+$iconfoldersolid: "solid";
+$iconfoldersocial: "social"; 
+
+
 
 // Icon Defaults
-//// Icons can be overidden with background colors: e.g .bg-primary
-.icon {display: inline-block;background:$primary;}
+.icon {
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
 .icon-block {display: block;}
+
+// Rotate modifiers
 .icon-rotate-90 {
 	-ms-transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
@@ -68,21 +44,59 @@ $socials:
 	.icon-#{$iconsize} {
 		width: #{$iconsize}px;
 		height: #{$iconsize}px;
+		background-size: #{$iconsize}px #{$iconsize}px;
 	} 
 }
 
+// Coloured icons
+// @each $icon in svg-list($iconfoldersocial){
+//     $data: inline-svg($icon);
+//     .icon-#{$icon} {
+//         background-image: $data;
+//     }
+// }
+@each $icon in svg-list($iconfoldersolid){
+    @each $name, $color in $iconcolors {
+        $data: inline-svg($icon, $color);
+        .icon-#{$icon}-#{$name} {
+            background-image: $data;
+        }
+    }
+}
 
-// Generate icons
-//// Uses CSS3 Masks, needs a fallback for IE+Edge
-@each $icon in $icons {
-	.icon-#{$icon} {
-		-webkit-mask:  url(/img/icon/solid/#{$icon}.svg) 100% 100%/100% 100% no-repeat;
-		mask: url(/img/icon/solid/#{$icon}.svg) 100% 100%/100% 100% no-repeat;
+
+@each $icon in svg-list($iconfoldersocial){
+	@each $name, $color in $iconcolors {
+		$data: inline-svg($icon, $color);
+		.icon-#{$icon}-#{$name} {
+			background-image: $data;
+		}
 	}
 }
-@each $social in $socials {
-	.icon-#{$social} {
-		-webkit-mask: url(/img/icon/social/#{$social}.svg) 100% 100%/100% 100% no-repeat;
-		mask: url(/img/icon/social/#{$social}.svg) 100% 100%/100% 100% no-repeat;
-	}
+
+// Individual icon example:
+.icon-heart-solid-blue {background-image: inline-svg("heart-solid", blue);}
+.icon-heart-solid-pink {background-image: inline-svg("heart-solid", pink);}
+.icon-heart-solid-yellow {background-image: inline-svg("heart-solid", yellow);}
+.icon-heart-solid-orange {background-image: inline-svg("heart-solid", orange);}
+.icon-heart-solid-red {background-image: inline-svg("heart-solid", red);}
+.icon-heart-solid-purple {background-image: inline-svg("heart-solid", purple);}
+
+// Notification states
+$states: (
+	default: $primary,
+	error: $error,
+	warning: $warning,
+	success: $success
+)!default;
+@each $name, $color in $states {
+    .icon-close-#{$name} {
+        background-image: inline-svg("close", $color);
+    }
+    .icon-warning-#{$name} {
+        background-image: inline-svg("warning", $color);
+    }
+    .icon-info-#{$name} {
+        background-image: inline-svg("info", $color);
+    }
 }

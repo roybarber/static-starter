@@ -43,11 +43,10 @@ $states: (
 		top:50%;
 		margin-top:-($notification-icon-size / 2);
 		left:$notification-icon-position-from-edge;
-		background:$notification-default-color;
 	}
-	.icon-close {
+	.icon.right {
 		left:auto;
-		right:$notification-icon-position-from-edge;
+        right:$notification-icon-position-from-edge;
 	}
 	p {
 		color: darken($notification-default-color, 20%);
@@ -74,9 +73,6 @@ $states: (
 		&.#{$name} {
 			background: rgba($color, .35);
 			border-color:$color;
-			.icon {
-				background:$color;
-			}
 			p {
 				color: darken($color, 20%);
 			}

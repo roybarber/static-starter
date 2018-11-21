@@ -1,22 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: sketchtool 47 (45396) - http://www.bohemiancoding.com/sketch -->
-    <title>icon/solid/divider</title>
-    <desc>Created with sketchtool.</desc>
-    <defs>
-        <path d="M13.8667888,7.46490892 C13.2772672,6.84503036 12.1571762,6.84503036 11.5087024,7.46490892 C10.8602287,8.14677533 10.8012765,9.07659316 11.5087024,9.94442314 L16.9912532,16.019233 L11.5087024,22.032055 C10.8012765,22.899885 10.8602287,23.8297028 11.5087024,24.5115692 C12.1571762,25.1934356 13.2772672,25.1314478 13.8667888,24.5115692 C14.5152625,23.8297028 20.5283827,17.1970023 20.5283827,17.1970023 C20.8231435,16.887063 21,16.453148 21,16.019233 C21,15.5233302 20.8231435,15.0894152 20.5283827,14.7794759 C20.5283827,14.7794759 14.5152625,8.14677533 13.8667888,7.46490892 Z" id="path-1"></path>
-    </defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="icon/solid/divider">
-            <mask id="mask-2" fill="white">
-                <use xlink:href="#path-1"></use>
-            </mask>
-            <use id="divider" fill="#000000" xlink:href="#path-1"></use>
-            <g id="color/solid/primary" mask="url(#mask-2)" fill="#4A90E2">
-                <g transform="translate(-24.000000, -24.000000)" id="color">
-                    <rect x="0" y="0" width="80" height="80"></rect>
-                </g>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;}
+</style>
+<g>
+	<path class="st0" d="M13.9,7.5c-0.6-0.6-1.7-0.6-2.4,0c-0.6,0.7-0.7,1.6,0,2.5L17,16l-5.5,6c-0.7,0.9-0.6,1.8,0,2.5
+		c0.6,0.7,1.8,0.6,2.4,0c0.6-0.7,6.7-7.3,6.7-7.3c0.3-0.3,0.5-0.7,0.5-1.2c0-0.5-0.2-0.9-0.5-1.2C20.5,14.8,14.5,8.1,13.9,7.5z"/>
+</g>
 </svg>
