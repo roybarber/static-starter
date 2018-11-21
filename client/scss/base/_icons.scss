@@ -81,22 +81,3 @@ $iconfoldersocial: "social";
 .icon-heart-solid-orange {background-image: inline-svg("heart-solid", orange);}
 .icon-heart-solid-red {background-image: inline-svg("heart-solid", red);}
 .icon-heart-solid-purple {background-image: inline-svg("heart-solid", purple);}
-
-// Notification states
-$states: (
-	default: $primary,
-	error: $error,
-	warning: $warning,
-	success: $success
-)!default;
-@each $name, $color in $states {
-    .icon-close-#{$name} {
-        background-image: inline-svg("close", $color);
-    }
-    .icon-warning-#{$name} {
-        background-image: inline-svg("warning", $color);
-    }
-    .icon-info-#{$name} {
-        background-image: inline-svg("info", $color);
-    }
-}

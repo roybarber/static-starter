@@ -19,13 +19,25 @@ $notification-number-size:28px!default;
 $notification-number-border-radius:100%!default;
 $notification-number-font-size: 14px!default;
 $notification-number-font-weight: 400!default;
-//// States
+
+// Notification states
 $states: (
-	grey: $darkgrey,
+	default: $primary,
 	error: $error,
 	warning: $warning,
 	success: $success
 )!default;
+@each $name, $color in $states {
+    .icon-close-#{$name} {
+        background-image: inline-svg("close", $color);
+    }
+    .icon-warning-#{$name} {
+        background-image: inline-svg("warning", $color);
+    }
+    .icon-info-#{$name} {
+        background-image: inline-svg("info", $color);
+    }
+}
 
 .notification {
 	background: rgba($notification-default-color, .35);
