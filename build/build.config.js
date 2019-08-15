@@ -22,6 +22,7 @@ module.exports = {
 		'build/dev/**/*.html'
 	],
 	js: [
+		'node_modules/babel-polyfill/dist/polyfill.min.js',
 		'client/js/**/*.js',
 		'!client/vendor/**/*.js'
 	],

@@ -9,7 +9,7 @@ var config = require('../build/build.config.js');
 
 // Tasks
 //// Clean temporary directories
-gulp.task('clean', del.bind(null, [config.dev, config.tmp]));
+gulp.task('clean', del.bind(null, [config.dev, config.tmp, config.dist]));
 
 //// Clean build transfered folders
 gulp.task(
