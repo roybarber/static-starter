@@ -3,14 +3,47 @@
 /////////////////////////////////////////////////////////
 
 // Setup
+$iconlocation: '/img/icon';
 $iconsizes: 16,24,32,40,44,50,60,70,80,100,128,150!default;
 $iconcolors: (
     black: $black,
 	white: #ffffff
 ) !default;
-$iconfoldersolid: "solid";
-$iconfoldersocial: "social"; 
-
+// icon name, folder
+$icons: (
+	dribbble:		social,
+	facebook:		social,
+	instagram:		social,
+	linkedin:		social,
+	slack:			social,
+	twitter:		social,
+	youtube:		social,
+	checkmark:		solid,
+	close:			solid,
+	copy:			solid,
+	date:			solid,
+	divider:		solid,
+	error:			solid,
+	heart-solid:	solid,
+	heart:			solid,
+	info:			solid,
+	loading:		solid,
+	location:		solid,
+	menu:			solid,
+	more-detail:	solid,
+	required:		solid,
+	search:			solid,
+	select-active:	solid,
+	select:			solid,
+	share:			solid,
+	sort:			solid,
+	star-action:	solid,
+	star-active:	solid,
+	star-inactive:	solid,
+	tag:			solid,
+	trash:			solid,
+	warning:		solid
+) !default;
 
 
 // Icon Defaults
@@ -38,7 +71,6 @@ $iconfoldersocial: "social";
     transform: rotate(270deg);
 }
 
-
 // Generate Icon sizes
 @each $iconsize in $iconsizes {
 	.icon-#{$iconsize} {
@@ -48,36 +80,9 @@ $iconfoldersocial: "social";
 	} 
 }
 
-// Coloured icons
-// @each $icon in svg-list($iconfoldersocial){
-//     $data: inline-svg($icon);
-//     .icon-#{$icon} {
-//         background-image: $data;
-//     }
-// }
-@each $icon in svg-list($iconfoldersolid){
-    @each $name, $color in $iconcolors {
-        $data: inline-svg($icon, $color);
-        .icon-#{$icon}-#{$name} {
-            background-image: $data;
-        }
-    }
+// Generate Icons from the list of icons
+@each $icon, $iconfolder in $icons {
+	.icon-#{$icon} {
+		background-image: url('#{$iconlocation}/#{$iconfolder}/#{$icon}.svg')
+	} 
 }
-
-
-@each $icon in svg-list($iconfoldersocial){
-	@each $name, $color in $iconcolors {
-		$data: inline-svg($icon, $color);
-		.icon-#{$icon}-#{$name} {
-			background-image: $data;
-		}
-	}
-}
-
-// Individual icon example:
-.icon-heart-solid-blue {background-image: inline-svg("heart-solid", blue);}
-.icon-heart-solid-pink {background-image: inline-svg("heart-solid", pink);}
-.icon-heart-solid-yellow {background-image: inline-svg("heart-solid", yellow);}
-.icon-heart-solid-orange {background-image: inline-svg("heart-solid", orange);}
-.icon-heart-solid-red {background-image: inline-svg("heart-solid", red);}
-.icon-heart-solid-purple {background-image: inline-svg("heart-solid", purple);}
