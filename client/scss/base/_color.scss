@@ -85,6 +85,9 @@ a:not([href]):not([tabindex]) {
 	.border-#{$name} {
 		border: 1px solid #{$color};
 	}
+	.icon-#{$name} {
+		stroke: #{$color};
+	}
 }
 
 
