@@ -4,7 +4,7 @@
 
 // Type Defaults
 //// Base
-$hfont : 'Roboto', sans-serif !default;
+$hfont : -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $bfont : $hfont !default;
 $line-height-base: 1.5!default;
 //// Mobile Sizes
