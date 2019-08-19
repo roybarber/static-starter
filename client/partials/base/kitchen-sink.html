@@ -2,12 +2,21 @@
 		<div class="row">
 			<article class="col-md-12">
 
-				{{icon "activity.svg" class="icon icon-128 icon-error" width="24"
-				height="24"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"}}
+				{{icon 
+					"activity"
+					class="icon icon-128 icon-error"
+					stroke-width="2"
+				}}
+				{{iconBackground 
+					"airplay"
+					class="icon icon-128"
+					width="24"
+					height="24"
+					stroke="pink"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				}}
 
 				<h1 class="mb-10">Heading One</h1>
 				<h2 class="mb-10">Heading Two</h2>
@@ -34,8 +43,6 @@
 				</div>
 
 				<hr class="mt-40 mb-40"/>
-
-
 
 				<div class="row mb-20">
 					<div class="col-2 col-md-1"><div style="height:60px;" class="bg-primary"></div></div>
@@ -97,73 +104,92 @@
 				</div>
 
 				<hr class="mt-40 mb-40"/>
-
+				<h3>Icons</h3>
+				<p>Feather icons, <a href="https://feathericons.com/">see full list</a></p>
 				<div>
-					<span class="icon icon-40 icon-heart-solid"></span>
-                    <span class="icon icon-40 icon-heart-solid"></span>
-                    <span class="icon icon-40 icon-heart-solid"></span>
-                    <span class="icon icon-40 icon-heart-solid"></span>
-                    <span class="icon icon-40 icon-heart-solid"></span>
-                    <span class="icon icon-40 icon-heart-solid"></span>
-                    <span class="icon icon-40 icon-heart-solid"></span>
+					{{icon "activity" class="icon icon-50 icon-primary"}}
+					{{icon "airplay" class="icon icon-50 icon-primary"}}
+					{{icon "alert-circle" class="icon icon-50 icon-primary"}}
+					{{icon "alert-octagon" class="icon icon-50 icon-primary"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-primary"}}
+					{{icon "align-center" class="icon icon-50 icon-primary"}}
+					{{icon "align-justify" class="icon icon-50 icon-primary"}}
+					{{icon "align-left" class="icon icon-50 icon-primary"}}
+					{{icon "align-right" class="icon icon-50 icon-primary"}}
+					{{icon "anchor" class="icon icon-50 icon-primary"}}
+					{{icon "aperture" class="icon icon-50 icon-primary"}}
+					{{icon "archive" class="icon icon-50 icon-primary"}}
+					{{icon "arrow-down-circle" class="icon icon-50 icon-primary"}}
+					{{icon "arrow-down-left" class="icon icon-50 icon-primary"}}
+					{{icon "arrow-down-right" class="icon icon-50 icon-primary"}}
+					{{icon "arrow-down" class="icon icon-50 icon-primary"}}
+					{{icon "arrow-left-circle" class="icon icon-50 icon-primary"}}
+					{{icon "arrow-left" class="icon icon-50 icon-primary"}}
                 </div>
                 <div>
-                    <span class="icon icon-40 icon-emblem"></span>
-                    <span class="icon icon-40 icon-primary"></span>
-                    <span class="icon icon-40 icon-secondary"></span>
+					{{icon "camera-off" class="icon icon-16 icon-primary"}}
+					{{icon "camera-off" class="icon icon-24 icon-primary"}}
+					{{icon "camera-off" class="icon icon-32 icon-primary"}}
+					{{icon "camera-off" class="icon icon-40 icon-primary"}}
+					{{icon "camera-off" class="icon icon-44 icon-primary"}}
+					{{icon "camera-off" class="icon icon-50 icon-primary"}}
+					{{icon "camera-off" class="icon icon-64 icon-primary"}}
+					{{icon "camera-off" class="icon icon-70 icon-primary"}}
+					{{icon "camera-off" class="icon icon-80 icon-primary"}}
+					{{icon "camera-off" class="icon icon-100 icon-primary"}}
+					{{icon "camera-off" class="icon icon-128 icon-primary"}}
+					{{icon "camera-off" class="icon icon-150 icon-primary"}}
                 </div>
 
                 <div>
-                    <span class="icon icon-40 icon-checkmark"></span>
-                    <span class="icon icon-40 icon-close"></span>
-                    <span class="icon icon-40 icon-copy"></span>
-                    <span class="icon icon-40 icon-date"></span>
-                    <span class="icon icon-40 icon-divider"></span>
-                    <span class="icon icon-40 icon-error"></span>
-                    <span class="icon icon-40 icon-heart-solid"></span>
-                    <span class="icon icon-40 icon-heart"></span>
-                    <span class="icon icon-40 icon-info"></span>
-                    <span class="icon icon-40 icon-loading"></span>
-                    <span class="icon icon-40 icon-location"></span>
-                    <span class="icon icon-40 icon-menu"></span>
-                    <span class="icon icon-40 icon-more-detail"></span>
-                    <span class="icon icon-40 icon-required"></span>
-                    <span class="icon icon-40 icon-search"></span>
-                    <span class="icon icon-40 icon-select-active"></span>
-                    <span class="icon icon-40 icon-select"></span>
-                    <span class="icon icon-40 icon-share"></span>
-                    <span class="icon icon-40 icon-sort"></span>
-                    <span class="icon icon-40 icon-star-action"></span>
-                    <span class="icon icon-40 icon-star-active"></span>
-                    <span class="icon icon-40 icon-star-inactive"></span>
-                    <span class="icon icon-40 icon-tag"></span>
-                    <span class="icon icon-40 icon-trash"></span>
-                    <span class="icon icon-40 icon-warning"></span>
+					{{icon "activity" class="icon icon-50 icon-primary" stroke-width="1"}}
+					{{icon "activity" class="icon icon-50 icon-primary" stroke-width="2"}}
+					{{icon "activity" class="icon icon-50 icon-primary" stroke-width="3"}}
+					{{icon "activity" class="icon icon-50 icon-primary" stroke-width="4"}}
 				</div>
 
 				<div>
-					<span class="icon icon-40 icon-dribbble"></span>
-                    <span class="icon icon-40 icon-facebook"></span>
-                    <span class="icon icon-40 icon-instagram"></span>
-                    <span class="icon icon-40 icon-linkedin"></span>
-                    <span class="icon icon-40 icon-slack"></span>
-                    <span class="icon icon-40 icon-twitter"></span>
-                    <span class="icon icon-40 icon-youtube"></span>
+					{{icon "alert-triangle" class="icon icon-50 icon-primary"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-secondary"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-black"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-darkgrey"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-lightgrey"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-error"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-warning"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-success"}}
 				</div>
 
 				<div>
-					<span class="icon icon-16 icon-dribbble"></span>
-					<span class="icon icon-24 icon-dribbble"></span>
-					<span class="icon icon-32 icon-dribbble"></span>
-					<span class="icon icon-40 icon-dribbble"></span>
-					<span class="icon icon-44 icon-dribbble"></span>
-					<span class="icon icon-50 icon-dribbble"></span>
-					<span class="icon icon-60 icon-dribbble"></span>
-					<span class="icon icon-70 icon-dribbble"></span>
-					<span class="icon icon-80 icon-dribbble"></span>
-					<span class="icon icon-100 icon-dribbble"></span>
-					<span class="icon icon-128 icon-dribbble"></span>
-					<span class="icon icon-150 icon-dribbble"></span>
+					{{icon "alert-triangle" class="icon icon-50 icon-primary" fill="rgba(74, 144, 226, 0.1)"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-secondary" fill="rgba(14, 28, 45, 0.1)"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-black" fill="rgba(0, 0, 0, 0.1)"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-darkgrey" fill="rgba(155, 155, 155, 0.1)"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-white" fill="red"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-error" fill="rgba(208, 2, 27, 0.1)"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-warning" fill="rgba(245, 166, 35, 0.1)"}}
+					{{icon "alert-triangle" class="icon icon-50 icon-success" fill="rgb(126, 211, 33, 0.1)"}}
+				</div>
+
+				<div>
+					{{iconBackground "video" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "voicemail" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "volume-1" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "volume-2" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "volume-x" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "volume" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "watch" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "wifi-off" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "wifi" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "wind" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "x-circle" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "x-octagon" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "x-square" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "x" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "youtube" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "zap-off" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "zap" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "zoom-in" class="icon icon-24" stroke="red" stroke-width="1"}}
+					{{iconBackground "zoom-out" class="icon icon-24" stroke="red" stroke-width="1"}}
 				</div>
 
 				<hr class="mt-40 mb-40"/>
