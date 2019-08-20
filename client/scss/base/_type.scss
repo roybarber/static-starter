@@ -4,19 +4,28 @@
 
 // Type Defaults
 //// Base
-$hfont : -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
-$bfont : $hfont !default;
+$hfont: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$bfont: false !default;
+
+// Disable RFS by setting $enable-responsive-font-sizes to false
+$enable-responsive-font-sizes: true !default;
+$fs-base-font-size: 16px !default;
+$fs-font-size-unit: rem !default;
 $line-height-base: 1.5!default;
-//// Mobile Sizes
-$fs-1-mobile: 32px!default;
-$fs-2-mobile: 28px!default;
-$fs-3-mobile: 24px!default;
-$fs-4-mobile: 20px!default;
-$fs-5-mobile: 18px!default;
-$fs-6-mobile: 16px!default;
-$fs-7-mobile: 16px!default;
-$fs-8-mobile: 14px!default;
-//// Desktop Sizes
+
+// Breakpoint at where font-size starts decreasing if screen width is smaller
+$fs-breakpoint: $lgdesktopmq !default;
+$fs-breakpoint-unit: px !default;
+// Resize font size based on screen height and width
+$fs-two-dimensional: false !default;
+// Factor of decrease
+$fs-factor: 10 !default;
+// Generate enable or disable classes. Possibilities: false, "enable" or "disable"
+$fs-class: false !default;
+// 1 rem = $fs-rem-value px
+$fs-rem-value: 16 !default;
+
+//// Font Sizes
 $fs-1-desktop: 50px!default;
 $fs-2-desktop: 36px!default;
 $fs-3-desktop: 28px!default;
@@ -39,100 +48,67 @@ body {
 	text-rendering: optimizeLegibility;
 	font-stretch: normal;
 	// Defaults
-	font-size: 16px;
-    color: $bodycolor;
-    font-family: $bfont;
+	font-size: $fs-base-font-size;
+	color: $bodycolor;
+	@if $bfont {
+		font-family: $bfont;
+	} @else {
+		font-family: $hfont;
+	}
 }
-
 
 // Headings
 //// Defaults
 .heading {
-	font-family: $hfont;
+	@if $bfont {
+		font-family: $hfont;
+	}
 	font-weight: 300;
 	color: $headingcolor;
+	line-height: $line-height-base;
 	strong {font-weight: 400;}
 }
 .body {
-	font-family: $bfont;
+	@if $bfont {
+		font-family: $bfont;
+	}
 	font-weight: 300;
 	color: $bodycolor;
 }
 //// Mobile
 h1, .fs-1 {
 	@extend .heading;
-	font-size: $fs-1-mobile;
-	line-height: $fs-1-mobile * $line-height-base;
+	@include font-size($fs-1-desktop);
 }
 h2, .fs-2 {
 	@extend .heading;
-	font-size: $fs-2-mobile;
-	line-height: $fs-2-mobile * $line-height-base;
+	@include font-size($fs-2-desktop, true);
 }
 h3, .fs-3 {
 	@extend .heading;
-	font-size: $fs-3-mobile;
-	line-height: $fs-3-mobile * $line-height-base;
+	@include font-size($fs-3-desktop);
 }
 h4, .fs-4 {
 	@extend .heading;
-	font-size: $fs-4-mobile;
-	line-height: $fs-4-mobile * $line-height-base;
+	@include font-size($fs-4-desktop);
 }
 h5, .fs-5  {
 	@extend .heading;
-	font-size: $fs-5-mobile;
-	line-height: $fs-5-mobile * $line-height-base;
+	@include font-size($fs-5-desktop);
 }
 h6, p, .fs-6 {
 	@extend .body;
-	font-size: $fs-6-mobile;
-	line-height: $fs-6-mobile * $line-height-base;
+	@include font-size($fs-6-desktop);
+	line-height: 1.7;
 }
 label, input, .fs-7 {
 	@extend .heading;
-	font-size: $fs-7-mobile;
+	@include font-size($fs-7-desktop);
 	line-height: 30px;
 }
 small, .fs-8 {
 	@extend .body;
-	font-size: $fs-8-mobile;
-	line-height: $fs-8-mobile * $line-height-base;
-}
-//// Desktop
-@include media-breakpoint-up(md) {
-	h1, .fs-1 {
-		font-size: $fs-1-desktop;
-		line-height: $fs-1-desktop * $line-height-base;
-	}
-	h2, .fs-2 {
-		font-size: $fs-2-desktop;
-		line-height: $fs-2-desktop * $line-height-base;
-	}
-	h3, .fs-3 {
-		font-size: $fs-3-desktop;
-		line-height: $fs-3-desktop * $line-height-base;
-	}
-	h4, .fs-4 {
-		font-size: $fs-4-desktop;
-		line-height: $fs-4-desktop * $line-height-base;
-	}
-	h5, .fs-5  {
-		font-size: $fs-5-desktop;
-		line-height: $fs-5-desktop * $line-height-base;
-	}
-	h6, p, .fs-6 {
-		font-size: $fs-6-desktop;
-		line-height: 30px;
-	}
-	label, input, .fs-7 {
-		font-size: $fs-7-desktop;
-		line-height: 30px;
-	}
-	small, .fs-8 {
-		font-size: $fs-8-desktop;
-		line-height: $fs-8-desktop * $line-height-base;
-	}
+	@include font-size($fs-8-desktop);
 }
 
 

@@ -3,10 +3,10 @@
 /////////////////////////////////////////////////////////
 
 // SASS-UTILS
-@import "sass-utils/mixins";
+@import "setup/mixins";
 
 // RESET
-@import "reboot/reboot";
+@import "setup/reboot";
 
 // BASE
 //// Grid System
