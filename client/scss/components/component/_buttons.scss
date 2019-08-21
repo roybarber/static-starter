@@ -109,14 +109,9 @@ input[type="button"],
 input[type="submit"],
 input[type="reset"] {				
 	&.btn-wide {display:block;}
-	//// Icons - force a width and height inside a button
 	.icon {
 		position: relative;
-		top:10px;
-		margin-top:-16px;
-		width:32px;
-		height:32px;
-		@include transition($btn-transition);
+		top:2px;
 	}
 }
 

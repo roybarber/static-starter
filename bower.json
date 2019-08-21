@@ -1,6 +1,7 @@
 {
   "name": "static-starter",
   "dependencies": {
-    "jquery": "jquery#1.11.3"
+    "jquery": "jquery#1.11.3",
+    "jquery-validation": "^1.19.1"
   }
 }

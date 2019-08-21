@@ -30,7 +30,6 @@ $form-focus-bg-color: white!default;
 $form-focus-border-color: $primary!default;
 $form-focus-font-color: $form-font-color!default;
 $form-input-required-icon: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTBweCIgaGVpZ2h0PSIxMnB4IiB2aWV3Qm94PSI1NTQgNDkgMTAgMTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgIDxwYXRoIGQ9Ik01NjMuODc4MTIzLDU3LjQ0ODcxODMgQzU2My43MDk3MDMsNTcuNzQxODU4NCA1NjMuNDAzODE4LDU3LjkwMzkwNDkgNTYzLjA4ODgyOSw1Ny45MDM5MDQ5IEM1NjIuOTM0NTIxLDU3LjkwMzkwNDkgNTYyLjc3NzkzNyw1Ny44NjQ3NTg4IDU2Mi42MzQ1NTMsNTcuNzgxOTE0OSBMNTU5LjkxMTYyNyw1Ni4yMDkyNDUyIEw1NTkuOTExNjI3LDU5LjM1NDU4NDUgQzU1OS45MTE2MjcsNTkuODU3MTEwNSA1NTkuNTAzNzc5LDYwLjI2NDk1NzcgNTU5LjAwMTI1Myw2MC4yNjQ5NTc3IEM1NTguNDk4NzI3LDYwLjI2NDk1NzcgNTU4LjA5MDg4LDU5Ljg1NzExMDUgNTU4LjA5MDg4LDU5LjM1NDU4NDUgTDU1OC4wOTA4OCw1Ni4yMDg3OSBMNTU1LjM2NjU4OCw1Ny43ODE5MTQ5IEM1NTUuMjIzMjA1LDU3Ljg2NDc1ODggNTU1LjA2NjYyMSw1Ny45MDM5MDQ5IDU1NC45MTIzMTIsNTcuOTAzOTA0OSBDNTU0LjU5Nzc3OCw1Ny45MDM5MDQ5IDU1NC4yOTE0MzgsNTcuNzQxODU4NCA1NTQuMTIzMDE5LDU3LjQ0ODcxODMgQzU1My44NzE3NTYsNTcuMDEzMTA0NyA1NTQuMDIwNjAyLDU2LjQ1NjQxMTUgNTU0LjQ1NjIxNSw1Ni4yMDYwNTg5IEw1NTcuMTc5NTk3LDU0LjYzMjkzNCBMNTU0LjQ1NTMwNSw1My4wNTk4MDkyIEM1NTQuMDE5NjkxLDUyLjgwODA5MSA1NTMuODcwODQ1LDUyLjI1MjMwODIgNTU0LjEyMjEwOCw1MS44MTY2OTQ2IEM1NTQuMzczMzcxLDUxLjM4MTA4MSA1NTQuOTMwNTIsNTEuMjMxNzc5OCA1NTUuMzY1Njc4LDUxLjQ4MzQ5OCBMNTU4LjA4OTUxNSw1My4wNTYxNjc3IEw1NTguMDg5NTE1LDQ5LjkxMDM3MzIgQzU1OC4wODk1MTUsNDkuNDA3ODQ3MiA1NTguNDk3MzYyLDQ5IDU1OC45OTk4ODgsNDkgQzU1OS41MDI0MTQsNDkgNTU5LjkxMDI2MSw0OS40MDc4NDcyIDU1OS45MTAyNjEsNDkuOTEwMzczMiBMNTU5LjkxMDI2MSw1My4wNTU3MTI1IEw1NjIuNjMzMTg3LDUxLjQ4MzA0MjggQzU2My4wNjgzNDYsNTEuMjMxMzI0NyA1NjMuNjI2ODYsNTEuMzgwNjI1OSA1NjMuODc2NzU3LDUxLjgxNjIzOTQgQzU2NC4xMjgwMiw1Mi4yNTE4NTMgNTYzLjk3OTE3NCw1Mi44MDg1NDYyIDU2My41NDM1Niw1My4wNTkzNTQgTDU2MC44MjEwODksNTQuNjMyNDc4OSBMNTYzLjU0NDAxNiw1Ni4yMDUxNDg1IEM1NjMuOTc5NjI5LDU2LjQ1NjQxMTUgNTY0LjEyOTM4Niw1Ny4wMTMxMDQ3IDU2My44NzgxMjMsNTcuNDQ4NzE4MyBMNTYzLjg3ODEyMyw1Ny40NDg3MTgzIFoiIGlkPSJTaGFwZSIgc3Ryb2tlPSJub25lIiBmaWxsPSIjRDAwMTFCIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjwvcGF0aD48L3N2Zz4='!default;
-$form-input-error-icon: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNXB4IiB2aWV3Qm94PSI1NDggNDggMTYgMTUiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgIDxwYXRoIGQ9Ik01NjMuODU4MzE2LDYwLjU2NDYyNTggTDU1Ni45MDczNTksNDguNTIzMjg3MiBDNTU2LjUwNDQ1Miw0Ny44MjU1NzA5IDU1NS40OTU1NDgsNDcuODI1NTcwOSA1NTUuMDkyNjQxLDQ4LjUyMzI4NzIgTDU0OC4xNDE2ODQsNjAuNTY0NjI1OCBDNTQ3LjczODc3Nyw2MS4yNjIzNDIxIDU0OC4yNDMyMjksNjIuMTM2OTQ0MiA1NDkuMDQ5MDQyLDYyLjEzNjk0NDIgTDU2Mi45NTA5NTgsNjIuMTM2OTQ0MiBDNTYzLjc1Njc3MSw2Mi4xMzY5NDQyIDU2NC4yNjEyMjMsNjEuMjYyMzQyMSA1NjMuODU4MzE2LDYwLjU2NDYyNTggTDU2My44NTgzMTYsNjAuNTY0NjI1OCBaIE01NTYuMDA5ODI3LDUyLjIzMTMzODIgQzU1Ni40NTUzMTcsNTIuMjMxMzM4MiA1NTYuODE1NjQsNTIuNjAxNDg4MSA1NTYuODAyNTM4LDUzLjA0Njk3ODMgTDU1Ni42NzE1MTEsNTcuNjE5ODA0NCBDNTU2LjY2MTY4NCw1Ny45ODAxMjc0IDU1Ni4zNjY4NzQsNTguMjY1MTEwMSA1NTYuMDA2NTUxLDU4LjI2NTExMDEgQzU1NS42NDYyMjgsNTguMjY1MTEwMSA1NTUuMzUxNDE5LDU3Ljk3Njg1MTcgNTU1LjM0MTU5Miw1Ny42MTk4MDQ0IEw1NTUuMjEzODQxLDUzLjA0Njk3ODMgQzU1NS4yMDQwMTQsNTIuNjAxNDg4MSA1NTUuNTYxMDYxLDUyLjIzMTMzODIgNTU2LjAwOTgyNyw1Mi4yMzEzMzgyIEw1NTYuMDA5ODI3LDUyLjIzMTMzODIgWiBNNTU2LDYwLjUwMjM4ODIgQzU1NS41NDQ2ODMsNjAuNTAyMzg4MiA1NTUuMTc0NTMzLDYwLjEzMjIzODIgNTU1LjE3NDUzMyw1OS42NzY5MjEgQzU1NS4xNzQ1MzMsNTkuMjIxNjAzOCA1NTUuNTQ0NjgzLDU4Ljg1MTQ1MzggNTU2LDU4Ljg1MTQ1MzggQzU1Ni40NTUzMTcsNTguODUxNDUzOCA1NTYuODI1NDY3LDU5LjIyMTYwMzggNTU2LjgyNTQ2Nyw1OS42NzY5MjEgQzU1Ni44MjU0NjcsNjAuMTMyMjM4MiA1NTYuNDU1MzE3LDYwLjUwMjM4ODIgNTU2LDYwLjUwMjM4ODIgTDU1Niw2MC41MDIzODgyIFoiIGlkPSJTaGFwZSIgc3Ryb2tlPSJub25lIiBmaWxsPSIjRDAwMTFCIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjwvcGF0aD48L3N2Zz4='!default;
 // Fieldset & Legend Styling
 $form-fieldset-bare: false!default;
 // textarea
@@ -187,7 +186,8 @@ input[type="tel"],
 input[type="time"],
 input[type="url"],
 input[type="week"],
-input[list] {
+input[list], 
+textarea {
     height: $form-input-height;
     -webkit-appearance: none;
     &:required {
@@ -195,8 +195,6 @@ input[list] {
 	    background-size:8px;
     }
     &.error {
-	    background: $form-input-bg-color url($form-input-error-icon) no-repeat right 14px center;
-	    background-size:16px 14px;
 	    border: $form-border-width $form-border-style $form-state-error;
 	    color: $form-state-error;
     }
@@ -213,9 +211,14 @@ input[list] {
 
 // Other
 textarea {
+	height: inherit;
     -webkit-appearance: none;
     overflow: auto;
-    padding:$form-textarea-padding;
+	padding:$form-textarea-padding;
+	&:required {
+	    background-position: right 14px top 20px;
+	    background-size:8px;
+    }
 }
 input[type="file"] {
     min-height: $form-input-height;
@@ -251,7 +254,14 @@ select {
     -ms-appearance: none;
     -o-appearance: none;
     background: $form-select-bg-color url($form-select-dropdown-icon) no-repeat right 14px center;
-    background-size:10px;
+	background-size:10px;
+	&.error {
+	    border: $form-border-width $form-border-style $form-state-error;
+	    color: $form-state-error;
+    }
+    &.valid {
+	    border: $form-border-width $form-border-style $form-state-valid;
+    }
     @include media-breakpoint-up(md) {
 	    &:hover {cursor: pointer;}
 	}
@@ -323,6 +333,10 @@ option:focus,  {
 		opacity: 0.6;
 		pointer-events: none;
 	}
+	.radio input.error ~ .radio-indicator {
+		border:$form-radio-border-width solid $error;
+	}
+
 	.radio-indicator:after {
 		left: 3px;
 		top: 3px;
@@ -373,9 +387,6 @@ option:focus,  {
 		background: white;
 		border:$form-checkbox-border-width solid $form-checkbox-border-color;
 	}
-	.checkbox .checkbox-indicator {
-
-	}
 	.checkbox:hover input ~ .checkbox-indicator,
 	.checkbox input:focus ~ .checkbox-indicator {
 		background: $form-checkbox-background-color;
@@ -391,6 +402,9 @@ option:focus,  {
 		background: $disabled;
 		opacity: 0.6;
 		pointer-events: none;
+	}
+	.checkbox input.error ~ .checkbox-indicator {
+		border:$form-checkbox-border-width solid $error;
 	}
 	.checkbox-indicator:after {
 		content: '';

@@ -7,8 +7,8 @@
 $notification-default-color: $primary!default;
 $notification-border-width: 1px!default;
 $notification-border-radius: 0!default;
-$notification-padding: 10px 50px!default;
-$notification-icon-size: 32px!default;
+$notification-background-opacity: .20!default;
+
 $notification-icon-position-from-edge: 10px!default;
 //// Tiny marker
 $notification-tiny-size:8px!default;
@@ -40,20 +40,15 @@ $states: (
 }
 
 .notification {
-	background: rgba($notification-default-color, .35);
+	background: rgba($notification-default-color, $notification-background-opacity);
 	border:$notification-border-width solid $notification-default-color;
 	position: relative;
 	@include border-radius($notification-border-radius);
-	padding:$notification-padding;
 	display: block;
 	.icon {
-		//// Force height to ignore icon size classes
-		width:$notification-icon-size;
-		height:$notification-icon-size;
-		background-size:$notification-icon-size;
 		position: absolute;
-		top:50%;
-		margin-top:-($notification-icon-size / 2);
+		top: 50%;
+ 		transform: translate(0, -50%);
 		left:$notification-icon-position-from-edge;
 	}
 	.icon.right {
@@ -83,7 +78,7 @@ $states: (
 	}
 	@each $name, $color in $states {
 		&.#{$name} {
-			background: rgba($color, .35);
+			background: rgba($color, $notification-background-opacity);
 			border-color:$color;
 			p {
 				color: darken($color, 20%);
