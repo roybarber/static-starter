@@ -85,7 +85,7 @@ input[type="reset"] {
 				color: $bordercolor;
 			}
 		}
-		@include media-breakpoint-up(md) {
+		@media (hover: hover) {
 			&.btn-#{$name} {
 				&:hover,&:focus,&:active,&.active,&.is-active {
 					border: $btn-border-width solid lighten($bgcolor, 10%);

@@ -32,7 +32,7 @@ $pagination-active-text-color: $white!default;
 			background:$pagination-active-bg-color!important;
 			color: $pagination-active-text-color!important;
 		}
-		@include media-breakpoint-up(md) {
+		@media (hover: hover) {
 			&:hover {
 				background:$pagination-hover-bg-color;
 				color: $pagination-hover-text-color;

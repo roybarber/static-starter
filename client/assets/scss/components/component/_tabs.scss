@@ -30,7 +30,7 @@ $tab-hover-text-color: $primary!default;
 	//// Border colors
 	a {
 		border-color:$tab-border-color!important;
-		@include media-breakpoint-up(md) {
+		@media (hover: hover) {
 			&:hover {border-color: $tab-border-hover-color!important;background-color: $tab-hover-bg-color;color: $tab-hover-text-color!important;}
 			&.active:hover {cursor: default;}
 		}

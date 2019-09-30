@@ -262,7 +262,7 @@ select {
     &.valid {
 	    border: $form-border-width $form-border-style $form-state-valid;
     }
-    @include media-breakpoint-up(md) {
+    @media (hover: hover) {
 	    &:hover {cursor: pointer;}
 	}
 }

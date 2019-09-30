@@ -48,13 +48,16 @@ a {
 a:not([href]):not([tabindex]) {
 	color: inherit;
 	text-decoration: none;
-	&:hover {
-		color: inherit;
-		text-decoration: none;
+	@media (hover: hover) {
+		&:hover {
+			color: inherit;
+			text-decoration: none;
+		}
 	}
 	&:focus {
 		outline: 0;
 	}
+
 }
 //// Text & BG Overides
 //// E.g Font Color: fc-primary or background .bg-black
@@ -76,7 +79,7 @@ a:not([href]):not([tabindex]) {
 
 
 // Hover States
-@include media-breakpoint-up(md) {
+@media (hover: hover) {
 	a {
 		-webkit-transition: all .2s ease;
 		-moz-transition: all .2s ease;
