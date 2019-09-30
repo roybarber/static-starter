@@ -8,26 +8,34 @@
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
+var panini = require('panini');
 var reload = browserSync.reload;
 var config = require('../build/build.config.js');
-
 
 // Tasks
 //// Development
 gulp.task('serve', function() {
-	runSequence('build', 'minifyjson', 'inject:dev', 'html:dev', 'favicon:dev', function() {
+	//runSequence('build', 'minifyjson', 'inject:dev', 'html:dev', 'favicon:dev', function() {
+	runSequence('build', function() {
 		browserSync({
 			notify: true,
 			server: ['build', config.dev]
 		});
 	});
-	gulp.watch(config.html, ['inject:dev', reload], ['html:dev', reload]);
-	gulp.watch(config.json, ['inject:dev', reload]);
-	gulp.watch(config.scss, ['sass', reload]);
-	gulp.watch(
-        [config.base + '/**/*', '!' + config.html, '!' + config.scss],
-		['copy:dev:assets', reload]
-    );
+	//gulp.watch(['./client/{pages,layouts,partials,helpers,data}/**/*', panini.refresh]);
+	//gulp.watch([config.html, '!./client/{pages,layouts,partials,helpers,data}/**/*'], ['html:dev', reload]);
+	//gulp.watch(['./client/{pages,layouts,partials,helpers,data}/**/*'], [panini.reload]);
+	//gulp.watch(['./client/{layouts,partials,helpers,data}/**/*'], ['resetPages', 'panini', reload]);
+	// gulp.watch(config.scss, ['sass', reload]);
+
+	gulp.watch('./client/pages/**/*.html', ['panini:dev', reload]);
+    gulp.watch(['./client/{layouts,partials}/**/*.html'], ['resetPages', 'panini:dev', reload]);
+
+
+	// gulp.watch(
+    //    [config.base + '/**/*', '!' + config.html, '!' + config.scss, '!./client/{pages,layouts,partials,helpers,data}/**/*'],
+	// 	['copy:dev:assets', reload]
+    // );
 });
 
 //// Run the prod site packed in the dist folder

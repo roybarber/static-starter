@@ -1,0 +1,80 @@
+{{!-- layouts/base.html --}}
+
+<!doctype html>
+<html lang="en-US">
+	<head>
+
+		<link rel="dns-prefetch" href="//fonts.googleapis.com">
+		<link rel="dns-prefetch" href="//google-analytics.com">
+
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+
+		<title>
+			{{#if title}}
+				{{title}}
+			{{else}}
+				{{ site_name }}
+			{{/if}}
+		</title>
+		<meta name="description" content="{{ page_description }}"/>
+		<meta name="author" content="{{ site_name }}"/>
+		<meta name="copyright" content="Copyright {{ site_name }} {{ year }}. All Rights Reserved."/>
+		<meta name="application-name" content="Static"/>
+
+		<!-- build:css /assets/css/main.css -->
+		<link rel="stylesheet" type="text/css" href="/tmp/assets/main.css"/>
+		<!-- endbuild -->
+
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon.png">
+		<link rel="manifest" href="/manifest.json">
+
+		<!-- Schema.org markup for Google+ -->
+		<meta itemprop="name" content="{{site_name}}">
+		<meta itemprop="description" content="{{page_description}}">
+		<meta itemprop="image" content="/share.png">
+
+		<!-- Twitter Card data -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@{{twitter}}">
+		<meta name="twitter:title" content="{{site_name}}">
+		<meta name="twitter:description" content="{{page_description}}">
+		<meta name="twitter:image:src" content="/share.png">
+
+		<!-- Open Graph data -->
+		<meta property="og:title" content="{{site_name}}"/>
+		<meta property="og:url" content=""/>
+		<meta property="og:image" content="/share.png"/>
+		<meta property="og:image:url" content="/share.png"/>
+		<meta property="og:description" content="{{page_description}}"/>
+		<meta property="og:site_name" content="{{site_name}}"/>
+
+	</head>
+	<body>
+		{{> header }}
+
+		{{> body }}
+		
+		{{> footer }}
+	<!-- build:js /assets/js/main.js  defer-->
+	<script type="text/javascript" src="/assets/vendor/jquery/dist/jquery.min.js"  defer></script>
+	<script type="text/javascript" src="/assets/vendor/jquery-validation/dist/jquery.validate.min.js"  defer></script>
+    <script type="text/javascript" src="/assets/js/main.js"  defer></script>
+    <!-- endbuild -->
+    
+    <!-- @if NODE_ENV='prod' -->
+    <script src="https://cdn.jsdelivr.net/ga-lite/latest/ga-lite.min.js" async></script>
+    <script>
+    var galite = galite || {};
+    galite.UA = 'UA-XXXXXX'; // Insert your tracking code here
+    </script>
+    <!-- @endif -->
+    
+  </body>
+</html>

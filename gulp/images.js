@@ -14,7 +14,7 @@ var config = require('../build/build.config.js');
 gulp.task('images', function() {
 	return gulp
 		.src(config.images)
-		.pipe(gulp.dest(config.dist + '/img'))
+		.pipe(gulp.dest(config.dist + '/assets/img'))
 		.pipe(
 			size({
 				title: 'img'

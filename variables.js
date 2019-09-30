@@ -1,6 +1,6 @@
 {
 	// Site Setup
-    "logo_url": "/img/logo.png",
+    "logo_url": "/assets/img/logo.png",
     "company_name": "We Are Damage",
     "page_title": "Static Starter - A HTML/CSS Static site starting point",
     "page_description": "Static Starter - A HTML/CSS Static site starting point",

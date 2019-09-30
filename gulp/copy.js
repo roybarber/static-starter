@@ -1,6 +1,6 @@
-//////////////////////////////////////////////////////////////////////
-// Copy                                                             //
-//////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////
+// // Copy                                                             //
+// //////////////////////////////////////////////////////////////////////
 
 // Setup
 var gulp = require('gulp');
@@ -58,7 +58,7 @@ gulp.task('copy:assets', function() {
 		.src(config.assets, {
 			dot: true
 		})
-		.pipe(gulp.dest(config.dist))
+		.pipe(gulp.dest(config.dist + '/assets'))
 		.pipe(
 			size({
 				title: 'copy:assets'
@@ -69,35 +69,11 @@ gulp.task('copy:assets', function() {
 //// Copy over the social and site config assets and place them in the root of the dist
 gulp.task('copy:fav', function() {
 	return gulp
-		.src([config.base + '/img/fav/*', config.base + '/site-config/*'])
+		.src([config.base + '/assets/img/fav/*', config.base + '/assets/site-config/*'])
 		.pipe(gulp.dest(config.dist))
 		.pipe(
 			size({
 				title: 'copy:fav'
-			})
-		);
-});
-
-//// Copy over the videos
-gulp.task('copy:video', function() {
-	return gulp
-		.src([config.video])
-		.pipe(gulp.dest(config.dist + '/video'))
-		.pipe(
-			size({
-				title: 'copy:video'
-			})
-		);
-});
-
-//// Copy over the videos
-gulp.task('copy:fonts', function () {
-	return gulp
-		.src([config.fonts])
-		.pipe(gulp.dest(config.dist + '/fonts'))
-		.pipe(
-			size({
-				title: 'copy:fonts'
 			})
 		);
 });
