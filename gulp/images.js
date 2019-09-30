@@ -7,21 +7,10 @@ var gulp = require('gulp');
 var size = require('gulp-size');
 var ico = require('gulp-to-ico');
 var svgmin = require('gulp-svgmin');
+var responsive = require('gulp-responsive');
 var config = require('../build/build.config.js');
 
 // Tasks
-//// optimize images and put them in the dist folder
-gulp.task('images', function() {
-	return gulp
-		.src(config.images)
-		.pipe(gulp.dest(config.dist + '/assets/img'))
-		.pipe(
-			size({
-				title: 'img'
-			})
-		);
-});
-
 //// Create the favicon from the png
 gulp.task('favicon', ['copy:fav'], function() {
 	return gulp
@@ -44,3 +33,69 @@ gulp.task('svg', function(){
         .pipe(svgmin())
         //.pipe(gulp.dest(config.icons));
 });
+
+//// Generate responsive images for the site
+gulp.task('images', function() {
+	return gulp
+		.src(config.responsiveimages)
+		.pipe(gulp.dest(config.dist + '/assets/img/site/'))
+		.pipe(
+			size({
+				title: 'img'
+			})
+		);
+});
+
+
+gulp.task('images:dev', function () {
+	return gulp
+		.src(config.responsiveimages)
+		.pipe(responsive({
+			'*': [
+				{
+					width: 128,
+					blue: true,
+					rename: { suffix: '-load'}
+				},
+				{
+					width: 480,
+					rename: { suffix: '-480px' }
+				},
+				{
+					width: 1024,
+					rename: { suffix: '-1024px'}
+				},
+				{
+					width: 1920,
+					rename: { suffix: '-1920px'}
+				},
+				{
+					width: 2560,
+					rename: { suffix: '-2560px'}
+				},
+				{
+					// Compress, strip metadata, and rename original image
+					rename: { suffix: '-original' },
+				}
+			],
+		},
+		{
+			// Global configuration for all images
+			// The output quality for JPEG, WebP and TIFF output formats
+			quality: 70,
+			// Use progressive (interlace) scan for JPEG and PNG output
+			progressive: true,
+			// Strip all metadata
+			withMetadata: false
+		}))
+		.pipe(gulp.dest(config.dev + '/assets/img/site/'))
+});
+
+
+//site gets generated then we generate the images
+//images will be in dist
+//should run on build
+//images need to be in right folder /site/
+// need to base64 encode a blurry version of the image
+//.jpg,.jpeg only
+

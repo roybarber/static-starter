@@ -31,5 +31,13 @@ module.exports = {
 	iconPath: '../client/assets/img/icons/',
 	icons: 'client/assets/img/icon/**/*.{png,svg}',
 	fonts: 'client/assets/fonts/**/*.{svg,eot,woff2,woff,ttf}',
-	video: 'client/assets/video/**/*.{mp4,webm,ogg}'
+	video: 'client/assets/video/**/*.{mp4,webm,ogg}',
+	responsiveimages: 'client/assets/img/site/**/*.{jpg,jpeg}',
+	responsivesizes: [
+		'128',
+		'480',
+		'1024',
+		'1920',
+		'2560'
+	]
 };

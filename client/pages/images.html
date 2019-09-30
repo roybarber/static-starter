@@ -1,0 +1,46 @@
+---
+layout: default
+page_title: Image examples
+page_description: This is the home page meta description
+---
+
+<section class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Images</h1>
+			<img src="/assets/img/site/test-original.jpeg" alt="Test image" class="responsive">
+
+			<img 
+				alt="Test image"
+				width="2560"
+				
+				src="/assets/img/site/test-original.jpeg"
+				
+				data-src="/assets/img/site/test.jpeg"
+				data-srcset="/assets/img/site/test-480px.jpeg 480w,
+					/assets/img/site/test-1024px.jpeg 1024w,
+					/assets/img/site/test-1920px.jpeg 1920w,
+					/assets/img/site/test-2560px.jpeg 2560w"
+				data-sizes="(max-width: 2560px) 100vw, 2560px"
+
+				class="responsive g-image g-image--lazy g-image--loaded"
+
+				srcset="/assets/img/site/test-480px.jpeg 480w,
+					/assets/img/site/test-1024px.jpeg 1024w,
+					/assets/img/site/test-1920px.jpeg 1920w,
+					/assets/img/site/test-2560px.jpeg 2560w"
+				sizes="(max-width: 2560px) 100vw, 2560px"
+			>
+			<noscript>
+				<img
+					src="/assets/img/site/test-original.jpeg"
+					class="responsive g-image g-image--loaded"
+					width="2560"
+					alt="Banana"
+				>
+			</noscript>
+
+			{{image src="/assets/img/site/test.jpeg" alt="test" class="responsive"}}
+		</div>
+	</div>
+</section>

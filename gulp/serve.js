@@ -30,7 +30,8 @@ gulp.task('serve', function() {
 
 	gulp.watch('./client/pages/**/*.html', ['panini:dev', reload]);
     gulp.watch(['./client/{layouts,partials}/**/*.html'], ['resetPages', 'panini:dev', reload]);
-
+	gulp.watch(['./client/data/**/*.json'], ['resetPages', 'panini:dev', reload]);
+	gulp.watch(['./client/helpers/**/*.js'], ['resetPages', 'panini:dev', reload]);
 
 	// gulp.watch(
     //    [config.base + '/**/*', '!' + config.html, '!' + config.scss, '!./client/{pages,layouts,partials,helpers,data}/**/*'],
