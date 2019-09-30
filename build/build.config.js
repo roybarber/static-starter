@@ -7,12 +7,12 @@ module.exports = {
 	dev: 'build/dev',
 	base: 'client',
 	email: 'email',
-	partials: '/partials',
+	partials: '/includes',
 	sketch: 'sketch',
-	mainScss: 'client/scss/main.scss',
-	scss: 'client/scss/**/*.scss',
+	mainScss: 'client/assets/scss/main.scss',
+	scss: 'client/assets/scss/**/*.scss',
 	html: [
-		'client/**/*.html'
+		'build/dist/**/*.html'
 	],
 	emailHtml: [
 		'email/**/*.html'
@@ -22,15 +22,14 @@ module.exports = {
 		'build/dev/**/*.html'
 	],
 	js: [
-		'node_modules/babel-polyfill/dist/polyfill.min.js',
-		'client/js/**/*.js',
-		'!client/vendor/**/*.js'
+		'client/assets/js/**/*.js',
+		'!client/assets/vendor/**/*.js'
 	],
 	index: 'client/index.html',
 	assets: 'client/assets/**',
-	images: 'client/img/**/*.{png,gif,jpg,jpeg,svg}',
-	iconPath: '../client/img/icons/',
-	icons: 'client/img/icon/**/*.{png,svg}',
-	fonts: 'client/fonts/**/*.{svg,eot,woff2,woff,ttf}',
-	video: 'client/video/**/*.{mp4,webm,ogg}'
+	images: 'client/assets/img/**/*.{png,gif,jpg,jpeg,svg}',
+	iconPath: '../client/assets/img/icons/',
+	icons: 'client/assets/img/icon/**/*.{png,svg}',
+	fonts: 'client/assets/fonts/**/*.{svg,eot,woff2,woff,ttf}',
+	video: 'client/assets/video/**/*.{mp4,webm,ogg}'
 };

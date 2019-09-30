@@ -36,7 +36,7 @@ gulp.task('sass', function() {
 		)
 		.pipe(notify({title: "SASS Compiled", message: "CSS comiled to <%= file.relative %>"}))
 		.pipe(sourcemaps.write('./maps'))
-		.pipe(gulp.dest(config.tmp))
+		.pipe(gulp.dest(config.tmp + '/assets'))
 		.pipe(
 			size({
 				title: 'sass'
@@ -53,7 +53,7 @@ gulp.task('sass:dist', function() {
 				cascade: false
 			})
 		)
-		.pipe(gulp.dest(config.tmp))
+		.pipe(gulp.dest(config.tmp + '/assets'))
 		.pipe(
 			size({
 				title: 'sass'

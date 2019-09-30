@@ -15,21 +15,16 @@ gulp.task('clean', del.bind(null, [config.dev, config.tmp, config.dist]));
 gulp.task(
 	'clean:dist',
 	del.bind(null, [
-		'build/dist/scss',
-		'build/dist/js',
-		'build/dist/vendor',
 		'build/dev',
 		'build/tmp',
-		'build/dist/img/fav',
-		'build/dist/site-config'
+		'build/dist/assets/rev-manifest.json',
+		'build/dist/assets/scss',
+		'build/dist/assets/vendor',
+		'build/dist/assets/site-config',
+		'build/dist/data',
+		'build/dist/helpers',
+		'build/dist/layouts',
+		'build/dist/pages',
+		'build/dist/partials'
 	])
-);
-
-//// Remove partials from live
-gulp.task('clean:partials', del.bind(null, ['build/dist/partials']));
-
-//// Remove manifest from live
-gulp.task(
-	'clean:manifest',
-	del.bind(null, ['build/dist/assets/rev-manifest.json'])
 );

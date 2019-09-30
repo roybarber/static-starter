@@ -1,0 +1,27 @@
+/////////////////////////////////////////////////////////
+// Brand                                               //
+/////////////////////////////////////////////////////////
+
+// Setup
+
+.logo {
+	display: block;
+	@include text-hide();
+	background: url(/assets/img/brand/logo/primary.svg) no-repeat center center;
+	background-size: 184px 50px;
+	width: 184px;
+	height: 50px;
+	&.center {
+		margin:0 auto;
+	}
+	&.secondary {
+		background: url(/assets/img/brand/logo/secondary.svg) no-repeat center center;
+		background-size: 184px 50px;
+	}
+	&.emblem {
+		background: url(/assets/img/brand/logo/emblem.svg) no-repeat center center;
+		background-size: 50px;
+		height: 50px;
+		width: 50px;
+	}
+}
