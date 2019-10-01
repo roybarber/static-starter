@@ -33,58 +33,24 @@ module.exports = function(options = {}){
 		preloadImage = imageFolder + preloadImage,
 		preloadImage = fs.readFileSync(preloadImage, 'base64'),
 		
-		allimages = {}
-		sourceListtemp = '',
-		sourceList = '';
-
+		allimages = {};
+		
 	// Construct the object of images
 	for (var i = 0; i < sizes.length; i++) {
 	   allimages[sizes[i]+'w'] = rename(src, {suffix: '-' + sizes[i] + 'px'});
 	}
 	delete allimages[sizes[0]+'w'];
 	allimages = swap(allimages);
-	//console.log(allimages);
 
-	sourceListtemp = JSON.stringify(allimages);
-	//console.log('string:', sourceList)
-
-	//console.log(allimages);
-
-	var sourceList = allimages[0];
-	//console.log(sourceList);
+	var tempList = Object.entries(allimages);
+	var formattedList = [];
+	for (var i = 0; i < tempList.length; i++) {
+		var string = tempList[i][0] + ' ' + tempList[i][1];
+		formattedList.push(string);
+	}
+	var srcSet = formattedList.join(', ');
 
 	return new Handlebars.SafeString(
-		"<img alt='" + alt + "' width='" + width +"' src='" + originalImage + "' data-src='" + originalImage + "' data-srcset='" + sourceList + "' data-sizes='(max-width: " + width +") 100vw, " + width +"' class='" + classlist + "' srcset='" + sourceList + "' sizes='(max-width: " + width +") 100vw, " + width +"'><noscript><img src='" + originalImage + "' class='" + classlist + "' width='" + width +"' alt='" + alt +"'></noscript>"
+		"<img class='" + classlist + "' alt='" + alt + "' width='" + width +"' src='" + preloadImage + "' data-src='" + originalImage + "' data-srcset='" + srcSet + "' data-sizes='(max-width: " + width +") 100vw, " + width +"' srcset='" + srcSet + "' sizes='(max-width: " + width +") 100vw, " + width +"'><noscript><img src='" + originalImage + "' class='" + classlist + "' width='" + width +"' alt='" + alt +"'></noscript>"
 	);
 }
-
-
-//<img 
-//	alt="Test image"
-//	width="2560"
-//	
-//	src="/assets/img/site/test-original.jpeg"
-//	
-//	data-src="/assets/img/site/test.jpeg"
-//	data-srcset="/assets/img/site/test-480px.jpeg 480w,
-//		/assets/img/site/test-1024px.jpeg 1024w,
-//		/assets/img/site/test-1920px.jpeg 1920w,
-//		/assets/img/site/test-2560px.jpeg 2560w"
-//	data-sizes="(max-width: 2560px) 100vw, 2560px"
-//
-//	class="responsive g-image g-image--lazy g-image--loaded"
-//
-//	srcset="/assets/img/site/test-480px.jpeg 480w,
-//		/assets/img/site/test-1024px.jpeg 1024w,
-//		/assets/img/site/test-1920px.jpeg 1920w,
-//		/assets/img/site/test-2560px.jpeg 2560w"
-//	sizes="(max-width: 2560px) 100vw, 2560px"
-//>
-//<noscript>
-//	<img
-//		src="/assets/img/site/test-original.jpeg"
-//		class="responsive g-image g-image--loaded"
-//		width="2560"
-//		alt="Banana"
-//	>
-//</noscript>
