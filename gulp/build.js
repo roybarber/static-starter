@@ -12,10 +12,11 @@ gulp.task('build:dist', ['clean'], function(cb) {
 	runSequence(
 		//['images'],
 		//['copy:images'],
-		['build'],
+		['svg', 'sass:dist', 'images'],
+		//['build:dev'],
 		['panini'],
 		['copy', 'copy:assets'],
-        //['scripts'],
+        ['scripts'],
 		['revision'],
 		['revisionReplace'],
 		'favicon',
@@ -26,6 +27,12 @@ gulp.task('build:dist', ['clean'], function(cb) {
 });
 
 //// Build files for local development
-gulp.task('build', ['clean'], function(cb) {
-	runSequence(['svg'], ['sass:dist', 'copy:dev', 'images'],['panini:dev'], cb);
+gulp.task('build:dev', ['clean'], function(cb) {
+	runSequence(
+		['svg'],
+		['sass', 'copy:dev', 'images'],
+		['copy:images'],
+		['panini:dev'],
+		cb
+	);
 });
