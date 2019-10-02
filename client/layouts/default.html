@@ -62,13 +62,14 @@
 		{{> body }}
 		
 		{{> footer }}
-	<!-- build:js /assets/js/main.js  defer-->
+	<!-- build:js /assets/js/vendor.js  defer-->
 	<script type="text/javascript" src="/assets/vendor/jquery/dist/jquery.min.js"  defer></script>
 	<script type="text/javascript" src="/assets/vendor/jquery-validation/dist/jquery.validate.min.js"  defer></script>
 	<script type="text/javascript" src="/assets/vendor/lozad/dist/lozad.min.js"  defer></script>
+    <!-- endbuild -->
+    <!-- build:js /assets/js/main.js  defer-->
     <script type="text/javascript" src="/assets/js/main.js"  defer></script>
     <!-- endbuild -->
-    
     <!-- @if NODE_ENV='prod' -->
     <script src="https://cdn.jsdelivr.net/ga-lite/latest/ga-lite.min.js" async></script>
     <script>
