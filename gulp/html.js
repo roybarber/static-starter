@@ -24,7 +24,7 @@ var config = require('../build/build.config.js');
 gulp.task('html', function() {
 	var manifest = gulp.src('build/dist/assets/rev-manifest.json');
 	return gulp
-		.src(config.html)
+		.src('./build/dist/**/*.html')
 		.pipe(
 			useref({
 				searchPath: '{build,client}'

@@ -8,7 +8,12 @@ $(function () {
         var m = filepath.match(/([^\/\\]+)$/);
         var filename = m[1];
         $(this).parent('label').siblings('span').html(filename);
-    });
+	});
+	
+
+	// Lazy Load images - https://github.com/ApoorvSaxena/lozad.js
+    const observer = lozad();
+	observer.observe();
 
 	// JQuery Validation
 	$('form.validate').validate({

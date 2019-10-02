@@ -24,9 +24,7 @@
 		<meta name="copyright" content="Copyright {{ site_name }} {{ year }}. All Rights Reserved."/>
 		<meta name="application-name" content="Static"/>
 
-		<!-- build:css /assets/css/main.css -->
-		<link rel="stylesheet" type="text/css" href="/tmp/assets/main.css"/>
-		<!-- endbuild -->
+		<link rel="stylesheet" type="text/css" href="/assets/css/main.css"/>
 
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon.png">
@@ -57,24 +55,28 @@
 
 	</head>
 	<body>
+
 		{{> header }}
 
 		{{> body }}
 		
 		{{> footer }}
-	<!-- build:js /assets/js/main.js  defer-->
-	<script type="text/javascript" src="/assets/vendor/jquery/dist/jquery.min.js"  defer></script>
-	<script type="text/javascript" src="/assets/vendor/jquery-validation/dist/jquery.validate.min.js"  defer></script>
-    <script type="text/javascript" src="/assets/js/main.js"  defer></script>
-    <!-- endbuild -->
+
+		<!-- build:js /assets/js/vendor.js  defer-->
+		<script type="text/javascript" src="/assets/vendor/jquery/dist/jquery.min.js"  defer></script>
+		<script type="text/javascript" src="/assets/vendor/jquery-validation/dist/jquery.validate.min.js"  defer></script>
+		<script type="text/javascript" src="/assets/vendor/lozad/dist/lozad.min.js"  defer></script>
+		<!-- endbuild -->
+		<!-- build:js /assets/js/main.js  defer-->
+		<script type="text/javascript" src="/assets/js/main.js"  defer></script>
+		<!-- endbuild -->
+		<!-- @if NODE_ENV='prod' -->
+		<script src="https://cdn.jsdelivr.net/ga-lite/latest/ga-lite.min.js" async></script>
+		<script>
+		var galite = galite || {};
+		galite.UA = 'UA-XXXXXX'; // Insert your tracking code here
+		</script>
+		<!-- @endif -->
     
-    <!-- @if NODE_ENV='prod' -->
-    <script src="https://cdn.jsdelivr.net/ga-lite/latest/ga-lite.min.js" async></script>
-    <script>
-    var galite = galite || {};
-    galite.UA = 'UA-XXXXXX'; // Insert your tracking code here
-    </script>
-    <!-- @endif -->
-    
-  </body>
+	</body>
 </html>
