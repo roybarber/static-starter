@@ -15,7 +15,7 @@ gulp.task('build:dist', ['clean'], function(cb) {
 		['build'],
 		['panini'],
 		['copy', 'copy:assets'],
-        ['scripts'],
+        //['scripts'],
 		['revision'],
 		['revisionReplace'],
 		'favicon',
