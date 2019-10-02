@@ -27,6 +27,7 @@
 		"gulp-svgmin": "^2.1.0",
 		"gulp-to-ico": "^1.0.0",
 		"gulp-uglify": "^3.0.1",
+		"gulp-uglify-es": "^1.0.4",
 		"gulp-useref": "^3.1.2",
 		"handlebars-helper-inlinesvg": "^1.0.4",
 		"image-to-base64": "^2.0.1",

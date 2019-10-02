@@ -54,7 +54,8 @@ gulp.task('images:dev', function () {
 			'*': [
 				{
 					width: 128,
-					blue: true,
+					blur: true,
+					quality: 20,
 					rename: { suffix: '-load'}
 				},
 				{
@@ -90,12 +91,3 @@ gulp.task('images:dev', function () {
 		}))
 		.pipe(gulp.dest(config.dev + '/assets/img/site/'))
 });
-
-
-//site gets generated then we generate the images
-//images will be in dist
-//should run on build
-//images need to be in right folder /site/
-// need to base64 encode a blurry version of the image
-//.jpg,.jpeg only
-

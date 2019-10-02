@@ -22,8 +22,7 @@ module.exports = {
 		'build/dev/**/*.html'
 	],
 	js: [
-		'client/assets/js/**/*.js',
-		'!client/assets/vendor/**/*.js'
+		'client/assets/js/**/*.js'
 	],
 	index: 'client/index.html',
 	assets: 'client/assets/**',

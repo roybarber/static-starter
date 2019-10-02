@@ -1,0 +1,37 @@
+{
+  "name": "lozad",
+  "description": "A light-weight JS library to lazy load any HTML element such as images, ads, videos etc.",
+  "main": "dist/lozad.js",
+  "author": "Apoorv Saxena",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "ignore": [
+    "CONTRIBUTING.md",
+    "Gruntfile.js"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "lazy",
+    "loader",
+    "lazyloader",
+    "lazyload",
+    "performance",
+    "image",
+    "video",
+    "iframe",
+    "ads"
+  ],
+  "version": "1.11.0",
+  "homepage": "https://github.com/ApoorvSaxena/lozad.js",
+  "_release": "1.11.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.11.0",
+    "commit": "2640c359945d0d7c7664e4bda335342eb72ad4cb"
+  },
+  "_source": "https://github.com/ApoorvSaxena/lozad.js.git",
+  "_target": "^1.9.0",
+  "_originalSource": "lozad"
+}

@@ -22,21 +22,13 @@ gulp.task('serve', function() {
 			server: ['build', config.dev]
 		});
 	});
-	//gulp.watch(['./client/{pages,layouts,partials,helpers,data}/**/*', panini.refresh]);
-	//gulp.watch([config.html, '!./client/{pages,layouts,partials,helpers,data}/**/*'], ['html:dev', reload]);
-	//gulp.watch(['./client/{pages,layouts,partials,helpers,data}/**/*'], [panini.reload]);
-	//gulp.watch(['./client/{layouts,partials,helpers,data}/**/*'], ['resetPages', 'panini', reload]);
-	// gulp.watch(config.scss, ['sass', reload]);
 
+	gulp.watch(config.scss, ['sass', reload]);
 	gulp.watch('./client/pages/**/*.html', ['panini:dev', reload]);
     gulp.watch(['./client/{layouts,partials}/**/*.html'], ['resetPages', 'panini:dev', reload]);
 	gulp.watch(['./client/data/**/*.json'], ['resetPages', 'panini:dev', reload]);
 	gulp.watch(['./client/helpers/**/*.js'], ['resetPages', 'panini:dev', reload]);
-
-	// gulp.watch(
-    //    [config.base + '/**/*', '!' + config.html, '!' + config.scss, '!./client/{pages,layouts,partials,helpers,data}/**/*'],
-	// 	['copy:dev:assets', reload]
-    // );
+	gulp.watch([config.base + '/**/*', '!' + config.html, '!' + config.scss], ['copy:dev:assets', reload]);
 });
 
 //// Run the prod site packed in the dist folder
