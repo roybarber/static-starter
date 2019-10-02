@@ -10,9 +10,11 @@ var runSequence = require('run-sequence');
 //// Build files for creating a dist release for production
 gulp.task('build:dist', ['clean'], function(cb) {
 	runSequence(
-		['build', 'copy', 'copy:assets', 'images', 'images:dev'],
+		//['images'],
+		//['copy:images'],
+		['build'],
 		['panini'],
-        //['html'],
+		['copy', 'copy:assets'],
         ['scripts'],
 		['revision'],
 		['revisionReplace'],
@@ -25,5 +27,5 @@ gulp.task('build:dist', ['clean'], function(cb) {
 
 //// Build files for local development
 gulp.task('build', ['clean'], function(cb) {
-	runSequence(['svg'], ['sass:dist', 'copy:dev', 'images:dev'],['panini:dev'], cb);
+	runSequence(['svg'], ['sass:dist', 'copy:dev', 'images'],['panini:dev'], cb);
 });

@@ -49,7 +49,7 @@ module.exports = function(options = {}){
 	}
 
 
-	var imageFolder = './build/dev',
+	var imageFolder = './build/dist',
 		src = Handlebars.escapeExpression(options.hash.src),
 		alt = Handlebars.escapeExpression(options.hash.alt),
 		classlist = Handlebars.escapeExpression(options.hash.class),

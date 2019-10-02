@@ -35,19 +35,19 @@ gulp.task('svg', function(){
 });
 
 //// Generate responsive images for the site
-gulp.task('images', function() {
-	return gulp
-		.src(config.responsiveimages)
-		.pipe(gulp.dest(config.dist + '/assets/img/site/'))
-		.pipe(
-			size({
-				title: 'img'
-			})
-		);
-});
+// gulp.task('images', function() {
+// 	return gulp
+// 		.src(config.responsiveimages)
+// 		.pipe(gulp.dest(config.dist + '/assets/img/site/'))
+// 		.pipe(
+// 			size({
+// 				title: 'img'
+// 			})
+// 		);
+// });
 
 
-gulp.task('images:dev', function () {
+gulp.task('images', function () {
 	return gulp
 		.src(config.responsiveimages)
 		.pipe(responsive({
@@ -89,5 +89,5 @@ gulp.task('images:dev', function () {
 			// Strip all metadata
 			withMetadata: false
 		}))
-		.pipe(gulp.dest(config.dev + '/assets/img/site/'))
+		.pipe(gulp.dest(config.dist + '/assets/img/site/'))
 });

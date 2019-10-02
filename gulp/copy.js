@@ -66,6 +66,7 @@ gulp.task('copy:assets', function() {
 		);
 });
 
+
 //// Copy over the social and site config assets and place them in the root of the dist
 gulp.task('copy:fav', function() {
 	return gulp
