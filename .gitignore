@@ -6,7 +6,7 @@
 
 # package control
 node_modules
-client/vendor
+client/assets/vendor
 package-lock.json
 
 # logs
