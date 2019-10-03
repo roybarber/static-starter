@@ -32,3 +32,24 @@ img {
 .bg-cover {
 	@include background-cover();
 }
+
+// Lazy images component
+figure.image {
+	position:relative;
+	.preload {
+		position:absolute;
+		z-index:-1;
+		width:100%;
+	}
+	.lozad {
+		opacity:0;
+		width: 100%;
+		height: auto;
+		max-width: 100%;
+		transition: opacity 500ms ease 100ms;
+	
+		&[data-loaded] {
+			opacity: 1;
+		}
+	}
+}

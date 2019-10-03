@@ -1,37 +1,7 @@
 ---
 layout: default
-page_title: Image examples
+page_title: Home Page
 page_description: This is the home page meta description
 ---
 
-<section class="container">
-	<style>
-			figure.image {
-				position:relative;
-			}
-			.preload {
-				position:absolute;
-				z-index:-1;
-				width:100%;
-			}
-			.lozad {
-				opacity:0;
-				width: 100%;
-				height: auto;
-				max-width: 100%;
-				transition: opacity 500ms ease 100ms;
-			 }
-			 .lozad[data-loaded] {
-				opacity: 1;
-			 }
-	</style>
-	<div class="row">
-		<div class="col-md-12">
-			<h1>Images</h1>
-
-			{{image src="/assets/img/site/test.jpeg" alt="test" class="responsive"}}
-
-			<h1>Test clearing</h1>
-		</div>
-	</div>
-</section>
+{{> kitchen-sink}}
