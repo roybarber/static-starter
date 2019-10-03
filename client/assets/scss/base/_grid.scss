@@ -15,17 +15,22 @@ $grid-gutter-widths: (
 	xl: $grid-gutter-width-base
 ) !default;
 //// Grid breakpoints
-$tabletmq: 576px!default;
-$desktopmq: 768px!default;
-$lgdesktopmq: 992px!default;
-$xldesktopmq: 1200px!default;
+$xxs: 0!default;
+$xs: 400px!default;
+$sm: 576px!default;
+$md: 768px!default;
+$lg: 992px!default;
+$xl: 1200px!default;
+$xxl: 1400px!default;
 //// Generate the Break Points
 $grid-breakpoints: (
-	xs: 0,
-	sm: $tabletmq,
-	md: $desktopmq,
-	lg: $lgdesktopmq,
-	xl: $xldesktopmq
+	xxs: $xxs,
+	xs: $xs,
+	sm: $sm,
+	md: $md,
+	lg: $lg,
+	xl: $xl,
+	xxl: $xxl
 ) !default;
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 @include _assert-starts-at-zero($grid-breakpoints);

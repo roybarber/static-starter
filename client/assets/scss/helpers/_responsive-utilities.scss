@@ -19,8 +19,24 @@
     }
   }
 }
-@media (max-width:$tabletmq){.hidden-xs-only{display:none!important}}
-@media (min-width:$tabletmq) and (max-width:($desktopmq - 1)){.hidden-sm-only{display:none!important}}
-@media (min-width:$desktopmq) and (max-width:($lgdesktopmq - 1)){.hidden-md-only{display:none!important}}
-@media (min-width:$lgdesktopmq) and (max-width:($xldesktopmq - 1)){.hidden-lg-only{display:none!important}}
-@media (min-width:$xldesktopmq){.hidden-xl-only{display:none!important}}
+@media (max-width:$xs){
+	.hidden-xxs-only{display:none!important}
+}
+@media (min-width:$xs) and (max-width:($sm - 1)){
+	.hidden-xs-only{display:none!important}
+}
+@media (min-width:$sm) and (max-width:($md - 1)){
+	.hidden-sm-only{display:none!important}
+}
+@media (min-width:$md) and (max-width:($lg - 1)){
+	.hidden-md-only{display:none!important}
+}
+@media (min-width:$lg) and (max-width:($xl - 1)){
+	.hidden-lg-only{display:none!important}
+}
+@media (min-width:$xl) and (max-width:($xxl - 1)){
+	.hidden-xl-only{display:none!important}
+}
+@media (min-width:$xxl){
+	.hidden-xxl-only{display:none!important}
+}
