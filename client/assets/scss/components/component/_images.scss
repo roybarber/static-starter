@@ -28,11 +28,6 @@ img {
 	}
 }
 
-// Backgrounds
-.bg-cover {
-	@include background-cover();
-}
-
 // Lazy images component
 figure.image {
 	position:relative;
@@ -43,13 +38,49 @@ figure.image {
 	}
 	.lozad {
 		opacity:0;
-		width: 100%;
-		height: auto;
-		max-width: 100%;
 		transition: opacity 500ms ease 100ms;
-	
 		&[data-loaded] {
 			opacity: 1;
 		}
 	}
+}
+
+// Background images
+.bg-image {
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	&.cover {
+		background-size:cover;
+	}
+	&.contain {
+		background-size:contain;
+	}
+}
+
+// Aspect ratio
+.aspect {
+	&::before {
+		display: block;
+		content: "";
+	}
+	&.aspect-21by9 {
+		&::before {
+			padding-top: percentage(9 / 21);
+		}
+	}
+	&.aspect-16by9 {
+		&::before {
+			padding-top: percentage(9 / 16);
+		}
+	}
+	&.aspect-4by3 {
+		&::before {
+			padding-top: percentage(3 / 4);
+		}
+	}
+	&.aspect-1by1 {
+		&::before {
+			padding-top: percentage(1 / 1);
+		}
+	} 
 }

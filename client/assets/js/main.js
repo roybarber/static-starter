@@ -10,11 +10,10 @@ $(function () {
         $(this).parent('label').siblings('span').html(filename);
 	});
 	
-
-	// Lazy Load images - https://github.com/ApoorvSaxena/lozad.js
-    const observer = lozad();
-	observer.observe();
-
+	// Lazy Images
+	const observerImages = lozad();
+	observerImages.observe();
+	
 	// JQuery Validation
 	$('form.validate').validate({
 		rules: {
@@ -43,5 +42,6 @@ $(function () {
 		////unhighlight: function( element, errorClass, validClass ) {}
 	});
 
+	
 
 });

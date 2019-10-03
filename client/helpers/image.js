@@ -1,22 +1,3 @@
-// Options - TODO
-// Property				Default	
-// src					required		Relative path to image file
-// width								Resize image to specified width in pixels
-// height								Crop & resize image to specified height in pixels
-// alt									Alternate text for the image
-// fit					"cover"			How to crop images. See properties below.
-// background							Background color for 'contain'
-// immediate			false			Set to true to disable lazy-loading
-// blur					40				How much in px to blur the image placeholder
-// quality				75				The quality of the image. (0 - 100).
-
-// #Fit options
-// cover				Crop to cover both provided dimensions (default).
-// contain				Embed within both provided dimensions.
-// fill					Ignore the aspect ratio of the input and stretch to both provided dimensions.
-// inside				Preserving aspect ratio, resize the image to be as large as possible while ensuring its dimensions are less than or equal to both those specified.
-// outside				Preserving aspect ratio, resize the image to be as small as possible while ensuring its dimensions are greater than or equal to both those specified.
-
 /**
  * @param  {Object} `options` The path to the SVG file to inline
  * @return {String}
@@ -53,7 +34,8 @@ module.exports = function(options = {}){
 		src = Handlebars.escapeExpression(options.hash.src),
 		alt = Handlebars.escapeExpression(options.hash.alt),
 		classlist = Handlebars.escapeExpression(options.hash.class),
-		
+		immediateLoad = Handlebars.escapeExpression(options.hash.immediate),
+
 		sizes = config.responsivesizes,
 
 		width = Object.keys(sizes)[Object.keys(sizes).length-1],
@@ -65,7 +47,8 @@ module.exports = function(options = {}){
 		preloadImage = imageFolder + preloadImage,
 		preloadImage = 'data:image/png;base64, ' + fs.readFileSync(preloadImage, 'base64'),
 		
-		allimages = {};
+		allimages = {},
+		output = '';
 		
 	// Construct the object of images
 	for (var i = 0; i < sizes.length; i++) {
@@ -82,7 +65,15 @@ module.exports = function(options = {}){
 	}
 	var srcSet = formattedList.join(', ');
 
-	return new Handlebars.SafeString(
-		"<figure class='image'><img class='preload responsive' src='" + preloadImage + "'/><img class='lozad " + classlist + "' alt='" + alt + "' width='" + width +"' src='" + preloadImage + "' data-src='" + originalImage + "' data-srcset='" + srcSet + "' sizes='(max-width: " + width +") 100vw, " + width +"'><noscript><img src='" + originalImage + "' class='" + classlist + "' width='" + width +"' alt='" + alt +"' srcset='" + originalImage + "' data-srcset='" + srcSet + "' sizes='(max-width: " + width +") 100vw, " + width +"'/></noscript></figure>"
-	);
+	var lazyOutput = "<figure class='image'><img class='preload responsive' src='" + preloadImage + "'/><img data-toggle-class='active' class='lozad " + classlist + "' alt='" + alt + "' width='" + width +"' src='" + preloadImage + "' data-src='" + originalImage + "' data-srcset='" + srcSet + "' sizes='(max-width: " + width +") 100vw, " + width +"'><noscript><img src='" + originalImage + "' class='" + classlist + "' width='" + width +"' alt='" + alt +"' srcset='" + originalImage + "' data-srcset='" + srcSet + "' sizes='(max-width: " + width +") 100vw, " + width +"'/></noscript></figure>"
+
+	var standardOutput = "<figure class='image'><img src='" + originalImage + "' class='" + classlist + "' width='" + width +"' alt='" + alt +"' srcset='" + originalImage + "' data-srcset='" + srcSet + "' sizes='(max-width: " + width +") 100vw, " + width +"'/></figure>"
+
+	if (immediateLoad){
+		output = standardOutput;
+	} else {
+		output = lazyOutput;
+	}
+
+	return new Handlebars.SafeString(output);
 }

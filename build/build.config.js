@@ -7,7 +7,6 @@ module.exports = {
 	dev: 'build/dev',
 	base: 'client',
 	email: 'email',
-	partials: '/includes',
 	sketch: 'sketch',
 	mainScss: 'client/assets/scss/main.scss',
 	scss: 'client/assets/scss/**/*.scss',
