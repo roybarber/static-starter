@@ -1,0 +1,596 @@
+.card {
+	position: relative;
+	.hoverable {
+		background-color: rgba($black, 0.4);
+		position: absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		width:100%;
+		opacity: 0;
+		transition: opacity 500ms linear;
+	}
+
+	&.product {
+		// Overide the position for relative elements
+		.col-6 {position: static;}
+		.hoverable {display:none;}
+		.new {
+			position: absolute;
+			top:0;
+			left:0;
+			background:$primary;
+			color:white;
+			display: flex;
+			height: 40px;
+			width:60px;
+			align-items: center;
+			justify-content: center;
+			font-size: 14px;
+			font-weight: bold;
+		}
+		h3 {
+			font-weight:bold;
+			font-size:16px;
+			line-height: 20px;
+			padding:15px;
+		}
+		.opus {
+			height: 50px;
+			width: 50px;
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			svg {
+				width:100%;
+				height:100%;
+			}
+		}
+		.save, .type, .delete, .deletemoodboard, .moodboard {
+			border-radius: 100%;
+			width:40px;
+			height:40px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-left:10px;
+		}
+		.save {
+			border: 1px solid $grey;
+			.icon {
+				width:24px;
+				height:24px;
+			}
+		}
+		.type {
+			left:20px;
+			right:initial;
+			.icon {
+				width:38px;
+				height:38px;
+			}
+		}
+		.moodboard {
+			border: 1px solid $grey;
+			left:20px;
+			right:initial;
+			.icon {
+				width:20px;
+				height:20px;
+			}
+		}
+		.delete, .deletemoodboard {
+			border: 1px solid $grey;
+			.icon {
+				width:24px;
+				height:24px;
+			}
+		}
+		@include media-breakpoint-up(lg) {
+			.save, .type, .delete, .deletemoodboard, .moodboard {
+				height:52px;
+				width:52px;
+				cursor: pointer;
+				margin-left:0;
+				margin-bottom:10px;
+				margin-right:10px;
+			}
+			.save {
+				.icon {
+					width:28px;
+					height:28px;
+				}
+			}
+			.type {
+				.icon {
+					width:52px;
+					height:52px;
+				}
+			}
+			.moodboard {
+				background:white;
+				.icon {
+					width:52px;
+					height:52px;
+				}
+			}
+			.delete, .deletemoodboard {
+				background:white;
+				.icon {
+					width:28px;
+					height:28px;
+				}
+			}
+		}
+		@include media-breakpoint-up(xxl) {
+			h3 {
+				padding:20px;
+				font-size:20px;
+				line-height: 24px;
+			}
+		}
+	}
+
+	&.overlay {
+		@include media-breakpoint-up(lg) {
+			.hoverable {display:block;}
+			.new {
+				transform: translateX(-50%);
+				left:50%;
+				height: 50px;
+				width:100px;
+				font-size: 18px;
+			}
+			h3 {
+				position: absolute;
+				bottom:0;
+				left:0;
+				right:0;
+				text-align: center;
+				color: $white;
+				background-color: rgba($black, 0.4);
+				transition: all 500ms linear;
+			}
+			.opus {
+				position: absolute;
+				bottom: initial;
+				left: initial;
+				top:90px;
+				right:20px;
+				height: 85px;
+				width: 85px;
+			}
+			.save, .type, .delete, .deletemoodboard, .moodboard {
+				position: absolute;
+				top:20px;
+				right:20px;
+				margin:0;
+			}
+			.save, .delete, .deletemoodboard {
+				border:0;
+			}
+			.type {
+				.icon {
+					width:42px;
+					height:42px;
+				}
+			}
+			.moodboard {
+				.icon {
+					width:28px;
+					height:28px;
+				}
+			}
+			@media (hover: hover) {
+				&:hover {
+					.hoverable {opacity: 1;}
+					h3 {
+						background-color: rgba($black, 0);
+					}
+				}
+			}
+		}
+		@include media-breakpoint-up(xl) {
+			h3 {
+				padding:15px;
+			}
+		}
+	}
+
+}
+
+// Brochure card
+.card {
+	&.brochure {
+		.btn {
+			//display: block;
+			width:100%;
+			justify-content: center;
+		}
+	}
+	.brochure-cover {
+		flex:0 0 160px;
+		align-self: flex-end;
+	}
+	@include media-breakpoint-up(lg) {
+		.brochure-cover {flex:0 0 190px;}
+	}
+	@include media-breakpoint-up(xl) {
+		.brochure-cover {flex:0 0 220px;}
+	}
+	@include media-breakpoint-up(md) {
+		&.brochure {
+			.btn {
+				//display: inline-flex;
+				width:auto;
+			}
+		}
+	}
+}
+// Brochures iframe
+.brochure-iframe {
+	width:100%;
+	position: relative;
+	display: block;
+	padding: 0;
+	overflow: hidden;
+	margin: 20px 0;
+	&::before {
+    	content: "";
+		display: block;
+		padding-top: calc(100vh - 168px);
+	}
+	iframe {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+	.close {
+		width:49px;
+		height:49px;
+		position: absolute;
+		top:0;
+		right:0;
+		background: $black;
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index:10;
+		cursor: pointer;
+		.icon {pointer-events:none;}
+	}
+	@media (max-width: 959px) {
+		display:none!important;	
+	}
+}
+
+// Decorative item cross sell
+.card-decorative {
+	.btn {min-width:180px;}
+}
+
+// Range Cards
+.card.range {
+	height:120px;
+	width:145px;
+	.range-color {
+		position: relative;
+		display: block;
+		overflow: hidden;
+		width:100%;
+		&::before {
+			display: block;
+			content: "";
+			padding-top: 100%;
+		}
+	}
+	span {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		border: 0;
+		padding:5px;
+		color:white;
+		text-align: center;
+		font-weight: bold;
+		font-size:14px;
+	}
+	img {
+		height:100%;
+	}
+}
+
+
+// Cross sell cards - Product image + title + add button
+.card.cross-sell {
+	display:flex;
+	flex-basis: column;
+	a {
+		flex: 0 0 40%;
+	}
+	.btn {
+		min-width: 100%;
+		width:100%;
+	}
+	> div {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+}
+
+.card.related-tile {
+	display:flex;
+	flex-basis: column;
+	a {
+		flex: 0 0 40%;
+	}
+	> div {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.icon {
+		&.saved {display:none;}
+		&.not-saved {display:block;}
+	}
+	&.is-saved {
+		.icon {
+			&.saved {display:block;}
+			&.not-saved {display:none;}
+		}
+	}
+}
+
+// Retailer cards
+.card.retailer {
+
+	&.off {display:none;}
+
+	&.closest {
+		border:3px solid $primary;
+		margin-top:28px;
+		&:before {
+			content: "Nearest Select Partner ";
+			background:$primary;
+			position: absolute;
+			height:30px;
+			top:-31px;
+			left:-3px;
+			color: white;
+			font-size: 16px;
+			font-weight: bold;
+			line-height: 32px;
+			padding:0 13px;
+		}
+	}
+	.btn {
+		width:100%;
+		justify-content:center;
+	}
+	.retailer-intro {
+		position: relative;
+		h3 {
+			padding-right:110px;
+			a:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+	.type {
+		position: absolute;
+		top: -60px;
+		right: 0;
+		width: 100px;
+		height: 90px;
+		padding: 15px;
+		background: $offwhite;
+		svg {
+			height:60px;
+		}
+	}
+	.row {
+		margin:0;
+	}
+	@include media-breakpoint-up(md) {
+		.btn {
+			width:auto;
+		}
+		.retailer-intro {
+			padding-right:120px;
+			h3 {
+				padding-right:0;
+			}
+		}
+		.select-intro {
+			padding-right:120px;
+		}
+		.type {
+			top: -10px;
+			right: 20px;
+			width: 105px;
+			height: 105px;
+			padding: 0;
+			background: transparent;
+			svg {
+				height:105px;
+			}
+		}
+	}
+}
+
+.card.blog {
+	h2 {
+		font-size: 16px!important;
+		line-height: 20px;
+	}
+	p {
+		font-size: 14px;
+	}
+	
+	@include media-breakpoint-up(md) {
+		height:100%;
+		h2 {
+			font-size: 20px!important;
+			line-height: 24px;
+		}
+		p {
+			font-size: 16px;
+		}
+	}
+
+}
+
+// Related item in search
+.card.search-related {
+	h4 {
+		font-size:18px!important;
+	}
+	p {
+		font-size:16px!important;
+		line-height:24px!important;
+	}
+}
+
+.card.image {
+	&.label {
+		.the-overlay {
+			position: absolute;
+			bottom:0;
+			left:0;
+			right:0;
+			width:100%;
+			min-height:42px;
+			padding:0 5px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background:rgba($black,0.4);
+			transition: background 500ms linear;
+		}
+		h3 {
+			padding-top:2px;
+			font-size:15px;
+			line-height:18px;
+			font-weight:bold;
+		}
+		@include media-breakpoint-up(sm) {
+			.the-overlay {
+				min-height:50px;
+			}
+			h3 {
+				font-size:17px;
+				line-height:20px;
+			}
+		}
+		@include media-breakpoint-up(lg) {
+			h3 {
+				font-size:20px;
+				line-height:24px;
+			}
+		}
+		@include media-breakpoint-up(xl) {
+			.the-overlay {
+				min-height:60px;
+			}
+			h3 {
+				font-size:20px;
+				line-height:24px;
+			}
+		}
+	}
+	&.double {
+		
+		@include media-breakpoint-up(lg) {
+			position: relative;
+			display: flex;
+			height:100%;
+			a {
+				display: block;
+				overflow: hidden;
+				height: 100%;
+				picture, img {
+					position: absolute;
+					height: 100%;
+					object-fit: cover;
+					width: 100%!important;
+					//top: 50%;
+				}
+			}
+		}
+	}
+	
+	@media (hover: hover) {
+		&:hover {
+			.hoverable {opacity: 1;}
+			.the-overlay {
+				background-color: rgba($black, 0);
+			}
+		}
+	}
+}
+
+.card.style-finder {
+	picture {
+		flex:0 0 50%;
+		&:first-child {
+			border-right:5px solid $white;
+			border-bottom:5px solid $white;
+		}
+		&:last-child {
+			border-left:5px solid $white;
+			border-top: 5px solid $white;
+		}
+		&:nth-child(2){
+			border-left:5px solid $white;
+			border-bottom:5px solid $white;
+		}
+		&:nth-child(3){
+			border-top:5px solid $white;
+			border-right:5px solid $white;
+		}
+	}
+}
+
+
+// Advantage
+.advantage {
+	.card.product .save {display:none;}
+}
+
+// Saved State
+.save {
+	cursor: pointer;
+	.saved {display:none;}
+	&[data-saved="true"]{
+		.saved {display:block;}
+		.not-saved {display:none;}
+	}
+}
+
+// Image with text at the bottom
+.card.text-bottom {
+	picture {
+		background: $black;
+		img {
+			transition:opacity 280ms linear;
+			opacity: 1;
+		}
+	}
+	@media (hover: hover) {
+		&:hover {
+			picture {
+				img {
+					opacity: 0.7;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,78 @@
+header {
+
+	.login-item {
+		position: relative;
+		.account-trigger  {
+			cursor: pointer;
+			position: relative;
+			z-index: 101;
+		}
+		.account-list {
+			display:none;
+			width:auto;
+			border: 1px solid #DCD5CF;
+			box-shadow: 0px 4px 8px 0px rgba($black,0.1), 0px 3px 4px 0px rgba($black,0.15);
+			background:white;
+			position: absolute;
+			padding: 10px 15px;
+			top: 54px;
+			left:-267px;
+			z-index: 101;
+			li {
+				a {
+					color: $black;
+					padding:5px 0;
+					display: block;
+					white-space: nowrap;
+					@media (hover: hover) {
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+			&:before {
+				content: '';
+				position: absolute;
+				left: 274px;
+				right: inherit;
+				margin: inherit;
+				top:-12px;
+				width: 0;
+				height: 0;
+				border-bottom: solid 12px #DCD5CF;
+				border-left: solid 8px transparent;
+				border-right: solid 8px transparent;
+			}
+			&.active {
+				display:block;
+			}
+		}
+	
+		&.active {
+			.account-list {
+			}
+		}
+		
+		@include media-breakpoint-up(lg) {
+			.account-list {
+				top: 64px;
+				left:50%;
+				transform: translateX(-52%);
+				&:before {
+					left: calc(50% - 9px);
+				}
+			}
+		}
+		@include media-breakpoint-up(xl) {
+			.account-list {
+				top: 64px;
+				transform: translateX(-43%);
+				&:before {
+					left: calc(50% - 17px);
+				}
+			}
+		}
+
+	}
+}

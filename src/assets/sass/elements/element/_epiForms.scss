@@ -1,0 +1,257 @@
+/////////////////////////////////////////////////////////
+// Epi Server                                          //
+/////////////////////////////////////////////////////////
+
+form.EPiServerForms {
+	.visually-hidden {display:none;}
+	.Form__Element, .Form__Description {
+		margin-bottom:20px;
+	}
+	.FormAddressElement {
+		input {
+			margin-bottom:20px;
+		}
+	}
+
+	legend.Form__Element__Caption {
+		display: block;
+		margin: 0 0 4px 0;
+		font-weight: bold;
+		color: $black;
+		font-size: 1rem;
+		line-height: 30px;
+	}
+
+	.ValidationRequired {
+		label.Form__Element__Caption {
+			&:after {
+				content: ' *';
+				color: $primary;
+			}
+		}
+	}
+
+	.Form__Element__ValidationError {
+		color: $primary;
+		display: block;
+		padding-top:10px;
+		clear: both;
+	}
+
+	// Date & Time (side by side)
+	fieldset.FormDateTimeRange {
+		input {
+			width:48%;
+			float:left;
+		}
+		.FormDateTimeRange_Seperator {
+			width:4%;
+			float:left;
+			line-height:50px;
+			text-align: center;
+		}
+	}
+
+	// File upload
+	.FormFileUploads {
+		input[type="file"] {
+			left: -9999px;
+			position: absolute;
+		}
+		label {margin-right:15px;}
+		.filename{
+			overflow: hidden;
+			white-space: nowrap;
+		}
+	}
+	::-ms-browse, ::-webkit-file-upload-button {
+		background: $primary;
+		color: white;
+		border:0;
+	}
+	.FormFileUpload {
+		input[type="file"] {
+			position: relative;
+			padding: 0;
+			font-size: 16px;
+			color: #333;
+			line-height:44px;
+			border:transparent;
+			&::-ms-browse {
+				background: $primary;
+				color: white;
+				border:0;
+				font-size:14px;
+				font-weight:bold;
+				height:50px;
+				margin-right:10px;
+				width:100px;
+			}
+			&::-webkit-file-upload-button {
+				background: $primary;
+				color: white;
+				border:0;
+				font-size:14px;
+				font-weight:bold;
+				height:50px;
+				margin-right:10px;
+				width:100px;
+			}
+		}
+	}
+
+	// captua
+	.FormCaptcha__Image {
+		width:100%;
+		height:auto;
+		margin-bottom:10px;
+	}
+	.FormCaptcha__Refresh {
+		position: absolute;
+		height: 40px;
+		width: 40px;
+		padding: 0;
+		right:10px;
+		&:after{
+			content: "⟲";
+			text-align:center;
+			width:40px;
+		}
+	}
+
+	// Checkbox & Radio
+	.FormChoice {
+		margin:$form-checkbox-container-margin;
+		label {
+			cursor: pointer;
+			line-height: $form-checkbox-size;
+			margin:0 0 10px 0;
+			position: relative;
+			padding-left:$form-radio-size + 11px;
+			input {
+				position: absolute;
+				z-index: -1;
+				opacity: 0;
+			}
+		}
+
+		// Checkbox
+		.checkbox-indicator {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: $form-checkbox-size;
+			width: $form-checkbox-size;
+			background: white;
+			border:$form-checkbox-border-width solid $form-checkbox-border-color;
+		}
+		label:hover input ~ .checkbox-indicator,
+		label input:focus ~ .checkbox-indicator {
+			background: $form-checkbox-background-color;
+		}
+		label input:checked ~ .checkbox-indicator {
+			background: $form-checkbox-background-color;
+		}
+		label:hover input:not([disabled]):checked ~ .checkbox-indicator,
+		label input:checked:focus ~ .checkbox-indicator {
+			background: $form-checkbox-background-color;
+		}
+		label input:disabled ~ .checkbox-indicator {
+			background: $disabled;
+			opacity: 0.6;
+			pointer-events: none;
+		}
+		label input.error ~ .checkbox-indicator {
+			border:$form-checkbox-border-width solid $error;
+		}
+		.checkbox-indicator:after {
+			content: '';
+			position: absolute;
+			display: block;
+			left: 4px;
+			bottom: 6px;
+			height: 15px;
+			width: 21px;
+			@include transition($form-transition);
+		}
+		label input:checked ~ .checkbox-indicator:after {
+			background: url($form-checkbox-icon) no-repeat bottom left;
+			background-size: 100% auto;
+		}
+		label input:disabled ~ .checkbox-indicator:after {
+			background: $disabled;
+		}
+	
+		// Radio
+		.radio-indicator {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: $form-radio-size;
+			width: $form-radio-size;
+			background: white;
+			border:$form-radio-border-width solid $form-radio-border-color;
+		}
+		label .radio-indicator {
+			@if $form-radio-fully-round == true {
+				@include border-radius(50%);
+			}
+			@else {
+				@include border-radius($form-border-radius);
+			}
+		}
+		label:hover input ~ .radio-indicator,
+		label input:focus ~ .radio-indicator {
+			background: $form-radio-background-color;
+		}
+		label input:checked ~ .radio-indicator {
+			background: $form-radio-background-color;
+		}
+		label:hover input:not([disabled]):checked ~ .radio-indicator,
+		label input:checked:focus ~ .radio-indicator {
+			background: $form-radio-background-color;
+		}
+		label input:disabled ~ .radio-indicator {
+			background: $disabled;
+			opacity: 0.6;
+			pointer-events: none;
+		}
+		label input.error ~ .radio-indicator {
+			border:$form-radio-border-width solid $error;
+		}
+	
+		.radio-indicator:after {
+			left: 3px;
+			top: 3px;
+			height: $form-radio-size - 8;
+			width: $form-radio-size - 8;
+			@if $form-radio-fully-round == true {
+				@include border-radius(50%);
+			}
+			@else {
+				@include border-radius($form-border-radius);
+			}
+			content: '';
+			position: absolute;
+			display: block;
+			background: $form-radio-background-color;
+			@include transition($form-transition);
+		}
+		label input:checked ~ .radio-indicator:after {
+			background: $form-radio-selected-color;
+		}
+		label input:disabled ~ .radio-indicator:after {
+			background: $disabled;
+		}
+	}
+		
+	.Form__NavigationBar {
+		display:flex;
+		justify-content: space-between;
+		align-items: center;
+		.Form__NavigationBar__ProgressBar--Text {text-align: center;}
+	}
+
+
+
+}

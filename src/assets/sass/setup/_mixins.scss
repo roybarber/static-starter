@@ -1,0 +1,573 @@
+/////////////////////////////////////////////////////////
+// Mixins                                              //
+/////////////////////////////////////////////////////////
+
+// Clearfix - Usage: @include clearfix();
+@mixin clearfix() {
+	& {
+		*zoom: 1;
+	}
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+// Background Cover - Usage: @include background-cover;
+@mixin background-cover {
+	background-size: cover;
+}
+
+// Opacity - Usage: @include opacity(0.8);
+@mixin opacity($opacity) {
+	opacity: $opacity;
+}
+
+// Vertical Align Anything - Usage: @include vertical-align();
+@mixin vertical-align {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+// Transitions - Usage: @include transition(all .2s ease);
+@mixin transition($args...) {
+	transition: $args;
+}
+
+// Retina Background Images - Usage: @include background-image-retina(logo, png);
+@mixin background-image-retina($file, $type) {
+	background-image: url($file+"."+$type);
+	@media only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (-moz-min-device-pixel-ratio: 2),
+		only screen and (-o-min-device-pixel-ratio: 2/1),
+		only screen and (min-device-pixel-ratio: 2),
+		only screen and (min-resolution: 192dpi),
+		only screen and (min-resolution: 2dppx) {
+		& {
+			background-image: url($file+"@2x."+$type);
+		}
+	}
+}
+
+// Text truncate - Requires inline-block or block for proper styling
+@mixin text-truncate() {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// CSS image replacement
+@mixin text-hide() {
+	font: 0/0 a;
+	color: transparent;
+	text-shadow: none;
+	background-color: transparent;
+	border: 0;
+}
+
+// Border Radius - Usage:
+//// @include border-radius(5px);
+//// @include border-top-radius(10px);
+//// @include border-right-radius(8px);
+//// @include border-bottom-radius(10px);
+//// @include border-left-radius (6px);
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	background-clip: padding-box;
+}
+@mixin border-top-radius($radius) {
+	border-top-right-radius: $radius;
+	border-top-left-radius: $radius;
+	background-clip: padding-box;
+}
+@mixin border-right-radius($radius) {
+	border-bottom-right-radius: $radius;
+	border-top-right-radius: $radius;
+	background-clip: padding-box;
+}
+@mixin border-bottom-radius($radius) {
+	border-bottom-right-radius: $radius;
+	border-bottom-left-radius: $radius;
+	background-clip: padding-box;
+}
+@mixin border-left-radius($radius) {
+	border-bottom-left-radius: $radius;
+	border-top-left-radius: $radius;
+	background-clip: padding-box;
+}
+
+// Mapping assists
+@mixin _assert-ascending($map, $map-name) {
+	$prev-key: null;
+	$prev-num: null;
+	@each $key, $num in $map {
+		@if $prev-num == null {
+			// Do nothing
+		} @else if not comparable($prev-num, $num) {
+			@warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+		} @else if $prev-num >= $num {
+			@warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+		}
+		$prev-key: $key;
+		$prev-num: $num;
+	}
+}
+@mixin _assert-starts-at-zero($map) {
+	$values: map-values($map);
+	$first-value: nth($values, 1);
+	@if $first-value != 0 {
+		@warn "First breakpoint in `$grid-breakpoints` must start at 0, but starts at #{$first-value}.";
+	}
+}
+
+// Grid system
+//// Generate semantic grid columns with these mixins. Breakpoint viewport sizes and media queries.
+//// Breakpoints are defined as a map of (name: minimum width), order from small to large:
+//// (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
+//// The map defined in the `$grid-breakpoints` global variable is used as the `$breakpoints` argument by default.
+//// Name of the next breakpoint, or null for the last breakpoint.
+//// >> breakpoint-next(sm)
+//// >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//// >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+	$n: index($breakpoint-names, $name);
+	@return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+//// >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//// 576px
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+	$min: map-get($breakpoints, $name);
+	@return if($min != 0, $min, null);
+}
+
+// Maximum breakpoint width. Null for the largest (last) breakpoint.
+//// The maximum value is calculated as the minimum of the next one less 0.1.
+//// >> breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//// 767px
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+	$next: breakpoint-next($name, $breakpoints);
+	@return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
+}
+
+// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash infront.
+//// Useful for making responsive utilities.
+//// >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//// ""  (Returns a blank string)
+//// >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//// "-sm"
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+	@return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+//// Makes the @content apply to the given breakpoint and wider.
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+	$min: breakpoint-min($name, $breakpoints);
+	@if $min {
+		@media (min-width: $min) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+//// Makes the @content apply to the given breakpoint and narrower.
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+	$max: breakpoint-max($name, $breakpoints);
+	@if $max {
+		@media (max-width: $max) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+// Media that spans multiple breakpoint widths.
+//// Makes the @content apply between the min and max breakpoints
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+	@include media-breakpoint-up($lower, $breakpoints) {
+		@include media-breakpoint-down($upper, $breakpoints) {
+			@content;
+		}
+	}
+}
+
+// Media between the breakpoint's minimum and maximum widths.
+//// No minimum for the smallest breakpoint, and no maximum for the largest one.
+//// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+	@include media-breakpoint-between($name, $name, $breakpoints) {
+		@content;
+	}
+}
+
+// Framework grid generation
+//// Used only by Bootstrap to generate the correct number of grid classes given any value of `$grid-columns`.
+@mixin make-grid-columns($columns: $grid-columns, $gutters: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
+	//// Common properties for all breakpoints
+	%grid-column {
+		position: relative;
+		width: 100%;
+		min-height: 1px; // Prevent columns from collapsing when empty
+		padding-right: 10px;
+		padding-left: 10px;
+		@include make-gutters($gutters);
+	}
+
+	@each $breakpoint in map-keys($breakpoints) {
+		$infix: breakpoint-infix($breakpoint, $breakpoints);
+
+		//// Allow columns to stretch full width below their breakpoints
+		@for $i from 1 through $columns {
+			.col#{$infix}-#{$i} {
+				@extend %grid-column;
+			}
+		}
+		.col#{$infix} {
+			@extend %grid-column;
+		}
+
+		@include media-breakpoint-up($breakpoint, $breakpoints) {
+			//// Provide basic `.col-{bp}` classes for equal-width flexbox columns
+			.col#{$infix} {
+				flex-basis: 0;
+				flex-grow: 1;
+				max-width: 100%;
+			}
+			.col#{$infix}-auto {
+				flex: 0 0 auto;
+				width: auto;
+			}
+
+			@for $i from 1 through $columns {
+				.col#{$infix}-#{$i} {
+					@include make-col($i, $columns);
+				}
+			}
+
+			@each $modifier in (pull, push) {
+				@for $i from 0 through $columns {
+					.#{$modifier}#{$infix}-#{$i} {
+						@include make-col-modifier($modifier, $i, $columns);
+					}
+				}
+			}
+
+			//// `$columns - 1` because offsetting by the width of an entire row isn't possible
+			@for $i from 0 through ($columns - 1) {
+				@if not($infix == "" and $i == 0) {
+					// Avoid emitting useless .offset-xs-0
+					.offset#{$infix}-#{$i} {
+						@include make-col-modifier(offset, $i, $columns);
+					}
+				}
+			}
+		}
+	}
+}
+
+/// Grid system
+//// Generate semantic grid columns with these mixins.
+@mixin make-container($gutters: $grid-gutter-widths) {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: $grid-max-width;
+
+	@each $breakpoint in map-keys($gutters) {
+		@include media-breakpoint-up($breakpoint) {
+			$gutter: map-get($gutters, $breakpoint);
+			padding-right: ($gutter / 2);
+			padding-left: ($gutter / 2);
+		}
+	}
+}
+//// For each breakpoint, define the maximum width of the container in a media query
+@mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
+	@each $breakpoint, $container-max-width in $max-widths {
+		@include media-breakpoint-up($breakpoint, $breakpoints) {
+			width: $container-max-width;
+			max-width: 100%;
+		}
+	}
+}
+@mixin make-gutters($gutters: $grid-gutter-widths) {
+	@each $breakpoint in map-keys($gutters) {
+		@include media-breakpoint-up($breakpoint) {
+			$gutter: map-get($gutters, $breakpoint);
+			padding-right: ($gutter / 2);
+			padding-left: ($gutter / 2);
+		}
+	}
+}
+@mixin make-row($gutters: $grid-gutter-widths) {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -10px;
+	margin-left: -10px;
+	@each $breakpoint in map-keys($gutters) {
+		@include media-breakpoint-up($breakpoint) {
+			$gutter: map-get($gutters, $breakpoint);
+			margin-right: ($gutter / -2);
+			margin-left: ($gutter / -2);
+		}
+	}
+}
+@mixin make-col-ready($gutters: $grid-gutter-widths) {
+	position: relative;
+	//// Prevent columns from becoming too narrow when at smaller grid tiers by
+	//// always setting `width: 100%;`. This works because we use `flex` values
+	//// later on to override this initial width.
+	width: 100%;
+	min-height: 1px; // Prevent collapsing
+
+	@each $breakpoint in map-keys($gutters) {
+		@include media-breakpoint-up($breakpoint) {
+			$gutter: map-get($gutters, $breakpoint);
+			padding-right: ($gutter / 2);
+			padding-left: ($gutter / 2);
+		}
+	}
+}
+
+@mixin make-col($size, $columns: $grid-columns) {
+	flex: 0 0 percentage($size / $columns);
+	//// width: percentage($size / $columns);
+	//// Add a `max-width` to ensure content within each column does not blow out
+	//// the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+	//// do not appear to require this.
+	max-width: percentage($size / $columns);
+}
+
+@mixin make-col-offset($size, $columns: $grid-columns) {
+	margin-left: percentage($size / $columns);
+}
+
+@mixin make-col-push($size, $columns: $grid-columns) {
+	left: if($size > 0, percentage($size / $columns), auto);
+}
+
+@mixin make-col-pull($size, $columns: $grid-columns) {
+	right: if($size > 0, percentage($size / $columns), auto);
+}
+
+@mixin make-col-modifier($type, $size, $columns) {
+	//// Work around the lack of dynamic mixin @include support (https://github.com/sass/sass/issues/626)
+	@if $type == push {
+		@include make-col-push($size, $columns);
+	} @else if $type == pull {
+		@include make-col-pull($size, $columns);
+	} @else if $type == offset {
+		@include make-col-offset($size, $columns);
+	}
+}
+
+//// Visability hacks
+@mixin invisible($visibility) {
+	visibility: $visibility !important;
+}
+
+
+
+
+
+// Responsive Font Sizes
+// SCSS RFS mixin
+//
+// Automated responsive font sizes
+//
+// Licensed under MIT (https://github.com/twbs/rfs/blob/master/LICENSE)
+
+// Configuration
+
+// Base font size
+$fs-base-font-size: 16px !default;
+$fs-font-size-unit: rem !default;
+$fs-line-height-unit: em !default;
+
+// PXtoEM calculation
+@function em($pixels) {
+	@return ($pixels / 16) * 1em;
+}
+
+@if $fs-font-size-unit != rem and $fs-font-size-unit != px {
+	@error "`#{$fs-font-size-unit}` is not a valid unit for $fs-font-size-unit. Use `px` or `rem`.";
+}
+@if $fs-line-height-unit != em {
+	@error "`#{$fs-line-height-unit}` is not a valid unit for $fs-line-height-unit. Use `px` or `rem`.";
+}
+
+// Breakpoint at where font-size starts decreasing if screen width is smaller
+$fs-breakpoint: 1200px !default;
+$fs-breakpoint-unit: px !default;
+
+@if $fs-breakpoint-unit != px and $fs-breakpoint-unit != em and $fs-breakpoint-unit != rem {
+	@error "`#{$fs-breakpoint-unit}` is not a valid unit for $fs-breakpoint-unit. Use `px`, `em` or `rem`.";
+}
+
+// Resize font size based on screen height and width
+$fs-two-dimensional: false !default;
+
+// Factor of decrease
+$fs-factor: 10 !default;
+
+@if type-of($fs-factor) != "number" or $fs-factor <= 1 {
+	@error "`#{$fs-factor}` is not a valid  $fs-factor, it must be greater than 1.";
+}
+
+// Generate enable or disable classes. Possibilities: false, "enable" or "disable"
+$fs-class: false !default;
+
+// 1 rem = $fs-rem-value px
+$fs-rem-value: 16 !default;
+
+// Safari iframe resize bug: https://github.com/twbs/rfs/issues/14
+$fs-safari-iframe-resize-bug-fix: false !default;
+
+// Disable RFS by setting $enable-responsive-font-sizes to false
+$enable-responsive-font-sizes: true !default;
+
+// Cache $fs-base-font-size unit
+$fs-base-font-size-unit: unit($fs-base-font-size);
+
+// Remove px-unit from $fs-base-font-size for calculations
+@if $fs-base-font-size-unit == "px" {
+	$fs-base-font-size: $fs-base-font-size / ($fs-base-font-size * 0 + 1);
+} @else if $fs-base-font-size-unit == "rem" {
+	$fs-base-font-size: $fs-base-font-size / ($fs-base-font-size * 0 + 1 / $fs-rem-value);
+}
+
+// Cache $fs-breakpoint unit to prevent multiple calls
+$fs-breakpoint-unit-cache: unit($fs-breakpoint);
+
+// Remove unit from $fs-breakpoint for calculations
+@if $fs-breakpoint-unit-cache == "px" {
+	$fs-breakpoint: $fs-breakpoint / ($fs-breakpoint * 0 + 1);
+} @else if $fs-breakpoint-unit-cache == "rem" or $fs-breakpoint-unit-cache == "em" {
+	$fs-breakpoint: $fs-breakpoint / ($fs-breakpoint * 0 + 1 / $fs-rem-value);
+}
+
+// Internal mixin that adds disable classes to the selector if needed.
+@mixin _rfs-disable-class {
+	@if $fs-class == "disable" {
+		// Adding an extra class increases specificity, which prevents the media query to override the font size
+		&,
+		.disable-responsive-font-size &,
+		&.disable-responsive-font-size {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+// Internal mixin that adds enable classes to the selector if needed.
+@mixin _rfs-enable-class {
+	@if $fs-class == "enable" {
+		.enable-responsive-font-size &,
+		&.enable-responsive-font-size {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+// Internal mixin used to determine which media query needs to be used
+@mixin _rfs-media-query($mq-value) {
+	@if $fs-two-dimensional {
+		@media (max-width: #{$mq-value}), (max-height: #{$mq-value}) {
+			@content;
+		}
+	} @else {
+		@media (max-width: #{$mq-value}) {
+			@content;
+		}
+	}
+}
+
+// Responsive font size mixin
+@mixin rfs($fs, $important: false) {
+	// Cache $fs unit
+	$fs-unit: if(type-of($fs) == "number", unit($fs), false);
+
+	// Add !important suffix if needed
+	$fs-suffix: if($important, " !important", "");
+
+	// If $fs isn't a number (like inherit) or $fs has a unit (not px or rem, like 1.5em) or $ is 0, just print the value
+	@if not $fs-unit or $fs-unit != "" and $fs-unit != "px" and $fs-unit != "rem" or $fs == 0 {
+		font-size: #{$fs}#{$fs-suffix};
+	} @else {
+		// Remove unit from $fs for calculations
+		@if $fs-unit == "px" {
+			$fs: $fs / ($fs * 0 + 1);
+		} @else if $fs-unit == "rem" {
+			$fs: $fs / ($fs * 0 + 1 / $fs-rem-value);
+		}
+
+		// Set default font size
+		$fs-static: if($fs-font-size-unit == rem, #{$fs / $fs-rem-value}rem, #{$fs}px);
+
+		// Only add the media query if the font size is bigger than the minimum font size
+		@if $fs <= $fs-base-font-size or not $enable-responsive-font-sizes {
+			font-size: #{$fs-static}#{$fs-suffix};
+		} @else {
+			// Calculate the minimum font size for $fs
+			$fs-min: $fs-base-font-size + ($fs - $fs-base-font-size) / $fs-factor;
+
+			// Calculate difference between $fs and the minimum font size
+			$fs-diff: $fs - $fs-min;
+
+			// Base font-size formatting
+			$min-width: if($fs-font-size-unit == rem, #{$fs-min / $fs-rem-value}rem, #{$fs-min}px);
+
+			// Use `vmin` if two-dimensional is enabled
+			$variable-unit: if($fs-two-dimensional, vmin, vw);
+
+			// Calculate the variable width between 0 and $fs-breakpoint
+			$variable-width: #{$fs-diff * 100 / $fs-breakpoint}#{$variable-unit};
+
+			// Set the calculated font-size
+			$fs-fluid: calc(#{$min-width} + #{$variable-width}) #{$fs-suffix};
+
+			// Breakpoint formatting
+			$mq-value: if(
+				$fs-breakpoint-unit == px,
+				#{$fs-breakpoint}px,
+				#{$fs-breakpoint / $fs-rem-value}#{$fs-breakpoint-unit}
+			);
+
+			@include _rfs-disable-class {
+				font-size: #{$fs-static}#{$fs-suffix};
+			}
+
+			@include _rfs-media-query($mq-value) {
+				@include _rfs-enable-class {
+					font-size: $fs-fluid;
+				}
+
+				// Include safari iframe resize fix if needed
+				min-width: if($fs-safari-iframe-resize-bug-fix, (0 * 1vw), null);
+			}
+		}
+	}
+}
+
+// The font-size & responsive-font-size mixins use RFS to rescale the font size
+@mixin font-size($fs, $important: false) {
+	@include rfs($fs, $important);
+}
+
+@mixin responsive-font-size($fs, $important: false) {
+	@include rfs($fs, $important);
+}

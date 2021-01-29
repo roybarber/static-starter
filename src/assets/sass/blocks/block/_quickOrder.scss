@@ -1,0 +1,62 @@
+.quick-order {
+	.line-item {
+		border-bottom:2px solid $grey;
+		padding-bottom:30px;
+		padding-top:10px;
+		.equals {
+			align-self: flex-end;
+			line-height: 20px;
+			padding: 15px;
+		}
+		
+
+		.boxqty {
+			max-width:100px;
+		}
+		.measurements {
+			.size {
+				max-width:70px;
+				border-right:0;
+			}
+			.measurement {
+				min-width:70px;
+				max-width:100px;
+				border-left:0;
+			}
+			.size, .measurement {
+				&:focus {
+					border-color: #C4BCB7;
+				}
+			}
+		}
+		@include media-breakpoint-up(lg) {
+			padding-bottom:0px;
+			border-bottom:0;
+			label {
+				display:none;
+			}
+			&.first {
+				label {
+					display:block;
+				}
+			}
+			select {
+				min-width:150px;
+			}
+			.boxqty {
+				max-width:90px;
+			}
+			.measurements {
+				.size {
+					min-width:90px;
+				}
+			}
+		}
+
+	}
+	.actions {
+		justify-self: flex-end;
+		max-width:500px;
+		margin-left:auto;
+	}
+}

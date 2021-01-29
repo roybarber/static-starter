@@ -1,0 +1,20 @@
+{{!--
+Accepts:
+lazyload=true - Allows the image to lazyload, picture is lazyload by default
+src='/img.jpg' - Default image, IE fallback and full size image
+src-tablet='/img-tablet.jpg' - Tablet image
+src-mobile='/img-mobile.jpg' - Mobile image
+src-load='/img-load.jpg' - Very low quality loading image
+alt='title' = image alt tag
+--}}
+<picture data-lazyload class="block {{class}}" data-iesrc="{{src}}" data-alt="{{alt}}">
+	<source srcset="{{src}}" media="(min-width: 1280px)">
+	{{#if src-tablet}}
+	<source srcset="{{src-tablet}}" media="(min-width: 980px)">
+	{{/if}}
+	{{#if src-mobile}}
+	<source srcset="{{src-mobile}}" media="(min-width: 320px)">
+	{{/if}}
+	<source srcset="{{src-load}}">
+	<noscript><img src="{{src}}" class="{{class}} no-js" alt="{{alt}}"></noscript>
+</picture>

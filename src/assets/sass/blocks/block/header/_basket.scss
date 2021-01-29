@@ -1,0 +1,109 @@
+header {
+
+	.basket-items {
+		.basket-trigger {
+			cursor: pointer;
+			position: relative;
+			z-index: 101;
+		}
+		.basket-list {
+			display:none;
+			width:360px;
+			border: 1px solid #DCD5CF;
+			box-shadow: 0px 4px 8px 0px rgba($black,0.1), 0px 3px 4px 0px rgba($black,0.15);
+			background:white;
+			position: absolute;
+			padding: 15px;
+			top: 54px;
+			left:-267px;
+			z-index: 101;
+			&:before {
+				content: '';
+				position: absolute;
+				left: 274px;
+				right: inherit;
+				margin: inherit;
+				top:-12px;
+				width: 0;
+				height: 0;
+				border-bottom: solid 12px #DCD5CF;
+				border-left: solid 8px transparent;
+				border-right: solid 8px transparent;
+			}
+			.btn {
+				padding-left:0px;
+				padding-right:0px;
+			}
+			.basket-popup-close {
+				position: absolute;
+				top:10px;
+				right:10px;
+				cursor: pointer;
+			}
+		}
+	
+		&.active {
+			.basket-list {
+				display:block;
+			}
+		}
+		
+		@include media-breakpoint-up(lg) {
+			.basket-list {
+				top: 64px;
+				left:50%;
+				transform: translateX(-52%);
+				&:before {
+					left: calc(50% - 13px);
+				}
+			}
+		}
+		@include media-breakpoint-up(xl) {
+			.basket-list {
+				top: 64px;
+				transform: translateX(-43%);
+				&:before {
+					left: calc(50% - 17px);
+				}
+			}
+		}
+
+	}
+}
+
+// List of products in the basket
+header {
+	.basket-product {
+		img {
+			width:40px;
+		}
+		.title {
+			font-size: 15px;
+			line-height: 18px;
+			color: $black;
+		}
+		.price {
+			font-size: 14px;
+			opacity: 0.7;
+		}
+		.remove-product {
+			flex:1;
+			min-width:16px!important;
+			max-width:16px;
+			margin-left:auto;
+			cursor: pointer;
+		}
+		@include media-breakpoint-up(md) {
+			img {
+				width:56px;
+			}
+			.title {
+				font-size: 16px;
+				line-height: 18px;
+			}
+			.price {
+				font-size: 14px;
+			}
+		}
+	}
+}

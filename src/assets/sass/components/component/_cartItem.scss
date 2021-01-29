@@ -1,0 +1,94 @@
+.cart-item {
+	position: relative;
+	.cart-image {
+		width:20%;
+		height:auto;
+		position: absolute;
+		top:10px;
+		left:10px;
+	}
+	.details, .actions {
+		//padding-left:20%;
+	}
+	.remove-item {
+		span {
+			padding-top:2px;
+		}
+	}
+	h3 {
+		font-size:20px;
+		line-height:24px;
+	}
+	.price {
+		justify-self: flex-end;
+	}
+	.delete-basket-trigger, .update-qty {
+		cursor: pointer;
+	}
+	.update-qty {display:none;}
+	@include media-breakpoint-up(md){
+		.cart-image {
+			top:0;
+			left:0;
+		}
+		h3 {
+			font-size:24px;
+			line-height:28px;
+		}
+	}
+	@include media-breakpoint-up(lg){
+		.row.no-gutters {width:100%;}
+		.cart-image {
+			//flex: 0 0 200px;
+			position: initial;
+			top:initial;
+			left:initial;
+	
+		}
+		h3 {
+			font-size:30px;
+			line-height:36px;
+		}
+		.details, .actions {
+			padding-left:0;
+		}
+		.remove-item {
+			position: absolute;
+			top:20px;
+			right:20px;
+			span {
+				display:none;
+			}
+		}
+		.quantity {
+			min-width:180px;
+		}
+
+	}
+	
+}
+
+.advantage {
+	.cart-item {
+		.meterage {
+			width:60px;
+			padding-left:0;
+			padding-right:0;
+			text-align: center;
+		}
+		.break {
+			flex-basis: 100%;
+			height: 20px;
+			@include media-breakpoint-up(sm){
+				display:none;
+			}
+		}
+		.price span {white-space: nowrap;}
+		@include media-breakpoint-up(lg){
+			.quantity {
+				min-width:100px;
+			}
+	
+		}
+	}
+}

@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+
+.btn {
+  @apply flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10;
+}
+
+@tailwind utilities;
+
+/* Form Validation */
+.error, .error:focus { @apply border-red-600; }
+.valid { @apply border-green-600; }

@@ -1,0 +1,25 @@
+.quote {
+	&:after {
+		display: block;
+		content: "\2500 \2500 \2500 \2500 \25C6 \2500 \2500 \2500 \2500";
+		margin-top: 16px;
+	}
+	&:before {
+		display: block;
+		content: "\275B \275B ";
+		font-size: 3em;
+	}
+	blockquote, p {
+		font-style: italic;
+	}
+	@include media-breakpoint-up(lg) {
+		blockquote, p {
+			font-size:20px;
+		}
+	}
+	@include media-breakpoint-up(xl) {
+		blockquote, p {
+			font-size:24px;
+		}
+	}
+}

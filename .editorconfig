@@ -1,16 +1,12 @@
 # EditorConfig helps developers define and maintain consistent
 # coding styles between different editors and IDEs
 # editorconfig.org
-
 root = true
 
-
 [*]
-
 # Change these settings to your own preference
 indent_style = tab
 indent_size = 4
-
 # We recommend you to keep these unchanged
 end_of_line = lf
 charset = utf-8
@@ -19,5 +15,8 @@ insert_final_newline = true
 
 [*.md]
 trim_trailing_whitespace = false
-
 quote_type = single
+
+[*.yml]
+indent_style = space
+indent_size = 2

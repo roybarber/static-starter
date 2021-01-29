@@ -1,0 +1,51 @@
+/////////////////////////////////////////////////////////
+// Iconography                                         //
+/////////////////////////////////////////////////////////
+
+// Setup
+$iconsizes: 16,18,20,24,28,32,38,40,44,50,64,70,75!default;
+
+
+// Icon Defaults
+.icon {
+	display: inline-block;
+	fill: currentColor;
+	&.responsive {
+		width:100%;
+		height:auto;
+	}
+}
+.icon-background {
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+//product quality stamp icons
+.icon-quality-stamp {
+	width: 85px;
+	height: 85px;
+}
+
+
+// Rotate modifiers
+.icon-rotate-90 {
+	transform: rotate(90deg);
+}
+.icon-rotate-180 {
+    transform: rotate(180deg);
+}
+.icon-rotate-270 {
+    transform: rotate(270deg);
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		@each $iconsize in $iconsizes {
+			.icon#{$infix}-#{$iconsize} {
+				width: #{$iconsize}px;
+				height: #{$iconsize}px;
+			} 
+		}
+	}
+}

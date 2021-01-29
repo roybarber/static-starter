@@ -1,0 +1,139 @@
+/////////////////////////////////////////////////////////
+// Color                                               //
+/////////////////////////////////////////////////////////
+
+// SETUP
+//// Base
+$primary: #c01b37!default;
+$secondary: #5E514D!default;
+$tertiary: #C4BCB7!default;
+$black: #32343a!default;
+$darkgrey: #978C87!default;
+$grey: #DBD5D0!default;
+$lightgrey: $tertiary!default;
+$offwhite: #F7F7F7!default;
+$white: #FFFFFF!default;
+//// States
+$error: $primary!default;
+$warning: #EDAF16!default;
+$success: #03743A!default;
+$disabled: $grey!default;
+//// Defaults
+$bodycolor: #5B5D61!default;
+$headingcolor: #333!default;
+$line: $grey!default;
+//// Into an array
+$colors: (
+	"primary": $primary,
+	"secondary": $secondary,
+	"tertiary": $tertiary,
+	"black": $black,
+	"darkgrey": $darkgrey,
+	"lightgrey": $lightgrey,
+	"offwhite": $offwhite,
+	"white": $white,
+	"error": $error,
+	"warning": $warning,
+	"success": $success,
+	"disabled": $disabled,
+	"bodycolor": $bodycolor,
+	"headingcolor": $headingcolor
+) !default;
+
+// Brand & product specific colors
+$secondaryColors: (
+	"art-select": #7474C1,
+	"da-vinci": #E57200,
+	"michelangelo": #00A9CE,
+	"van-gough": #007864,
+	"opus": #84BD00,
+	"opus-enhance": #B4CB68,
+	"knight-tile": #EF3340,
+	"heritage-collection": #C5B783,
+	"looselay": #58514D,
+	"korlok": #93328E
+) !default;
+
+html, body {
+	background: $white;
+}
+
+// Color Helpers
+//// Links
+a {
+	color: $primary;
+    text-decoration: none;    
+    &.link-secondary {color: $secondary;}
+	a:link a:visited {color: inherit;}
+}
+//// Undo link styles for placeholder links/named anchors (without href)
+a:not([href]):not([tabindex]) {
+	color: inherit;
+	text-decoration: none;
+	@media (hover: hover) {
+		&:hover {
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+	&:focus {
+		outline: 0;
+	}
+
+}
+//// Text & BG Overides
+//// E.g Font Color: fc-primary or background .bg-black
+@each $name, $color in $colors {
+	.fc-#{$name} {
+		color: #{$color}!important;
+	} 
+	.bg-#{$name} {
+		background-color: #{$color}!important;
+	}
+	.bg-transparent-#{$name} {
+		background-color: rgba($color, 0.7)!important;
+	}
+	.border-#{$name} {
+		border: 1px solid #{$color};
+	}
+	.icon-#{$name} {
+		stroke: #{$color};
+		svg {stroke: #{$color};}
+	}
+}
+@include media-breakpoint-up(md) {
+	.bg-md-offwhite {background: $offwhite!important;}
+	.bg-md-white {background: $white!important;}
+}
+@include media-breakpoint-up(lg) {
+	.bg-lg-offwhite {background: $offwhite!important;}
+	.bg-lg-white {background: $white!important;}
+}
+@include media-breakpoint-up(xl) {
+	.bg-xl-offwhite {background: $offwhite!important;}
+	.bg-xl-white {background: $white!important;}
+}
+
+
+@each $name, $color in $secondaryColors {
+	.fc-#{$name} {
+		color: #{$color}!important;
+	} 
+	.bg-#{$name} {
+		background-color: #{$color}!important;
+	}
+}
+
+// specific border
+.border-bottom {
+	border-bottom: 1px solid $grey;
+}
+
+
+// Hover States
+@media (hover: hover) {
+	a {
+		transition: all .2s ease;	
+		&.link-secondary:hover {color: lighten($secondary, 15%);}
+	}
+}

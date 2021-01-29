@@ -1,0 +1,97 @@
+// Progress Indicator
+.progress {
+	.progress-bar {
+		max-width:920px;
+		margin-left:auto;
+		margin-right:auto;
+		height:10px;
+		width:100%;
+		background: $grey;
+		.progress-indicator {
+			transition: width 280ms linear;
+			height:10px;
+			background:$primary;
+			max-width:100%!important;
+		}
+	}
+}
+
+// Slider default changes
+.style-finder-container {
+	padding-bottom:40px;
+	@include media-breakpoint-up(md) {
+		padding-bottom:100px;
+	}
+}
+#question-slider {
+	width: 100%;
+	padding-top: 40px;
+	@include media-breakpoint-up(md) {
+		padding-top:100px;
+	}
+	.rsSlide {
+		display:flex!important;
+		align-items: center;
+		justify-content: center;
+		pointer-events:none;
+		.slide {
+			background: white;
+			position: relative;
+			@include media-breakpoint-up(md) {
+				min-width:800px;
+			}
+		}
+		input, button {
+			pointer-events: all;
+		}
+	}
+	.rsActiveSlide {
+		pointer-events: all;
+	}
+	// img, .rsSlide {
+	// 	-webkit-backface-visibility: hidden;
+	// 	backface-visibility: hidden;
+	// 	will-change: transform;
+	// }
+	// Scaling transforms
+	.rsSlide  {
+		//opacity: 0.45;
+		//transition: opacity 0.4s ease-out;
+	}
+	.rsActiveSlide  {
+		//opacity: 1;
+	}
+
+	// Specific form elemnts
+	select {
+		min-width:300px;
+		width:auto;
+		margin-left:auto;
+		margin-right:auto;
+	}
+
+	a.prev-slide {
+		position: absolute;
+		left:27px;
+  		bottom: 20px;
+	}
+
+	h3 {
+		font-size:16px;
+		font-weight: normal;
+		@include media-breakpoint-up(md) {
+			font-size: 22px;
+		}
+	}
+	@include media-breakpoint-down(xs) {
+		.btn-primary {
+			width:100%;
+			text-align: center;
+			justify-content: center;
+		}
+	}
+
+
+}
+
+

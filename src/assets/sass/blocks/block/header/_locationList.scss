@@ -1,0 +1,35 @@
+.location-list {
+	padding:0 15px;
+	margin-right:-15px;
+	border-left: 1px solid #DCD5CF;
+	position: relative;
+	.location-trigger {
+		cursor: pointer;
+	}
+	.other-locations {
+		display:none;
+		border: 1px solid #DCD5CF;
+		background:white;
+		position: absolute;
+		padding: 10px 15px;
+		top: 60px;
+		right:0;
+		z-index: 101;
+		span {
+			white-space: nowrap;
+		}
+		svg {
+			align-self: flex-end;
+		}
+	}
+
+	&.active {
+		background: rgba($tertiary, 0.2);
+		.other-locations {
+			display:block;
+		}
+		.icon-rotate-90 {
+			transform: rotate(270deg);
+		}
+	}
+}

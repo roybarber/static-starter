@@ -1,18 +1,20 @@
-# general
-.idea
+# Ignore docs files
+/_gh_pages/
+
+# OS or Editor folders
+._*
+.cache
+desktop.ini
 .DS_Store
-*~
-.sass-cache
+.idea
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
+Thumbs.db
 
-# package control
-node_modules
-client/assets/vendor
+# Folders to ignore
+/node_modules/
 package-lock.json
-
-# logs
-npm-debug.log
-
-# build
-build/tmp
-build/dist
-build/dev
+/dist/

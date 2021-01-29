@@ -1,0 +1,17 @@
+/////////////////////////////////////////////////////////
+// Home Page: /                                        //
+/////////////////////////////////////////////////////////
+
+// Overides for home page here
+.home-benefit {
+	span {
+		font-size: 14px;
+		color: #5b5d61;
+	}
+
+	@include media-breakpoint-up(md) {
+		span {
+			font-size: 16px;
+		}
+	}
+}

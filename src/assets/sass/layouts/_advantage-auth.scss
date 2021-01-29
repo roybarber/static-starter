@@ -1,0 +1,67 @@
+// Specific layouts
+//// Advantage Auth
+.auth-layout {
+	display:flex;
+	flex-direction: column;
+	aside {
+		position: relative;
+		overflow: hidden;
+		order: 1;
+		background: $black;
+		padding:50px 20px;
+		div {
+			z-index: 1;
+		}
+	}
+	.auth-action, .auth-form {
+		width: 100%;
+	}
+	.image-container {
+		position: absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		width:100%;
+		height:100%;
+		z-index: 0;
+		img {
+			opacity:0.15;
+			object-fit: cover;
+			height:100%;
+			width:100%;
+		}
+	}
+
+	@include media-breakpoint-up(lg) {
+		height:100%;
+		flex-direction: row;
+		aside {
+			display: flex;
+			align-items: center;
+			order:-1;
+			width:360px;
+			padding:25px;
+		}
+		.auth-action {
+			display:flex;
+			width:560px;
+			margin: 0 auto;
+			align-items:center;
+		}
+	}
+
+	@include media-breakpoint-up(xl) {
+		aside {
+			width:450px;
+			padding:40px;
+		}
+	}
+
+	@include media-breakpoint-up(xxl) {
+		aside {
+			width:570px;
+			padding:60px;
+		}
+	}
+}

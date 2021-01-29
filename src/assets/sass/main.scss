@@ -1,0 +1,57 @@
+/////////////////////////////////////////////////////////
+// Damage - Static Starter Base CSS                    //
+/////////////////////////////////////////////////////////
+
+// SASS-UTILS
+@import "setup/mixins";
+
+// RESET
+@import "setup/reboot";
+
+// BASE
+//// Grid System
+@import "base/grid";
+//// Color utiities
+@import "base/color";
+//// Typography
+@import "base/type";
+//// Iconography
+@import "base/icons";
+//// Brand / Logos
+@import "base/brand";
+
+// Elements
+//// Reusable elements
+@import "elements/elements";
+// Components
+//// Reusable components made from reusable elements
+@import "components/components";
+// Blocks
+//// Reusable blocks made from reusable components and elements
+@import "blocks/blocks";
+
+// Layouts
+//// Layouts ready for page content
+@import "layouts/advantage-auth";
+
+// PAGES
+//// Pages made from reusable components
+@import "pages/pages";
+
+// Visability hacks
+//// Responsive embeds for video/iframes, i.e youtube/vimeo
+@import "helpers/responsiveEmbed";
+//// Helpers for screen size based tasks, like show/hide
+@import "helpers/responsiveUtilities";
+
+// Screen readers
+@import "base/screenReaders";
+
+// WYSIWYG Overides
+@import "base/wysiwyg";
+
+// Remove cookie consent re-choice
+.cc-revoke {display:none!important;}
+
+// IE11 Overides
+@import "browser/ie11"

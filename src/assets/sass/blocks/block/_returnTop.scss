@@ -1,0 +1,10 @@
+.return-top-trigger {
+	position: fixed;
+	bottom:52px;
+	right:16px;
+	display:none;
+	cursor: pointer;
+	@include media-breakpoint-down(xs) {
+		display:none!important;
+	}
+}

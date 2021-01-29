@@ -1,3 +1,13 @@
 [build]
-  publish = "build/dist/"
-  command = "gulp build:dist"
+  publish = "dist/"
+  command = "npm run build"
+  functions = "functions/"
+[[redirects]]
+  from = '/api/*'
+  to = '/.netlify/functions/:splat'
+  status = 200
+[dev]
+framework = "#custom"
+   command="gulp"
+   port=8888
+   targetPort=4000

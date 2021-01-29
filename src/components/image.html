@@ -1,0 +1,45 @@
+{{!--
+Accepts:
+lazyload=true - Allows the image to lazyload, picture is lazyload by default
+srcset=true - Allows the use of a picture element with various src sizes
+src='/img.jpg' - Default image
+src-2x='/img-mobile.jpg' - HDPI Image
+src-load='/img-mobile.jpg' - HDPI Image
+alt='title' = image alt tag
+--}}
+<img
+	{{#if lazyload}}
+		data-lazyload
+		{{#if srcset}}
+			src="{{src-load}}"
+			data-srcset="
+				{{src}} 1x,
+				{{src-2x}} 2x
+			"
+		{{else}}
+			src="{{src}}"
+		{{/if}}
+	{{else}}
+		{{#if srcset}}
+			src="{{src-load}}"
+			srcset="
+				{{src}} 1x,
+				{{src-2x}} 2x
+			"
+		{{else}}
+			src="{{src}}"
+		{{/if}}
+	{{/if}}
+
+	{{#if alt}}
+		alt="{{alt}}"
+	{{else}}
+		alt=""
+		role="presentation"
+	{{/if}}
+	class="block {{class}}"
+/>
+
+
+
+

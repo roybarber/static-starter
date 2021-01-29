@@ -1,0 +1,269 @@
+/////////////////////////////////////////////////////////
+// Flexbox Grid                                        //
+/////////////////////////////////////////////////////////
+
+// Setup
+//// Grid columns
+$grid-columns: 12!default;
+$grid-max-width: 1800px!default;
+$grid-gutter-width-base: 20px!default;
+$grid-gutter-widths: (
+	xs: $grid-gutter-width-base,
+	sm: $grid-gutter-width-base,
+	md: $grid-gutter-width-base,
+	lg: $grid-gutter-width-base,
+	xl: $grid-gutter-width-base
+) !default;
+//// Grid breakpoints
+$xxs: 0!default;
+$xs: 400px!default;
+$sm: 576px!default;
+$md: 768px!default;
+$lg: 992px!default;
+$xl: 1200px!default;
+$xxl: 1600px!default;
+$xxxl: 2400px!default;
+//// Generate the Break Points
+$grid-breakpoints: (
+	xxs: $xxs,
+	xs: $xs,
+	sm: $sm,
+	md: $md,
+	lg: $lg,
+	xl: $xl,
+	xxl: $xxl,
+	xxxl: $xxxl
+) !default;
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints);
+
+// The Grid - Based on Bootstrap Flexbox grid
+//// Max width Media Query Example: (xs,sm,md,lg,xl)
+//// @include media-breakpoint-up(xs) { ... }
+//// Min width Media Query Example: (xs,sm,md,lg)
+//// @include media-breakpoint-down(xs) { ... }
+//// Targeting a single segment of screen sizes using the minimum and maximum breakpoint widths. e.g @media (min-width: 576px) and (max-width: 767px) { ... } (xs,sm,md,lg,xl)
+//// @include media-breakpoint-only(xs) { ... }
+//// Span multiple Breakpoints: (xs,sm,md,lg,xl)
+//// @include media-breakpoint-between(md, xl) { ... }
+//// more docs: https://v4-alpha.getbootstrap.com/layout/grid/
+@at-root {
+	@-ms-viewport { width: device-width; }
+}
+body {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+
+	&.checkout, &.advantage-auth {
+		padding-top:0px!important;
+	}
+	&.advantage-auth {
+		height:100%;
+	}
+}
+html {
+	height:100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-ms-overflow-style: scrollbar;
+}
+*, *::before, *::after {
+	box-sizing: inherit;
+}
+//// Container
+.container {
+	width:100%;
+	position: relative;
+	padding-left:15px;
+	padding-right:15px;
+	@include media-breakpoint-up(xxl) {
+		padding-left:5%;
+		padding-right:5%;
+		&.full-width {
+			padding-left:20px;
+			padding-right:20px;
+		}
+	}
+	&.no-spacing {
+		padding-left:0;
+		padding-right:0;
+	}
+}
+
+//// Row
+.row {
+	@include make-row();
+}
+//// Remove the negative margin from default .row, then the horizontal padding from all immediate children columns (to prevent runaway style inheritance).
+.no-gutters {
+	margin-right: 0;
+	margin-left: 0;
+	> .col, > [class*="col-"] {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+.no-outer-gutter {
+	padding-right: 0;
+	padding-left: 0;
+}
+//// Columns
+@include make-grid-columns();
+//// Ability to cleafix
+.clearfix {
+    @include clearfix();
+}
+
+
+// Alignment types
+.align-baseline    { vertical-align: baseline !important; }
+.align-top         { vertical-align: top !important; }
+.align-middle      { vertical-align: middle !important; }
+.align-bottom      { vertical-align: bottom !important; }
+.align-text-bottom { vertical-align: text-bottom !important; }
+.align-text-top    { vertical-align: text-top !important; }
+
+
+// Border radius helpers
+.rounded {@include border-radius(100%);}
+.border-radius-2 {@include border-radius(2px);}
+.border-radius-4 {@include border-radius(4px);}
+.border-radius-8 {@include border-radius(4px);}
+.border-radius-12 {@include border-radius(12px);}
+
+// Grid helpers
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		$spacing: 0,1,2,3,5,10,15,20,25,30,35,40,45,50,60,70;
+		$spacetype: px;
+		$zindexs: -1,0,10,20,30,40,50,60,70,80,90,100;
+
+		// Displays
+		//// e.g .d-sm-inline .d-md-block
+		.d#{$infix}-none         { display: none !important; }
+		.d#{$infix}-inline       { display: inline !important; }
+		.d#{$infix}-inline-block { display: inline-block !important; }
+		.d#{$infix}-block        { display: block !important; }
+		.d#{$infix}-table        { display: table !important; }
+		.d#{$infix}-table-cell   { display: table-cell !important; }
+		.d#{$infix}-flex         { display: flex !important; }
+		.d#{$infix}-inline-flex  { display: inline-flex !important; }
+		//// Aria Overides
+		.aria#{$infix}-hide {
+			visibility: hidden!important;
+			height: 0!important;
+			max-height: 0!important;
+			display: none!important;
+		}
+		.aria#{$infix}-show {
+			height: auto!important;
+			max-height: 100%!important;
+			visibility: visible!important;
+			display: block!important;
+
+		 }
+		 // Sticky Element
+		.sticky#{$infix} {
+			position: sticky;
+			top: 180px;
+		}
+		// Column counts
+		.col-count#{$infix}-0 {column-count: 0}
+		.col-count#{$infix}-1 {column-count: 1}
+		.col-count#{$infix}-2 {column-count: 2}
+		.col-count#{$infix}-3 {column-count: 3}
+		.col-count#{$infix}-4 {column-count: 4}
+		.col-count#{$infix}-5 {column-count: 5}
+		.col-count#{$infix}-6 {column-count: 6}
+
+		// Flex variation for Flex Box Grid
+		//// Custom styles for additional flex alignment options.
+		.order#{$infix}-first {order: -1;}
+		.order#{$infix}-last {order: 1;}
+		.order#{$infix}-0 {order: 0;}
+		.flex#{$infix}-row {flex-direction: row !important; }
+		.flex#{$infix}-column         { flex-direction: column !important; }
+		.flex#{$infix}-row-reverse    { flex-direction: row-reverse !important; }
+		.flex#{$infix}-column-reverse { flex-direction: column-reverse !important; }
+		.flex#{$infix}-wrap         { flex-wrap: wrap !important; }
+		.flex#{$infix}-nowrap       { flex-wrap: nowrap !important; }
+		.flex#{$infix}-wrap-reverse { flex-wrap: wrap-reverse !important; }
+		.justify-content#{$infix}-start   { justify-content: flex-start !important; }
+		.justify-content#{$infix}-end     { justify-content: flex-end !important; }
+		.justify-content#{$infix}-center  { justify-content: center !important; }
+		.justify-content#{$infix}-between { justify-content: space-between !important; }
+		.justify-content#{$infix}-around  { justify-content: space-around !important; }
+		.align-items#{$infix}-start    { align-items: flex-start !important; }
+		.align-items#{$infix}-end      { align-items: flex-end !important; }
+		.align-items#{$infix}-center   { align-items: center !important; }
+		.align-items#{$infix}-baseline { align-items: baseline !important; }
+		.align-items#{$infix}-stretch  { align-items: stretch !important; }
+		.align-content#{$infix}-start   { align-content: flex-start !important; }
+		.align-content#{$infix}-end     { align-content: flex-end !important; }
+		.align-content#{$infix}-center  { align-content: center !important; }
+		.align-content#{$infix}-between { align-content: space-between !important; }
+		.align-content#{$infix}-around  { align-content: space-around !important; }
+		.align-content#{$infix}-stretch { align-content: stretch !important; }
+		.align-self#{$infix}-auto     { align-self: auto !important; }
+		.align-self#{$infix}-start    { align-self: flex-start !important; }
+		.align-self#{$infix}-end      { align-self: flex-end !important; }
+		.align-self#{$infix}-center   { align-self: center !important; }
+		.align-self#{$infix}-baseline { align-self: baseline !important; }
+		.align-self#{$infix}-stretch  { align-self: stretch !important; }
+
+		// Flex
+		.flex#{$infix}-0  { flex: 0 !important; }
+		.flex#{$infix}-05  { flex: 0.5 !important; }
+		.flex#{$infix}-1  { flex: 1 !important; }
+		.flex#{$infix}-2  { flex: 2 !important; }
+		.flex#{$infix}-3  { flex: 3 !important; }
+		.flex#{$infix}-4  { flex: 4 !important; }
+
+		// Padding & Margin helpers
+		//// Can individually pad and margin an item based on MQ value
+		@each $space in $spacing {
+			.p#{$infix}-#{$space} {padding: #{$space}$spacetype;}
+			.py#{$infix}-#{$space} {padding-left: #{$space}$spacetype;padding-right: #{$space}$spacetype;}
+			.px#{$infix}-#{$space} {padding-top: #{$space}$spacetype;padding-bottom: #{$space}$spacetype;}
+			.pt#{$infix}-#{$space} {padding-top: #{$space}$spacetype;}
+			.pb#{$infix}-#{$space} {padding-bottom: #{$space}$spacetype;}
+			.pl#{$infix}-#{$space} {padding-left: #{$space}$spacetype;}
+			.pr#{$infix}-#{$space} {padding-right: #{$space}$spacetype;}
+			.m#{$infix}-auto {margin:auto;}
+			.my#{$infix}-auto {margin-top:auto;margin-bottom:auto;}
+			.mx#{$infix}-auto {margin-left:auto;margin-right:auto;}
+			.mt#{$infix}-auto {margin-top:auto;}
+			.mb#{$infix}-auto {margin-bottom:auto;}
+			.ml#{$infix}-auto {margin-left:auto;}
+			.mr#{$infix}-auto {margin-right:auto;}
+			.m#{$infix}-#{$space} {margin: #{$space}$spacetype;}
+			.my#{$infix}-#{$space} {margin-left: #{$space}$spacetype;margin-right: #{$space}$spacetype;}
+			.mx#{$infix}-#{$space} {margin-top: #{$space}$spacetype;margin-bottom: #{$space}$spacetype;}
+			.mt#{$infix}-#{$space} {margin-top: #{$space}$spacetype;}
+			.mb#{$infix}-#{$space} {margin-bottom: #{$space}$spacetype;}
+			.ml#{$infix}-#{$space} {margin-left: #{$space}$spacetype;}
+			.mr#{$infix}-#{$space} {margin-right: #{$space}$spacetype;}
+		}
+		@each $zindex in $zindexs {
+			.zindex#{$infix}-#{$zindex} {z-index: #{$zindex}}
+		}
+	}
+}
+
+// Overflow
+.of-hidden {overflow: hidden;}
+.of-visible {overflow: visible;}
+.of-scroll {overflow: scroll;}
+
+// Width Modifiers
+.w-100 {width:100%;}
+.h-100 {height:100%;}
+
+.touch-bottom {
+	@include media-breakpoint-up(md) {
+		min-height:100%;
+	}
+}

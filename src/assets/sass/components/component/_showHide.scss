@@ -1,0 +1,32 @@
+div[role=tablist]{
+	.content {
+		position: relative;
+		backface-visibility: hidden;
+		transition: all 0s ease-out;
+		visibility: hidden;
+		height:0;
+		max-height:0;
+		display:none;
+		&[aria-hidden="false"] {
+			height: auto;
+			max-height:100%;
+			visibility: visible;
+			display:block;
+		}
+	}
+}
+
+.trigger {
+	> * {pointer-events: none;}
+}
+
+
+.hidden-content {
+	display:none;
+}
+.read-more {
+	font-weight: bold;
+	&.active {
+		.icon{ transform: rotate(270deg);}
+	}
+}

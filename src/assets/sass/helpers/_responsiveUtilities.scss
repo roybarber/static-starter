@@ -1,0 +1,42 @@
+/////////////////////////////////////////////////////////
+// Responsive Utilities & Helpers                      //
+/////////////////////////////////////////////////////////
+
+// Responsive visibility utilities
+
+// Hide up + down. E.g hidden-md-up would hide the element from the MD breakpoint upwards, down would be downwards, only would be only!
+@each $bp in map-keys($grid-breakpoints) {
+	.visible-#{$bp} {@include invisible(visible);}
+	.invisible-#{$bp} {@include invisible(hidden);}
+  .hidden-#{$bp}-up {
+    @include media-breakpoint-up($bp) {
+      display: none !important;
+    }
+  }
+  .hidden-#{$bp}-down {
+    @include media-breakpoint-down($bp) {
+      display: none !important;
+    }
+  }
+}
+@media (max-width:$xs){
+	.hidden-xxs-only{display:none!important}
+}
+@media (min-width:$xs) and (max-width:($sm - 1)){
+	.hidden-xs-only{display:none!important}
+}
+@media (min-width:$sm) and (max-width:($md - 1)){
+	.hidden-sm-only{display:none!important}
+}
+@media (min-width:$md) and (max-width:($lg - 1)){
+	.hidden-md-only{display:none!important}
+}
+@media (min-width:$lg) and (max-width:($xl - 1)){
+	.hidden-lg-only{display:none!important}
+}
+@media (min-width:$xl) and (max-width:($xxl - 1)){
+	.hidden-xl-only{display:none!important}
+}
+@media (min-width:$xxl){
+	.hidden-xxl-only{display:none!important}
+}

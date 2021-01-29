@@ -1,0 +1,263 @@
+/////////////////////////////////////////////////////////
+// Typography                                          //
+/////////////////////////////////////////////////////////
+
+// Font Imports
+// SOLOMON
+// MUST LEAVE:
+@import url("//hello.myfonts.net/count/3c1bf7");// MyFonts Webfont Build ID 3939319, 2020-08-24T10:33:41-0400
+@font-face {
+  font-family: 'Solomon';
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  src: url('../fonts/solomon/normal_normal_normal.woff2') format('woff2'),
+  url('../fonts/solomon/normal_normal_normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Solomon';
+  font-style: normal;
+  font-weight: bold;
+  font-stretch: normal;
+  src: url('../fonts/solomon/normal_normal_bold.woff2') format('woff2'),
+  url('../fonts/solomon/normal_normal_bold.woff') format('woff');
+}
+
+// Born Ready
+@import url("//hello.myfonts.net/count/3c1bf8");// MyFonts Webfont Build ID 3939320, 2020-08-24T10:35:37-0400
+@font-face {
+  font-family: 'BornReady';
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  src: url('../fonts/bornready/normal_normal_normal.woff2') format('woff2'),
+  url('../fonts/bornready/normal_normal_normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'BornReady';
+  font-style: italic;
+  font-weight: normal;
+  font-stretch: normal;
+  src: url('../fonts/bornready/normal_normal_italic.woff2') format('woff2'),
+  url('../fonts/bornready/normal_normal_italic.woff') format('woff');
+}
+@font-face {
+	font-family: 'BornReadyUpright';
+	font-style: normal;
+	font-weight: bold;
+	font-stretch: normal;
+	src: url('../fonts/bornreadyupright/normal_normal_normal.woff2') format('woff2'),
+	url('../fonts/bornreadyupright/normal_normal_normal.woff') format('woff');
+  }
+
+
+// Type Defaults
+//// Base
+$hfont: 'Solomon',sans-serif,Arial,Verdana,"Trebuchet MS"!default;
+$bfont: false !default;
+
+// Disable RFS by setting $enable-responsive-font-sizes to false
+$enable-responsive-font-sizes: true !default;
+$fs-base-font-size: 16px !default;
+$fs-font-size-unit: rem !default;
+$line-height-base: 1.5!default;
+
+// Breakpoint at where font-size starts decreasing if screen width is smaller
+$fs-breakpoint: $lgdesktopmq !default;
+$fs-breakpoint-unit: px !default;
+// Resize font size based on screen height and width
+$fs-two-dimensional: false !default;
+// Factor of decrease
+$fs-factor: 10 !default;
+// Generate enable or disable classes. Possibilities: false, "enable" or "disable"
+$fs-class: false !default;
+// 1 rem = $fs-rem-value px
+$fs-rem-value: 16 !default;
+
+//// Font Sizes
+$fs-1-desktop: 50px!default;
+$fs-2-desktop: 36px!default;
+$fs-3-desktop: 28px!default;
+$fs-4-desktop: 24px!default;
+$fs-5-desktop: 20px!default;
+$fs-6-desktop: 18px!default;
+$fs-7-desktop: 16px!default;
+$fs-8-desktop: 14px!default;
+
+body {
+	// Awesome web fonts
+	-moz-font-feature-settings: 'liga', 'kern';
+	-moz-font-feature-settings: 'liga=1, kern=1';
+	-ms-font-feature-settings: 'liga', 'kern';
+	-o-font-feature-settings: 'liga', 'kern';
+	-webkit-font-feature-settings: 'liga', 'kern';
+	font-feature-settings: 'liga', 'kern';
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	font-stretch: normal;
+	// Defaults
+	font-size: $fs-base-font-size;
+	color: $bodycolor;
+	@if $bfont {
+		font-family: $bfont;
+	} @else {
+		font-family: $hfont;
+	}
+}
+
+// Font classes
+.solomon{
+	font-family: 'Solomon',sans-serif,Arial,Verdana,"Trebuchet MS";
+}
+.bornready {
+	font-family: 'BornReady',sans-serif,Arial,Verdana,"Trebuchet MS";
+}  
+.bornreadyupright {
+	font-family: 'BornReadyUpright',sans-serif,Arial,Verdana,"Trebuchet MS";
+}
+.monospace, code {
+	font-family: monospace;
+}
+
+// Headings
+//// Defaults
+.heading {
+	@if $bfont {
+		font-family: $hfont;
+	}
+	font-weight: bold;
+	color: $headingcolor;
+	line-height: $line-height-base;
+	strong {font-weight: bold;}
+}
+.body {
+	@if $bfont {
+		font-family: $bfont;
+	}
+	font-weight: normal;
+	color: $bodycolor;
+}
+//// Mobile
+h1, .fs-1 {
+	@extend .heading;
+	@include font-size($fs-1-desktop);
+	line-height:1.1;
+}
+h2, .fs-2 {
+	@extend .heading;
+	@include font-size($fs-2-desktop, true);
+}
+h3, .fs-3 {
+	@extend .heading;
+	@include font-size($fs-3-desktop);
+}
+h4, .fs-4 {
+	@extend .heading;
+	@include font-size($fs-4-desktop);
+}
+h5, .fs-5  {
+	@extend .heading;
+	@include font-size($fs-5-desktop);
+}
+h6, p, code, .fs-6, .wysiwyg ul, .wysiwyg ol {
+	@extend .body;
+	@include font-size($fs-6-desktop);
+	line-height: 1.7;
+}
+label, .fs-7 {
+	@extend .heading;
+	@include font-size($fs-7-desktop);
+	line-height: 30px;
+}
+small, .fs-8 {
+	@extend .body;
+	@include font-size($fs-8-desktop);
+}
+
+// Font weights
+.fw-normal {font-weight: normal;}
+.fw-bold, strong, b {font-weight: bold;}
+
+
+// Text modifiers
+.text-lowercase {text-transform: lowercase !important;}
+.text-uppercase {text-transform: uppercase !important;}
+.text-capitalize {text-transform: capitalize !important;}
+.text-italic {font-style: italic;}
+.text-underline {text-decoration: underline;}
+
+
+// Text Align
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		.text#{$infix}-left   { text-align: left !important; }
+		.text#{$infix}-right  { text-align: right !important; }
+		.text#{$infix}-center { text-align: center !important; }
+	}
+}
+.text-justify  { text-align: justify !important; }
+.text-nowrap   { white-space: nowrap !important; }
+.text-truncate { @include text-truncate; }
+
+
+// Lists
+ul, ol {
+	list-style: none;
+	padding:0;
+	&.styled {
+		margin-left: 22px;
+		ul {
+			list-style-type: circle; 
+			margin-left: 22px;
+		}
+		ol {
+			list-style-type: lower-latin; 
+			margin-left: 22px;
+		}
+	}
+}
+ul {
+	&.styled {
+		list-style-type: disc; 
+	}
+}
+ol {
+	&.styled {
+		list-style-type: decimal;
+	}
+}
+
+
+// Other helpers
+.text-hide {
+	@include text-hide();
+}
+
+
+// Breaks
+hr {
+	border:0;
+	border-bottom:1px solid $line;
+	height:1px;
+	background:none;
+}
+
+// Link with icon
+.link-icon {
+	.icon {
+		top:-1px;
+	}
+}
+
+.no-child-clicks {
+	> * {
+		pointer-events: none;
+	}
+}
+
+a[href^=tel] {
+	text-decoration:inherit;
+	color: inherit;
+ }

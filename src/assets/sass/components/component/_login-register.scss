@@ -1,0 +1,35 @@
+.login-register {
+	form, .alt-signin, .content {
+		max-width:400px;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	.or {
+		position: relative;
+		&:before {
+			content: "";
+			position: absolute;
+			top:44%;
+			z-index: 1;
+			left:0;
+			width:100%;
+			border-bottom:1px solid $grey;
+			height:0;
+			display: block;
+		}
+		span {
+			position: relative;
+			z-index: 2;
+			padding-left:20px;
+			padding-right:20px;
+		}
+	}
+	.forgot-password {
+		&[aria-hidden="false"] {
+			height: auto;
+			max-height:100%;
+			visibility: visible;
+			display:block;
+		}
+	}
+}

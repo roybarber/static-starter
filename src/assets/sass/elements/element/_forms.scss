@@ -1,0 +1,799 @@
+/////////////////////////////////////////////////////////
+// Forms                                               //
+/////////////////////////////////////////////////////////
+
+// Setup
+//// Label Group
+$remove-ms-clear: true!default;
+$form-input-group-margin: 0 0 25px 0!default;
+$form-font-family: $hfont!default;
+$form-font-size: 16px!default;
+$form-font-color: $headingcolor!default;
+// Labels
+$form-label-margin:0 0 4px 0!default;
+$form-label-font-weight: bold!default;
+// transitions
+$form-transition: all 0.3s linear!default;
+// Borders
+$form-border-radius: 0px!default;
+$form-border-width: 2px!default;
+$form-border-style: solid!default;
+$form-border-color: $white!default;
+// Inputs, Textareas, Select, Option
+$form-input-height: 50px!default;
+$form-input-width: 100%!default;
+$form-input-max-width: 100%!default;
+$form-input-bg-color: #fff!default;
+$form-input-padding: 0 14px!default;
+$form-input-margin: 0!default;
+$form-focus-bg-color: white!default;
+$form-focus-border-color: $grey!default;
+$form-focus-font-color: $form-font-color!default;
+$form-input-required-icon: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTBweCIgaGVpZ2h0PSIxMnB4IiB2aWV3Qm94PSI1NTQgNDkgMTAgMTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgIDxwYXRoIGQ9Ik01NjMuODc4MTIzLDU3LjQ0ODcxODMgQzU2My43MDk3MDMsNTcuNzQxODU4NCA1NjMuNDAzODE4LDU3LjkwMzkwNDkgNTYzLjA4ODgyOSw1Ny45MDM5MDQ5IEM1NjIuOTM0NTIxLDU3LjkwMzkwNDkgNTYyLjc3NzkzNyw1Ny44NjQ3NTg4IDU2Mi42MzQ1NTMsNTcuNzgxOTE0OSBMNTU5LjkxMTYyNyw1Ni4yMDkyNDUyIEw1NTkuOTExNjI3LDU5LjM1NDU4NDUgQzU1OS45MTE2MjcsNTkuODU3MTEwNSA1NTkuNTAzNzc5LDYwLjI2NDk1NzcgNTU5LjAwMTI1Myw2MC4yNjQ5NTc3IEM1NTguNDk4NzI3LDYwLjI2NDk1NzcgNTU4LjA5MDg4LDU5Ljg1NzExMDUgNTU4LjA5MDg4LDU5LjM1NDU4NDUgTDU1OC4wOTA4OCw1Ni4yMDg3OSBMNTU1LjM2NjU4OCw1Ny43ODE5MTQ5IEM1NTUuMjIzMjA1LDU3Ljg2NDc1ODggNTU1LjA2NjYyMSw1Ny45MDM5MDQ5IDU1NC45MTIzMTIsNTcuOTAzOTA0OSBDNTU0LjU5Nzc3OCw1Ny45MDM5MDQ5IDU1NC4yOTE0MzgsNTcuNzQxODU4NCA1NTQuMTIzMDE5LDU3LjQ0ODcxODMgQzU1My44NzE3NTYsNTcuMDEzMTA0NyA1NTQuMDIwNjAyLDU2LjQ1NjQxMTUgNTU0LjQ1NjIxNSw1Ni4yMDYwNTg5IEw1NTcuMTc5NTk3LDU0LjYzMjkzNCBMNTU0LjQ1NTMwNSw1My4wNTk4MDkyIEM1NTQuMDE5NjkxLDUyLjgwODA5MSA1NTMuODcwODQ1LDUyLjI1MjMwODIgNTU0LjEyMjEwOCw1MS44MTY2OTQ2IEM1NTQuMzczMzcxLDUxLjM4MTA4MSA1NTQuOTMwNTIsNTEuMjMxNzc5OCA1NTUuMzY1Njc4LDUxLjQ4MzQ5OCBMNTU4LjA4OTUxNSw1My4wNTYxNjc3IEw1NTguMDg5NTE1LDQ5LjkxMDM3MzIgQzU1OC4wODk1MTUsNDkuNDA3ODQ3MiA1NTguNDk3MzYyLDQ5IDU1OC45OTk4ODgsNDkgQzU1OS41MDI0MTQsNDkgNTU5LjkxMDI2MSw0OS40MDc4NDcyIDU1OS45MTAyNjEsNDkuOTEwMzczMiBMNTU5LjkxMDI2MSw1My4wNTU3MTI1IEw1NjIuNjMzMTg3LDUxLjQ4MzA0MjggQzU2My4wNjgzNDYsNTEuMjMxMzI0NyA1NjMuNjI2ODYsNTEuMzgwNjI1OSA1NjMuODc2NzU3LDUxLjgxNjIzOTQgQzU2NC4xMjgwMiw1Mi4yNTE4NTMgNTYzLjk3OTE3NCw1Mi44MDg1NDYyIDU2My41NDM1Niw1My4wNTkzNTQgTDU2MC44MjEwODksNTQuNjMyNDc4OSBMNTYzLjU0NDAxNiw1Ni4yMDUxNDg1IEM1NjMuOTc5NjI5LDU2LjQ1NjQxMTUgNTY0LjEyOTM4Niw1Ny4wMTMxMDQ3IDU2My44NzgxMjMsNTcuNDQ4NzE4MyBMNTYzLjg3ODEyMyw1Ny40NDg3MTgzIFoiIGlkPSJTaGFwZSIgc3Ryb2tlPSJub25lIiBmaWxsPSIjRDAwMTFCIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjwvcGF0aD48L3N2Zz4='!default;
+// Fieldset & Legend Styling
+$form-fieldset-bare: false!default;
+// textarea
+$form-textarea-padding: 14px!default;
+// Select
+$form-select-bg-color: $form-input-bg-color!default;
+$form-select-dropdown-icon: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDhweCIgaGVpZ2h0PSI5NnB4IiB2aWV3Qm94PSIwIDAgNDggOTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+ZHJvcGRvd248L3RpdGxlPgogICAgPGcgaWQ9ImRyb3Bkb3duIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8cmVjdCBmaWxsPSIjMDAwMDAwIiB4PSIwIiB5PSIwIiB3aWR0aD0iNDgiIGhlaWdodD0iOTYiPjwvcmVjdD4KICAgICAgICA8cGF0aCBkPSJNMjAuNjc5NDM5OSwxNy44OTUxMTM3IEMyMC40MTU4NzMxLDE4LjI2ODA5NTcgMjAuNDQyOTkxNSwxOC43OTI4NTIxIDIwLjc2MDI3MTMsMTkuMTM0NjMxMiBMMjUuMjc2LDIzLjk5OSBMMjAuNzYwMTE0LDI4Ljg2NTM3MjIgQzIwLjQxNDAxMDUsMjkuMjM4Mjk2OCAyMC40MTMyMDMyLDI5LjgyODY0OTkgMjAuNzU4MzEyMSwzMC4yMDI0MjcyIEMyMC45MzQ5ODQ5LDMwLjM5MzYwMjYgMjEuMTc3MzY5LDMwLjUgMjEuNDMwNjg4NiwzMC41IEMyMS42ODMyMDQ0LDMwLjUgMjEuOTI0Nzk4NiwzMC4zOTQzNDA3IDIyLjEwMTE2OTMsMzAuMjA0NDc0NyBMMjcuMjM5ODM4NywyNC42Njk1MDk5IEMyNy40MDc1NTcxLDI0LjQ4OTI3MjIgMjcuNTAwMDA3NSwyNC4yNDg2Nzc0IDI3LjUwMDAwNzUsMjQuMDAwMDEzNCBDMjcuNTAwMDA3NSwyMy43NTE2MzgxIDI3LjQwNzYxNjcsMjMuNTExNDQzMSAyNy4yNDAwNDA1LDIzLjMzMDcyODQgTDIyLjEwMTI5MTEsMTcuNzk1NTEzNCBDMjEuNzM0NjI0LDE3LjQwMDc4ODggMjEuMTI0MjYyNSwxNy40MDE2NDg5IDIwLjc1ODYzODUsMTcuNzk3Mjg3NiBMMjAuNjc5NDM5OSwxNy44OTUxMTM3IFoiIGlkPSJQYXRoIiBmaWxsPSIjRkZGRkZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI0LjAwMDAwNCwgMjQuMDAwMDA3KSByb3RhdGUoOTAuMDAwMDAwKSB0cmFuc2xhdGUoLTI0LjAwMDAwNCwgLTI0LjAwMDAwNykgIj48L3BhdGg+CiAgICAgICAgPHBhdGggZD0iTTIxLjE3OTQzMjUsNjYuMzk1MTAwMyBDMjAuOTE1ODY1Niw2Ni43NjgwODIzIDIwLjk0Mjk4NCw2Ny4yOTI4Mzg2IDIxLjI2MDI2MzksNjcuNjM0NjE3OCBMMjUuNzc1OTkyNSw3Mi40OTg5ODY2IEwyMS4yNjAxMDY1LDc3LjM2NTM1ODcgQzIwLjkxNDAwMyw3Ny43MzgyODM0IDIwLjkxMzE5NTcsNzguMzI4NjM2NCAyMS4yNTgzMDQ2LDc4LjcwMjQxMzcgQzIxLjQzNDk3NzUsNzguODkzNTg5MiAyMS42NzczNjE1LDc4Ljk5OTk4NjYgMjEuOTMwNjgxMiw3OC45OTk5ODY2IEMyMi4xODMxOTcsNzguOTk5OTg2NiAyMi40MjQ3OTEyLDc4Ljg5NDMyNzIgMjIuNjAxMTYxOCw3OC43MDQ0NjEyIEwyNy43Mzk4MzEzLDczLjE2OTQ5NjUgQzI3LjkwNzU0OTYsNzIuOTg5MjU4OCAyOCw3Mi43NDg2NjQgMjgsNzIuNSBDMjgsNzIuMjUxNjI0NiAyNy45MDc2MDkzLDcyLjAxMTQyOTYgMjcuNzQwMDMzLDcxLjgzMDcxNSBMMjIuNjAxMjgzNiw2Ni4yOTU1IEMyMi4yMzQ2MTY1LDY1LjkwMDc3NTQgMjEuNjI0MjU1MSw2NS45MDE2MzU0IDIxLjI1ODYzMTEsNjYuMjk3Mjc0MiBMMjEuMTc5NDMyNSw2Ni4zOTUxMDAzIFoiIGlkPSJQYXRoIiBmaWxsPSIjRkZGRkZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI0LjQ5OTk5NiwgNzIuNDk5OTkzKSByb3RhdGUoMjcwLjAwMDAwMCkgdHJhbnNsYXRlKC0yNC40OTk5OTYsIC03Mi40OTk5OTMpICI+PC9wYXRoPgogICAgPC9nPgo8L3N2Zz4="!default;
+// Buttons & Input Submits
+$form-button-height: 40px!default;
+$form-button-width: 100%!default;
+$form-button-max-width: 200px!default;
+$form-button-font-color: $form-font-color!default;
+$form-button-bg-color: $form-focus-bg-color!default;
+$form-button-hover-bg-color: $form-border-color!default;
+$form-button-hover-font-color: $form-font-color!default;
+// Layout
+$form-display: block!default;
+//// Radio
+$form-radio-fully-round: true!default;
+$form-radio-background-color: white!default;
+$form-radio-container-margin: 0 0 15px 0!default;
+$form-radio-border-color: $line!default;
+$form-radio-selected-color: $primary!default;
+$form-radio-size: 20px!default;
+$form-radio-border-width: 1px!default;
+//// Checkbox
+$form-checkbox-background-color: white!default;
+$form-checkbox-container-margin: 0 0 15px 0!default;
+$form-checkbox-border-color: $line!default;
+$form-checkbox-selected-color: $primary!default;
+$form-checkbox-size: 20px!default;
+$form-checkbox-border-width:1px!default;
+$form-checkbox-icon:'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjRweCIgaGVpZ2h0PSIxN3B4IiB2aWV3Qm94PSIwIDAgMjQgMTciIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZyBpZD0iY2hlY2siIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJjaGVjay1tYXJrLWJsYWNrLW91dGxpbmUiIGZpbGw9IiMwMDAwMDAiIGZpbGwtcnVsZT0ibm9uemVybyI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yMy45MDE2OTc0LDIuNTM1MDk4NzQgTDkuMDIxMjU0ODgsMTYuOTA1MDY5NiBDOC44OTAxODQ3MywxNy4wMzE2NDM1IDguNjc3OTYxMzQsMTcuMDMxNjQzNSA4LjU0NzE5NzQ0LDE2LjkwNTA2OTYgTDAuMDk4MDcyOTI5NSw4Ljc0NTQ5NTUxIEMtMC4wMzI2OTA5NzY1LDguNjE5NTEzMTcgLTAuMDMyNjkwOTc2NSw4LjQxNDU3MDA4IDAuMDk4MDcyOTI5NSw4LjI4Nzk5NjI4IEwyLjE1MTA5Njg4LDYuMzA1NDAxMDQgQzIuMjgyMTY3MDIsNi4xNzkxMjI5OCAyLjQ5NDM5MDQxLDYuMTc5MTIyOTggMi42MjUxNTQzMiw2LjMwNTQwMTA0IEw4Ljc4NDUzMjQsMTIuMjUzMTg2NyBMMjEuMzc0OTIyMiwwLjA5NDcwODU1MDYgQzIxLjUwNjI5ODYsLTAuMDMxNTY5NTE2OSAyMS43MTc5MDk1LC0wLjAzMTU2OTUxNjkgMjEuODQ4OTc5NywwLjA5NDcwODU1MDYgTDIzLjkwMTY5NzQsMi4wNzczMDM3OCBDMjQuMDMyNzY3NSwyLjIwMzU4MTg1IDI0LjAzMjc2NzUsMi40MDgyMjkyMSAyMy45MDE2OTc0LDIuNTM1MDk4NzQgWiIgaWQ9IlBhdGgiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=='!default;
+//// Errors
+$form-state-error: $error!default;
+$form-state-warning: $warning!default;
+$form-state-valid: $success!default;
+$form-state-message-font-size: 16px!default;
+$form-state-message-font-weight: normal!default;
+$form-state-message-font-line-height:24px!default;
+$form-state-message-margin: 7px 0 0 0!default;
+//// Helper text
+$form-helper-text-color:$bodycolor!default;
+//// Range Slider
+$form-input-range-track-color: $lightgrey!default;
+$form-input-range-thumb-color: $primary!default;
+$form-input-range-thumb-radius: 20px!default;
+$form-input-range-thumb-height: 20px!default;
+$form-input-range-thumb-width: 20px!default;
+$form-input-range-thumb-border-width: 0px!default;
+$form-input-range-thumb-border-color: $primary!default;
+$form-input-range-track-width: 100%!default;
+$form-input-range-track-height: 4px!default;
+$form-input-range-track-border-width: 0px!default;
+$form-input-range-track-border-color: $lightgrey!default;
+$form-input-range-track-radius: 0px!default;
+$form-input-range-contrast: 0%!default;
+//// Reusable code
+@mixin track {
+	cursor: pointer;
+	height: $form-input-range-track-height;
+	transition: all .2s ease;
+	width: $form-input-range-track-width;
+}
+@mixin thumb {
+	background: $form-input-range-thumb-color;
+	border: $form-input-range-thumb-border-width solid $form-input-range-thumb-border-color;
+	border-radius: $form-input-range-thumb-radius;
+	cursor: pointer;
+	height: $form-input-range-thumb-height;
+	width: $form-input-range-thumb-width;
+}
+
+
+// Global Reset Styles
+//// Input wrapper
+.input-group {
+	margin: $form-input-group-margin;
+	&.inline {
+		display:flex;
+		flex-wrap: wrap;
+		label {
+			flex: 0 0 100%;
+		}
+		.radio-wrapper {
+			flex: 0 0 33.333%;
+		}
+		.checkbox-wrapper {
+			flex: 0 0 33.333%;
+		}
+	}
+}
+input,
+textarea,
+select,
+option {
+    box-sizing: border-box;
+    outline: none;
+    vertical-align: top;
+    font-family: $form-font-family;
+    font-size: $form-font-size;
+    color: $form-font-color;
+	margin: $form-input-margin;
+    display: $form-display;
+}
+label {
+    display: $form-display;
+    margin: $form-label-margin;
+	font-weight: $form-label-font-weight;
+	&.required {
+		&::after {
+			content: "*";
+			color:$error;
+		}
+	}
+	&.no-spacing {
+		margin-bottom:0;
+	}
+}
+.state-message, .helper-message {
+	font-size: $form-state-message-font-size;
+	font-weight: $form-state-message-font-weight;
+	line-height: $form-state-message-font-line-height;
+	margin:$form-state-message-margin;
+	display: block;
+	&.error {color: $form-state-error;}
+	&.warning {color: $form-state-warning;}
+	&.valid {color: $form-state-valid;}
+	a {
+		font-weight: normal;
+		text-decoration: underline;
+	}
+}
+.helper-message {
+	color: $form-helper-text-color;
+}
+input:invalid, textarea:invalid{
+    box-shadow: none;
+}
+
+
+// Input & Textarea
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="color"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="number"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+input[list],
+input[type="file"],
+select,
+textarea {
+	width: $form-input-width;
+	padding: $form-input-padding;
+	background-color: $form-input-bg-color;
+	-webkit-border-radius: $form-border-radius;
+	-moz-border-radius: $form-border-radius;
+	border-radius: $form-border-radius;
+	border: $form-border-width $form-border-style $lightgrey;
+	@include transition($form-transition);
+	@include media-breakpoint-up(md) {
+		max-width: $form-input-max-width;
+	}
+	&.narrow {
+		max-width:200px;
+	}
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="color"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="number"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+input[list],
+input[type="file"],
+select,
+textarea {
+	&.no-border {
+		border: $form-border-width $form-border-style transparent;
+		&:focus {
+			border-color: $form-border-width $form-border-style transparent;
+		}
+	}
+
+}
+
+.light-background {
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	input[type="search"],
+	input[type="color"],
+	input[type="date"],
+	input[type="datetime-local"],
+	input[type="month"],
+	input[type="number"],
+	input[type="tel"],
+	input[type="time"],
+	input[type="url"],
+	input[type="week"],
+	input[list],
+	input[type="file"],
+	select,
+	textarea {
+		border: $form-border-width $form-border-style $grey;
+		&:focus {
+			border-color: darken($form-focus-border-color, 10%);
+		}
+
+	}
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="color"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="number"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+input[list], 
+textarea {
+    height: $form-input-height;
+    -webkit-appearance: none;
+    // &:required {
+	//     background: $form-input-bg-color url($form-input-required-icon) no-repeat right 14px center;
+	//     background-size:8px;
+    // }
+    &.error {
+	    border: $form-border-width $form-border-style $form-state-error!important;
+	    color: $form-state-error;
+    }
+    &.valid {
+	    //background: $form-input-bg-color;
+	    //border: $form-border-width $form-border-style $form-state-valid;
+    }
+}
+@if $remove-ms-clear == true {
+	input::-ms-clear {
+		display: none;
+	}
+}
+
+div.ValidationFail {
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	input[type="search"],
+	input[type="color"],
+	input[type="date"],
+	input[type="datetime-local"],
+	input[type="month"],
+	input[type="number"],
+	input[type="tel"],
+	input[type="time"],
+	input[type="url"],
+	input[type="week"],
+	input[list],
+	textarea {
+		border: $form-border-width $form-border-style $form-state-error !important;
+	}
+
+	.form-group__error {
+		span {
+			color: $form-state-error !important;
+		}
+	}
+}
+
+// Other
+textarea {
+	height: inherit;
+    -webkit-appearance: none;
+    overflow: auto;
+	padding:$form-textarea-padding;
+	&:required {
+	    background-position: right 14px top 20px;
+	    background-size:8px;
+    }
+}
+input[type="file"] {
+    min-height: $form-input-height;
+}
+input[type="search"] {
+    height: $form-input-height;
+    -webkit-appearance: none;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+
+//File Input
+.file-input {
+    input[type="file"] {
+        left: -9999px;
+	    position: absolute;
+    }
+    label {margin-right:15px;}
+    .filename{
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+// Select
+select {
+    height: $form-input-height;
+	appearance: none;
+	position: relative;
+	padding-right:63px;
+	transition: none;
+	background: $form-select-bg-color url($form-select-dropdown-icon) no-repeat top right;
+	&:focus, &:active {
+		background-position: bottom right;
+	}
+	&.error {
+	    border: $form-border-width $form-border-style $form-state-error;
+	    color: $form-state-error;
+    }
+    &.valid {
+	    //border: $form-border-width $form-border-style $form-state-valid;
+    }
+    @media (hover: hover) {
+	    &:hover {cursor: pointer;}
+	}
+	&[disabled]{
+		&:focus, &:active {
+			background-position: top right;
+		}
+	}
+	&.small-style {
+		font-weight:bold;
+		height:30px;
+		background: none;
+		padding:0 15px 0 0;
+		line-height: 30px;
+		border:0;
+		width:auto;
+		background: white url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTRweCIgaGVpZ2h0PSI4cHgiIHZpZXdCb3g9IjAgMCAxNCA4IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPlBhdGg8L3RpdGxlPgogICAgPGcgaWQ9IkFzc2V0cyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9ImRyb3Bkb3duIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTcuMDAwMDAwLCAtMjAuMDAwMDAwKSIgZmlsbD0iI0MwMEIyNyIgZmlsbC1ydWxlPSJub256ZXJvIj4KICAgICAgICAgICAgPHBhdGggZD0iTTIwLjY3OTQzOTksMTcuODk1MTEzNyBDMjAuNDE1ODczMSwxOC4yNjgwOTU3IDIwLjQ0Mjk5MTUsMTguNzkyODUyMSAyMC43NjAyNzEzLDE5LjEzNDYzMTIgTDI1LjI3NiwyMy45OTkgTDIwLjc2MDExNCwyOC44NjUzNzIyIEMyMC40MTQwMTA1LDI5LjIzODI5NjggMjAuNDEzMjAzMiwyOS44Mjg2NDk5IDIwLjc1ODMxMjEsMzAuMjAyNDI3MiBDMjAuOTM0OTg0OSwzMC4zOTM2MDI2IDIxLjE3NzM2OSwzMC41IDIxLjQzMDY4ODYsMzAuNSBDMjEuNjgzMjA0NCwzMC41IDIxLjkyNDc5ODYsMzAuMzk0MzQwNyAyMi4xMDExNjkzLDMwLjIwNDQ3NDcgTDI3LjIzOTgzODcsMjQuNjY5NTA5OSBDMjcuNDA3NTU3MSwyNC40ODkyNzIyIDI3LjUwMDAwNzUsMjQuMjQ4Njc3NCAyNy41MDAwMDc1LDI0LjAwMDAxMzQgQzI3LjUwMDAwNzUsMjMuNzUxNjM4MSAyNy40MDc2MTY3LDIzLjUxMTQ0MzEgMjcuMjQwMDQwNSwyMy4zMzA3Mjg0IEwyMi4xMDEyOTExLDE3Ljc5NTUxMzQgQzIxLjczNDYyNCwxNy40MDA3ODg4IDIxLjEyNDI2MjUsMTcuNDAxNjQ4OSAyMC43NTg2Mzg1LDE3Ljc5NzI4NzYgTDIwLjY3OTQzOTksMTcuODk1MTEzNyBaIiBpZD0iUGF0aCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjQuMDAwMDA0LCAyNC4wMDAwMDcpIHJvdGF0ZSg5MC4wMDAwMDApIHRyYW5zbGF0ZSgtMjQuMDAwMDA0LCAtMjQuMDAwMDA3KSAiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=") no-repeat center right;
+		background-size:12px auto;
+	}
+}
+// Multi select
+select[multiple] {
+	@include media-breakpoint-up(md) {
+		background:white!important;
+		padding-right:0px;
+		height:auto;
+		padding-left:0;
+	}
+}
+
+
+// States
+input[disabled],
+textarea[disabled],
+select[disabled],
+option[disabled] {
+	cursor: not-allowed;
+	&.disabled {
+		background-color:darken($form-input-bg-color, 10%);
+		//border-color: darken($form-input-bg-color, 10%);
+	}
+}
+input:focus,
+textarea:focus,
+select:focus,
+option:focus {
+    background-color: $form-focus-bg-color;
+    border-color: $black;
+}
+
+
+// Radio Buttons
+.radio-wrapper {
+	margin:$form-radio-container-margin;
+	label {
+		line-height: $form-radio-size;
+		cursor: pointer;
+		margin:0;
+		position: relative;
+		padding-left:$form-radio-size + 11px;
+		input {
+			position: absolute;
+			z-index: -1;
+			opacity: 0;
+		}
+	}
+	.radio-indicator {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: $form-radio-size;
+		width: $form-radio-size;
+		background: white;
+		border:$form-radio-border-width solid $form-radio-border-color;
+	}
+	.radio .radio-indicator {
+		@if $form-radio-fully-round == true {
+	        @include border-radius(50%);
+	    }
+	    @else {
+	        @include border-radius($form-border-radius);
+	    }
+	}
+	.radio:hover input ~ .radio-indicator,
+	.radio input:focus ~ .radio-indicator {
+		background: $form-radio-background-color;
+	}
+	.radio input:checked ~ .radio-indicator {
+		background: $form-radio-background-color;
+	}
+	.radio:hover input:not([disabled]):checked ~ .radio-indicator,
+	.radio input:checked:focus ~ .radio-indicator {
+		background: $form-radio-background-color;
+	}
+	.radio input:disabled ~ .radio-indicator {
+		background: $disabled;
+		opacity: 0.6;
+		pointer-events: none;
+	}
+	.radio input.error ~ .radio-indicator {
+		border:$form-radio-border-width solid $error;
+	}
+
+	.radio-indicator:after {
+		left: 3px;
+		top: 3px;
+		height: $form-radio-size - 8;
+		width: $form-radio-size - 8;
+		@if $form-radio-fully-round == true {
+	        @include border-radius(50%);
+	    }
+	    @else {
+	        @include border-radius($form-border-radius);
+	    }
+	    content: '';
+		position: absolute;
+		display: block;
+		background: $form-radio-background-color;
+		@include transition($form-transition);
+	}
+	.radio input:checked ~ .radio-indicator:after {
+		background: $form-radio-selected-color;
+	}
+	.radio input:disabled ~ .radio-indicator:after {
+		background: $disabled;
+	}
+}
+
+
+// Checkbox
+.checkbox-wrapper {
+	margin:$form-checkbox-container-margin;
+	label {
+		line-height: $form-checkbox-size;
+		cursor: pointer;
+		margin:0;
+		position: relative;
+		padding-left:$form-radio-size + 11px;
+		input {
+			position: absolute;
+			z-index: -1;
+			opacity: 0;
+		}
+	}
+	.checkbox-indicator {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: $form-checkbox-size;
+		width: $form-checkbox-size;
+		background: white;
+		border:$form-checkbox-border-width solid $form-checkbox-border-color;
+	}
+	.checkbox:hover input ~ .checkbox-indicator,
+	.checkbox input:focus ~ .checkbox-indicator {
+		background: $form-checkbox-background-color;
+	}
+	.checkbox input:checked ~ .checkbox-indicator {
+		background: $form-checkbox-background-color;
+	}
+	.checkbox:hover input:not([disabled]):checked ~ .checkbox-indicator,
+	.checkbox input:checked:focus ~ .checkbox-indicator {
+		background: $form-checkbox-background-color;
+	}
+	.checkbox input:disabled ~ .checkbox-indicator {
+		background: $disabled;
+		opacity: 0.6;
+		pointer-events: none;
+	}
+	.checkbox input.error ~ .checkbox-indicator {
+		border:$form-checkbox-border-width solid $error;
+	}
+	.checkbox-indicator:after {
+		content: '';
+		position: absolute;
+		display: block;
+		left: 4px;
+		bottom: 6px;
+		height: 15px;
+		width: 21px;
+		@include transition($form-transition);
+	}
+	.checkbox input:checked ~ .checkbox-indicator:after {
+		background: url($form-checkbox-icon) no-repeat bottom left;
+		background-size: 100% auto;
+	}
+	.checkbox input:disabled ~ .checkbox-indicator:after {
+		background: $disabled;
+	}
+}
+
+
+// Range Slider
+input[type='range'] {
+	-webkit-appearance: none;
+	margin: $form-input-range-thumb-height / 2 0;
+	width: $form-input-range-track-width;
+	&:focus {
+		outline: 0;
+		&::-webkit-slider-runnable-track {
+			background: lighten($form-input-range-track-color, $form-input-range-contrast);
+		}
+		&::-ms-fill-lower {
+			background: $form-input-range-track-color;
+		}
+		&::-ms-fill-upper {
+			background: lighten($form-input-range-track-color, $form-input-range-contrast);
+		}
+	}
+	// Chrome/Safari
+	&::-webkit-slider-runnable-track {
+		@include track;
+		background: $form-input-range-track-color;
+		border: $form-input-range-track-border-width solid $form-input-range-track-border-color;
+		border-radius: $form-input-range-track-radius;
+	}
+	
+	&::-webkit-slider-thumb {
+		@include thumb;
+		-webkit-appearance: none;
+		margin-top: ((-$form-input-range-track-border-width * 2 + $form-input-range-track-height) / 2) - ($form-input-range-thumb-height / 2);
+	}
+	//// Firefox
+	&::-moz-range-track {
+		@include track;
+		background: $form-input-range-track-color;
+		border: $form-input-range-track-border-width solid $form-input-range-track-border-color;
+		border-radius: $form-input-range-track-radius;
+	}
+	&::-moz-range-thumb {
+		@include thumb;
+	}
+	//// IE/EDGE
+	&::-ms-track {
+		@include track;
+		background: transparent;
+		border-color: transparent;
+		border-width: ($form-input-range-thumb-height / 2) 0;
+		color: transparent;
+	}
+	&::-ms-fill-lower {
+		background: darken($form-input-range-track-color, $form-input-range-contrast);
+		border: $form-input-range-track-border-width solid $form-input-range-track-border-color;
+		border-radius: $form-input-range-track-radius * 2;
+	}
+	&::-ms-fill-upper {
+		background: $form-input-range-track-color;
+		border: $form-input-range-track-border-width solid $form-input-range-track-border-color;
+		border-radius: $form-input-range-track-radius * 2;
+	}
+	&::-ms-thumb {
+		@include thumb;
+		margin-top: 0;
+	}
+}
+
+// image checkbox
+.image-checkbox {
+	input[type="checkbox"] {
+		display: none;
+	}
+
+	label {
+		border: 1px solid transparent;
+		display: block;
+		position: relative;
+		cursor: pointer;
+
+		&:before {
+			color: white;
+			content: " ";
+			display: block;
+			border-radius: 50%;
+			border: 1px solid $grey;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -14px 0 0 -14px;
+			width: 28px;
+			height: 28px;
+			text-align: center;
+			line-height: 33px;
+			font-size: 18px;
+			transition-duration: 0.4s;
+			transform: scale(0);
+		}
+
+		img {
+			height: 100px;
+			width: 100px;
+			transition-duration: 0.2s;
+			transform-origin: 50% 50%;
+			position: relative;
+		}
+	}
+
+	:checked + label {
+		border-color: #ddd;
+		&:before {
+			content: "✓";
+			background-color: $success;
+			transform: scale(1);
+			z-index: 6;
+			border:red;
+		}
+		img {
+			transform: scale(0.90);
+			z-index: 1;
+		}
+	}
+
+	label {
+		&:hover {
+			img {
+				transform: scale(1.40);
+				z-index: 5;
+			}
+		}
+	}
+
+}
+
+// Ability to clear a element
+.input-can-empty {
+	position: relative;
+	.empty-input {
+		display: block;
+		position: absolute;
+		top:50%;
+		right:10px;
+		background:$grey;
+		color:$black;
+		height:20px;
+		line-height:22px;
+		text-align: center;
+		width:40px;
+		border-radius:50px;
+		overflow: hidden;
+		font-size: 10px;
+		font-weight:bold;
+		transform: translateY(-50%);
+		cursor: pointer;
+	}
+}
+
+// Photo preview of image upload
+.image-preview {
+	background:$offwhite;
+	padding:20px;
+	img.placeholder {
+		max-height: 400px;
+		width: auto;
+		max-width: 100%;
+	}
+}
+// Date picker in a seperate file
+
+.quantity-input {
+	position: relative;
+	//margin-right:-25px;
+
+	input[type=number]::-webkit-inner-spin-button,
+	input[type=number]::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	input[type=number]{
+		-moz-appearance: textfield;
+	}
+
+	input {
+		width: 70px;
+		//height: 42px;
+		//line-height: 1.65;
+		float: left;
+		display: block;
+		padding: 0;
+		margin: 0;
+		padding-left: 0;
+		padding-right:26px;
+		text-align: center;
+		&:focus {
+			outline: 0;
+		}
+	}
+
+	.quantity-nav {
+		float: left;
+		position: relative;
+		height: 48px;
+	}
+
+	.quantity-button {
+		position: relative;
+		cursor: pointer;
+		border-left: 2px solid $tertiary;
+		width: 28px;
+		text-align: center;
+		color: #333;
+		font-size: 18px;
+		line-height: 25px;
+		padding-right: 2px;
+		-webkit-transform: translateX(-100%);
+		transform: translateX(-100%);
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		-o-user-select: none;
+		user-select: none;
+
+		&.quantity-up {
+			position: absolute;
+			height: 50%;
+			top: 2px;
+			border-bottom: 1px solid $tertiary;
+		}
+		
+		&.quantity-down {
+			position: absolute;
+			bottom: -1px;
+			height: 50%;
+		}
+	}
+}

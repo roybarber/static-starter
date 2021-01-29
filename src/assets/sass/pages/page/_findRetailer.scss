@@ -1,0 +1,48 @@
+.retailer-results {
+	#loading {
+
+	}
+	#initial-state, #retailer-results, #no-results {
+		display:none;
+	}
+	.filter-reset {
+		border-bottom:1px solid $primary;
+	}
+}
+
+.retailer-filters {
+	border-top:1px solid $grey;
+	border-bottom:1px solid $grey;
+	.input-group, .checkbox-wrapper {
+		margin-bottom:0;
+	}
+}
+
+.virtual-tour {
+	position: relative;
+}
+
+.exitretailerscreen {
+	display: none;
+	position: absolute;
+	top: 20px;
+	right: 10px;
+	z-index: 999;
+	transition: top 280ms ease-in-out;
+	cursor: pointer;
+}
+.fullscreenmode {
+	.exitretailerscreen {
+		top: 10px;
+		display: flex;
+	}
+	.virtual-tour {
+		position: fixed;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		z-index: 200;
+		iframe {height:100%;}
+	}
+}

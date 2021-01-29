@@ -1,0 +1,35 @@
+.calc-sqm {
+	.boxqty {
+		max-width:70px;
+		margin-right:10px;
+	}
+	.equals {flex:1; text-align:center;padding:0 10px;}
+	.measurements {
+		.size {
+			max-width:70px;
+			border-right:0;
+		}
+		.measurement {
+			border-left:0;
+		}
+		.size, .measurement {
+			&:focus {
+				border-color: #C4BCB7;
+			}
+		}
+	}
+	@include media-breakpoint-up(md) {
+		.boxqty {
+			max-width:90px;
+		}
+		.measurements {
+			.size {
+				max-width:90px;
+			}
+		}
+	}
+}
+.advantage .product-actions,
+.calc-sqm .calc {
+	max-width:500px;
+}
