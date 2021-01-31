@@ -1,13 +1,13 @@
 <header class="relative bg-white border-b-2 border-gray-100">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6">
-		<div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+		<div class="flex items-center py-4 justify-start md:space-x-10">
 			<div class="flex justify-start lg:w-0 lg:flex-1">
 				<a href="/">
-					{{> icon alt="Static Starter" icon="logo" class="h-8 w-auto sm:h-10"}}
+					{{> icon alt="Static Starter" icon="logo" class="w-10 h-10 sm:w-14 sm:h-14"}}
 				</a>
 			</div>
-			<div class="-mr-2 -my-2 md:hidden">
-				<button type="button"
+			<div class="ml-auto -mr-2 -my-2 md:hidden justify-end">
+				<button type="button" id="openMobileMenu" aria-expanded="false" aria-haspopup="true"
 					class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
 					<span class="sr-only">Open menu</span>
 					<!-- Heroicon name: menu -->
@@ -51,16 +51,16 @@
       From: "opacity-100 scale-100"
       To: "opacity-0 scale-95"
   -->
-	<div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right hidden md:hidden">
-		<div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
-			<div class="pt-5 pb-6 px-5">
-				<div class="flex items-center justify-between">
-					<div>
-						<img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-							alt="Workflow">
-					</div>
-					<div class="-mr-2">
-						<button type="button"
+	<div id="mobileMenu" aria-labelledby="openMobileMenu" class="absolute z-10 top-0 inset-x-0 transition transform origin-top-right hidden md:hidden">
+		<div class="shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+			<div class="py-4 px-4 flex items-center">
+				<div class="flex justify-start">
+					<a href="/">
+						{{> icon alt="Static Starter" icon="logo" class="w-10 h-10"}}
+					</a>
+				</div>
+				<div class="ml-auto -mr-2 -my-2 md:hidden justify-end">
+					<button type="button" id="closeMobileMenu"
 							class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
 							<span class="sr-only">Close menu</span>
 							<!-- Heroicon name: x -->
@@ -70,8 +70,8 @@
 									d="M6 18L18 6M6 6l12 12" />
 							</svg>
 						</button>
-					</div>
 				</div>
+
 			</div>
 			<div class="py-6 px-5 space-y-6">
 				<div class="grid grid-cols-1 gap-y-4 gap-x-8 text-center">
