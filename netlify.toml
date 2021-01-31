@@ -1,6 +1,6 @@
 [build]
   publish = "dist/"
-  command = "gulp build --production"
+  command = "npm run build"
   functions = "functions/"
 [context.production.environment]
   NODE_ENV = "production"
@@ -15,5 +15,3 @@
   command="gulp"
   port=8888
   targetPort=4000
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
