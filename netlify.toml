@@ -1,6 +1,6 @@
 [build]
   publish = "dist/"
-  command = "gulp build --production"
+  command = "npm run build"
   functions = "functions/"
 [context.production.environment]
   NODE_ENV = "production"
