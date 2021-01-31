@@ -48,5 +48,8 @@
     "webpack": "^4.41.2",
     "webpack-stream": "^5.2.1",
     "yargs": "^15.0.2"
+  },
+  "dependencies": {
+    "netlify-plugin-a11y": "0.0.12"
   }
 }

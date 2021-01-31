@@ -17,3 +17,5 @@
   targetPort=4000
 [[plugins]]
   package = "@netlify/plugin-lighthouse"
+  package = "netlify-plugin-a11y"
+    resultMode = "warn"
