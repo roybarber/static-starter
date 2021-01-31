@@ -1,6 +1,6 @@
 [build]
   publish = "dist/"
-  command = "npm run build"
+  command = "npm run netlify"
   functions = "functions/"
 [context.production.environment]
   NODE_ENV = "production"

@@ -5,7 +5,8 @@
   "author": "Roy Barber",
   "scripts": {
     "dev": "ENV NODE_ENV=development netlify dev",
-    "build": "ENV NODE_ENV=production gulp build --production",
+	"build": "ENV NODE_ENV=production gulp build --production",
+	"netlify": "gulp build --production",
     "build:serve": "ENV NODE_ENV=production gulp build:serve --production"
   },
   "dependencies": {
