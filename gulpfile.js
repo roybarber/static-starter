@@ -343,7 +343,8 @@ gulp.task('server', function (done) {
 	browsersync.init({
 		server: './dist/',
 		port: 4000,
-		notify: true
+		notify: true,
+		open: false
 	});
 	gulp.watch(paths.views.watch, { usePolling: true }, gulp.parallel('views'));
 	gulp.watch(paths.css.watch, { usePolling: true }, gulp.parallel('postcss'));

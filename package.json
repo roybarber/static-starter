@@ -4,8 +4,8 @@
   "main": "gulpfile.js",
   "author": "Roy Barber",
   "scripts": {
-    "dev": "netlify dev",
-    "build": "gulp build --production",
+    "dev": "ENV NODE_ENV=development netlify dev",
+    "build": "ENV NODE_ENV=production gulp build --production",
     "build:serve": "ENV NODE_ENV=production gulp build:serve --production"
   },
   "dependencies": {
