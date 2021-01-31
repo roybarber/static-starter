@@ -2,6 +2,10 @@
   publish = "dist/"
   command = "npm run build"
   functions = "functions/"
+[context.production.environment]
+  NODE_ENV = "production"
+[context.branch-deploy.environment]
+  NODE_ENV = "development"
 [[redirects]]
   from = '/api/*'
   to = '/.netlify/functions/:splat'
