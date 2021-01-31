@@ -7,7 +7,9 @@
   to = '/.netlify/functions/:splat'
   status = 200
 [dev]
-framework = "#custom"
-   command="gulp"
-   port=8888
-   targetPort=4000
+  framework = "#custom"
+  command="gulp"
+  port=8888
+  targetPort=4000
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
