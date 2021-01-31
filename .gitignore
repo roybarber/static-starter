@@ -18,3 +18,5 @@ Thumbs.db
 /node_modules/
 package-lock.json
 /dist/
+# Local Netlify folder
+.netlify
