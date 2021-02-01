@@ -36,6 +36,6 @@ $.ajax({
 });
 
 // Components & Modules
-require("./modules/lazyLoad");
+require("./modules/lazyload");
 require("./modules/validation");
-require("./modules/mobileMenu");
+require("./modules/mobilemenu");
