@@ -1,0 +1,8 @@
+{
+    "svgSprite": "/assets/img/svg-sprite/sprite.svg",
+    "company_name": "We Are Damage",
+    "pageTitle": "Static Starter - A HTML/CSS Static site starting point",
+    "pageDescription": "Speed up your development with a complete and scalable gulpjs based build system that scaffolds the project for you.",
+	"twitter": "roybarberuk",
+	"siteName": "Static Starter"
+}
