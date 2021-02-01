@@ -5,13 +5,14 @@
   "author": "Roy Barber",
   "scripts": {
     "dev": "ENV NODE_ENV=development netlify dev",
-	"build": "ENV NODE_ENV=production gulp build --production",
-	"netlify": "gulp build --production",
+    "build": "ENV NODE_ENV=production gulp build --production",
+    "netlify": "gulp build --production",
     "build:serve": "ENV NODE_ENV=production gulp build:serve --production"
   },
   "dependencies": {
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
+    "@babel/register": "^7.12.10",
     "@netlify/plugin-lighthouse": "^1.4.2",
     "@tailwindcss/forms": "^0.2.1",
     "ansi-colors": "^4.1.1",
@@ -40,6 +41,7 @@
     "jquery": "^3.5.1",
     "jquery-validation": "^1.19.2",
     "lozad": "^1.16.0",
+    "netlify-plugin-a11y": "0.0.12",
     "postcss": "^8.2.1",
     "postcss-import": "^14.0.0",
     "postcss-mixins": "^7.0.2",
@@ -48,7 +50,6 @@
     "tailwindcss": "^2.0.2",
     "webpack": "^4.41.2",
     "webpack-stream": "^5.2.1",
-    "yargs": "^15.0.2",
-    "netlify-plugin-a11y": "0.0.12"
+    "yargs": "^15.0.2"
   }
 }
