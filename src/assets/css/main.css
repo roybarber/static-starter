@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 
+/* Sample Button */
 .btn {
   @apply flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10;
 }
@@ -10,15 +11,3 @@
 /* Form Validation */
 .error, .error:focus { @apply border-red-600; }
 .valid { @apply border-green-600; }
-
-/* Mobile Menu
-
- // Entering: "duration-200 ease-out"
-    //   From: "opacity-0 scale-95"
-    //   To: "opacity-100 scale-100"
-    // Leaving: "duration-100 ease-in"
-    //   From: "opacity-100 scale-100"
-	//   To: "opacity-0 scale-95"
-
-	*/
-

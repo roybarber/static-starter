@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const yargs = require('yargs');
 const browsersync = require('browser-sync');
 const hb = require('gulp-hb');
 const del = require("del");
@@ -28,15 +27,21 @@ const postcssPresetEnv = require('postcss-preset-env');
 const tailwindcss = require('tailwindcss');
 const pxtorem = require('postcss-pxtorem');
 const c = require('ansi-colors');
-const argv = yargs.argv;
+var argv = require('yargs').argv;
 const production = !!argv.production;
-
 // -------------------------------------
 //   Config
 // -------------------------------------
 const webpackConfig = require('./webpack.config.js')
 
+
+
+    console.log(argv.language);
+	console.log(process.env.LANG)
+
+
 const config = {
+	language: process.env.LANG,
 	production: production,
 	pxtoREM: false,
 	plumber: {
@@ -60,6 +65,7 @@ const paths = {
 		helpers: './src/helpers/',
 		layouts: './src/layouts/',
 		data: './src/data',
+		lang: './src/i18n',
 		dist: './dist/',
 		watch: './src/**/*.{html,hbs}',
 	},
@@ -319,8 +325,14 @@ gulp.task('views', function () {
 		.partials(paths.views.partials + '**/*.{hbs,html}')
 		// Data
 		.data(paths.views.data + '/**/*.{js,json}')
+		// Do something here to define the language based on param passed to gulp
+		.data(paths.views.lang + '/' + config.language + '.json', {
+			base: __dirname,
+			parseDataName: function() {
+				return 'translation'
+			}
+		})
 		.data(config.metadata)
-
 		// Helpers
 		.helpers(hbLayouts)
 		.helpers(paths.views.helpers + '/*.js');
@@ -346,7 +358,7 @@ gulp.task('server', function (done) {
 		notify: true,
 		open: false
 	});
-	gulp.watch(paths.views.watch, { usePolling: true }, gulp.parallel('views'));
+	gulp.watch([paths.views.watch,paths.views.data,paths.views.lang], { usePolling: true }, gulp.parallel('views'));
 	gulp.watch(paths.css.watch, { usePolling: true }, gulp.parallel('postcss'));
 	gulp.watch(paths.scripts.watch, { usePolling: true }, gulp.parallel('scripts'));
 	gulp.watch(paths.images.watch, { usePolling: true }, gulp.parallel('images'));
