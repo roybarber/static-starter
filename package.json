@@ -54,6 +54,7 @@
     "yargs": "^16.2.0"
   },
   "devDependencies": {
+    "@tailwindcss/jit": "^0.1.0",
     "netlify-cli": "^3.10.12"
   }
 }

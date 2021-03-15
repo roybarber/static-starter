@@ -24,21 +24,16 @@ const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
 const postCSSMixins = require('postcss-mixins');
 const postcssPresetEnv = require('postcss-preset-env');
-const tailwindcss = require('tailwindcss');
+const tailwindcss = require('@tailwindcss/jit');
 const pxtorem = require('postcss-pxtorem');
 const c = require('ansi-colors');
 var argv = require('yargs').argv;
 const production = !!argv.production;
+
 // -------------------------------------
 //   Config
 // -------------------------------------
 const webpackConfig = require('./webpack.config.js')
-
-
-
-    console.log(argv.language);
-	console.log(process.env.LANG)
-
 
 const config = {
 	language: process.env.LANG,
@@ -52,7 +47,8 @@ const config = {
 	},
 	metadata: {
 		author: 'Roy Barber',
-		year: (new Date()).getFullYear()
+		year: (new Date()).getFullYear(),
+		production: production
 	}
 };
 
