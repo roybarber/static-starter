@@ -1,5 +1,5 @@
 {
-  "name": "startic-starter",
+  "name": "static-starter",
   "description": "Static HTML/CSS/JS Template Build System",
   "main": "gulpfile.js",
   "author": "Roy Barber",
