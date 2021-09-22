@@ -16,15 +16,12 @@ const webpackStream = require('webpack-stream');
 const favicons = require("favicons").stream;
 const changed = require('gulp-changed');
 const imagemin = require('gulp-imagemin');
-const imageminZopfli = require('imagemin-zopfli');
-const imageminMozjpeg = require('imagemin-mozjpeg');
-const imageminPngquant = require('imagemin-pngquant');
 const cssnano = require('cssnano');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
 const postCSSMixins = require('postcss-mixins');
 const postcssPresetEnv = require('postcss-preset-env');
-const tailwindcss = require('@tailwindcss/jit');
+const tailwindcss = require('tailwindcss');
 const pxtorem = require('postcss-pxtorem');
 const c = require('ansi-colors');
 var argv = require('yargs').argv;
@@ -168,14 +165,11 @@ gulp.task('images', function () {
 	return gulp.src(paths.images.src)
 		.pipe(changed(paths.images.dist))
 		.pipe(imagemin([
-			imageminPngquant({
+			imagemin.optipng({
 				speed: 4,
 				quality: [0.8, 0.95],
 			}),
-			imageminZopfli({
-				more: false,
-			}),
-			imageminMozjpeg({
+			imagemin.mozjpeg({
 				progressive: true,
 				quality: 90,
 			}),
@@ -357,7 +351,7 @@ gulp.task('server', function (done) {
 	gulp.watch([paths.views.watch,paths.views.data,paths.views.lang], { usePolling: true }, gulp.parallel('views'));
 	gulp.watch(paths.css.watch, { usePolling: true }, gulp.parallel('postcss'));
 	gulp.watch(paths.scripts.watch, { usePolling: true }, gulp.parallel('scripts'));
-	gulp.watch(paths.images.watch, { usePolling: true }, gulp.parallel('images'));
+	//gulp.watch(paths.images.watch, { usePolling: true }, gulp.parallel('images'));
 	gulp.watch(paths.sprites.watch, { usePolling: true }, gulp.parallel('sprites'));
 	return done();
 });
@@ -377,15 +371,15 @@ gulp.task('end', function (done) {
 // -------------------------------------
 //   Task: default
 // -------------------------------------
-gulp.task('default', gulp.series(gulp.parallel('postcss', 'scripts', 'images', 'fonts', 'views', 'favicons', 'sprites', 'vendors'), 'server'));
+gulp.task('default', gulp.series(gulp.parallel('postcss', 'scripts', 'fonts', 'views', 'favicons', 'sprites', 'vendors'), 'server'));
 
 
 // -------------------------------------
 //   Task: build
 // -------------------------------------
-gulp.task('build', gulp.series('clean', gulp.parallel('postcss', 'scripts', 'images', 'fonts', 'views', 'favicons', 'sprites', 'vendors'), 'end'));
+gulp.task('build', gulp.series('clean', gulp.parallel('postcss', 'scripts', 'fonts', 'views', 'favicons', 'sprites', 'vendors'), 'end'));
 
 // -------------------------------------
 //   Task: build & Serve to test
 // -------------------------------------
-gulp.task('build:serve', gulp.series('clean', gulp.parallel('postcss', 'scripts', 'images', 'fonts', 'views', 'favicons', 'sprites', 'vendors'), 'server', 'end'));
+gulp.task('build:serve', gulp.series('clean', gulp.parallel('postcss', 'scripts', 'fonts', 'views', 'favicons', 'sprites', 'vendors'), 'server', 'end'));
