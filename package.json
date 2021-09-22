@@ -4,11 +4,11 @@
   "main": "gulpfile.js",
   "author": "Roy Barber",
   "scripts": {
-    "dev": "ENV NODE_ENV=development LANG=en netlify dev",
-    "dev:es": "ENV NODE_ENV=development LANG=es netlify dev",
-    "build": "ENV NODE_ENV=production gulp build --production",
+    "dev": "set ENV NODE_ENV=development LANG=en & netlify dev",
+    "dev:es": "set ENV NODE_ENV=development LANG=es & netlify dev",
+    "build": "set ENV NODE_ENV=production & gulp build --production",
     "netlify": "gulp build --production",
-    "build:serve": "ENV NODE_ENV=production gulp build:serve --production"
+    "build:serve": "set ENV NODE_ENV=production & gulp build:serve --production"
   },
   "dependencies": {
     "@babel/core": "^7.15.5",
