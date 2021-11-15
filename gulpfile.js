@@ -348,7 +348,7 @@ gulp.task('server', function (done) {
 		notify: true,
 		open: false
 	});
-	gulp.watch([paths.views.watch,paths.views.data,paths.views.lang], { usePolling: true }, gulp.parallel('views'));
+	gulp.watch([paths.views.watch,paths.views.data,paths.views.lang], { usePolling: true }, gulp.parallel('views', 'postcss'));
 	gulp.watch(paths.css.watch, { usePolling: true }, gulp.parallel('postcss'));
 	gulp.watch(paths.scripts.watch, { usePolling: true }, gulp.parallel('scripts'));
 	//gulp.watch(paths.images.watch, { usePolling: true }, gulp.parallel('images'));
