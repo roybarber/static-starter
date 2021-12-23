@@ -10,4 +10,4 @@
 
 /* Form Validation */
 .error, .error:focus { @apply border-red-600; }
-.valid { @apply border-green-600; }
+.valid { @apply border-emerald-600; }
