@@ -1,8 +1,7 @@
 ## Static Starter 2021
-Tailwind JIT + Gulp 4 + Webpack 4 + Handlebars + Babel + BrowserSync + Netlify CLI + Netlify Functions + i18n Language Support
+Tailwind 3 + Gulp 4 + Webpack 4 + Handlebars + Babel + BrowserSync + Netlify CLI + Netlify Functions + i18n Language Support
 
 Speed up your development with a complete and scalable gulpjs based build system that scaffolds the project for you. Just focus on your code. Provides a consumable mock API to build real world front ends pre-integration.
-
 
 ## Getting Started
 
