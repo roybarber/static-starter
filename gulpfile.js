@@ -2,27 +2,15 @@ const gulp = require('gulp');
 const browsersync = require('browser-sync');
 const hb = require('gulp-hb');
 const del = require("del");
-const gulpIf = require('gulp-if');
 const plumber = require('gulp-plumber');
 const beautify = require('gulp-beautify');
 const hbLayouts = require('handlebars-layouts');
-const rename = require('gulp-rename');
-const sourcemaps = require('gulp-sourcemaps');
-const autoprefixer = require('autoprefixer');
 const svg = require("gulp-svg-sprite");
 const webpack = require('webpack');
-const uglify = require('gulp-uglify');
 const webpackStream = require('webpack-stream');
 const favicons = require("favicons").stream;
 const changed = require('gulp-changed');
-const imagemin = require('gulp-imagemin');
-const cssnano = require('cssnano');
 const postcss = require('gulp-postcss');
-const postcssImport = require('postcss-import');
-const postCSSMixins = require('postcss-mixins');
-const postcssPresetEnv = require('postcss-preset-env');
-const tailwindcss = require('tailwindcss');
-const pxtorem = require('postcss-pxtorem');
 const c = require('ansi-colors');
 var argv = require('yargs').argv;
 const production = !!argv.production;
@@ -33,9 +21,7 @@ const production = !!argv.production;
 const webpackConfig = require('./webpack.config.js')
 
 const config = {
-	language: process.env.LANG,
 	production: production,
-	pxtoREM: false,
 	plumber: {
 		errorHandler: function (error) {
 			console.log(c.red(error.message));
@@ -93,13 +79,8 @@ const paths = {
 	scripts: {
 		src: './src/assets/js/main.js',
 		dist: './dist/assets/js/',
-		srcOther: './src/js/other/*.js',
 		distOther: './dist/assets/js/other/',
 		watch: './src/assets/js/**/*.js',
-	},
-	vendors: {
-		src: './src/vendors/**/*.*',
-		dist: './dist/assets/vendors/'
 	},
 	assets: {
 		dist: './dist/assets/',
@@ -133,6 +114,7 @@ gulp.task('clean', function () {
 // -------------------------------------
 gulp.task("favicons", () => {
 	return gulp.src(paths.favicons.src)
+		.pipe(changed(paths.favicons.dist))
 		.pipe(favicons({
 			icons: {
 				android: true,
@@ -154,6 +136,7 @@ gulp.task("favicons", () => {
 // -------------------------------------
 gulp.task('fonts', function () {
 	return gulp.src(paths.fonts.src)
+		.pipe(changed(paths.fonts.dist))
 		.pipe(gulp.dest(paths.fonts.dist));
 });
 
@@ -164,28 +147,6 @@ gulp.task('fonts', function () {
 gulp.task('images', function () {
 	return gulp.src(paths.images.src)
 		.pipe(changed(paths.images.dist))
-		.pipe(imagemin([
-			imagemin.optipng({
-				speed: 4,
-				quality: [0.8, 0.95],
-			}),
-			imagemin.mozjpeg({
-				progressive: true,
-				quality: 90,
-			}),
-			imagemin.svgo({
-				plugins: [
-					{ removeViewBox: false },
-					{ removeUnusedNS: false },
-					{ removeUselessStrokeAndFill: false },
-					{ cleanupIDs: false },
-					{ removeComments: true },
-					{ removeEmptyAttrs: true },
-					{ removeEmptyText: true },
-					{ collapseGroups: true },
-				],
-			}),
-		]))
 		.pipe(gulp.dest(paths.images.dist));
 });
 
@@ -193,38 +154,23 @@ gulp.task('images', function () {
 // -------------------------------------
 //   Task: scripts
 // -------------------------------------
-gulp.task('scripts:webpack', function () {
+gulp.task('scripts', function () {
 	webpackConfig.mode = config.production ? 'production' : 'development';
 	webpackConfig.devtool = config.production ? false : 'source-map';
-
 	return gulp.src(paths.scripts.src)
+		.pipe(changed(paths.scripts.dist))
 		.pipe(plumber(config.plumber))
 		.pipe(webpackStream(webpackConfig), webpack)
 		.pipe(gulp.dest(paths.scripts.dist))
 		.on('end', browsersync.reload);
 });
 
-gulp.task('scripts:other', function () {
-	return gulp.src(paths.scripts.srcOther)
-		.pipe(plumber(config.plumber))
-		.pipe(gulpIf(!config.production, sourcemaps.init()))
-		.pipe(gulp.dest(paths.scripts.distOther))
-		.pipe(uglify())
-		.pipe(rename({
-			suffix: '.min',
-		}))
-		.pipe(gulpIf(!config.production, sourcemaps.write()))
-		.pipe(gulp.dest(paths.scripts.distOther));
-});
-
-gulp.task('scripts', gulp.parallel('scripts:webpack', 'scripts:other'));
-
-
 // -------------------------------------
 //   Task: SVG Sprites
 // -------------------------------------
 gulp.task("sprites", () => {
 	return gulp.src(paths.sprites.src)
+		.pipe(changed(paths.sprites.dist))
 		.pipe(svg({
 			shape: {
 				dest: "intermediate-svg"
@@ -243,66 +189,12 @@ gulp.task("sprites", () => {
 // -------------------------------------
 //   Task: postcss
 // -------------------------------------
-const pxtoremOptions = {
-	replace: true,
-	propList: ['font', 'font-size', 'line-height', 'letter-spacing', 'margin*', 'padding*', '*width', '*height'],
-	mediaQuery: true
-};
-const CSSpluginsDev = [
-	postcssImport,
-	postCSSMixins,
-	postcssPresetEnv({
-		stage: 0,
-		features: {
-			'nesting-rules': true,
-			'color-mod-function': true,
-			'custom-media': true,
-		},
-	}),
-	tailwindcss,
-	autoprefixer
-];
-const CSSpluginsProd = [
-	postcssImport,
-	postCSSMixins,
-	postcssPresetEnv({
-		stage: 0,
-		features: {
-			'nesting-rules': true,
-			'color-mod-function': true,
-			'custom-media': true,
-		},
-	}),
-	tailwindcss,
-	autoprefixer,
-	cssnano({
-		preset: [
-			'default', {
-				discardComments: { removeAll: true }
-			}
-		]
-	}),
-	//pxtorem(pxtoremOptions)
-];
-
 gulp.task('postcss', function () {
 	return gulp.src(paths.css.src)
 		.pipe(plumber(config.plumber))
-		.pipe(gulpIf(!config.production, sourcemaps.init()))
-		.pipe(gulpIf(config.production, postcss(CSSpluginsProd)))
-		.pipe(gulpIf(!config.production, postcss(CSSpluginsDev)))
-		.pipe(gulpIf(!config.production, sourcemaps.write('./maps')))
-		.pipe(gulpIf(config.pxtoREM, pxtorem(pxtoremOptions)))
+		.pipe(postcss())
 		.pipe(gulp.dest(paths.css.dist))
 		.pipe(browsersync.stream());
-});
-
-// -------------------------------------
-//   Task: vendors
-// -------------------------------------
-gulp.task('vendors', function () {
-	return gulp.src(paths.vendors.src)
-		.pipe(gulp.dest(paths.vendors.dist))
 });
 
 
@@ -315,19 +207,13 @@ gulp.task('views', function () {
 		.partials(paths.views.partials + '**/*.{hbs,html}')
 		// Data
 		.data(paths.views.data + '/**/*.{js,json}')
-		// Do something here to define the language based on param passed to gulp
-		.data(paths.views.lang + '/' + config.language + '.json', {
-			base: __dirname,
-			parseDataName: function() {
-				return 'translation'
-			}
-		})
 		.data(config.metadata)
 		// Helpers
 		.helpers(hbLayouts)
 		.helpers(paths.views.helpers + '/*.js');
 
 	return gulp.src(paths.views.src)
+		.pipe(changed(paths.views.dist))
 		.pipe(plumber(config.plumber))
 		.pipe(hbStream)
 		.pipe(beautify.html({
@@ -348,11 +234,11 @@ gulp.task('server', function (done) {
 		notify: true,
 		open: false
 	});
-	gulp.watch([paths.views.watch,paths.views.data,paths.views.lang], { usePolling: true }, gulp.parallel('views', 'postcss'));
-	gulp.watch(paths.css.watch, { usePolling: true }, gulp.parallel('postcss'));
-	gulp.watch(paths.scripts.watch, { usePolling: true }, gulp.parallel('scripts'));
-	//gulp.watch(paths.images.watch, { usePolling: true }, gulp.parallel('images'));
-	gulp.watch(paths.sprites.watch, { usePolling: true }, gulp.parallel('sprites'));
+	gulp.watch([paths.views.watch,paths.views.data], gulp.parallel('views', 'postcss'));
+	gulp.watch(paths.css.watch, gulp.parallel('postcss'));
+	gulp.watch(paths.scripts.watch, gulp.parallel('scripts'));
+	gulp.watch(paths.images.watch, gulp.parallel('images'));
+	gulp.watch(paths.sprites.watch, gulp.parallel('sprites'));
 	return done();
 });
 
@@ -371,15 +257,15 @@ gulp.task('end', function (done) {
 // -------------------------------------
 //   Task: default
 // -------------------------------------
-gulp.task('default', gulp.series(gulp.parallel('postcss', 'scripts', 'fonts', 'views', 'favicons', 'sprites', 'vendors'), 'server'));
+gulp.task('default', gulp.series(gulp.parallel('postcss', 'scripts', 'fonts', 'views', 'favicons', 'sprites'), 'server'));
 
 
 // -------------------------------------
 //   Task: build
 // -------------------------------------
-gulp.task('build', gulp.series('clean', gulp.parallel('postcss', 'scripts', 'fonts', 'views', 'favicons', 'sprites', 'vendors'), 'end'));
+gulp.task('build', gulp.series('clean', gulp.parallel('postcss', 'scripts', 'fonts', 'views', 'favicons', 'sprites'), 'end'));
 
 // -------------------------------------
 //   Task: build & Serve to test
 // -------------------------------------
-gulp.task('build:serve', gulp.series('clean', gulp.parallel('postcss', 'scripts', 'fonts', 'views', 'favicons', 'sprites', 'vendors'), 'server', 'end'));
+gulp.task('build:serve', gulp.series('clean', gulp.parallel('postcss', 'scripts', 'fonts', 'views', 'favicons', 'sprites'), 'server'));

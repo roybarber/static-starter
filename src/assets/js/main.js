@@ -1,41 +1,14 @@
-import $ from "jquery";
-
-// Setup
-window.jQuery = window.$ = $;
-
-// NO JS Fallbacks
-$('body').addClass("js");
+// NO JS Fallbacks for css
+document.body.classList.add("js")
 
 // Environmental
 if(process.env.NODE_ENV === 'development'){
 	require("./devonly/dev");
 }
 
-// Request to the test endpoints
-$.ajax({
-	type: 'GET',
-	url: '/api/hello',
-	dataType: 'json',
-	error: function(error) {
-		console.error('An error has occurred', error)
-	},
-	success: function(response) {
-		console.log(response);
-	}
-});
-$.ajax({
-	type: 'GET',
-	url: '/api/name?name=Beth',
-	dataType: 'json',
-	error: function(error) {
-		console.error('An error has occurred', error)
-	},
-	success: function(data) {
-		console.log(data)
-	},
-});
-
-// Components & Modules
-require("./modules/lazyload");
-require("./modules/validation");
-require("./modules/mobilemenu");
+// Mobile menu
+var openMenuButton = document.getElementById('openMobileMenu'),
+	closeMenuButton = document.getElementById('closeMobileMenu'),
+	mobileMenu = document.getElementById('mobileMenu')
+openMenuButton.addEventListener('click', () => mobileMenu.classList.remove("hidden"))
+closeMenuButton.addEventListener('click', () => mobileMenu.classList.add("hidden"))
