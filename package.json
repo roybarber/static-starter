@@ -10,7 +10,7 @@
 		"dev": "ENV NODE_ENV=development gulp",
 		"build": "ENV NODE_ENV=production gulp build --production",
 		"netlify": "gulp build --production",
-		"build:serve": "ENV NODE_ENV=production gulp build:serve --production"
+		"buildserve": "ENV NODE_ENV=production gulp buildserve --production"
 	},
 	"dependencies": {
 		"@babel/core": "^7.15.5",
@@ -22,6 +22,7 @@
 		"autoprefixer": "^10.4.0",
 		"babel-loader": "^8.2.2",
 		"browser-sync": "^2.27.5",
+		"cssnano": "^5.0.14",
 		"del": "^6.0.0",
 		"favicons": "^6.2.2",
 		"gulp": "^4.0.2",
