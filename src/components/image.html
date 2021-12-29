@@ -1,14 +1,13 @@
 {{!--
-Accepts:
-lazyload=true - Allows the image to lazyload, picture is lazyload by default
-srcset=true - Allows the use of a picture element with various src sizes
-src='/img.jpg' - Default image
-src-2x='/img-mobile.jpg' - HDPI Image
-src-load='/img-mobile.jpg' - HDPI Image
-alt='title' = image alt tag
+	Accepts:
+	lazyload=true - Allows the image to lazyload, picture is lazyload by default
+	srcset=true - Allows the use of a picture element with various src sizes
+	src='/img.jpg' - Default image
+	src-2x='/img-mobile.jpg' - HDPI Image
+	src-load='/img-mobile.jpg' - HDPI Image
+	alt='title' = image alt tag
 --}}
-<img
-	{{#if lazyload}}
+<img {{#if lazyload}}
 		data-lazyload
 		{{#if srcset}}
 			src="{{src-load}}"
@@ -35,7 +34,7 @@ alt='title' = image alt tag
 		alt="{{alt}}"
 	{{else}}
 		alt=""
-		role="presentation"
+		aria-hidden="true"
 	{{/if}}
 	class="block {{class}}"
 />

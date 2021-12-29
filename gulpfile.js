@@ -43,7 +43,6 @@ const production = !!argv.production,
 			helpers: './src/helpers/',
 			layouts: './src/layouts/',
 			data: './src/data',
-			lang: './src/i18n',
 			dist: './dist/',
 			watch: './src/**/*.{html,hbs}',
 		},
@@ -84,6 +83,13 @@ const production = !!argv.production,
 		assets: {
 			dist: './dist/assets/',
 			all: './dist/assets/**/*'
+		},
+		watch: {
+			pages: './src/pages/**/*.{html,hbs}',
+			partials: './src/components/**/*.{html,hbs}',
+			layouts: './src/layouts/**/*.{html,hbs}',
+			helpers: './src/helpers/**/*.js',
+			data: './src/data/**/*.json'
 		}
 	};
 
@@ -197,15 +203,11 @@ function sprites() {
 	var svgOptions  = {
 		mode: {
 			defs: {
+				example: {
+					template: paths.views.partials + '/svg-demo.html',
+					dest: '../../../../svg-demo-output.html'
+				},
 				sprite: "../sprite.svg"
-			}
-		}
-	}
-	if (!production) {
-		svgOptions.mode.defs = {
-			example: {
-				template: paths.views.partials + '/svg-demo.html',
-				dest: '../../../../svg-demo-output.html'
 			}
 		}
 	}
@@ -240,15 +242,20 @@ function views() {
 		.data(config.metadata)
 		// Helpers
 		.helpers(hbLayouts)
-		.helpers(paths.views.helpers + '/*.js');
+		.helpers(paths.views.helpers + '/*.js'),
+	
+		htmlOptions = {}
+
+	if(production){
+		htmlOptions = {
+			indent_size: 2, preserve_newlines: false,
+		}
+	}
 
 	return gulp.src(paths.views.src)
-		.pipe(changed(paths.views.dist))
 		.pipe(plumber(config.plumber))
 		.pipe(hbStream)
-		.pipe(beautify.html({
-			indent_size: 2, preserve_newlines: false,
-		}))
+		.pipe(beautify.html(htmlOptions))
 		.pipe(gulp.dest(paths.views.dist))
 }
 
@@ -267,7 +274,7 @@ function end(done) {
 // -------------------------------------
 //   Watch tasks
 // -------------------------------------
-const watchViews = () => gulp.watch([paths.views.watch, paths.views.data], gulp.series(views, sprites, css, reload));
+const watchViews = () => gulp.watch([paths.watch.pages, paths.watch.partials, paths.watch.helpers, paths.watch.layouts, paths.watch.data], gulp.series(views, css, reload));
 const watchJS = () => gulp.watch(paths.scripts.watch, gulp.series(js, css, reload));
 const watchCSS = () => gulp.watch(paths.css.watch, gulp.series(css, reload));
 const watchImages = () => gulp.watch(paths.images.watch, gulp.series(images, reload));
@@ -280,6 +287,6 @@ const watchSprites = () => gulp.watch(paths.sprites.watch, gulp.series(sprites, 
 // npm run dev
 exports.default = gulp.series(startup, gulp.parallel(css, js, fonts, views, favicons, sprites), serve, gulp.parallel(watchViews, watchCSS, watchJS, watchImages, watchSprites))
 // npm run build
-exports.build = gulp.series( startup, clean, gulp.parallel(css, js, fonts, views, favicons, sprites), end)
+exports.build = gulp.series(startup, clean, gulp.parallel(css, js, fonts, views, favicons, sprites), end)
 // npm run buildserve
 exports.buildserve = gulp.series(startup, clean, gulp.parallel(css, js, fonts, views, favicons, sprites), serve);
