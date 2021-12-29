@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>SVG &lt;defs&gt; sprite preview | svg-sprite</title>
+	<link rel="stylesheet" type="text/css" href="/assets/css/main.css"/>
+	<style type="text/css">
+		{{#shapes}} {{#selector.dimensions}}{{expression}}{{^last}}, {{/last}}{{/selector.dimensions}} { width: {{width.outer}}px; height: {{height.outer}}px; }
+		{{/shapes}}
+	</style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-800">
+	<svg width="0" height="0" style="position:absolute">
+		<defs>{{#shapes}}{{{svg}}}{{/shapes}}</defs>
+	</svg>
+
+	<section class="relative w-full px-6 py-12 max-w-3xl md:mx-auto lg:px-4">
+		<div class="wysiwyg wysiwyg-xl dark:wysiwyg-invert mb4">
+			<h1>SVG Sprite Preview</h1>
+			<p>This preview features two methods of using the generated sprite in conjunction with inline SVG. Please have a look at the HTML source for further details.</p>
+			<p><strong>Use like:</strong></p>
+			<pre><xmp><svg class="icon" aria-hidden="true">
+	<use href="/assets/img/svg-sprite/sprite.svg#iconname"></use>
+</svg></xmp></pre>
+
+			<div class="not-wysiwyg grid sm grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-auto gap-3 md:gap-4 lg:gap-5 grid-flow-row w-auto h-auto">
+				{{#shapes}}
+				<div class="min-w-full min-h-full rounded p-3 bg-white shadow shadow-slate-700/10 ring-1 ring-gray-900/5 dark:bg-black/50">
+					<div class="relative bg-slate-200 dark:bg-black/50 border-px text-center w-full aspect-square flex items-center justify-center mb-2 text-black dark:text-white">
+						<svg viewBox="0 0 {{width.outer}} {{height.outer}}" class="{{#selector.dimensions}}{{#last}}{{#classname}}{{raw}}{{/classname}}{{/last}}{{/selector.dimensions}}">
+							<use xlink:href="#{{name}}"></use>
+						</svg>
+					</div>
+					<p class="text-base">{{name}}</p>
+				</div>
+				{{/shapes}}
+			</div>
+		</div>
+	</section>
+</body>
+</html>

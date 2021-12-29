@@ -1,14 +1,13 @@
 ## Static Starter 2021
-Tailwind 3 + Gulp 4 + Webpack 4 + Handlebars + Babel + BrowserSync + Netlify CLI + Netlify Functions + i18n Language Support
+Tailwind 3 + Gulp 4 + Webpack 4 + Handlebars + POST CSS + Babel + BrowserSync + Netlify Deployment
 
-Speed up your development with a complete and scalable gulpjs based build system that scaffolds the project for you. Just focus on your code. Provides a consumable mock API to build real world front ends pre-integration.
+Speed up your development with a complete and scalable super simple gulpjs based build system that scaffolds the project for you. Just focus on your code. Provides a consumable mock API to build real world front ends pre-integration.
 
 ## Getting Started
 
 ### Requirements
 1. [NodeJS](https://nodejs.org/en/)
 2. [npm](https://www.npmjs.com/get-npm)
-3. [Netlify CLI](https://www.npmjs.com/package/jquery)
 
 
 ### Install
@@ -52,4 +51,4 @@ You can get viewBox value from your SVG file or using devTools on the page after
 In this case, the image does not respond to color changes.
 
 
-### MOre documentation to follow
+### More documentation to follow

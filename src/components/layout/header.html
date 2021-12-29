@@ -1,36 +1,30 @@
-<header class="relative bg-white border-b-2 border-gray-100">
+<header class="relative">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6">
 		<div class="flex items-center py-4 justify-start md:space-x-10">
 			<div class="flex justify-start lg:w-0 lg:flex-1">
-				<a href="/">
+				<a href="/" class="text-indigo-600 dark:text-white">
 					{{> icon alt="Static Starter" icon="logo" class="w-10 h-10 sm:w-14 sm:h-14"}}
 				</a>
 			</div>
 			<div class="ml-auto -mr-2 -my-2 md:hidden justify-end">
 				<button type="button" id="openMobileMenu" aria-expanded="false" aria-haspopup="true"
-					class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-					<span class="sr-only">Open menu</span>
-					<!-- Heroicon name: menu -->
-					<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-						stroke="currentColor" aria-hidden="true">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-							d="M4 6h16M4 12h16M4 18h16" />
-					</svg>
+					class="rounded-md p-2 inline-flex items-center justify-center text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+					{{> icon alt="Open menu" icon="menu" class="h-6 w-6"}}
 				</button>
 			</div>
 			<nav class="hidden md:flex space-x-10">
-				<a href="#" class="text-base font-medium text-gray-700 hover:text-gray-900">
+				<a href="#" class="text-base font-medium text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50">
 					Menu
 				</a>
-				<a href="#" class="text-base font-medium text-gray-700 hover:text-gray-900">
+				<a href="#" class="text-base font-medium text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50">
 					Menu
 				</a>
-				<a href="#" class="text-base font-medium text-gray-700 hover:text-gray-900">
+				<a href="#" class="text-base font-medium text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50">
 					Menu
 				</a>
 			</nav>
 			<div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-				<a href="#" class="whitespace-nowrap text-base font-medium text-gray-700 hover:text-gray-900">
+				<a href="#" class="whitespace-nowrap text-base font-medium text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50">
 					Sign in
 				</a>
 				<a href="#"
@@ -42,48 +36,33 @@
 	</div>
 
 	<!--
-    Mobile menu, show/hide based on mobile menu state.
-
-    Entering: "duration-200 ease-out"
-      From: "opacity-0 scale-95"
-      To: "opacity-100 scale-100"
-    Leaving: "duration-100 ease-in"
-      From: "opacity-100 scale-100"
-      To: "opacity-0 scale-95"
-  -->
+    	Mobile menu, show/hide based on mobile menu state.
+  	-->
 	<div id="mobileMenu" aria-labelledby="openMobileMenu" class="absolute z-10 top-0 inset-x-0 transition transform origin-top-right hidden md:hidden">
-		<div class="shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
-			<div class="py-4 px-4 flex items-center">
+		<div class="shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-gray-800">
+			<div class="py-4 px-4 flex items-center dark:bg-black/50">
 				<div class="flex justify-start">
-					<a href="/">
+					<a href="/" class="text-indigo-600 dark:text-white">
 						{{> icon alt="Static Starter" icon="logo" class="w-10 h-10"}}
 					</a>
 				</div>
 				<div class="ml-auto -mr-2 -my-2 md:hidden justify-end">
-					<button type="button" id="closeMobileMenu"
-							class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-							<span class="sr-only">Close menu</span>
-							<!-- Heroicon name: x -->
-							<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-								stroke="currentColor" aria-hidden="true">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-									d="M6 18L18 6M6 6l12 12" />
-							</svg>
-						</button>
+					<button type="button" id="closeMobileMenu" class="rounded-md p-2 inline-flex items-center justify-center text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+						{{> icon alt="Close menu" icon="close" class="h-6 w-6"}}
+					</button>
 				</div>
-
 			</div>
-			<div class="py-6 px-5 space-y-6">
+			<div class="py-6 px-5 space-y-6 dark:bg-black/50">
 				<div class="grid grid-cols-1 gap-y-4 gap-x-8 text-center">
-					<a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
+					<a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700 dark:text-gray-200 dark:hover:text-gray-50">
 						Menu
 					</a>
 
-					<a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
+					<a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700 dark:text-gray-200 dark:hover:text-gray-50">
 						Menu
 					</a>
 
-					<a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
+					<a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700 dark:text-gray-200 dark:hover:text-gray-50">
 						Menu
 					</a>
 				</div>
@@ -92,7 +71,7 @@
 						class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
 						Sign up
 					</a>
-					<p class="mt-6 text-center text-base font-medium text-gray-700">
+					<p class="mt-6 text-center text-base font-medium text-gray-700 dark:text-gray-200">
 						Existing customer?
 						<a href="#" class="text-indigo-600 hover:text-indigo-500">
 							Sign in
