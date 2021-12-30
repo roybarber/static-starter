@@ -50,5 +50,4 @@ You can get viewBox value from your SVG file or using devTools on the page after
 
 In this case, the image does not respond to color changes.
 
-
-### More documentation to follow
+If you're in local development you can view the full SVG sprite and all the icons by visiting [http://localhost:4000/svg-demo-output.html](http://localhost:4000/svg-demo-output.html)
