@@ -8,7 +8,6 @@ var hbLayouts = require('handlebars-layouts');
 var svg = require("gulp-svg-sprite");
 var webpack = require('webpack');
 var webpackStream = require('webpack-stream');
-var makeFavIcons = require("favicons").stream;
 var changed = require('gulp-changed');
 var postcss = require('gulp-postcss');
 var c = require('ansi-colors');
@@ -24,8 +23,8 @@ const production = !!argv.production,
 		production: production,
 		plumber: {
 			errorHandler: function (error) {
-				console.log(c.red(error.message));
-				this.emit('end');
+				console.log(c.red(error.message))
+				this.emit('end')
 			}
 		},
 		metadata: {
@@ -44,41 +43,41 @@ const production = !!argv.production,
 			layouts: './src/layouts/',
 			data: './src/data',
 			dist: './dist/',
-			watch: './src/**/*.{html,hbs}',
+			watch: './src/**/*.{html,hbs}'
 		},
 		css: {
 			src: './src/assets/css/*.css',
 			dist: './dist/assets/css/',
-			watch: './src/assets/css/**/*.css',
+			watch: './src/assets/css/**/*.css'
 		},
 		fonts: {
 			src: './src/assets/fonts/**/*.{woff,woff2,eot,ttf,svg}',
 			dist: './dist/assets/fonts/',
-			watch: './src/assets/fonts/**/*.{woff,woff2,eot,ttf,svg}',
+			watch: './src/assets/fonts/**/*.{woff,woff2,eot,ttf,svg}'
 		},
-		favicons: {
-			src: "./src/assets/img/favicon/*.{jpg,jpeg,png,gif}",
-			dist: "./dist/assets/img/favicons/",
+		otherFiles: {
+			src: "./src/assets/other/**/*",
+			dist: "./dist/"
 		},
 		sprites: {
-			src: "./src/assets/img/svg-sprite/*.svg",
+			src: "./src/assets/img/svg-sprite/**/*.svg",
 			dist: "./dist/assets/img/svg-sprite/",
-			watch: "./src/assets/img/svg-sprite/*.svg"
+			watch: "./src/assets/img/svg-sprite/**/*.svg"
 		},
 		images: {
 			src: [
 				'./src/assets/img/**/*.{jpg,jpeg,png,gif,tiff,svg}',
 				'!./src/assets/img/favicon/*',
-				'!./src/assets/img/svg-sprite/*',
+				'!./src/assets/img/svg-sprite/*'
 			],
 			dist: './dist/assets/img/',
-			watch: './src/assets/img/**/*.{jpg,jpeg,png,gif,svg,tiff}',
+			watch: './src/assets/img/**/*.{jpg,jpeg,png,gif,svg,tiff}'
 		},
 		scripts: {
 			src: './src/assets/js/main.js',
 			dist: './dist/assets/js/',
 			distOther: './dist/assets/js/other/',
-			watch: './src/assets/js/**/*.js',
+			watch: './src/assets/js/**/*.js'
 		},
 		assets: {
 			dist: './dist/assets/',
@@ -91,41 +90,40 @@ const production = !!argv.production,
 			helpers: './src/helpers/**/*.js',
 			data: './src/data/**/*.json'
 		}
-	};
+	}
 
 // -------------------------------------
 //   Local Server
 // -------------------------------------
-const server = browserSync.create();
-// Start the server
-function serve(done) {
-    server.init({
-		server: './dist/',
-		port: 4000,
-		notify: true,
-		open: true
-	})
-    done();
-}
-// Manual reload
-function reload(done) {
-    server.reload();
-    done();
-}
-
+const server = browserSync.create(),
+	// Start the server
+	serve = done => {
+		server.init({
+			server: './dist/',
+			port: 4000,
+			notify: true,
+			open: true
+		})
+		done();
+	},
+	// Manual reload
+	reload = done => {
+		server.reload();
+		done();
+	}
 
 // -------------------------------------
 //   Startup Message
 // -------------------------------------
-function startup(done) {
-	console.log(c.bgRedBright.white(' Static Starter Build System '));
-	console.log('');
+const startup = done => {
+	console.log(c.bgRedBright.white(' Static Starter Build System '))
+	console.log('')
 	if (production) {
-		console.log(c.green.bold.underline('🚚 Production mode'));
-		console.log('');
+		console.log(c.green.bold.underline('🚚 Production mode'))
+		console.log('')
 	} else {
-		console.log(c.green.bold.underline('🔧 Development mode'));
-		console.log('');
+		console.log(c.green.bold.underline('🔧 Development mode'))
+		console.log('')
 	}
 	done()
 }
@@ -133,30 +131,17 @@ function startup(done) {
 // -------------------------------------
 //   Clean build folders
 // -------------------------------------
-function clean() {
-    return del(paths.dist);
+const clean = () => {
+    return del(paths.dist)
 }
 
 
 // -------------------------------------
 //   Favicon generation
 // -------------------------------------
-function favicons(done) {
-	gulp.src(paths.favicons.src)
-		.pipe(changed(paths.favicons.dist))
-		.pipe(makeFavIcons({
-			icons: {
-				android: true,
-				appleIcon: true,
-				appleStartup: false,
-				coast: false,
-				favicons: true,
-				firefox: false,
-				windows: false,
-				yandex: false
-			}
-		}))
-		.pipe(gulp.dest(paths.favicons.dist))
+const otherFiles = done => {
+	gulp.src(paths.otherFiles.src)
+		.pipe(gulp.dest(paths.otherFiles.dist))
     done()
 }
 
@@ -164,7 +149,7 @@ function favicons(done) {
 // -------------------------------------
 //   Font copy
 // -------------------------------------
-function fonts(done) {
+const fonts = done => {
     gulp.src(paths.fonts.src)
 		.pipe(changed(paths.fonts.dist))
 		.pipe(gulp.dest(paths.fonts.dist))
@@ -175,7 +160,7 @@ function fonts(done) {
 // -------------------------------------
 //   Image copy
 // -------------------------------------
-function images(done) {
+const images = done => {
     gulp.src(paths.images.src)
 		.pipe(changed(paths.images.dist))
 		.pipe(gulp.dest(paths.images.dist))
@@ -186,9 +171,9 @@ function images(done) {
 // -------------------------------------
 //   Javascript / Babel Transpile
 // -------------------------------------
-function js() {
-	webpackConfig.mode = config.production ? 'production' : 'development';
-	webpackConfig.devtool = config.production ? false : 'source-map';
+const js = () => {
+	webpackConfig.mode = config.production ? 'production' : 'development'
+	webpackConfig.devtool = config.production ? false : 'source-map'
 	return gulp.src(paths.scripts.src)
 		.pipe(changed(paths.scripts.dist))
 		.pipe(plumber(config.plumber))
@@ -199,15 +184,24 @@ function js() {
 // -------------------------------------
 //   SVG Sprite generation
 // -------------------------------------
-function sprites() {
+const sprites = () => {
 	var svgOptions  = {
 		mode: {
 			defs: {
-				example: {
-					template: paths.views.partials + '/svg-demo.html',
-					dest: '../../../../svg-demo-output.html'
-				},
 				sprite: "../sprite.svg"
+			}
+		}
+	}
+	if(!production){ 
+		svgOptions  = {
+			mode: {
+				defs: {
+					example: {
+						template: paths.views.partials + '/svg-demo.html',
+						dest: '../../../../svg-demo-output.html'
+					},
+					sprite: "../sprite.svg"
+				}
 			}
 		}
 	}
@@ -221,19 +215,19 @@ function sprites() {
 // -------------------------------------
 //   Tailwind CSS (postcss)
 // -------------------------------------
-function css() {
+const css = () => {
 	return gulp.src(paths.css.src)
 		.pipe(plumber(config.plumber))
 		.pipe(postcss())
 		.pipe(gulp.dest(paths.css.dist))
-		.pipe(browserSync.stream());
+		.pipe(browserSync.stream())
 }
 
 
 // -------------------------------------
 //   HTML/Handlebars Templates/Views
 // -------------------------------------
-function views() {
+const views = () => {
 	let hbStream = hb()
 		.partials(paths.views.layouts + '**/*.{hbs,html}')
 		.partials(paths.views.partials + '**/*.{hbs,html}')
@@ -248,7 +242,7 @@ function views() {
 
 	if(production){
 		htmlOptions = {
-			indent_size: 2, preserve_newlines: false,
+			indent_size: 2, preserve_newlines: false
 		}
 	}
 
@@ -263,7 +257,7 @@ function views() {
 // -------------------------------------
 //   End Message
 // -------------------------------------
-function end(done) {
+const end = done => {
     console.log(c.bgRedBright.white(' Static Starter Build System '))
 	console.log('')
 	console.log(c.green.bold.underline('🚚 Production Build Finished'))
@@ -274,19 +268,19 @@ function end(done) {
 // -------------------------------------
 //   Watch tasks
 // -------------------------------------
-const watchViews = () => gulp.watch([paths.watch.pages, paths.watch.partials, paths.watch.helpers, paths.watch.layouts, paths.watch.data], gulp.series(views, css, reload));
-const watchJS = () => gulp.watch(paths.scripts.watch, gulp.series(js, css, reload));
-const watchCSS = () => gulp.watch(paths.css.watch, gulp.series(css, reload));
-const watchImages = () => gulp.watch(paths.images.watch, gulp.series(images, reload));
-const watchSprites = () => gulp.watch(paths.sprites.watch, gulp.series(sprites, reload));
+const watchViews = () => gulp.watch([paths.watch.pages, paths.watch.partials, paths.watch.helpers, paths.watch.layouts, paths.watch.data], gulp.series(views, css, reload))
+const watchJS = () => gulp.watch(paths.scripts.watch, gulp.series(js, css, reload))
+const watchCSS = () => gulp.watch(paths.css.watch, gulp.series(css, reload))
+const watchImages = () => gulp.watch(paths.images.watch, gulp.series(images, reload))
+const watchSprites = () => gulp.watch(paths.sprites.watch, gulp.series(sprites, reload))
 
 
 // -------------------------------------
 //   NPM Tasks
 // -------------------------------------
 // npm run dev
-exports.default = gulp.series(startup, gulp.parallel(css, js, fonts, views, favicons, sprites), serve, gulp.parallel(watchViews, watchCSS, watchJS, watchImages, watchSprites))
+exports.default = gulp.series(startup, gulp.parallel(css, js, fonts, views, otherFiles, sprites), serve, gulp.parallel(watchViews, watchCSS, watchJS, watchImages, watchSprites))
 // npm run build
-exports.build = gulp.series(startup, clean, gulp.parallel(css, js, fonts, views, favicons, sprites), end)
+exports.build = gulp.series(startup, clean, gulp.parallel(css, js, fonts, views, otherFiles, sprites), end)
 // npm run buildserve
-exports.buildserve = gulp.series(startup, clean, gulp.parallel(css, js, fonts, views, favicons, sprites), serve);
+exports.buildserve = gulp.series(startup, clean, gulp.parallel(css, js, fonts, views, otherFiles, sprites), serve);
