@@ -274,8 +274,8 @@ const watchSprites = () => gulp.watch(paths.sprites.watch, gulp.series(sprites, 
 //   NPM Tasks
 // -------------------------------------
 // npm run dev
-exports.default = gulp.series(startup, gulp.parallel(css, js, fonts, views, otherFiles, sprites), serve, gulp.parallel(watchViews, watchCSS, watchJS, watchImages, watchSprites))
+exports.default = gulp.series(startup, gulp.parallel(css, js, fonts, views, images, otherFiles, sprites), serve, gulp.parallel(watchViews, watchCSS, watchJS, watchImages, watchSprites))
 // npm run build
-exports.build = gulp.series(startup, clean, gulp.parallel(css, js, fonts, views, otherFiles, sprites), end)
+exports.build = gulp.series(startup, clean, gulp.parallel(css, js, fonts, views, images, otherFiles, sprites), end)
 // npm run buildserve
-exports.buildserve = gulp.series(startup, clean, gulp.parallel(css, js, fonts, views, otherFiles, sprites), serve);
+exports.buildserve = gulp.series(startup, clean, gulp.parallel(css, js, fonts, views, images, otherFiles, sprites), serve);
