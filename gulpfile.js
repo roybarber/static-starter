@@ -12,7 +12,14 @@ var changed = require('gulp-changed');
 var postcss = require('gulp-postcss');
 var c = require('ansi-colors');
 var argv = require('yargs').argv;
+var glob = require('glob');
+var path = require('path');
 
+var iconsInSprite = []
+glob.sync("./src/assets/img/svg-sprite/**/*.svg").forEach(function(file) {
+	var icon = path.basename(file, path.extname(file))
+  	iconsInSprite.push(icon);
+})
 
 // -------------------------------------
 //   Config
@@ -30,7 +37,8 @@ const production = !!argv.production,
 		metadata: {
 			author: 'Roy Barber',
 			year: (new Date()).getFullYear(),
-			production: production
+			production: production,
+			iconList: iconsInSprite
 		}
 	},
 	paths = {
@@ -189,19 +197,6 @@ const sprites = () => {
 		mode: {
 			defs: {
 				sprite: "../sprite.svg"
-			}
-		}
-	}
-	if(!production){ 
-		svgOptions  = {
-			mode: {
-				defs: {
-					example: {
-						template: paths.views.partials + '/svg-demo.html',
-						dest: '../../../../svg-demo-output.html'
-					},
-					sprite: "../sprite.svg"
-				}
 			}
 		}
 	}

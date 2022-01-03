@@ -1,0 +1,10 @@
+<!-- custom colors from tailwind config = bg-primary bg-secondary bg-blood bg-banana bg-violet bg-green -->
+{{createArray "myColors" "bg-primary, bg-secondary, bg-blood, bg-banana, bg-violet, bg-green"}}
+<div class="grid grid-cols-3 gap-4 md:grid-cols-6 md:gap-6">
+	{{#each @root.myColors}}
+	<div>
+		<div class="rounded shadow {{this}} aspect-square mb-2"></div>
+		<div class="font-mono font-medium text-xs leading-6 text-gray-900 dark:text-white whitespace-nowrap">{{this}}</div>
+	</div>
+	{{/each}}
+</div>
