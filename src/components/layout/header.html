@@ -1,35 +1,35 @@
-<header class="relative">
+<header class="relative mb-8">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6">
-		<div class="flex items-center py-4 justify-start md:space-x-10">
-			<div class="flex justify-start lg:w-0 lg:flex-1">
-				<a href="/" class="text-indigo-600 dark:text-white">
-					{{> icon alt="Static Starter" icon="logo" class="w-10 h-10 sm:w-14 sm:h-14"}}
+		<div class="flex justify-between items-center py-4 md:py-8 lg:py-12">
+			<div>
+				<a href="/" class="text-gray-900 dark:text-white">
+					{{> icon alt="Static Starter" icon="logo" class="w-[156px] h-[34px] sm:sm:w-[210px] sm:h-[48px]"}}
 				</a>
 			</div>
 			<div class="ml-auto -mr-2 -my-2 md:hidden justify-end">
 				<button type="button" id="openMobileMenu" aria-expanded="false" aria-haspopup="true"
-					class="rounded-md p-2 inline-flex items-center justify-center text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+					class="rounded-md p-2 inline-flex items-center justify-center text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-600">
 					{{> icon alt="Open menu" icon="menu" class="h-6 w-6"}}
 				</button>
 			</div>
 			<nav class="hidden md:flex space-x-10">
-				<a href="#" class="text-base font-medium text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50">
-					Menu
+				<a href="/styles/" class="text-base font-medium text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-50 underline decoration-2 underline-offset-4 decoration-red-600 hover:underline-offset-8 ">
+					Styles
 				</a>
-				<a href="#" class="text-base font-medium text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50">
-					Menu
+				<a href="/icons/" class="text-base font-medium text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-50 underline decoration-2 underline-offset-4 decoration-amber-400 hover:underline-offset-8">
+					Icons
 				</a>
-				<a href="#" class="text-base font-medium text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50">
-					Menu
+				<a href="/forms/" class="text-base font-medium text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-50 underline decoration-2 underline-offset-4 decoration-purple-600 hover:underline-offset-8">
+					Forms
+				</a>
+				<a href="/content/" class="text-base font-medium text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-50 underline decoration-2 underline-offset-4 decoration-emerald-500 hover:underline-offset-8">
+					Content
 				</a>
 			</nav>
-			<div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-				<a href="#" class="whitespace-nowrap text-base font-medium text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50">
-					Sign in
-				</a>
-				<a href="#"
-					class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-					Sign up
+			<div class="hidden md:flex">
+				<a href="https://github.com/roybarber/static-starter" class="whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white dark:text-gray-900 bg-purple-600 dark:bg-white hover:bg-purple-700 dark:hover:bg-purple-600 hover:text-white">
+					{{> icon alt="GitHub" icon="github" class="h-6 w-6 mr-1"}}
+					Github
 				</a>
 			</div>
 		</div>
@@ -42,41 +42,36 @@
 		<div class="shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-gray-800">
 			<div class="py-4 px-4 flex items-center dark:bg-black/50">
 				<div class="flex justify-start">
-					<a href="/" class="text-indigo-600 dark:text-white">
-						{{> icon alt="Static Starter" icon="logo" class="w-10 h-10"}}
+					<a href="/" class="text-grey-800 dark:text-white">
+						{{> icon alt="Static Starter" icon="logo" class="w-[156px] h-[34px] sm:sm:w-[210px] sm:h-[48px]"}}
 					</a>
 				</div>
 				<div class="ml-auto -mr-2 -my-2 md:hidden justify-end">
-					<button type="button" id="closeMobileMenu" class="rounded-md p-2 inline-flex items-center justify-center text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+					<button type="button" id="closeMobileMenu" class="rounded-md p-2 inline-flex items-center justify-center text-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500">
 						{{> icon alt="Close menu" icon="close" class="h-6 w-6"}}
 					</button>
 				</div>
 			</div>
 			<div class="py-6 px-5 space-y-6 dark:bg-black/50">
 				<div class="grid grid-cols-1 gap-y-4 gap-x-8 text-center">
-					<a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700 dark:text-gray-200 dark:hover:text-gray-50">
-						Menu
+					<a href="/styles/" class="text-base font-medium text-gray-700 dark:text-white underline decoration-2 underline-offset-4 decoration-red-600">
+						Styles
 					</a>
-
-					<a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700 dark:text-gray-200 dark:hover:text-gray-50">
-						Menu
+					<a href="/icons/" class="text-base font-medium text-gray-700 dark:text-white underline decoration-2 underline-offset-4 decoration-amber-400">
+						Icons
 					</a>
-
-					<a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700 dark:text-gray-200 dark:hover:text-gray-50">
-						Menu
+					<a href="/forms/" class="text-base font-medium text-gray-700 dark:text-white underline decoration-2 underline-offset-4 decoration-purple-600">
+						Forms
+					</a>
+					<a href="/content/" class="text-base font-medium text-gray-700 dark:text-white underline decoration-2 underline-offset-4 decoration-emerald-500">
+						Content
 					</a>
 				</div>
-				<div>
-					<a href="#"
-						class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-						Sign up
+				<div class="flex items-center justify-center pt-4">
+					<a href="https://github.com/roybarber/static-starter" class="whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white dark:text-gray-900 bg-purple-600 dark:bg-white hover:bg-purple-700 dark:hover:bg-purple-600 hover:text-white">
+						{{> icon alt="GitHub" icon="github" class="h-6 w-6 mr-1"}}
+						Github
 					</a>
-					<p class="mt-6 text-center text-base font-medium text-gray-700 dark:text-gray-200">
-						Existing customer?
-						<a href="#" class="text-indigo-600 hover:text-indigo-500">
-							Sign in
-						</a>
-					</p>
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,25 @@
+{{#extend "default" pageTitle="Static Starter"}}{{#content "body"}}
+
+<main id="content">
+	<div class="md:grid md:grid-cols-4 md:gap-x-8">
+		<div class="md:col-span-3 wysiwyg dark:wysiwyg-invert lg:wysiwyg-xl wysiwyg-img:rounded-xl wysiwyg-headings:text-gray-900 dark:wysiwyg-headings:text-white wysiwyg-a:text-purple-600 hover:wysiwyg-a:text-purple-800 dark:wysiwyg-a:text-purpleindigo-500">
+			{{> wysiwyg-content }}
+		</div>
+		<div class="relative">
+			<div class=" max-w-sm space-y-4 md:sticky md:top-6">
+				<div class="aspect-w-3 aspect-h-2">
+					<img class="object-cover shadow-lg rounded-lg" src="/assets/img/roy-barber.jpeg" alt="Roy Barber">
+				</div>
+				<div class="text-lg leading-6 font-medium space-y-1">
+					<h3 class="text-gray-900 dark:text-white">Roy Barber</h3>
+					<p class="text-emerald-600">Senior Front-end Developer</p>
+				</div>
+				<div class="text-lg">
+					<p class="text-gray-700 dark:text-gray-300">Working Globally with Startups and Agencies. I design & develop compelling apps, intuitive interfaces, and engaging brands. All helping to improve response, drive sales, and boost profitability.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+{{/content}}{{/extend}}

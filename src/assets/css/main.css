@@ -1,3 +1,6 @@
 @tailwind base;
+main {
+	@apply max-w-7xl relative px-4 sm:px-6 mb-16 sm:mb-24 mx-auto
+}
 @tailwind components;
 @tailwind utilities;

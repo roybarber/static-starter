@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="en-US" class="scroll-smooth">
 <head>
 	<meta charset="utf-8">
 	<title>{{#if pageTitle}}{{pageTitle}}{{else}}{{ global.pageTitle }}{{/if}}</title>
@@ -24,7 +24,10 @@
 	<meta name="theme-color" content="#fafafa">
 
 </head>
-<body class="bg-white dark:bg-gray-800">
+<body class="bg-white dark:bg-gray-900 relative">
+
+	
+	
 	<a class="sr-only focus:not-sr-only" href="#content">Skip to content</a>
 	{{> layout/header }}
 	{{#block "body"}}{{/block}}

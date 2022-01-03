@@ -1,0 +1,147 @@
+{{#extend "default" pageTitle="Static Starter"}}{{#content "body"}}
+
+<main id="content">
+	<div class="md:grid md:grid-cols-4 md:gap-x-8">
+		<div class="md:col-span-3 space-y-8 md:space-y-12 lg:space-y-24">
+			
+			<div class="wysiwyg wysiwyg-xl dark:wysiwyg-invert w-full mb-12 xl:mb-0 text-center xl:text-left">
+				<h1>Basic Design System</h1>
+				<p>Using tailwind we can very quickly construct a design system, an example of which is below. We can add custom colors, icons, fonts etc by customising the <code>tailwind.config.js</code></p>
+				<a href="https://tailwindcss.com/docs/theme" class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-50 underline decoration-2 underline-offset-4 decoration-red-500 hover:underline-offset-8">Find out more</a>
+			</div>
+			
+			<div id="brand" class="scroll-mt-8">
+				<div class="wysiwyg dark:wysiwyg-invert mb-6">
+					<h2>Branding</h2>
+					<p>Here we have an example of a single logo SVG taken from the sprite, using classes to modify the text color with css alone, including dark mode modifiers.</p>
+				</div>
+				<div>
+					{{> dev-only/brand }}
+				</div>
+			</div>
+
+			<div id="color" class="scroll-mt-8">
+				<div class="wysiwyg dark:wysiwyg-invert mb-6">
+					<h2>Extended Colors</h2>
+					<p>As well as the <a href="https://tailwindcss.com/docs/customizing-colors">default tailwind colors</a>, we can also add our brand colors into the config and use them across multiple modifiers like <code>.bg-color-name</code> &amp; <code>.text-color-name</code></p>
+				</div>
+				<div>
+					{{> dev-only/color }}
+				</div>
+			</div>
+
+			<div id="type" class="scroll-mt-8">
+				<div class="wysiwyg dark:wysiwyg-invert mb-6">
+					<h2>Typography</h2>
+					<p>By default, Tailwind provides 10 font-size utilities. You change, add, or remove these by editing the theme.fontSize section of your Tailwind config.</p>
+				</div>
+				<div>
+					{{> dev-only/type }}
+				</div>
+			</div>
+
+			<div id="icons" class="scroll-mt-8">
+				<div class="wysiwyg dark:wysiwyg-invert mb-6">
+					<h2>Icons</h2>
+					<p>We can apply plenty of modifiers to icons, including colors and size.</p>
+					<a href="/icons/" class="text-base font-medium text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-50 underline decoration-2 underline-offset-4 decoration-amber-400 hover:underline-offset-8">
+						View the Icon sprite
+					</a>
+				</div>
+				<div>
+					{{> dev-only/icons }}
+				</div>
+			</div>
+
+			<div id="buttons" class="scroll-mt-8">
+				<div class="wysiwyg dark:wysiwyg-invert mb-6">
+					<h2>Buttons</h2>
+					<p>Examples of defining all the above to create buttons.</p>
+				</div>
+				<div>
+					{{> dev-only/buttons }}
+				</div>
+			</div>
+
+			<div id="notifications" class="scroll-mt-8">
+				<div class="wysiwyg dark:wysiwyg-invert mb-6">
+					<h2>Notifications &amp; alerts</h2>
+					<p>Examples of combining all of the above to create some basic notification and alert banners.</p>
+				</div>
+				<div>
+					{{> dev-only/notifications }}
+				</div>
+			</div>
+
+
+		</div>
+
+		<div class="hidden md:block">
+			<ul role="list" class="divide-y divide-black md:sticky md:top-6 text-gray-800 dark:text-white">
+				<li class="py-4 px-1 text-xl font-bold">Skip to section</li>
+				<li class="py-2">
+					<div class="relative focus-within:ring-2 focus-within:ring-indigo-500">
+						<h3 class="text-base font-semibold">
+							<a href="#brand" class="py-2 px-1 block hover:underline focus:outline-none text-emerald-400">
+								Branding
+							</a>
+						</h3>
+					</div>
+				</li>
+		
+				<li class="py-2">
+					<div class="relative focus-within:ring-2 focus-within:ring-indigo-500">
+						<h3 class="text-base font-semibold">
+							<a href="#color" class="py-2 px-1 block hover:underline focus:outline-none text-emerald-400">
+								Color
+							</a>
+						</h3>
+					</div>
+				</li>
+		
+				<li class="py-2">
+					<div class="relative focus-within:ring-2 focus-within:ring-indigo-500">
+						<h3 class="text-base font-semibold">
+							<a href="#type" class="py-2 px-1 block hover:underline focus:outline-none text-emerald-400">
+								Typography
+							</a>
+						</h3>
+					</div>
+				</li>
+
+				<li class="py-2">
+					<div class="relative focus-within:ring-2 focus-within:ring-indigo-500">
+						<h3 class="text-base font-semibold">
+							<a href="#icons" class="py-2 px-1 block hover:underline focus:outline-none text-emerald-400">
+								Icons
+							</a>
+						</h3>
+					</div>
+				</li>
+
+				<li class="py-2">
+					<div class="relative focus-within:ring-2 focus-within:ring-indigo-500">
+						<h3 class="text-base font-semibold">
+							<a href="#buttons" class="py-2 px-1 block hover:underline focus:outline-none text-emerald-400">
+								Buttons
+							</a>
+						</h3>
+					</div>
+				</li>
+
+				<li class="py-2">
+					<div class="relative focus-within:ring-2 focus-within:ring-indigo-500">
+						<h3 class="text-base font-semibold">
+							<a href="#notifications" class="py-2 px-1 block hover:underline focus:outline-none text-emerald-400">
+								Notifications
+							</a>
+						</h3>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+</main>
+
+{{/content}}{{/extend}}
