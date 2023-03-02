@@ -1,7 +1,7 @@
 ## Static Starter 2021
 Tailwind 3 + Gulp 4 + Webpack 4 + Handlebars + POST CSS + Babel + BrowserSync + Netlify Deployment
 
-For a faster version of this repo: Please see [https://github.com/roybarber/vite-static-starter](https://github.com/roybarber/vite-static-starter
+For a faster version of this repo: Please see [https://github.com/roybarber/vite-static-starter](https://github.com/roybarber/vite-static-starter)
 
 Speed up your development with a complete and scalable super simple gulpjs based build system that scaffolds the project for you. Just focus on your code. Provides a consumable mock API to build real world front ends pre-integration.
 
